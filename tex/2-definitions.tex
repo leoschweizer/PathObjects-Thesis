@@ -30,6 +30,19 @@ function h() {
 }
 \end{javascript}
 
+\begin{smalltalk}[float=htbp,caption=Smalltalk Sample]
+newRandomIdInRange: maxVal
+	"This is just a sample of smalltalk code"
+	
+	| pick |
+	self objectIds size >= maxVal ifTrue: [self error: 'Woop'].
+	
+	pick := maxVal atRandom.
+	[self objectIds values includes: pick] 
+		whileTrue: [pick := pick atRandom].
+	^  pick
+\end{smalltalk}
+
 % A raster graphic:
 %
 %\begin{figure}[hbp]

@@ -84,6 +84,34 @@
   xleftmargin=5ex
 }
 
+\lstdefinelanguage[80]{Smalltalk}{
+  basicstyle=\ttfamily\small,
+  morekeywords={true,false,self,super,nil,thisContext},
+  sensitive=true,
+  morecomment=[s]{"}{"},
+  morestring=[d]',
+  style=SmalltalkStyle,
+  numbers=left,
+  basewidth={0.57em,0.45em},
+  aboveskip=\bigskipamount,
+  lineskip=.2ex,
+  frame=lines,
+  framexleftmargin=5.0ex,
+  xleftmargin=5ex,
+  tabsize=4,
+  morecomment=[s]{"}{"},
+  commentstyle=\color{gray}\slshape,
+  morestring=[d]',
+  stringstyle=\color{-red!75!green!50!blue},
+  captionpos=b
+}
+\lstdefinestyle{SmalltalkStyle}{
+  literate={:=}{{\(\gets\)}}1
+        {^}{{\(\uparrow\)}}1
+}
+
+\lstset{defaultdialect=[80]{Smalltalk}}
+
 % to indicate removed code
 \newcommand{\coderem}{\textit{\footnotesize{[\ldots]}}}
 
@@ -102,6 +130,13 @@
 
 \lstnewenvironment{javascript}[1][]{
 	\lstset{language=JavaScript,#1}
+	\xpfListingMode
+}{
+	\xpfDefaultMode
+}
+
+\lstnewenvironment{smalltalk}[1][]{
+	\lstset{language=Smalltalk,#1}
 	\xpfListingMode
 }{
 	\xpfDefaultMode
