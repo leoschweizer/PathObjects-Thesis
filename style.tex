@@ -1,0 +1,192 @@
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
+\widowpenalty=10000
+\vfuzz \hfuzz
+\raggedbottom
+
+%% highlighting
+\makeatletter
+\newenvironment{btHighlight}[1][]
+{\begingroup\tikzset{bt@Highlight@par/.style={#1}}\begin{lrbox}{\@tempboxa}}
+{\end{lrbox}\bt@HL@box[bt@Highlight@par]{\@tempboxa}\endgroup}
+
+\definecolor{btBack1}{RGB}{209,229,254}
+\definecolor{btBack2}{RGB}{164,204,254}
+\definecolor{btBack3}{RGB}{81,158,251}
+% \definecolor{btBack1}{RGB}{235,242,255}
+% \definecolor{btBack2}{RGB}{215,222,255}
+% \definecolor{btBack3}{RGB}{175,182,255}
+%% \definecolor{btBack2}{RGB}{188,215,228}
+%% \definecolor{btBack3}{RGB}{144,195,220}
+\definecolor{btFont}{RGB}{66,128,204}
+% \definecolor{btFont}{RGB}{95,99,179}
+%% \definecolor{btFont}{RGB}{53,93,108}
+
+\newcolumntype{g}{>{\columncolor{btBack2}}c}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}b{#1}}
+
+\newcommand\btHL[1][]{%
+  \begin{btHighlight}[#1]\bgroup\aftergroup\bt@HL@endenv%
+}
+\def\bt@HL@endenv{%
+  \end{btHighlight}%
+  \egroup
+}
+\newcommand{\bt@HL@box}[2][]{%
+  \tikz[#1]{%
+    \pgfpathrectangle{\pgfpoint{1pt}{0pt}}{\pgfpoint{\wd #2}{\ht #2}}%
+    \pgfusepath{use as bounding box}%
+    \node[anchor=base west, fill=btBack1, outer sep=0pt,inner xsep=1pt, inner ysep=0pt, rounded corners=2pt, minimum height=\ht\strutbox+1pt,#1]{\raisebox{1pt}{\strut}\strut\usebox{#2}};
+  }%
+}
+\makeatother
+
+\newcommand{\cursor}{\textcolor{black}{\rule[-0.6ex]{1.1pt}{2.5ex}}}
+
+\lstdefinelanguage{JavaScript}{
+  basicstyle=\ttfamily\small,
+  keywords={typeof, for, new, try, true, false, function, return, null, catch, switch, var, if, in, while, do, else, case, break,throw,this,debugger},
+  keywordstyle=\color{black}\bfseries,
+  classoffset=1,
+  morekeywords={module, require, requires, exports, define, subclass, import, export, from},
+  keywordstyle=\color{black}\bfseries\itshape,
+  classoffset=0,
+  moredelim=**[is][{\btHL\color{btFont}}]{@}{@},
+  moredelim=**[is][{\btHL}]{@@}{@@},
+  moredelim=**[is][{\btHL[fill=btBack3]}]{@@@}{@@@},
+  moredelim=**[is][{\btHL[fill=btBack1, rounded corners=0pt, text width=\textwidth-5ex]}]{@[}{]@},
+  moredelim=**[is][{\btHL[fill=btBack2, rounded corners=0pt, text width=\textwidth-5ex]}]{@@[}{]@@},
+  moredelim=**[is][{\btHL[fill=btBack3, rounded corners=0pt]}]{@@@[}{]@@@},
+  moredelim=**[is][\cursor\ignorespaces]{|@}{|},
+  %identifierstyle=\large,
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{gray}\slshape,
+  stringstyle=\color{darkgray},
+  morestring=[b]',
+  morestring=[b]",
+  captionpos=b,
+  showstringspaces=false,
+  tabsize=2,
+  resetmargins=true,
+  frame=lines,
+  framexleftmargin=5.0ex,
+  upquote=true,
+  basewidth={0.57em,0.45em},
+  aboveskip=\bigskipamount,
+  lineskip=.2ex,
+  escapechar=\`,
+  escapeinside={(*@}{@*)},
+  numbers=left,
+  xleftmargin=5ex
+}
+
+% to indicate removed code
+\newcommand{\coderem}{\textit{\footnotesize{[\ldots]}}}
+
+% in default mode: use short inlines and flexible columns
+\newcommand{\xpfDefaultMode}{
+%\lstMakeShortInline[language=javascript]{^}
+\lstset{columns=fullflexible}
+}
+
+% in listing mode: disable short inlines and use fixed columns 
+\newcommand{\xpfListingMode}{
+%\lstDeleteShortInline{^}
+\lstset{columns=[c]fixed}
+}
+\xpfDefaultMode
+
+\lstnewenvironment{javascript}[1][]{
+	\lstset{language=JavaScript,#1}
+	\xpfListingMode
+}{
+	\xpfDefaultMode
+}
+
+\lstnewenvironment{javascriptcolumn}[1][]{
+	\lstset{language=JavaScript,frame=none,aboveskip=0pt,belowskip=0pt,#1}
+	\xpfListingMode
+	\minipage{0.375\linewidth}
+}{
+  \endminipage
+	\xpfDefaultMode 
+}
+
+\selectlanguage{english}
+
+\floatplacement{figure}{htbp}
+
+% special listing style for listings and subfloat listings
+\makeatletter
+\renewcommand*{\listof}[2]{%
+  \@ifundefined{ext@#1}{\float@error{#1}}{%
+    \expandafter\let\csname l@#1\endcsname \l@figure
+    \float@listhead{#2}%
+    \begingroup
+      \@starttoc{\@nameuse{ext@#1}}%
+    \endgroup}}
+\makeatother
+
+\newfloat{mylisting}{htbp}{lol}[chapter]
+\floatname{mylisting}{Listing}
+\newsubfloat{mylisting}
+\renewcommand{\lstlistoflistings}{\listof{mylisting}{List of Listings}}
+\providecommand*\theHmylisting{\themylisting}
+\let\Chapter\chapter
+\def\chapter{\addtocontents{lol}{\protect\addvspace{10pt}}\Chapter}
+
+\renewcommand{\lstlistlistingname}{List of Listings}
+\newcommand{\eg}{\mbox{e.g.}\xspace}
+\newcommand{\Eg}{\mbox{E.g.}\xspace}
+\newcommand{\Ie}{\mbox{I.e.}\xspace}
+\newcommand{\ie}{\mbox{i.e.}\xspace}
+\newcommand{\Th}{\textsuperscript{th}\xspace}
+
+\renewcommand{\mkcitation}[1]{\par\hfill#1}
+\renewcommand{\mkblockquote}[4]{``#1''#2#4#3}
+
+\makeatletter
+\renewcommand{\@makechapterhead}[1]{%
+\vspace*{0 pt}%
+{\setlength{\parindent}{0pt} \raggedright \normalfont
+\bfseries\LARGE
+\ifnum \value{secnumdepth}>1 
+   \if@mainmatter\thechapter\hskip 15\p@\fi%
+\fi
+#1\par\nobreak\vspace{15 pt}}}
+\makeatother
+
+\makeatletter
+\renewcommand{\@chapapp}{}
+\newenvironment{chapquote}[2][2em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
+
+%\renewcommand{\thechapter}{$\arabic{chapter}$}
+%\renewcommand{\thesection}{$\arabic{section}$}
+%\renewcommand{\thesubsection}{$\arabic{subsection}$}
+
+%\glossarystyle{index}
+
+\newcommand{\figscale}{0.65}
+\frenchspacing
+\linespread{1.05}
+
+\setlength{\ULdepth}{0.4ex}
+
+\tikzstyle{tag} = [circle, inner xsep=0pt, fill=lightgray!50!gray, text centered]
+%\newcommand{\tag}[1]{\tikz[baseline=(t.base)] \node[tag](t){$#1$};}
+
+\newcommand{\cc}[1]{{\fontsize{10}{11}\selectfont \texttt{#1}}}
+\newcommand{\ccb}[1]{{\fontsize{10}{11}\selectfont \texttt{\textbf{#1}}}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}

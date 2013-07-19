@@ -1,0 +1,49 @@
+\chapter{Definitions}
+\thispagestyle{fancy}
+\label{c:definitions}
+
+New terms only. Make the definitions precise, concise, and unambiguous.
+
+% Citing work:
+This~\cite{Lincke2012} is very interesting.
+
+% Using acronyms:
+Many \acp{api} are built on top of another \ac{api}.
+
+% A code example:
+\begin{javascript}[float=htbp,caption=Scoping in JavaScript,label=l:jsscoping]
+function f() {
+  return x;   // ReferenceError: x is not defined
+}
+
+function g() {
+  return x;   // No problem,
+  var x;      // because x is defined down here
+}
+
+function h() {
+  var x = 0;
+  for (var x in {a:2}) {
+    // ...
+  }
+  return x;   // Returns the string "a"
+}
+\end{javascript}
+
+% A raster graphic:
+%
+%\begin{figure}[hbp]
+%\centering
+%\includegraphics[scale=\figscale]{images/oi}
+%\caption{Hierarchical object inspector}
+%\label{fig:oi}
+%\end{figure}
+
+% A TikZ/PGF graphic:
+%
+%\begin{figure}[htbp]
+%\centering
+%\input{images/vm.pgf}
+%\caption{Basic virtual machine components}
+%\label{fig:vmoverview}
+%\end{figure}

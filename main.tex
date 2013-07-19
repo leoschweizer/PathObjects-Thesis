@@ -1,0 +1,79 @@
+\documentclass[11pt,a4paper,titlepage,oneside]{book}
+
+\input{system}
+\input{style}
+\input{acronyms}
+
+\begin{document}
+%--------------------------------------------------------------
+\frontmatter
+
+\include{title}
+\cleardoublepage
+
+\include{abstract}
+\cleardoublepage
+
+\tableofcontents
+\cleardoublepage
+
+\listoffigures
+\cleardoublepage
+
+\lstlistoflistings
+\cleardoublepage
+
+\listoftables
+\cleardoublepage
+
+\printglossaries
+\cleardoublepage
+
+%--------------------------------------------------------------
+\mainmatter
+\glsresetall
+
+\include{1-introduction}
+%% \cleardoublepage
+
+\include{2-definitions}
+%% \cleardoublepage
+
+\include{3-approach}
+%% \cleardoublepage
+
+\include{4-implementation}
+%% \cleardoublepage
+
+\include{5-discussion}
+%% \cleardoublepage
+
+\include{6-relatedwork}
+%% \cleardoublepage
+
+\include{7-futurework}
+%% \cleardoublepage
+
+\include{8-conclusion}
+%% \cleardoublepage
+
+\include{appendix}
+%% \cleardoublepage
+
+%--------------------------------------------------------------
+\backmatter
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\protect\numberline{}Bibliography}
+\pagestyle{plain}
+\begingroup
+\raggedright
+\sloppy
+\bibliography{references}
+\endgroup
+%\cleardoublepage
+%--------------------------------------------------------------
+
+\include{statement}
+
+\end{document}

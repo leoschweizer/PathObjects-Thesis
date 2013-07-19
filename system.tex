@@ -1,0 +1,108 @@
+%% language
+\usepackage[ngerman,english]{babel}
+\hyphenation{Ja-va-Script}
+\hyphenation{JSDoc}
+
+%% characterset
+\usepackage[utf8]{inputenc}
+%\usepackage{cmap}
+\usepackage{lmodern,soul}
+\usepackage[scaled=.9]{beramono}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp} 
+\usepackage[sc,osf]{mathpazo}
+\usepackage[super]{nth}
+
+%% bibliography
+\usepackage[square,numbers,sort]{natbib}
+\bibliographystyle{plainnat}
+
+%% tables
+\usepackage{rotating}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{tabulary}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{array}
+\renewcommand\tabcolsep{4pt}
+\renewcommand\arraystretch{1.1}
+
+%% floats
+\usepackage{float,wrapfig}
+
+%% colors
+\usepackage{color}
+\usepackage{colortbl}
+
+%% bugfixes
+\usepackage{mparhack}
+\usepackage{fixltx2e}
+\usepackage{xspace}
+
+%% listings
+\usepackage[final]{listings}
+\usepackage{latexsym, verbatim}
+\usepackage[hang,normalsize,bf]{caption}[2008/08/24]
+
+%% lists
+\usepackage{enumitem}
+
+%% graphics
+\usepackage{graphicx}
+\usepackage[normalem]{ulem} % strike out
+\usepackage{amssymb}
+\usepackage[x11names,svgnames,table]{xcolor}   % latex and colors
+\usepackage{tikz}     % pgf graphics
+\usetikzlibrary{shapes,arrows,positioning,fit,shadows,patterns,matrix,chains,scopes,trees}
+\usepackage[underline=true,rounded corners=false]{pgf-umlsd}
+\usepackage{subfig}
+
+%% hyperlinks & pdf
+\usepackage{url}
+\usepackage{pdfpages}
+\pdfcompresslevel=6
+\usepackage[
+pagebackref=true,
+colorlinks=true,
+urlcolor=black,
+linkcolor=black,
+citecolor=black,
+unicode,
+bookmarks=true,
+final
+]{hyperref}
+
+%% acronyms
+\usepackage[acronym,shortcuts,nomain]{glossaries}
+
+%% quotes
+\usepackage[style=american,threshold=1]{csquotes}
+
+%% footnotes
+\usepackage[hang,flushmargin]{footmisc} 
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter}
+
+%% development
+\usepackage{ifdraft}
+\ifdraft{%
+  \usepackage{blindtext}
+  \usepackage{showframe}
+  \usepackage{draftwatermark}
+  \SetWatermarkLightness{0.95}
+  \SetWatermarkText{\textsc{Draft}}
+  \usepackage[show]{ed}
+}{
+  \usepackage[hide]{ed}
+}
+
+%% meta
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LE,RO]{\slshape \rightmark}
+\fancyhead[LO,RE]{\slshape \leftmark}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\usepackage[bottom=3.5cm]{geometry}
