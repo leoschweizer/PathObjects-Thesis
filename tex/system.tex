@@ -1,7 +1,5 @@
 %% language
 \usepackage[ngerman,english]{babel}
-\hyphenation{Ja-va-Script}
-\hyphenation{JSDoc}
 
 %% characterset
 \usepackage[utf8]{inputenc}
@@ -14,8 +12,19 @@
 \usepackage[super]{nth}
 
 %% bibliography
-\usepackage[square,numbers,sort]{natbib}
-\bibliographystyle{plainnat}
+\usepackage[
+	backend=biber,
+	style=alphabetic,
+	maxnames=3,
+	minnames=2,
+	maxbibnames=99,
+	natbib=true,
+	doi=false
+]{biblatex}
+\bibliography{references}
+\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1}
+%\usepackage[square,numbers,sort]{natbib}
+%\bibliographystyle{alpha}
 
 %% tables
 \usepackage{rotating}
@@ -64,7 +73,7 @@
 \usepackage{pdfpages}
 \pdfcompresslevel=6
 \usepackage[
-pagebackref=true,
+%pagebackref=true,
 colorlinks=true,
 urlcolor=black,
 linkcolor=black,
