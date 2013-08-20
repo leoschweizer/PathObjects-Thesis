@@ -2,6 +2,10 @@
 \thispagestyle{fancy}
 \label{c:relatedwork}
 
-Systä et al. present a reverse engineering environment called \textsc{Shimba} \cite{systa2001shimba}, which supports both static and dynamic analysis of Java software systems.
-Static information about software entities - like classes, interfaces and their relationships - is extracted from the bytecode representation and visualized using \textsc{Rigi} \cite{Muller:1993:USS:962289.962309} in the form of directed dependency graphs.
-Runtime traces are collected with the help of a customized SDK debugger and can be synthesized as UML-like sequence and statechart diagrams through \textsc{SCED} \cite{Koskimies:1998:ASM:624623.625817,891472}.
+Systä et al. present a reverse engineering environment called \textsc{Shimba} \cite{systa_shimba_2001}, which supports both static and dynamic analysis of Java software systems.
+Static information about software entities like classes, interfaces and their relationships is extracted from the bytecode representation and visualized using \textsc{Rigi} \cite{muller_understanding_1993} in the form of directed dependency graphs.
+Besides the computation of some of the metrics of Chidamber's and Kemerer's suite \cite{chidamber_metrics_1994}, \textsc{Rigi} also can be utilized to build abstractions, for instance by aggregating classes into their respective packages.
+Runtime traces are collected with the help of a customized SDK debugger and can be synthesized as UML-like sequence and statechart diagrams through \textsc{SCED} \cite{koskimies_automated_1998,systa_understanding_2000}.
+\textsc{Shimba} supports bidirectional model slicing between \textsc{Rigi} graphs and \textsc{SCED} diagrams.
+On one side, \textsc{Rigi} can be used to restrict the amount of collected execution events through the selection of components of interest. Thus, the scope of the generated \textsc{SCED} diagrams is reduced.
+On the other side, starting from a \textsc{SCED} diagram, static views covering the affected components can be obtained.
