@@ -31,9 +31,15 @@ Unlike the notation used by \textsc{PathObjects}, the space inside the boxes is 
 For that purpose, the class hierarchy is represented by layers in a box.
 Since the authors regard overriding as the more important concept over inheritance, subclasses are placed above superclasses in these layers. 
 To allow for the generation of such diagrams, an additional pane is added to the Smalltalk-80 debugger. 
-Objects and messages are added to this diagram area when using the standard debugger commands \textit{step} and \textit{send}. 
+Objects and messages are added to this diagram area when using the standard debugger commands \emph{step} and \emph{send}. 
 However, as automatic layouting is not supported, objects have to be placed by the user manually. 
 The authors state that the debugger extension helped them to understand complicated computations better, enabling them to fix a long standing bug in the Smalltalk core.
+
+\textsc{Collaboration Browser} by Richner and Ducasse \cite{richner_using_2002} is a tool that focuses on the recovery of object collaborations and roles from dynamic information.
+Since the process of automatic design recovery is said to yield poor results, the authors favor an iterative process steered by an engineer.
+To facilitate such a process, \textsc{Collaboration Browser} offers two main features: \emph{pattern matching} and \emph{querying}. 
+Typically, a user would first create collaboration patterns by defining pattern matching criteria, and then proceed by iteratively querying about patterns in which classes or methods of interest participate.
+Finally, to understand a collaboration, an instance of a collaboration pattern can be visualized in the form of interaction diagrams, which are almost identical to UML sequence diagrams.
 
 Systä et al. present a reverse engineering environment called \textsc{Shimba} \cite{systa_shimba_2001}, which supports both static and dynamic analysis of Java software systems.
 Static information about software entities like classes, interfaces and their relationships is extracted from the bytecode representation and visualized using \textsc{Rigi} \cite{muller_understanding_1993} in the form of directed dependency graphs.
