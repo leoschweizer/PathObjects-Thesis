@@ -25,11 +25,15 @@
 	\label{fig:06-1}
 \end{figure}
 
-Cunningham and Beck propose a syntax for diagramming the message sending dialogue between objects in object-oriented computations (see Figure \ref{fig:06-1-Cunningham}) and extend the Smalltalk-80 debugger to allow for the automatic generation of such diagrams \cite{cunningham_diagram_1986}.
+Cunningham and Beck propose a syntax for diagramming the message sending dialogue between objects in object-oriented computations (see Figure \ref{fig:06-1-Cunningham}) \cite{cunningham_diagram_1986}.
 Similar to \textsc{PathObjects}, objects are drawn as boxes and message sends are represented by directed arcs between them.
 Unlike the notation used by \textsc{PathObjects}, the space inside the boxes is not used to model the object state, but to emphasize method overrides and calls to implementations of superclasses.
-Therefore, the class hierarchy is represented by layers in a box.
-Since the authors regard overriding as the more important concept over inheritance, subclasses are placed above superclasses in these layers.
+For that purpose, the class hierarchy is represented by layers in a box.
+Since the authors regard overriding as the more important concept over inheritance, subclasses are placed above superclasses in these layers. 
+To allow for the generation of such diagrams, an additional pane is added to the Smalltalk-80 debugger. 
+Objects and messages are added to this diagram area when using the standard debugger commands \textit{step} and \textit{send}. 
+However, as automatic layouting is not supported, objects have to be placed by the user manually. 
+The authors state that the debugger extension helped them to understand complicated computations better, enabling them to fix a long standing bug in the Smalltalk core.
 
 Systä et al. present a reverse engineering environment called \textsc{Shimba} \cite{systa_shimba_2001}, which supports both static and dynamic analysis of Java software systems.
 Static information about software entities like classes, interfaces and their relationships is extracted from the bytecode representation and visualized using \textsc{Rigi} \cite{muller_understanding_1993} in the form of directed dependency graphs.
