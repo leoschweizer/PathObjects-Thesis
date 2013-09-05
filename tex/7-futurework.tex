@@ -1,12 +1,17 @@
 \chapter{Future Work}
 \label{c:futurework}
 
-\paragraph{Pattern Detection} Some test cases are still too large in terms of the number of sent messages to serve as foundation of a comprehensible scenario. However, our observations are that the traces of large test cases are often repetitive in nature, performing the same set of operations on different objects.
+\paragraph{Pattern Recognition} Many trace visualization approaches that cover complete program executions employ pattern recognition techniques to reduce the traces to a manageable size (cf. Chapter \ref{c:relatedwork}).
+While our approach of the utilization of test cases as representative program executions in conjunction with Step-wise Run-time Analysis mostly solves the trace size scalability issue in terms of processing time and memory consumption, some test cases are still too large to serve as foundations of comprehensible scenarios.
+However, our observations are that the traces of large test cases are often repetitive in nature. Commonly, the same set of operations is performed in the same order on different objects.
+Recurring instances of such execution patterns could be omitted, presenting only relevant instances to the user, and thus avoiding cognitive overload.
+In this regard, the execution structure of such test cases might be particularly advantageous for the application of pattern detection techniques.
+The suitability of such an approach could be the subject of further research.
 
 \paragraph{Aggregation of Similar Objects}
 
 \paragraph{Advanced Querying}
 
-\paragraph{Extension to Concurrent Systems}
+\paragraph{Extension to Concurrent Systems} (eher nicht)
 
 \paragraph{Configuration of Metrics} (eher nicht)
