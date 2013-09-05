@@ -56,6 +56,9 @@ task :thumbs do
 		`java -jar pdfbox-app-1.8.2.jar PDFToImage -imageType png Thesis.pdf`
 		FileUtils.rm_rf 'pdfbox-app-1.8.2.jar'
 		FileUtils.rm_rf 'Thesis.pdf'
+		Dir.glob("*.png") do |thumb|
+			`convert #{thumb} -resize 10% #{thumb}`
+		end
 	end
 	FileUtils.mv 'tmp', 'thumbs'
 end
