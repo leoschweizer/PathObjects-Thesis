@@ -1,6 +1,8 @@
 \chapter{Future Work}
 \label{c:futurework}
 
+\todo[inline]{Introductory paragraph}
+
 \paragraph{Pattern Recognition} Many trace visualization approaches that cover complete program executions employ pattern recognition techniques to reduce the traces to a manageable size (cf. Chapter \ref{c:relatedwork}).
 While our approach of the utilization of test cases as representative program executions in conjunction with Step-wise Run-time Analysis mostly solves the trace size scalability issue in terms of processing time and memory consumption, some test cases are still too large to serve as foundations of comprehensible scenarios.
 However, our observations are that the traces of large test cases are often repetitive in nature. Commonly, the same set of operations is performed in the same order on different objects.
@@ -8,7 +10,7 @@ Recurring instances of such execution patterns could be omitted, presenting only
 In this regard, the execution structure of such test cases might be particularly advantageous for the application of pattern detection techniques.
 The suitability of such an approach could be the subject of further research.
 
-\paragraph{Representation of Object Collections} Due to the reasons depicted in Section \ref{TODO}, collections of objects are flattened and all members of a collection, but not the collection object itself is displayed in an interaction diagram. However, some test cases involve iterations over rather large collections.
+\paragraph{Object Pooling} Due to the reasons depicted in Section \todo{missing ref}, collections of objects are flattened and all members of a collection, but not the collection object itself is displayed in an interaction diagram. However, some test cases involve iterations over rather large collections.
 For instance, a test of the \textsc{DicThesaurusRex} project covering the synonym search functionality involves dozens of synonym objects, which excessively bloat the visualization without much added value, since the same operation is performed on each instance.
 In such cases, it might be favorable to depict only one representative object instead of the whole collection.
 In conjunction with above mentioned pattern recognition techniques, iterations of that kind could be reduced to the depiction of one single run.

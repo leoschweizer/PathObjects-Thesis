@@ -96,17 +96,18 @@ final
 \counterwithout{footnote}{chapter}
 
 %% development
-\usepackage{ifdraft}
-\ifdraft{%
-  \usepackage{blindtext}
-  \usepackage{showframe}
-  \usepackage{draftwatermark}
-  \SetWatermarkLightness{0.95}
-  \SetWatermarkText{\textsc{Draft}}
-  \usepackage[show]{ed}
-}{
-  \usepackage[hide]{ed}
-}
+\usepackage{todonotes}
+%\usepackage{ifdraft}
+%\ifdraft{%
+%  \usepackage{blindtext}
+%  \usepackage{showframe}
+%  \usepackage{draftwatermark}
+%  \SetWatermarkLightness{0.95}
+%  \SetWatermarkText{\textsc{Draft}}
+%  \usepackage[show]{ed}
+%}{
+%  \usepackage[hide]{ed}
+%}
 
 %% meta
 \usepackage{fancyhdr}
