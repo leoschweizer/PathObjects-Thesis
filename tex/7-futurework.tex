@@ -16,7 +16,16 @@ In such cases, it might be favorable to depict only one representative object in
 In conjunction with above mentioned pattern recognition techniques, iterations of that kind could be reduced to the depiction of one single run.
 In a broader context, it is also conceivable that not only the pooling of objects within collections, but objects of the same kind in general could have beneficial effects on the perceivability of interaction diagrams.
 
-\paragraph{Advanced Querying}
+\paragraph{Advanced Querying} The keyword-based search engine in it's current form allows to answer questions like "when is an object used (next)?", "where is a specific method called?" or "where are instances of a specific class used?".
+A more sophisticated search functionality with a dedicated query language - be it textual or graphical - would be desirable.
+Three categories of questions such a query language could tackle are apparent.
+The first category are queries over the message graph or call tree respectively.
+For instance, those could include "when is a specific message sent to a specific object" or "which messages are follow-up messages of a specific one".
+The second category consists of questions about the object or reference graph.
+One could ask questions like "at which point in time does a specific object obtain or release a reference to another object?" or "which objects retain references on a specific object at a given point of time?".
+The third and last category are questions about object state and state changes.
+Ko and Myers have shown with \textsc{Whyline} that this area can very well be covered by a graphical query "editor" \cite{ko_debugging_2008}.
+Such an approach could also be integrated into \textsc{PathObjects}.
 
 \paragraph{Entry Points} -> still intuition \& trial and error
 
