@@ -69,6 +69,15 @@
 %\usepackage{subfig}
 \usepackage[list=true]{subcaption}
 
+%% gnuplot
+\usepackage[miktex]{gnuplottex}
+\usepackage{etoolbox}
+% hack for -output-directory
+\let\nodirfigname\figname
+\def\figname{./build/\nodirfigname}
+\expandafter\patchcmd\csname\string\gnuplot\endcsname
+  {\figname}{\nodirfigname}{}{}
+
 %% hyperlinks & pdf
 \usepackage{url}
 \usepackage{pdfpages}

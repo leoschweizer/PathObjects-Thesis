@@ -23,10 +23,10 @@ end
 desc "Multi run build"
 task :build => [:make_build_directory] do
 	Dir.chdir('tex') do
-		`pdflatex -output-directory=../build #{MAIN_INPUT_TEX}`
+		`pdflatex -shell-escape -output-directory=../build #{MAIN_INPUT_TEX}`
 		`biber --output_directory ../build #{MAIN_INPUT}`
-		`pdflatex -output-directory=../build #{MAIN_INPUT_TEX}`
-		`pdflatex -output-directory=../build #{MAIN_INPUT_TEX}`
+		`pdflatex -shell-escape -output-directory=../build #{MAIN_INPUT_TEX}`
+		`pdflatex -shell-escape -output-directory=../build #{MAIN_INPUT_TEX}`
 	end
 	FileUtils.move 'build/main.pdf', OUTPUT_NAME
 end
