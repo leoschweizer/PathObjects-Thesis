@@ -1,6 +1,9 @@
 \chapter{Related work}
 \label{c:relatedwork}
 
+\todo[inline]{Introductory Paragraph}
+\todo[inline]{Structuring}
+
 \begin{figure}[b]
 	\centering
 	
@@ -35,11 +38,21 @@ Objects and messages are added to this diagram area when using the standard debu
 However, as automatic layouting is not supported, objects have to be placed by the user manually. 
 The authors state that the debugger extension helped them to understand complicated computations better, enabling them to fix a long standing bug in the Smalltalk core.
 
+Lange and Nakamura present \textsc{Program Explorer} in the context of design pattern based framework understanding \cite{lange_interactive_1995, lange_program_1995}.
+Based on the assumption that the combination of abstract concepts like classes and their relationships and the concrete objects and their interactions is the fundamental requirement to the understanding of object oriented systems, \textsc{Program Explorer} offers class inheritance views, object graphs and interaction charts.
+Contrary to our approach, object state exploration is not supported.
+To ensure a certain degree of scalability of the information presentation, \emph{view navigation} and \emph{integration} are provided.
+Within a given view, \emph{navigation} can be used to explore the presented information interactively, starting from an initial focus point and going to regions of further interest.
+\emph{Integration} enables the user to transfer a defined focus between different views.
+Both concepts are similar to the navigation through a scenario offered by \textsc{PathObjects} and the bidirectional connection to the static view provided by \textsc{PathView}.
+To reduce the size of the traces that are generated from instrumented executions of C++ programs, \textsc{Program Explorer} also supports \emph{trace localization}, which means that classes of interest can be selected through the instrumentation GUI and only selected classes will be instrumented.
+As compared to \textsc{PathObjects}, the latter offers a more fine-grained approach through the selection of methods of interest, instead of solely filtering by classes.
+
 \textsc{Collaboration Browser} by Richner and Ducasse \cite{richner_using_2002} is a tool that focuses on the recovery of object collaborations and roles from dynamic information.
 Since the process of automatic design recovery is said to yield poor results, the authors favor an iterative process steered by an engineer.
 To facilitate such a process, \textsc{Collaboration Browser} offers two main features: \emph{pattern matching} and \emph{querying}. 
 Typically, a user would first create collaboration patterns by defining pattern matching criteria, and then proceed by iteratively querying about patterns in which classes or methods of interest participate.
-Finally, to understand a collaboration, an instance of a collaboration pattern can be visualized in the form of interaction diagrams, which are almost identical to UML sequence diagrams.
+Finally, to understand a collaboration, an instance of a collaboration pattern can be visualized in the form of interaction diagrams, which are almost identical to UML sequence diagrams. \todo{compare to PathObjects}
 
 Systä et al. present a reverse engineering environment called \textsc{Shimba} \cite{systa_shimba_2001}, which supports both static and dynamic analysis of Java software systems.
 Static information about software entities like classes, interfaces and their relationships is extracted from the bytecode representation and visualized using \textsc{Rigi} \cite{muller_understanding_1993} in the form of directed dependency graphs.
