@@ -20,16 +20,19 @@ Describe variations, extensions, or other applications of the central idea.
 		set xlabel 'Runtime <= x[s]'
 		set ylabel 'Number of Occurrences'
 		set key top right
-		set style line 1 lc rgb '#5e9c36' pt 7 ps 0.7 lt 0 lw 1
-		set style line 2 lc rgb '#0060ad' pt 9 ps 0.7 lt 0 lw 1
+		set style line 1 lc rgb '#5e9c36' pt 7 ps 1 lt 0 lw 1
+		set style line 2 lc rgb '#0060ad' pt 9 ps 1 lt 0 lw 1
+		set style line 3 lc rgb '#ff4500' pt 13 ps 1 lt 0 lw 1
 		set pointintervalbox 3
 		set style line 11 lc rgb '#808080' lt 1
 		set border 3 back ls 11
 		set tics nomirror
+		set logscale y 10
 		set style line 12 lc rgb '#808080' lt 0 lw 1
 		set grid back ls 12
 		plot "../plots/05-Runtime-Seaside.data" using ($1/1000):2 title 'Seaside-Core' w p ls 1, \
-		"../plots/05-Runtime-DicThesaurusRex.data" using ($1/1000):2 title 'DicThesaurusRex' w p ls 2
+		"../plots/05-Runtime-DicThesaurusRex.data" using ($1/1000):2 title 'DicThesaurusRex' w p ls 2, \
+		"../plots/05-Runtime-SUnit.data" using ($1/1000):2 title 'SUnit' w p ls 3
 	\end{gnuplot}
 	\caption{Demoplot}
 \end{figure}
