@@ -10,20 +10,20 @@
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
         \includegraphics[width=\textwidth]{../images/06-Cunningham-Diagram}
-        \caption[Foo]{}
+        \caption[Object Interaction Diagrams by Cunningham and Beck]{}
 		\label{fig:06-1-Cunningham}
 	\end{subfigure}
 	\quad
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth,height=2cm]{../images/foo}
-		\caption[Bar]{}
-		\label{fig:06-1-Foo}
+		\includegraphics[width=\textwidth]{../images/06-DePauw-Matrix}
+		\caption[Functions-Instances Matrix by De Pauw et al.]{}
+		\label{fig:06-1-DePauw}
 	\end{subfigure}
 	
 	\caption[TOC Caption]{
 		a) Cunningham's and Beck's notion of diagramming object interactions, taken from \cite{cunningham_diagram_1986}.
-		b) ...
+		b) Functions-Instances Matrix by De Pauw et al., adapted from \cite{de_pauw_visualizing_1993}.
 	}
 	\label{fig:06-1}
 \end{figure}
@@ -37,6 +37,15 @@ To allow for the generation of such diagrams, an additional pane is added to the
 Objects and messages are added to this diagram area when using the standard debugger commands \emph{step} and \emph{send}. 
 However, as automatic layouting is not supported, objects have to be placed by the user manually. 
 The authors state that the debugger extension helped them to understand complicated computations better, enabling them to fix a long standing bug in the Smalltalk core.
+
+De Pauw et al. present a number of object-oriented views \cite{de_pauw_visualizing_1993, tokoro_modeling_1994} that can be generated and updated either live during the execution of instrumented code or post-mortem from recorded execution traces.
+In our context of object interactions, the \emph{Functions-Instances Matrix} view  which shows the number of calls of specific methods on specific instances (cf. Figure \ref{fig:06-1-DePauw}) is of particular interest.
+Methods are drawn on the y axis and instances are shown on the x axis.
+Each box in the matrix denotes a call of the method from the left on the object at the bottom.
+The color of the box indicates the number of invocations.
+Although the diagram doesn't show object interactions in the presented form, it could be easily extended in this sense by replacing the static information on the y axis that abstracts from concrete instances through corresponding representations.
+However, this matrix can not be utilized to visualize a specific sequence of function invocations or the state of the instances, both of which are important concepts of \textsc{PathObjects}.
+The other presented views mainly focus on classes and their relationships, but an adaption to a visualization at the abstraction level of objects is straightforward in most cases.
 
 Lange and Nakamura present \textsc{Program Explorer} in the context of design pattern based framework understanding \cite{lange_interactive_1995, lange_program_1995}.
 Based on the assumption that the combination of abstract concepts like classes and their relationships and the concrete objects and their interactions is the fundamental requirement to the understanding of object oriented systems, \textsc{Program Explorer} offers class inheritance views, object graphs and interaction charts.
