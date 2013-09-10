@@ -23,11 +23,11 @@ Describe variations, extensions, or other applications of the central idea.
 		set style line 1 lc rgb '#5e9c36' pt 7 ps 1 lt 0 lw 1
 		set style line 2 lc rgb '#0060ad' pt 9 ps 1 lt 0 lw 1
 		set style line 3 lc rgb '#ff4500' pt 13 ps 1 lt 0 lw 1
-		set pointintervalbox 3
 		set style line 11 lc rgb '#808080' lt 1
 		set border 3 back ls 11
 		set tics nomirror
 		set logscale y 10
+		set logscale x 10
 		set style line 12 lc rgb '#808080' lt 0 lw 1
 		set grid back ls 12
 		plot "../plots/05-Runtime-Seaside.data" using ($1/1000):2 title 'Seaside-Core' w p ls 1, \
@@ -38,6 +38,32 @@ Describe variations, extensions, or other applications of the central idea.
 \end{figure}
 
 \subsection{Space Consumption}
+
+\begin{figure}[height=3cm]
+	\centering
+	\begin{gnuplot}[terminal=pdf, terminaloptions={enhanced font 'Verdana,12' 
+	size 6in, 3in}]	
+		set xlabel 'Cumulative Percentage of Occurrences'
+		set ylabel 'Runtime <= x [s]'
+		set nokey
+		set style line 1 linecolor rgb '#0060ad' linetype 1 linewidth 3
+		set style line 2 lc rgb '#0060ad' pt 9 ps 1 lt 0 lw 1
+		set style line 11 lc rgb '#808080' lt 1 lw 5
+		set border 3 back ls 11
+		set tics nomirror
+		set style line 12 lc rgb '#808080' lt 0 lw 1
+		set grid back ls 12
+		set xrange [0:101]
+		
+		a=0
+		b=0
+		cummulative_sum_a(x)=(a=a+x,a)
+		cummulative_sum_b(x)=(b=b+x,b)
+		plot "../plots/05-Runtime-Seaside.data" using (cummulative_sum_a($3)):($1/1000) w p ls 2, \
+		"../plots/05-Runtime-Seaside.data" using (cummulative_sum_b($3)):($1/1000) smooth bezier ls 1
+	\end{gnuplot}
+	\caption{Demoplot}
+\end{figure}
 
 \section{User Evaluation}
 \subsection{Preliminary User Study}
