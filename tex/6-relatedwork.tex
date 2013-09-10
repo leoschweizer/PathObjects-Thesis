@@ -47,6 +47,16 @@ Although the diagram doesn't show object interactions in the presented form, it 
 However, this matrix can not be utilized to visualize a specific sequence of function invocations or the state of the instances, both of which are important concepts of \textsc{PathObjects}.
 The other presented views mainly focus on classes and their relationships, but an adaption to a visualization at the abstraction level of objects is straightforward in most cases.
 
+\textsc{Scene} by Koskimies and Mössenböck \cite{koskimies_scene:_1996} provides interactive visualizations of Oberon programs in the form of scenario diagrams.
+Execution traces from instrumented program runs serve as a basis, whereby the instrumentation can be conducted at the granularity of Oberon modules.
+Just like in UML sequence diagrams, objects are represented by vertical lines, and interactions between those objects are represented by horizontal arrows.
+To deal with the problem of large traces and limited screen  real estate, the authors propose \emph{call compression} and \emph{partitioning}.
+Call compression means that all message sends are collapsed initially and can be expanded by the user through clicking on them.
+Partitioning is employed since the authors consider vertical scrolling as acceptable, but want to avoid horizontal scrolling. Thus, if the size of the diagram exceeds the horizontal viewport, a new window is opened and the visualization is continued there.
+\textsc{Scene} also allows the user to inspect the state of an object before and after a method invocation.
+However, contrary to our approach which displays the actual state of objects and allows the user to explore complex referenced objects, this feature only utilizes user-provided \emph{Print} methods every object is supposed to have and displays static print strings.
+\textsc{Scene} also does not offer ways to filter a trace by methods or classes or to search for specific entities of interest.
+
 Lange and Nakamura present \textsc{Program Explorer} in the context of design pattern based framework understanding \cite{lange_interactive_1995, lange_program_1995}.
 Based on the assumption that the combination of abstract concepts like classes and their relationships and the concrete objects and their interactions is the fundamental requirement to the understanding of object oriented systems, \textsc{Program Explorer} offers class inheritance views, object graphs and interaction charts.
 Contrary to our approach, object state exploration is not supported.
