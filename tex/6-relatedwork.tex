@@ -67,6 +67,23 @@ Both concepts are similar to the navigation through a scenario offered by \texts
 To reduce the size of the traces that are generated from instrumented executions of C++ programs, \textsc{Program Explorer} also supports \emph{trace localization}, which means that classes of interest can be selected through the instrumentation GUI and only selected classes will be instrumented.
 As compared to \textsc{PathObjects}, the latter offers a more fine-grained approach through the selection of methods of interest, instead of solely filtering by classes.
 
+The unique feature of \textsc{ISVis} \cite{jerding_using_1997} that also presents object interactions in the form of sequence diagram-like scenario views is the concept of \emph{ information murals} \cite{jerding_information_1998, jerding_visualizing_1996}.
+The target of this approach is to provide a miniature view of large execution traces as a whole (cf. Figure \ref{fig:06-2-Mural}).
+Classes are represented by rows on the vertical axis and a message between objects of different classes is drawn as a vertical line between the respective rows.
+Users can assign colors to classes of special interest, which leads to an emphasis of the corresponding messages.
+The horizontal axis represents time.
+To avoid over-plotting, Visual properties like gray-scale shading or color intensity are exploited to map multiple elements to a single pixel or column.
+Thus, the visual properties an original visualization would have if it could be viewed in its entirety are supposed to be preserved as effectively as possible.
+Jerding et al. state that this view enables the user to find interaction patterns in large execution traces, which again helps in identifying usage scenarios and program components.
+
+\begin{figure}[tb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{../images/06-Mural}
+	\caption[Information Mural by Jerding et al.]{Information mural displaying the execution of a bubble-sort algorithm with over 90,000 messages between 200 classes (adapted from \cite{jerding_information_1998}).}
+	\label{fig:06-2-Mural}
+\end{figure}
+
+
 \textsc{JAVAVIS} by Oechsle and Schmitt \cite{diehl_javavis:_2002} was designed to aid in the teaching of the object oriented programming concepts of the Java environment.
 It utilizes the Java Debug Interface to retrieve run-time information and can be used to step through the execution of a program.
 Two main views are offered.
