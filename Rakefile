@@ -59,11 +59,11 @@ task :thumbs do
 		Rake::Task[:build].reenable
 		Rake::Task[:build].invoke
 	end
-	FileUtils.cp OUTPUT_NAME, "tmp/#{OUTPUT_NAME}"
+	FileUtils.cp OUTPUT_NAME, "tmp/page.pdf"
 	Dir.chdir('tmp') do
-		`java -jar #{pdfbox} PDFToImage -imageType png #{OUTPUT_NAME}`
+		`java -jar #{pdfbox} PDFToImage -imageType png page.pdf`
 		FileUtils.rm_rf pdfbox
-		FileUtils.rm_rf OUTPUT_NAME
+		FileUtils.rm_rf 'page.pdf'
 		Dir.glob("*.png") do |thumb|
 			`convert #{thumb} -resize 10% #{thumb}`
 		end
