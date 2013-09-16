@@ -78,6 +78,22 @@
 \expandafter\patchcmd\csname\string\gnuplot\endcsname
   {\figname}{\nodirfigname}{}{}
 
+%% Graphviz
+\newcommand{\digraph}[3][scale=1]{ 
+  \newwrite\dotfile
+  \immediate\openout\dotfile=#2.dot 
+  \immediate\write\dotfile{digraph #2 {\string#3}} 
+  \immediate\closeout\dotfile
+  \immediate\write18{dot -Tpdf build/#2.dot > build/#2.pdf}
+  \IfFileExists{#2.pdf}
+  % the pdf exists: include it 
+  { \includegraphics[#1]{build/#2} } 
+  % the pdf was not created - show a hint
+  {   
+      The PDF file displaying your dot graph could not be created.        
+  } 
+}
+
 %% hyperlinks & pdf
 \usepackage{url}
 \usepackage{pdfpages}

@@ -13,6 +13,31 @@ Describe variations, extensions, or other applications of the central idea.
 \section{Performance Evaluation}
 
 \subsection{Runtime Performance}
+
+\begin{figure}[b!]
+	\centering	
+	\digraph
+	[scale=1.0]{worstCaseRuntimeComplexity}
+	{
+		margin=0;
+		nodesep=0.3;
+		node [style=rounded, shape=box]
+		n1 [label=<n<SUB>1</SUB>>]
+		n2 [label=<n<SUB>2</SUB>>]
+		n3 [label=<n<SUB>3</SUB>>]
+		nx [label="...", style="rounded,dotted"]
+		nn [label=<n<SUB>n</SUB>>]
+		n1->n2->n3;
+		n3 -> nx [style=dotted,arrowhead=onormal];
+		nx->nn [style=dotted,arrowhead=onormal];
+		n1 -> nn;
+		n2 -> nn;
+		n3 -> nn;
+		{rank=same n1 n2 n3 nx nn}
+	}
+	\caption{Example graph that entails worst case runtime complexity.}
+\end{figure}
+
 \begin{figure}
 	\centering
 	\begin{gnuplot}[terminal=pdf, terminaloptions={enhanced font 'Verdana,12' 
