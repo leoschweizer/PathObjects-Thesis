@@ -11,8 +11,12 @@ Describe variations, extensions, or other applications of the central idea.
 \subsection{Reliance on Test Quality}
 
 \section{Performance Evaluation}
+Perscheid et al. already have shown that the step-wise run-time analysis approach that serves as a basis of \textsc{PathObjects} enables the immediate exploration of a programs run-time while maintaining a low memory footprint  \cite{perscheid_immediacy_2010}.
+To ensure that the computational extra work required for visualizing recorded object interactions preserves the immediate character of this approach, an evaluation of the runtime performance of our implementation is given in Section \ref{s:runtime-performance}.
+Since \textsc{PathObjects} also introduces additional tracing effort, an analysis of its memory requirements is presented in Section \ref{s:space-consumption}.
 
 \subsection{Runtime Performance}
+\label{s:runtime-performance}
 
 \begin{figure}[b!]
 	\centering	
@@ -20,49 +24,25 @@ Describe variations, extensions, or other applications of the central idea.
 	[scale=1.0]{worstCaseRuntimeComplexity}
 	{
 		margin=0;
-		nodesep=0.3;
-		node [style=rounded, shape=box]
-		n1 [label=<n<SUB>1</SUB>>]
-		n2 [label=<n<SUB>2</SUB>>]
-		n3 [label=<n<SUB>3</SUB>>]
+		nodesep=0.4;
+		concentrate="true";
+		node [style=rounded, shape=box, fontsize=11, height=0.4]
+		n1 [label=<N<SUB>1</SUB>>]
+		n2 [label=<N<SUB>2</SUB>>]
 		nx [label="...", style="rounded,dotted"]
-		nn [label=<n<SUB>n</SUB>>]
-		n1->n2->n3;
-		n3 -> nx [style=dotted,arrowhead=onormal];
-		nx->nn [style=dotted,arrowhead=onormal];
+		nn1 [label=<N<SUB>n-1</SUB>>]
+		nn [label=<N<SUB>n</SUB>>]
+		n1->n2;
+		n2 -> nx [style=dotted,arrowhead=onormal];
+		nx->nn1 [style=dotted,arrowhead=onormal];
+		nx -> nn [style=dotted, arrowhead=onormal];
+		nn1-> nn;
 		n1 -> nn;
 		n2 -> nn;
-		n3 -> nn;
-		{rank=same n1 n2 n3 nx nn}
+		{rank=same n1 n2 nx nn1 nn}
 	}
-	\caption{Example graph that entails worst case runtime complexity.}
+	\caption{Example graph that entails the worst case runtime complexity of $\mathcal O(n^2)$.}
 \end{figure}
-
-\begin{figure}
-	\centering
-	\begin{gnuplot}[terminal=pdf, terminaloptions={enhanced font 'Verdana,12' 
-	size 6in, 3in}]	
-		set xlabel 'Runtime <= x[s]'
-		set ylabel 'Number of Occurrences'
-		set key top right
-		set style line 1 lc rgb '#5e9c36' pt 7 ps 1 lt 0 lw 1
-		set style line 2 lc rgb '#0060ad' pt 9 ps 1 lt 0 lw 1
-		set style line 3 lc rgb '#ff4500' pt 13 ps 1 lt 0 lw 1
-		set style line 11 lc rgb '#808080' lt 1
-		set border 3 back ls 11
-		set tics nomirror
-		set logscale y 10
-		set logscale x 10
-		set style line 12 lc rgb '#808080' lt 0 lw 1
-		set grid back ls 12
-		plot "../plots/05-Runtime-Seaside.data" using ($1/1000):2 title 'Seaside-Core' w p ls 1, \
-		"../plots/05-Runtime-DicThesaurusRex.data" using ($1/1000):2 title 'DicThesaurusRex' w p ls 2, \
-		"../plots/05-Runtime-SUnit.data" using ($1/1000):2 title 'SUnit' w p ls 3
-	\end{gnuplot}
-	\caption{Demoplot}
-\end{figure}
-
-\subsection{Space Consumption}
 
 \begin{figure}
 	\centering
@@ -79,16 +59,17 @@ Describe variations, extensions, or other applications of the central idea.
 		set tics nomirror
 		set style line 12 lc rgb '#808080' lt 0 lw 1
 		set grid back ls 12
-		set xrange [0:101]
+		set xrange [40:100]
 		set logscale y 10
-		a=0
-		b=0
-		cummulative_sum_a(x)=(a=a+x,a)
-		cummulative_sum_b(x)=(b=b+x,b)
-		plot "../plots/05-Runtime-Seaside.data" using (cummulative_sum_a($3)):($1/1000) title 'Seaside-Core' w p ls 3
+		plot "../plots/05-Runtime-SUnit.data" using ($4):($1/1000) title 'SUnit' w p ls 1, \
+		"../plots/05-Runtime-Seaside.data" using ($4):($1/1000) title 'Seaside-Core' w p ls 2, \
+		"../plots/05-Runtime-DicThesaurusRex.data" using ($4):($1/1000) title 'DicThesaurusRex' w p ls 3
 	\end{gnuplot}
 	\caption{Demoplot}
 \end{figure}
+
+\subsection{Space Consumption}
+\label{s:space-consumption}
 
 \section{User Evaluation}
 \subsection{Preliminary User Study}
