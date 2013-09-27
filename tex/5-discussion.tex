@@ -54,29 +54,82 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 
 \paragraph{Results}
 
-\begin{figure}
+\begin{figure}[b!]
 	\centering
 	\begin{gnuplot}[terminal=pdf, terminaloptions={enhanced font 'Verdana,12' 
 	size 6in, 3in}]	
-		set xlabel 'Cumulative Percentage of Occurrences'
-		set ylabel 'Runtime <= x [s]'
-		set key top left
-		set style line 1 linecolor rgb '#0060ad' linetype 1 linewidth 3
+		set style line 1 linecolor rgb '#0060ad' lt 1 lw 3
 		set style line 2 lc rgb '#0060ad' pt 9 ps 1 lt 1 lw 3
 		set style line 3 lc rgb '#5e9c36' pt 7 ps 1 lt 1 lw 3
 		set style line 11 lc rgb '#808080' lt 1 lw 5
 		set border 3 back ls 11
 		set tics nomirror
 		set style line 12 lc rgb '#808080' lt 0 lw 1
+		
 		set grid back ls 12
+		#set grid mxtics mytics ls 12
+		
+		#set ytics mirror
+		set macros
+		
 		set xrange [50:100]
+		set yrange [1:100]
 		set logscale y 10
-		plot "../plots/05-Runtime-SUnit.data" using ($4):($1/1000) title 'SUnit' w p ls 1, \
-		"../plots/05-Runtime-SUnit.data" using ($4):($1/1000) notitle smooth bezier ls 1, \
-		"../plots/05-Runtime-Seaside.data" using ($4):($1/1000) title 'Seaside-Core' w p ls 2, \
-		"../plots/05-Runtime-Seaside.data" using ($4):($1/1000) notitle smooth bezier ls 2, \
-		"../plots/05-Runtime-DicThesaurusRex.data" using ($4):($1/1000) title 'DicThesaurusRex' w p ls 3, \
-		"../plots/05-Runtime-DicThesaurusRex.data" using ($4):($1/1000) notitle smooth bezier ls 3
+		
+		# MACROS
+		# x- and ytics for each row resp. column
+		NOXTICS = "set xtics (60, 70, 80, 90); unset xlabel"
+		NOYTICS = "set ytics format ' '; unset ylabel"
+		# Margins for each row resp. column
+
+		# Placement of the a,b,c,d labels in the graphs
+		POS = "at graph 0.1,0.95 font ',12'"
+		
+		set size 1.0,1.0
+		set multiplot
+		
+		set lmargin 0
+		set rmargin 0
+		set bmargin 3.2
+		
+		set label 2 'Cumulative Percentage of Occurrences [%]' at graph 2.0,-0.15 center front
+		
+		# --- GRAPH a
+		set label 1 'a' @POS
+		@NOXTICS
+		set ylabel 'Runtime <= x [s]'
+		set origin 0.09,0.0
+		set size 0.21,1.0
+		plot "../plots/05-Runtime-Seaside.data" using ($4):($1/1000) notitle  w p ls 3
+		
+		unset label 2
+		# --- GRAPH b
+		set label 1 'b' @POS
+		@NOYTICS
+		set origin 0.30,0.0
+		set size 0.21,1.0
+		plot "../plots/05-Runtime-DicThesaurusRex.data" using ($4):($1/1000) notitle  w p ls 3
+		
+		# --- GRAPH c
+		set label 1 'c' @POS
+		@NOYTICS
+		set origin 0.51,0.0
+		set size 0.21,1.0
+		plot "../plots/05-Runtime-SUnit.data" using ($4):($1/1000) notitle  w p ls 3
+		
+		# --- GRAPH d
+		set border 11 back ls 11
+		@NOYTICS
+		set ytics mirror
+		#set y2range [1:100]
+		#set y2tics
+		#set logscale y2 10
+		set label 1 'd' @POS
+		set origin 0.72,0.0
+		set size 0.21,1.0
+		plot "../plots/05-Runtime-Browser.data" using ($4):($1/1000) notitle  w p ls 3
+		
+		unset multiplot
 	\end{gnuplot}
 	\caption{Demoplot}
 \end{figure}
