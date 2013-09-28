@@ -2,7 +2,6 @@
 \label{c:relatedwork}
 
 \todo[inline]{Introductory Paragraph}
-\todo[inline]{Structuring}
 
 \begin{figure}[b]
 	\centering
@@ -28,6 +27,10 @@
 	\label{fig:06-1}
 \end{figure}
 
+\section{Object-oriented Learning Environments}
+\todo[inline]{Jeliot}
+
+\section{Object-centric Debugging}
 Cunningham and Beck propose a syntax for diagramming the message sending dialogue between objects in object-oriented computations (see Figure \ref{fig:06-1-Cunningham}) \cite{cunningham_diagram_1986, beck_system_1989}.
 Similar to \textsc{PathObjects}, objects are drawn as boxes and message sends are represented by directed arcs between them.
 Unlike the notation used by \textsc{PathObjects}, the space inside the boxes is not used to model the object state, but to emphasize method overrides and calls to implementations of superclasses.
@@ -38,6 +41,7 @@ Objects and messages are added to this diagram area when using the standard debu
 However, as automatic layouting is not supported, objects have to be placed by the user manually. 
 The authors state that the debugger extension helped them to understand complicated computations better, enabling them to fix a long standing bug in the Smalltalk core.
 
+\section{Trace-based Visualization of Object Interactions}
 De Pauw et al. present a number of object-oriented views \cite{de_pauw_visualizing_1993, tokoro_modeling_1994} that can be generated and updated either live during the execution of instrumented code or post-mortem from recorded execution traces.
 In our context of object interactions, the \emph{Functions-Instances Matrix} view  which shows the number of calls of specific methods on specific instances (cf. Figure \ref{fig:06-1-DePauw}) is of particular interest.
 Methods are drawn on the y axis and instances are shown on the x axis.
