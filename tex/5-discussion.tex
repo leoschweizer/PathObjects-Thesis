@@ -100,7 +100,8 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 		set ylabel 'Runtime <= x [s]'
 		set origin 0.09,0.0
 		set size 0.21,1.0
-		plot "../plots/05-Runtime-Seaside.data" using ($4):($1/1000) notitle  w p ls 3
+		plot "../plots/05-Runtime-Seaside.data" using ($4):($1/1000) notitle  w p ls 3, \
+		"../plots/05-Runtime-Seaside.data" using ($4):($1/1000) notitle  smooth bezier ls 3
 		
 		unset label 2
 		# --- GRAPH b
@@ -108,14 +109,16 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 		@NOYTICS
 		set origin 0.30,0.0
 		set size 0.21,1.0
-		plot "../plots/05-Runtime-DicThesaurusRex.data" using ($4):($1/1000) notitle  w p ls 3
+		plot "../plots/05-Runtime-DicThesaurusRex.data" using ($4):($1/1000) notitle  w p ls 3, \
+		"../plots/05-Runtime-DicThesaurusRex.data" using ($4):($1/1000) notitle  smooth bezier ls 3
 		
 		# --- GRAPH c
 		set label 1 'c' @POS
 		@NOYTICS
 		set origin 0.51,0.0
 		set size 0.21,1.0
-		plot "../plots/05-Runtime-SUnit.data" using ($4):($1/1000) notitle  w p ls 3
+		plot "../plots/05-Runtime-SUnit.data" using ($4):($1/1000) notitle  w p ls 3, \
+		"../plots/05-Runtime-SUnit.data" using ($4):($1/1000) notitle  smooth bezier ls 3
 		
 		# --- GRAPH d
 		set border 11 back ls 11
@@ -127,7 +130,8 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 		set label 1 'd' @POS
 		set origin 0.72,0.0
 		set size 0.21,1.0
-		plot "../plots/05-Runtime-Browser.data" using ($4):($1/1000) notitle  w p ls 3
+		plot "../plots/05-Runtime-Browser.data" using ($4):($1/1000) notitle  w p ls 3, \
+		"../plots/05-Runtime-Browser.data" using ($4):($1/1000) notitle  smooth bezier ls 3
 		
 		unset multiplot
 	\end{gnuplot}
