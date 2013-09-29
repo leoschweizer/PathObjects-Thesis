@@ -15,14 +15,14 @@
 	\quad
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../images/06-DePauw-Matrix}
-		\caption[Functions-Instances Matrix by De Pauw et al.]{}
+		\includegraphics[width=\textwidth]{../images/06-DePauw-ExecutionPattern}
+		\caption[Execution Pattern Notation by De Pauw et al.]{}
 		\label{fig:06-1-DePauw}
 	\end{subfigure}
 	
 	\caption[TOC Caption]{
 		a) Cunningham's and Beck's notion of diagramming object interactions, taken from \cite{cunningham_diagram_1986}.
-		b) Functions-Instances Matrix by De Pauw et al., adapted from \cite{de_pauw_visualizing_1993}.
+		b) Execution pattern notation by De Pauw et al., taken from \cite{de_pauw_execution_1998}.
 	}
 	\label{fig:06-1}
 \end{figure}
@@ -43,26 +43,34 @@ The authors state that the debugger extension helped them to understand complica
 
 Ressia et al. try to close the gap between the static nature of traditional  debugging with breakpoints, and the questions developers ask during debugging,  which often focus on specific individual objects \cite{ressia_object-centric_2012}.
 In addition to conventional breakpoints that refer to static source code entities, their approach which they call \emph{Object-Centric Debugging} allows to specify new kinds of breakpoints with reference to particular objects.
-This allows the developer to specify breakpoints on an already running program on two dimensions of object oriented computations.
+\todo{wdh} This allows the developer to specify breakpoints on an already running program on two dimensions of object oriented computations.
 The first dimension is related to object state and state changes.
 For that purpose, the authors introduce \emph{halt on write} and \emph{halt on read} breakpoints that can be defined on instance variables of specific objects.
 The second dimension covers the interaction of objects and includes, among others, \emph{halt on call}, \emph{halt on invoke} or \emph{halt on interaction}.
 To allow for the definition of such breakpoints, the authors extended the Pharo Smalltalk debugger and inspector in their prototypic implementation.
 That means that the approach is still heavily based on the execution stack visualization of traditional debuggers and does not offer any new or additional visualizations.
-However, it is still supposed to improve the understanding of object interactions notably.
+However, it is still supposed to reduce the time required for debugging notably and thus to speed up the understanding of object interactions.
 
 \section[Trace-Based Visualization of Object Interactions]{Trace-Based Visualization of Object Interactions%
 \sectionmark{Trace Visualizations}}
 \sectionmark{Trace Visualizations}
 
 De Pauw et al. present a number of object-oriented views \cite{de_pauw_visualizing_1993, tokoro_modeling_1994} that can be generated and updated either live during the execution of instrumented code or post-mortem from recorded execution traces.
-In our context of object interactions, the \emph{Functions-Instances Matrix} view  which shows the number of calls of specific methods on specific instances (cf. Figure \ref{fig:06-1-DePauw}) is of particular interest.
+In our context of object interactions, the \emph{Functions-Instances Matrix} view  which shows the number of calls of specific methods on specific instances is of particular interest.
 Methods are drawn on the y axis and instances are shown on the x axis.
 Each box in the matrix denotes a call of the method from the left on the object at the bottom.
 The color of the box indicates the number of invocations.
 Although the diagram doesn't show object interactions in the presented form, it could be easily extended in this sense by replacing the static information on the y axis that abstracts from concrete instances through corresponding representations.
 However, this matrix can not be utilized to visualize a specific sequence of function invocations or the state of the instances, both of which are important concepts of \textsc{PathObjects}.
 The other presented views mainly focus on classes and their relationships, but an adaption to a visualization at the abstraction level of objects is straightforward in most cases.
+
+DePauw et al. also propose a derivative of Jacobson's interaction diagrams \cite{de_pauw_execution_1998, jacobson_object-oriented_2004} that has been incorporated into \textsc{Ovation} \cite{de_pauw_visualizing_1993, tokoro_modeling_1994} and \textsc{Jinsight} \cite{de_pauw_visualizing_1998}.
+The so-called execution pattern notation (cf. Figure \ref{fig:06-1-DePauw}) resembles a horizontal tree structure and adopts the concepts of displaying active objects as vertical boxes and of using straight arrows to represent message sends between objects.
+But in contrast to Jacobson's proposal, there is no one-to-one mapping of objects and rails (the vertical lines in a diagram), since arrows are drawn strictly from left to right and top to bottom.
+Therefor, each object has to be allowed to appear multiple times in a diagram, as otherwise it would be impossible to depict all object interactions, particularly message sends from objects that appear in lower hirarchies of the tree structure to objects of higher hirarchies (e.g. the call from object B to object A in Figure \ref{fig:06-1-DePauw}).
+In their interactive implementation that allows to expand and collapse sub-trees, the objects' classes are illustrated through different colors and objects are labeled with an integer identifier.
+The authors favor this concept over directed graphs since the latter do not inherently offer a notation of time and sequence (a problem that \textsc{PathObjects} solves through interactivity).
+They further argue that compared to Jacobson's notation, their approach decreases clutter and increases readability while at the same time reducing the required space to depict object interactions.
 
 \textsc{Scene} by Koskimies and Mössenböck \cite{koskimies_scene:_1996} provides interactive visualizations of Oberon programs in the form of scenario diagrams.
 Execution traces from instrumented program runs serve as a basis, whereby the instrumentation can be conducted at the granularity of Oberon modules.
