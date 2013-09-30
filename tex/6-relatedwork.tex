@@ -27,30 +27,6 @@
 	\label{fig:06-1}
 \end{figure}
 
-\section{Object-Oriented Learning Environments}
-\todo[inline]{Jeliot}
-
-\section{Object-Centric Debugging}
-Cunningham and Beck propose a syntax for diagramming the message sending dialogue between objects in object-oriented computations (see Figure \ref{fig:06-1-Cunningham}) \cite{cunningham_diagram_1986, beck_system_1989}.
-Similar to \textsc{PathObjects}, objects are drawn as boxes and message sends are represented by directed arcs between them.
-Unlike the notation used by \textsc{PathObjects}, the space inside the boxes is not used to model the object state, but to emphasize method overrides and calls to implementations of superclasses.
-For that purpose, the class hierarchy is represented by layers in a box.
-Since the authors regard overriding as the more important concept over inheritance, subclasses are placed above superclasses in these layers. 
-To allow for the generation of such diagrams, an additional pane is added to the Smalltalk-80 debugger. 
-Objects and messages are added to this diagram area when using the standard debugger commands \emph{step} and \emph{send}. 
-However, as automatic layouting is not supported, objects have to be placed by the user manually. 
-The authors state that the debugger extension helped them to understand complicated computations better, enabling them to fix a long standing bug in the Smalltalk core.
-
-Ressia et al. try to close the gap between the static nature of traditional  debugging with breakpoints, and the questions developers ask during debugging,  which often focus on specific individual objects \cite{ressia_object-centric_2012}.
-In addition to conventional breakpoints that refer to static source code entities, their approach which they call \emph{Object-Centric Debugging} allows to specify new kinds of breakpoints with reference to particular objects.
-\todo{wdh} This allows the developer to specify breakpoints on an already running program on two dimensions of object oriented computations.
-The first dimension is related to object state and state changes.
-For that purpose, the authors introduce \emph{halt on write} and \emph{halt on read} breakpoints that can be defined on instance variables of specific objects.
-The second dimension covers the interaction of objects and includes, among others, \emph{halt on call}, \emph{halt on invoke} or \emph{halt on interaction}.
-To allow for the definition of such breakpoints, the authors extended the Pharo Smalltalk debugger and inspector in their prototypic implementation.
-That means that the approach is still heavily based on the execution stack visualization of traditional debuggers and does not offer any new or additional visualizations.
-However, it is still supposed to reduce the time required for debugging notably and thus to speed up the understanding of object interactions.
-
 \section[Trace-Based Visualization of Object Interactions]{Trace-Based Visualization of Object Interactions%
 \sectionmark{Trace Visualizations}}
 \sectionmark{Trace Visualizations}
@@ -135,3 +111,32 @@ Runtime traces are collected with the help of a customized SDK debugger and can 
 \textsc{Shimba} supports bidirectional model slicing between \textsc{Rigi} graphs and \textsc{SCED} diagrams.
 On one side, \textsc{Rigi} can be used to restrict the amount of collected execution events through the selection of components of interest. Thus, the scope of the generated \textsc{SCED} diagrams is reduced.
 On the other side, starting from a \textsc{SCED} diagram, static views covering the affected components can be obtained.
+
+\todo[inline]{Cornellisen}
+\todo[inline]{Jive?}
+
+\section{Object-Centric Debugging}
+Cunningham and Beck propose a syntax for diagramming the message sending dialogue between objects in object-oriented computations (see Figure \ref{fig:06-1-Cunningham}) \cite{cunningham_diagram_1986, beck_system_1989}.
+Similar to \textsc{PathObjects}, objects are drawn as boxes and message sends are represented by directed arcs between them.
+Unlike the notation used by \textsc{PathObjects}, the space inside the boxes is not used to model the object state, but to emphasize method overrides and calls to implementations of superclasses.
+For that purpose, the class hierarchy is represented by layers in a box.
+Since the authors regard overriding as the more important concept over inheritance, subclasses are placed above superclasses in these layers. 
+To allow for the generation of such diagrams, an additional pane is added to the Smalltalk-80 debugger. 
+Objects and messages are added to this diagram area when using the standard debugger commands \emph{step} and \emph{send}. 
+However, as automatic layouting is not supported, objects have to be placed by the user manually. 
+The authors state that the debugger extension helped them to understand complicated computations better, enabling them to fix a long standing bug in the Smalltalk core.
+
+Ressia et al. try to close the gap between the static nature of traditional  debugging with breakpoints, and the questions developers ask during debugging,  which often focus on specific individual objects \cite{ressia_object-centric_2012}.
+In addition to conventional breakpoints that refer to static source code entities, their approach which they call \emph{Object-Centric Debugging} allows to specify new kinds of breakpoints with reference to particular objects.
+\todo{wdh} This allows the developer to specify breakpoints on an already running program on two dimensions of object oriented computations.
+The first dimension is related to object state and state changes.
+For that purpose, the authors introduce \emph{halt on write} and \emph{halt on read} breakpoints that can be defined on instance variables of specific objects.
+The second dimension covers the interaction of objects and includes, among others, \emph{halt on call}, \emph{halt on invoke} or \emph{halt on interaction}.
+To allow for the definition of such breakpoints, the authors extended the Pharo Smalltalk debugger and inspector in their prototypic implementation.
+That means that the approach is still heavily based on the execution stack visualization of traditional debuggers and does not offer any new or additional visualizations.
+However, it is still supposed to reduce the time required for debugging notably and thus to speed up the understanding of object interactions.
+
+\section{Object-Oriented Learning Environments}
+\todo[inline]{Blue/BlueJ ?}
+\todo[inline]{jGrasp?}
+\todo[inline]{Jeliot}
