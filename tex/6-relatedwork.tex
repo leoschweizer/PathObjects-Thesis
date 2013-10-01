@@ -3,30 +3,6 @@
 
 \todo[inline]{Introductory Paragraph}
 
-\begin{figure}[b]
-	\centering
-	
-	\begin{subfigure}[b]{0.45\textwidth}
-		\centering
-        \includegraphics[width=\textwidth]{../images/06-Cunningham-Diagram}
-        \caption[Object Interaction Diagrams by Cunningham and Beck]{}
-		\label{fig:06-1-Cunningham}
-	\end{subfigure}
-	\quad
-	\begin{subfigure}[b]{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../images/06-DePauw-ExecutionPattern}
-		\caption[Execution Pattern Notation by De Pauw et al.]{}
-		\label{fig:06-1-DePauw}
-	\end{subfigure}
-	
-	\caption[TOC Caption]{
-		a) Cunningham's and Beck's notion of diagramming object interactions, taken from \cite{cunningham_diagram_1986}.
-		b) Execution pattern notation by De Pauw et al., taken from \cite{de_pauw_execution_1998}.
-	}
-	\label{fig:06-1}
-\end{figure}
-
 \section[Trace-Based Visualization of Object Interactions]{Trace-Based Visualization of Object Interactions%
 \sectionmark{Trace Visualizations}}
 \sectionmark{Trace Visualizations}
@@ -103,6 +79,31 @@ On the other side, starting from a \textsc{SCED} diagram, static views covering 
 \todo[inline]{Jive?}
 
 \section{Object-Centric Debugging}
+
+\begin{figure}[b]
+	\centering
+	
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+        \includegraphics[width=\textwidth]{../images/06-Cunningham-Diagram}
+        \caption[Object Interaction Diagrams by Cunningham and Beck]{}
+		\label{fig:06-1-Cunningham}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../images/06-Laffra-HotWire}
+		\caption[Object Interaction View provided by \textsc{HotWire}]{}
+		\label{fig:06-1-Laffra}
+	\end{subfigure}
+	
+	\caption[TOC Caption]{
+		a) Cunningham's and Beck's notion of diagramming object interactions, taken from \cite{cunningham_diagram_1986}.
+		b) Object interaction view provided by \textsc{HotWire}, adapted from \cite{laffra_hotwire:_1994}.
+	}
+	\label{fig:06-1}
+\end{figure}
+
 Cunningham and Beck propose a syntax for diagramming the message sending dialogue between objects in object-oriented computations (see Figure \ref{fig:06-1-Cunningham}) \cite{cunningham_diagram_1986, beck_system_1989}.
 Similar to \textsc{PathObjects}, objects are drawn as boxes and message sends are represented by directed arcs between them.
 Unlike the notation used by \textsc{PathObjects}, the space inside the boxes is not used to model the object state, but to emphasize method overrides and calls to implementations of superclasses.
@@ -112,6 +113,16 @@ To allow for the generation of such diagrams, an additional pane is added to the
 Objects and messages are added to this diagram area when using the standard debugger commands \emph{step} and \emph{send}. 
 However, as automatic layouting is not supported, objects have to be placed by the user manually. 
 The authors state that the debugger extension helped them to understand complicated computations better, enabling them to fix a long standing bug in the Smalltalk core.
+
+\textsc{HotWire} by Laffra and Malhota \cite{laffra_hotwire:_1994} is a visual debugger for C++ and Smalltalk that requires source code level instrumentation of the system under investigation.
+It aims to be easily extensible and therefore provides a declarative script language to allow users to define their own custom visualizations.
+In the context of this thesis, one of the predefined views that gives an overview of all objects in a system (cf. Figure \ref{fig:06-1-Laffra}) is of particular interest.
+It groups instances according to their type, whereas each box in a line represents an instance of the class in the left column.
+The bottom of the view shows the current call stack, including print strings of method arguments.
+The top of the call stack is represented by arrows between instances, indicating which objects currently participate in the computation.
+The authors also suggest to use different levels of color saturation to indicate how often specific instances receive messages and thus to visualize how the work is distributed across different objects.
+In contrast to \textsc{PathObjects}, \textsc{HotWire} does not include mechanisms to exclude irrelevant objects or messages from the visualization.
+It also does not provide means to find points in the execution history where specific objects or messages are involved.
 
 Ressia et al. try to close the gap between the static nature of traditional  debugging with breakpoints, and the questions developers ask during debugging,  which often focus on specific individual objects \cite{ressia_object-centric_2012}.
 In addition to conventional breakpoints that refer to static source code entities, their approach which they call \emph{Object-Centric Debugging} allows to specify new kinds of breakpoints with reference to particular objects.
