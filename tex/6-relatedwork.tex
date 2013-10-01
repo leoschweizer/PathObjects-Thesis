@@ -85,19 +85,6 @@ However, contrary to the timeline offered by \textsc{PathObjects}, murals appear
 	\label{fig:06-2-Mural}
 \end{figure}
 
-
-\textsc{JAVAVIS} by Oechsle and Schmitt \cite{diehl_javavis:_2002} was designed to aid in the teaching of the object oriented programming concepts of the Java environment.
-It utilizes the Java Debug Interface to retrieve run-time information and can be used to step through the execution of a program.
-Two main views are offered.
-First, an UML sequence diagram is used to display the function call history of the current execution which grows successively as the user steps through the program.
-Second, an UML object diagram is generated for each active invocation on all call stacks of the program under investigation.
-These diagrams display the state of the receiving object, of local variables, and of the method's arguments.
-That means that contrary to the approach implemented by \textsc{PathObjects}, object state and communication between objects are presented in different views.
-The choice of using JDI debug sessions as data source implies further restrictions.
-Only those objects that are currently present on the call stack can be inspected, while our solution also allows the user to explore the state of objects that have been used in the past but are not involved in the computation that is displayed.
-Furthermore, a search for object or method occurrences is not possible for the future execution, and also not offered for the execution history.
-The same applies to the unrestricted navigation to specific points of the execution.
-
 \textsc{Collaboration Browser} by Richner and Ducasse \cite{richner_using_2002} is a tool that focuses on the recovery of object collaborations and roles from dynamic information.
 Since the process of automatic design recovery is said to yield poor results, the authors favor an iterative process steered by an engineer.
 To facilitate such a process, \textsc{Collaboration Browser} offers two main features: \emph{pattern matching} and \emph{querying}. 
@@ -137,6 +124,18 @@ That means that the approach is still heavily based on the execution stack visua
 However, it is still supposed to reduce the time required for debugging notably and thus to speed up the understanding of object interactions.
 
 \section{Object-Oriented Learning Environments}
+\textsc{JAVAVIS} by Oechsle and Schmitt \cite{diehl_javavis:_2002} was designed to aid in the teaching of the object oriented programming concepts of the Java environment.
+It utilizes the Java Debug Interface to retrieve run-time information and can be used to step through the execution of a program.
+Two main views are offered.
+First, an UML sequence diagram is used to display the function call history of the current execution which grows successively as the user steps through the program.
+Second, an UML object diagram is generated for each active invocation on all call stacks of the program under investigation.
+These diagrams display the state of the receiving object, of local variables, and of the method's arguments.
+That means that contrary to the approach implemented by \textsc{PathObjects}, object state and communication between objects are presented in different views.
+The choice of using JDI debug sessions as data source implies further restrictions.
+Only those objects that are currently present on the call stack can be inspected, while our solution also allows the user to explore the state of objects that have been used in the past but are not involved in the computation that is displayed.
+Furthermore, a search for object or method occurrences is not possible for the future execution, and also not offered for the execution history.
+The same applies to the unrestricted navigation to specific points of the execution.
+
 \todo[inline]{Blue/BlueJ ?}
 \todo[inline]{jGrasp?}
 \todo[inline]{Jeliot}
