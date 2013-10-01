@@ -123,6 +123,14 @@ To allow for the definition of such breakpoints, the authors extended the Pharo 
 That means that the approach is still heavily based on the execution stack visualization of traditional debuggers and does not offer any new or additional visualizations.
 However, it is still supposed to reduce the time required for debugging notably and thus to speed up the understanding of object interactions.
 
+Lencevicius et al. propose a declarative query language that is supposed to help in the debugging of object-oriented programs \cite{lencevicius_query-based_1997, guerraoui_dynamic_1999}.
+Their queries consist of a definition of the search domain (similarly to a selection of types of interest) and a number of constraints on arbitrary fields of the objects of this domain.
+Consequently, the result of such a query is a collection of objects from the search domain that match the given constraints.
+Thus, questions like "\textit{which objects have a reference on a given object}" or "\textit{which user interface elements are currently visible in a given container}" can be answered.
+However, since the queries are executed against specific system snapshots during a debugging session, they can not be used to investigate actual object interactions.
+For instance, it is impossible to formulate queries about message sends (like "\textit{which objects send or receive s specific message}" or "\textit{to which objects does a given object send messages}".
+\textsc{PathObjects} provides answers to such questions either visually or through the integrated search engine.
+
 \section{Object-Oriented Learning Environments}
 \textsc{JAVAVIS} by Oechsle and Schmitt \cite{diehl_javavis:_2002} was designed to aid in the teaching of the object oriented programming concepts of the Java environment.
 It utilizes the Java Debug Interface to retrieve run-time information and can be used to step through the execution of a program.
