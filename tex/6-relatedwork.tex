@@ -8,7 +8,7 @@
 \sectionmark{Trace Visualizations}
 
 De Pauw et al. present a number of object-oriented views \cite{de_pauw_visualizing_1993, tokoro_modeling_1994} that can be generated and updated either live during the execution of instrumented code or post-mortem from recorded execution traces.
-In our context of object interactions, the \emph{Functions-Instances Matrix} view  which shows the number of calls of specific methods on specific instances is of particular interest.
+In our context of object interactions, the \emph{Functions-Instances Matrix} view  which shows the number of calls of specific methods on specific instances is of particular interest (cf. Figure \ref{fig:NotationInteractionMatrix}).
 Methods are drawn on the y axis and instances are shown on the x axis.
 Each box in the matrix denotes a call of the method from the left on the object at the bottom.
 The color of the box indicates the number of invocations.
@@ -17,12 +17,37 @@ However, this matrix can not be utilized to visualize a specific sequence of fun
 The other presented views mainly focus on classes and their relationships, but an adaption to a visualization at the abstraction level of objects is straightforward in most cases.
 
 DePauw et al. also propose a derivative of Jacobson's interaction diagrams \cite{de_pauw_execution_1998, jacobson_object-oriented_2004} that has been incorporated into \textsc{Ovation} \cite{de_pauw_visualizing_1993, tokoro_modeling_1994} and \textsc{Jinsight} \cite{de_pauw_visualizing_1998}.
-The so-called execution pattern notation (cf. Figure \ref{fig:06-1-DePauw}) resembles a horizontal tree structure and adopts the concepts of displaying active objects as vertical boxes and of using straight arrows to represent message sends between objects.
+The so-called execution pattern notation (cf. Figure \ref{fig:NotationExecutionPattern}) resembles a horizontal tree structure and adopts the concepts of displaying active objects as vertical boxes and of using straight arrows to represent message sends between objects.
 But in contrast to Jacobson's proposal, there is no one-to-one mapping of objects and rails (the vertical lines in a diagram), since arrows are drawn strictly from left to right and top to bottom.
 Therefor, each object has to be allowed to appear multiple times in a diagram, as otherwise it would be impossible to depict all object interactions, particularly message sends from objects that appear in lower hirarchies of the tree structure to objects of higher hirarchies (e.g. the call from object B to object A in Figure \ref{fig:06-1-DePauw}).
 In their interactive implementation that allows to expand and collapse sub-trees, the objects' classes are illustrated through different colors and objects are labeled with an integer identifier.
 The authors favor this concept over directed graphs since the latter do not inherently offer a notation of time and sequence (a problem that \textsc{PathObjects} solves through interactivity).
 They further argue that compared to Jacobson's notation, their approach decreases clutter and increases readability while at the same time reducing the required space to depict object interactions.
+
+\begin{figure}[tb]
+	\centering
+	
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+        \includegraphics[width=\textwidth]{../images/06-DePauw-Matrix}
+        \caption[Functions-Instances-Matrix by de Pauw et al.]{}
+		\label{fig:NotationInteractionMatrix}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../images/06-DePauw-ExecutionPattern}
+		\caption[Execution Pattern Notation by de Pauw et al.]{}
+		\label{fig:NotationExecutionPattern}
+	\end{subfigure}
+	
+	\caption[TOC Caption]{
+		a) Functions-Instances-Matrix by de Pauw et al., adapted from \cite{de_pauw_visualizing_1993}.
+		
+		b) Execution Pattern Notation by de Pauw et al., taken from \cite{de_pauw_execution_1998}.
+	}
+	\label{fig:ObjectInteractions}
+\end{figure}
 
 \textsc{Scene} by Koskimies and Mössenböck \cite{koskimies_scene:_1996} provides interactive visualizations of Oberon programs in the form of scenario diagrams.
 Execution traces from instrumented program runs serve as a basis, whereby the instrumentation can be conducted at the granularity of Oberon modules.
@@ -45,7 +70,7 @@ To reduce the size of the traces that are generated from instrumented executions
 As compared to \textsc{PathObjects}, the latter offers a more fine-grained approach through the selection of methods of interest, instead of solely filtering by classes.
 
 The unique feature of \textsc{ISVis} \cite{jerding_using_1997} that also presents object interactions in the form of sequence diagram-like scenario views is the concept of \emph{ information murals} \cite{jerding_information_1998, jerding_visualizing_1996}.
-The target of this approach is to provide a miniature view of large execution traces as a whole (cf. Figure \ref{fig:06-2-Mural}).
+The target of this approach is to provide a miniature view of large execution traces as a whole (cf. Figure \ref{fig:NotationMural}).
 Classes are represented by rows on the vertical axis and a message between objects of different classes is drawn as a vertical line between the respective rows.
 Users can assign colors to classes of special interest, which leads to an emphasis of the corresponding messages.
 The horizontal axis represents time.
@@ -58,7 +83,7 @@ However, contrary to the timeline offered by \textsc{PathObjects}, murals appear
 	\centering
 	\includegraphics[width=0.8\textwidth]{../images/06-Mural}
 	\caption[Information Mural by Jerding et al.]{Information mural displaying the execution of a bubble-sort algorithm with over 90,000 messages between 200 classes (adapted from \cite{jerding_information_1998}).}
-	\label{fig:06-2-Mural}
+	\label{fig:NotationMural}
 \end{figure}
 
 \textsc{Collaboration Browser} by Richner and Ducasse \cite{richner_using_2002} is a tool that focuses on the recovery of object collaborations and roles from dynamic information.
@@ -87,21 +112,21 @@ On the other side, starting from a \textsc{SCED} diagram, static views covering 
 		\centering
         \includegraphics[width=\textwidth]{../images/06-Cunningham-Diagram}
         \caption[Object Interaction Diagrams by Cunningham and Beck]{}
-		\label{fig:06-1-Cunningham}
+		\label{fig:DebugCunningham}
 	\end{subfigure}
 	\quad
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../images/06-Laffra-HotWire}
 		\caption[Object Interaction View provided by \textsc{HotWire}]{}
-		\label{fig:06-1-Laffra}
+		\label{fig:DebugLaffra}
 	\end{subfigure}
 	
 	\caption[TOC Caption]{
 		a) Cunningham's and Beck's notion of diagramming object interactions, taken from \cite{cunningham_diagram_1986}.
 		b) Object interaction view provided by \textsc{HotWire}, adapted from \cite{laffra_hotwire:_1994}.
 	}
-	\label{fig:06-1}
+	\label{fig:VisualDebuggers}
 \end{figure}
 
 Cunningham and Beck propose a syntax for diagramming the message sending dialogue between objects in object-oriented computations (see Figure \ref{fig:06-1-Cunningham}) \cite{cunningham_diagram_1986, beck_system_1989}.
