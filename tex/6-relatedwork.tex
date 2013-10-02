@@ -100,8 +100,12 @@ Runtime traces are collected with the help of a customized SDK debugger and can 
 On one side, \textsc{Rigi} can be used to restrict the amount of collected execution events through the selection of components of interest. Thus, the scope of the generated \textsc{SCED} diagrams is reduced.
 On the other side, starting from a \textsc{SCED} diagram, static views covering the affected components can be obtained.
 
-\todo[inline]{Cornellisen}
-\todo[inline]{Jive?}
+Similar to our approach, Cornelissen et al. propose the automated reconstruction of simplified UML sequence diagrams from test cases \cite{cornelissen_visualizing_2007}.
+In order to keep the generated diagrams at a manageable size, the authors suggest and partially implement a number of abstraction and filtering techniques, many of which are also supported by \textsc{PathObjects}.
+Among others, these are the definition of minimum and maximum stack depths (and the omission of method calls below and above those thresholds), filtering of constructors and calls of getters and setters, pattern recognition or object clustering.
+However, the presented prototype is not interactive in the effect that users could step through the trace or collapse or expand nodes.
+Object state exploration mechanisms are also unprovided for.
+Cornelissen et al. evolved their approach into massive sequence and circular bundle views that are supposed to visualize much larger execution traces than those resulting from test cases \cite{cornelissen_understanding_2007, cornelissen_execution_2008}.
 
 \section{Object-Centric Debugging}
 
