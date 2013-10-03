@@ -112,7 +112,37 @@ Gschwind and Oberleitner present a visualization for Java systems that uses aspe
 Sharp and Rountev propose an interactive sequence diagram viewer that supports several filtering techniques and offers a details on demand view which presents a zoomed in representation of a selected object interaction \cite{sharp_interactive_2005}.
 The authors of the \textsc{Zest} sequence viewer \cite{bennett_working_2007} identify a number of prerequisites for the effective visualization of large traces. Among others, these are interactivity, information hiding, navigation, focusing or zooming and scrolling.
 
-\todo[inline]{Greevy 3D}
+Greevy et al. introduce a three-dimensional presentation of object interactions \cite{greevy_visualizing_2006} that is based on Lanza's and Ducasse's polymetric views \cite{lanza_polymetric_2003}.
+It displays the static structure of a system as base layer and stacks occurring instances above the respective classes, whereby both classes and instances are represented as cuboids (cf. Figure \ref{fig:3DGreevy}).
+Inheritance relationships are visualized on the base layer through links between the super- and subclasses.
+The implementation offers two views: an overview visualization displays all messages at once, but it is also possible to step through a trace manually.
+In the latter case, objects that are involved in the current message send are highlighted and connected by a straight line that represents the message.
+Compared to \textsc{PathObjects}, this approach is supposed to support the visualization of much larger traces.
+However, additional features like state exploration or reference tracking are not supported.
+
+\begin{figure}[tb]
+	\centering
+	
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+        \includegraphics[width=\textwidth]{../images/06-Greevy-3D}
+        \caption[Dynamic Feature Trace View by Greevy et al.]{}
+		\label{fig:3DGreevy}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		%\includegraphics[width=\textwidth]{../images/foo}
+		\caption[foo]{}
+		\label{fig:3DBohnet}
+	\end{subfigure}
+	
+	\caption[TOC Caption]{
+		a) Dynamic Feature Trace View by Greevy et al., adapted from \cite{greevy_visualizing_2006}.
+		b) foo
+	}
+\end{figure}
+
 \todo[inline]{Bohnet 3D}
 
 \section{Object-Centric Debugging}
