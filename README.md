@@ -41,3 +41,18 @@ Status
 | Related Work   | 5             | 8       |
 | Conclusion     | 1             | 3       |
 | **Overall**    | **6**         | **60**  |
+
+Building
+--------
+
+**Requirements**
+  * Install latest `caption` package ([trunk](http://sourceforge.net/p/latex-caption/code/HEAD/tree/trunk/tex/))
+  * Gnuplot 4.7 or newer
+  * Graphviz 2.34 or newer
+  * ImageMagick in case you want to use the `thumbs` task
+  
+**Build**
+
+    $ git clone git@github.com:leoschweizer/PathObjects-Thesis.git
+    $ cd PathObjects-Thesis
+    $ rake
