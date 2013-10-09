@@ -168,10 +168,9 @@ However, additional features like state exploration or reference tracking are no
 		a) Cunningham's and Beck's notion of diagramming object interactions, taken from \cite{cunningham_diagram_1986}.
 		b) Object interaction view provided by \textsc{HotWire}, adapted from \cite{laffra_hotwire:_1994}.
 	}
-	\label{fig:VisualDebuggers}
 \end{figure}
 
-Cunningham and Beck propose a syntax for diagramming the message sending dialogue between objects in object-oriented computations (see Figure \ref{fig:06-1-Cunningham}) \cite{cunningham_diagram_1986, beck_system_1989}.
+Cunningham and Beck propose a syntax for diagramming the message sending dialogue between objects in object-oriented computations (see Figure \ref{fig:DebugCunningham}) \cite{cunningham_diagram_1986}.
 Similar to \textsc{PathObjects}, objects are drawn as boxes and message sends are represented by directed arcs between them.
 Unlike the notation used by \textsc{PathObjects}, the space inside the boxes is not used to model the object state, but to emphasize method overrides and calls to implementations of superclasses.
 For that purpose, the class hierarchy is represented by layers in a box.
@@ -183,7 +182,7 @@ The authors state that the debugger extension helped them to understand complica
 
 \textsc{HotWire} by Laffra and Malhota \cite{laffra_hotwire:_1994} is a visual debugger for C++ and Smalltalk that requires source code level instrumentation of the system under investigation.
 It aims to be easily extensible and therefore provides a declarative script language to allow users to define their own custom visualizations.
-In the context of this thesis, one of the predefined views that gives an overview of all objects in a system (cf. Figure \ref{fig:06-1-Laffra}) is of particular interest.
+In the context of this thesis, one of the predefined views that gives an overview of all objects in a system (cf. Figure \ref{fig:DebugLaffra}) is of particular interest.
 It groups instances according to their type, whereas each box in a line represents an instance of the class in the left column.
 The bottom of the view shows the current call stack, including print strings of method arguments.
 The top of the call stack is represented by arrows between instances, indicating which objects currently participate in the computation.
