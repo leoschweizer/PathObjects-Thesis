@@ -120,6 +120,17 @@ In the latter case, objects that are involved in the current message send are hi
 Compared to \textsc{PathObjects}, this approach is supposed to support the visualization of much larger traces.
 However, additional features like state exploration or reference tracking are not supported.
 
+Bohnet and Döllner propose a 2.5D visualization of execution traces that takes advantage of linking static and dynamic aspects of the system under observation \cite{bohnet_visual_2006}.
+In a first step, the static architecture of a system is derived from the directory structure and naming conventions.
+Since users typically have exceeding architectural knowledge, the proposed architecture can be manually refined subsequently.
+The user then executes the features he wants to investigate and a runtime call log of the program execution is generated with the help of Callgrind\footnote{http://valgrind.org/info/tools.html\#callgrind, last checked \today}.
+The function calls are mapped to the static structure and displayed as 2.5D diagram (cf. Figure \ref{fig:3DBohnet}).
+Thereby, the static aspects are layed out in a plane, the currently focused function call is displayed as a disk, and preceding and succeeding function calls are represented by arrow tops and bottoms.
+The prototype also provides a number of tools to reduce the search space to the feature-relevant aspects.
+Among others, these are various interaction mechanisms like zooming, tilting, or moving the visual focus.
+Furthermore, similarly to our approach, a search functionality is provided which can be used to define regular expressions for function names.
+In contrast to \textsc{PathObjects}, object state exploration is not supported and means to filter the execution trace are unprovided for.
+
 \begin{figure}[tb]
 	\centering
 	
@@ -132,18 +143,16 @@ However, additional features like state exploration or reference tracking are no
 	\quad
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
-		%\includegraphics[width=\textwidth]{../images/foo}
+		\includegraphics[width=\textwidth]{../images/06-Bohnet-3D}
 		\caption[foo]{}
 		\label{fig:3DBohnet}
 	\end{subfigure}
 	
 	\caption[TOC Caption]{
 		a) Dynamic Feature Trace View by Greevy et al., adapted from \cite{greevy_visualizing_2006}.
-		b) foo
+		b) Call Graph Analyzer by Bohnet and Döllner, adapted from \cite{bohnet_visual_2006}.
 	}
 \end{figure}
-
-\todo[inline]{Bohnet 3D}
 
 \section{Object-Centric Debugging}
 
