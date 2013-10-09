@@ -191,6 +191,16 @@ The authors also suggest to use different levels of color saturation to indicate
 In contrast to \textsc{PathObjects}, \textsc{HotWire} does not include mechanisms to exclude irrelevant objects or messages from the visualization.
 It also does not provide means to find points in the execution history where specific objects or messages are involved.
 
+\textsc{Jive}, which is presented by Gestwicki and Jayaraman \cite{gestwicki_jive:_2004, gestwicki_methodology_2005}, supports the interactive execution of Java applications through the Java Platform Debugger Architecture.
+Once the client program is loaded, \textsc{Jive} can be used to step forward and backward through the execution.
+The proposed solution includes multiple views on the current program state and the execution history.
+Similar to the tools presented in the previous section, interactions between objects are depicted with the help of sequence diagrams.
+The internal state of objects is presented in another view, which means that relevant information may be scattered across the debugger and has to be gathered manually by the user.
+\textsc{Jive} also maintains a relational database of execution events and runtime states and allows to perform queries against it.
+This database also can be saved and restored, allowing \textsc{Jive} to be used like a back-in-time debugger.
+However, the state information that should be stored in the database has to be declared up front through the definition of watched variables, which means that a recorded execution might later become useless since information might have become relevant that is missing.
+At this point, our approach offers greater flexibility, since state information can be gathered on demand with refinement runs at any time and users do not have to define up front in which parts of the system they are interested in.
+
 Ressia et al. try to close the gap between the static nature of traditional  debugging with breakpoints, and the questions developers ask during debugging,  which often focus on specific individual objects \cite{ressia_object-centric_2012}.
 In addition to conventional breakpoints that refer to static source code entities, their approach which they call \emph{Object-Centric Debugging} allows to specify new kinds of breakpoints with reference to particular objects.
 \todo{wdh} This allows the developer to specify breakpoints on an already running program on two dimensions of object oriented computations.
