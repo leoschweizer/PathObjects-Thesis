@@ -240,6 +240,38 @@ Only those objects that are currently present on the call stack can be inspected
 Furthermore, a search for object or method occurrences is not possible for the future execution, and also not offered for the execution history.
 The same applies to the unrestricted navigation to specific points of the execution.
 
-\todo[inline]{Blue/BlueJ ?}
-\todo[inline]{jGrasp?}
-\todo[inline]{Jeliot}
+\begin{figure}[b!]
+	\centering
+	
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+        %\includegraphics[width=\textwidth]{../images/foo}
+        \caption[User interface of \textsc{BlueJ}]{}
+		\label{fig:BlueJ}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../images/06-Moreno-Jeliot3}
+		\caption[User interface of \textsc{Jeliot3}]{}
+		\label{fig:Jeliot3}
+	\end{subfigure}
+	
+	\caption[TOC Caption]{
+		a) ....
+		b) ....
+	}
+\end{figure}
+
+\textsc{Blue} \cite{kolling_object-oriented_1996, kolling_blue_1996} and its adaption for Java called \textsc{BlueJ} \cite{kolling_bluej_2003} follow an alterantive approach to the teaching of the concepts of object orientation.
+Instead of focusing on code, users first define the abstract structure of their system with the help of UML class diagrams.
+Instances of these classes then can be created and manipulated through  context menus, which also allow to send messages to objects.
+Methods can be defined with the aid of the \textsc{Blue} language or with Java in the case of \textsc{BlueJ}.
+Although the user interface provides a dedicated area to display those instances, it does not actually visualize when two objects are interacting.
+The focus is rather on pointing out the differences  between objects and classes, than on the relationships between specific objects.
+
+Moreno at al. present \textsc{Jeliot 3} which aims at teaching object oriented concepts to novice programmers with an interactive Java development environment \cite{moreno_visualizing_2004, bednarik_jeliot_2005}.
+The user interface (cf. Figure \ref{fig:Jeliot3}) consists of two main elements: a code editor in which users are allowed to write own programs and a visualization area that depicts what happens when executing and stepping through the provided code snippet.
+The visualization consists of four separate areas which show methods, constants, the evaluation of the expression and existing object instances and their internal state.
+In a user study, the authors worked out that despite the transfer of knowledge from the tool to the user does not work as anticipated, the animation helped all participants in debugging and understanding their programs \cite{moreno_jeliot_2007}.
+However, compared to \textsc{PathObjects}, this approach is only appropriate for much smaller programs and unsuitable to get an overall picture which objects exist and how they interact.
