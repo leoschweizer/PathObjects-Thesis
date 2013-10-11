@@ -6,23 +6,23 @@
 \section[Trace-Based Visualization of Object Interactions]{Trace-Based Visualization of Object Interactions%
 \sectionmark{Trace Visualizations}}
 \sectionmark{Trace Visualizations}
+\todo[inline]{Introduction}
 
 De Pauw et al. present a number of object-oriented views \cite{de_pauw_visualizing_1993, tokoro_modeling_1994} that can be generated and updated either live during the execution of instrumented code or post-mortem from recorded execution traces.
-In our context of object interactions, the \emph{Functions-Instances Matrix} view  which shows the number of calls of specific methods on specific instances is of particular interest (cf. Figure \ref{fig:NotationInteractionMatrix}).
+In our context of object interactions, the \emph{functions-instances matrix} which shows the number of calls of specific methods on specific instances is of particular interest (cf. Figure \ref{fig:NotationInteractionMatrix}).
 Methods are drawn on the y axis and instances are shown on the x axis.
 Each box in the matrix denotes a call of the method from the left on the object at the bottom.
 The color of the box indicates the number of invocations.
-Although the diagram doesn't show object interactions in the presented form, it could be easily extended in this sense by replacing the static information on the y axis that abstracts from concrete instances through corresponding representations.
+Although the diagram doesn't show object interactions in the presented form, it could be easily extended in this sense by placing concrete instances on the vertical axis, analogous to how it is done on the horizontal axis.
 However, this matrix can not be utilized to visualize a specific sequence of function invocations or the state of the instances, both of which are important concepts of \textsc{PathObjects}.
-The other presented views mainly focus on classes and their relationships, but an adaption to a visualization at the abstraction level of objects is straightforward in most cases.
 
 DePauw et al. also propose a derivative of Jacobson's interaction diagrams \cite{de_pauw_execution_1998, jacobson_object-oriented_2004} that has been incorporated into \textsc{Ovation} \cite{de_pauw_visualizing_1993, tokoro_modeling_1994} and \textsc{Jinsight} \cite{de_pauw_visualizing_1998}.
 The so-called execution pattern notation (cf. Figure \ref{fig:NotationExecutionPattern}) resembles a horizontal tree structure and adopts the concepts of displaying active objects as vertical boxes and of using straight arrows to represent message sends between objects.
 But in contrast to Jacobson's proposal, there is no one-to-one mapping of objects and rails (the vertical lines in a diagram), since arrows are drawn strictly from left to right and top to bottom.
-Therefor, each object has to be allowed to appear multiple times in a diagram, as otherwise it would be impossible to depict all object interactions, particularly message sends from objects that appear in lower hirarchies of the tree structure to objects of higher hirarchies (e.g. the call from object B to object A in Figure \ref{fig:06-1-DePauw}).
+Therefore, each object has to be allowed to appear multiple times in a diagram, as otherwise it would be impossible to depict all object interactions (e.g. the call from object B to object A in Figure \ref{fig:NotationExecutionPattern}).
 In their interactive implementation that allows to expand and collapse sub-trees, the objects' classes are illustrated through different colors and objects are labeled with an integer identifier.
-The authors favor this concept over directed graphs since the latter do not inherently offer a notation of time and sequence (a problem that \textsc{PathObjects} solves through interactivity).
-They further argue that compared to Jacobson's notation, their approach decreases clutter and increases readability while at the same time reducing the required space to depict object interactions.
+The authors favor their concept over directed graphs, since the latter do not inherently offer a notation of time and sequence (a problem that \textsc{PathObjects} solves through interactivity).
+Through the automatic aggregation of execution patterns, their approach increases readability while at the same time reducing the required space to depict object interactions.
 
 \begin{figure}[tb]
 	\centering
@@ -42,9 +42,9 @@ They further argue that compared to Jacobson's notation, their approach decrease
 	\end{subfigure}
 	
 	\caption[TOC Caption]{
-		a) Functions-Instances-Matrix by de Pauw et al., adapted from \cite{de_pauw_visualizing_1993}.
+		a) Functions-instances-matrix by de Pauw et al. (adapted from \cite{de_pauw_visualizing_1993}).
 		
-		b) Execution Pattern Notation by de Pauw et al., taken from \cite{de_pauw_execution_1998}.
+		b) Execution pattern notation by de Pauw et al. (taken from \cite{de_pauw_execution_1998}).
 	}
 	\label{fig:ObjectInteractions}
 \end{figure}
@@ -53,10 +53,10 @@ They further argue that compared to Jacobson's notation, their approach decrease
 Execution traces from instrumented program runs serve as a basis, whereby the instrumentation can be conducted at the granularity of Oberon modules.
 Just like in UML sequence diagrams, objects are represented by vertical lines, and interactions between those objects are represented by horizontal arrows.
 To deal with the problem of large traces and limited screen  real estate, the authors propose \emph{call compression} and \emph{partitioning}.
-Call compression means that all message sends are collapsed initially and can be expanded by the user through clicking on them.
+Call compression means that all message sends are collapsed initially and can be expanded by the user one at a time.
 Partitioning is employed since the authors consider vertical scrolling as acceptable, but want to avoid horizontal scrolling. Thus, if the size of the diagram exceeds the horizontal viewport, a new window is opened and the visualization is continued there.
 \textsc{Scene} also allows the user to inspect the state of an object before and after a method invocation.
-However, contrary to our approach which displays the actual state of objects and allows the user to explore complex referenced objects, this feature only utilizes user-provided \emph{Print} methods every object is supposed to have and displays static print strings.
+However, contrary to our approach which displays the actual state of objects and allows the user to explore complex referenced objects, this feature only displays static print strings provided by the objects.
 \textsc{Scene} also does not offer ways to filter a trace by methods or classes or to search for specific entities of interest.
 
 Lange and Nakamura present \textsc{Program Explorer} in the context of design pattern based framework understanding \cite{lange_interactive_1995, lange_program_1995, lange_object-oriented_1997}.
@@ -75,14 +75,14 @@ Classes are represented by rows on the vertical axis and a message between objec
 Users can assign colors to classes of special interest, which leads to an emphasis of the corresponding messages.
 The horizontal axis represents time.
 To avoid over-plotting, Visual properties like gray-scale shading or color intensity are exploited to map multiple elements to a single pixel or column.
-Thus, the visual properties an original visualization would have if it could be viewed in its entirety are supposed to be preserved as effectively as possible.
+Thus, the visual properties an unscaled visualization would have if it could be viewed in its entirety are supposed to be preserved as effectively as possible.
 Jerding et al. state that this view enables the user to find interaction patterns in large execution traces, which again helps in identifying usage scenarios and program components.
-However, contrary to the timeline offered by \textsc{PathObjects}, murals appear to be unsuitable for the mapping of additional metrics to the various dimensions of the individual elements.
+However, contrary to the timeline offered by \textsc{PathObjects}, murals appear to be unsuitable for the mapping of additional information to the various dimensions of the individual elements.
 
 \begin{figure}[tb]
 	\centering
 	\includegraphics[width=0.8\textwidth]{../images/06-Mural}
-	\caption[Information Mural by Jerding et al.]{Information mural displaying the execution of a bubble-sort algorithm with over 90,000 messages between 200 classes (adapted from \cite{jerding_information_1998}).}
+	\caption[Information Mural by Jerding et al.]{Information mural displaying over 90,000 messages between 200 classes (adapted from \cite{jerding_information_1998}).}
 	\label{fig:NotationMural}
 \end{figure}
 
@@ -90,32 +90,34 @@ However, contrary to the timeline offered by \textsc{PathObjects}, murals appear
 Since the process of automatic design recovery is said to yield poor results, the authors favor an iterative process steered by an engineer.
 To facilitate such a process, \textsc{Collaboration Browser} offers two main features: \emph{pattern matching} and \emph{querying}. 
 Typically, a user would first create collaboration patterns by defining pattern matching criteria, and then proceed by iteratively querying about patterns in which classes or methods of interest participate.
-Finally, to understand a collaboration, an instance of a collaboration pattern can be visualized in the form of interaction diagrams, which are almost identical to UML sequence diagrams. \todo{compare to PathObjects}
+Finally, to understand a collaboration, an instance of a collaboration pattern can be visualized in the form of interaction diagrams, which are almost identical to UML sequence diagrams.
+\todo{compare to PathObjects}
 
 Systä et al. present a reverse engineering environment called \textsc{Shimba} \cite{systa_shimba_2001}, which supports both static and dynamic analysis of Java software systems.
 Static information about software entities like classes, interfaces and their relationships is extracted from the bytecode representation and visualized using \textsc{Rigi} \cite{muller_understanding_1993} in the form of directed dependency graphs.
 Besides the computation of some of the metrics of Chidamber's and Kemerer's suite \cite{chidamber_metrics_1994}, \textsc{Rigi} also can be utilized to build abstractions, for instance by aggregating classes into their respective packages.
 Runtime traces are collected with the help of a customized SDK debugger and can be synthesized as UML-like sequence and statechart diagrams through \textsc{SCED} \cite{koskimies_automated_1998,systa_understanding_2000}.
 \textsc{Shimba} supports bidirectional model slicing between \textsc{Rigi} graphs and \textsc{SCED} diagrams.
-On one side, \textsc{Rigi} can be used to restrict the amount of collected execution events through the selection of components of interest. Thus, the scope of the generated \textsc{SCED} diagrams is reduced.
+On one side, \textsc{Rigi} can be used to restrict the amount of collected execution events through the selection of components of interest.
 On the other side, starting from a \textsc{SCED} diagram, static views covering the affected components can be obtained.
+\todo{compare to PathObjects}
 
 Similar to our approach, Cornelissen et al. propose the automated reconstruction of simplified UML sequence diagrams from test cases \cite{cornelissen_visualizing_2007}.
 In order to keep the generated diagrams at a manageable size, the authors suggest and partially implement a number of abstraction and filtering techniques, many of which are also supported by \textsc{PathObjects}.
 Among others, these are the definition of minimum and maximum stack depths (and the omission of method calls below and above those thresholds), filtering of constructors and calls of getters and setters, pattern recognition or object clustering.
 However, the presented prototype is not interactive in the effect that users could step through the trace or collapse or expand nodes.
 Object state exploration mechanisms are also unprovided for.
-Cornelissen et al. evolved their approach into massive sequence and circular bundle views that are supposed to visualize much larger execution traces than those resulting from test cases \cite{cornelissen_understanding_2007, cornelissen_execution_2008}.
+The authors subsequently evolved their approach into massive sequence and circular bundle views that are supposed to visualize much larger execution traces than those resulting from test cases \cite{cornelissen_understanding_2007, cornelissen_execution_2008}.
 
 Several other approaches exist that illustrate object interactions with the help of notations similar to sequence diagrams but do not add much value compared to the already presented proposals.
 Gschwind and Oberleitner present a visualization for Java systems that uses aspect-oriented tracing as data source \cite{gschwind_improving_2003}.
 Sharp and Rountev propose an interactive sequence diagram viewer that supports several filtering techniques and offers a details on demand view which presents a zoomed in representation of a selected object interaction \cite{sharp_interactive_2005}.
-The authors of the \textsc{Zest} sequence viewer \cite{bennett_working_2007} identify a number of prerequisites for the effective visualization of large traces. Among others, these are interactivity, information hiding, navigation, focusing or zooming and scrolling.
+The authors of the \textsc{Zest} sequence viewer \cite{bennett_working_2007} identify a number of prerequisites for the effective visualization of large traces. Among others, these are interactivity, information hiding, navigation, focusing, or zooming and scrolling.
 
 Greevy et al. introduce a three-dimensional presentation of object interactions \cite{greevy_visualizing_2006} that is based on Lanza's and Ducasse's polymetric views \cite{lanza_polymetric_2003}.
 It displays the static structure of a system as base layer and stacks occurring instances above the respective classes, whereby both classes and instances are represented as cuboids (cf. Figure \ref{fig:3DGreevy}).
 Inheritance relationships are visualized on the base layer through links between the super- and subclasses.
-The implementation offers two views: an overview visualization displays all messages at once, but it is also possible to step through a trace manually.
+The implementation offers two views: an overview visualization displays all messages at once, but a second visualization also allows to step through a trace manually.
 In the latter case, objects that are involved in the current message send are highlighted and connected by a straight line that represents the message.
 Compared to \textsc{PathObjects}, this approach is supposed to support the visualization of much larger traces.
 However, additional features like state exploration or reference tracking are not supported.
@@ -137,24 +139,44 @@ In contrast to \textsc{PathObjects}, object state exploration is not supported a
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
         \includegraphics[width=\textwidth]{../images/06-Greevy-3D}
-        \caption[Dynamic Feature Trace View by Greevy et al.]{}
+        \caption[Dynamic Feature Trace view by Greevy et al.]{}
 		\label{fig:3DGreevy}
 	\end{subfigure}
 	\quad
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../images/06-Bohnet-3D}
-		\caption[foo]{}
+		\caption[Call Graph Analyzer by Bohnet and Döllner]{}
 		\label{fig:3DBohnet}
 	\end{subfigure}
 	
 	\caption[TOC Caption]{
-		a) Dynamic Feature Trace View by Greevy et al., adapted from \cite{greevy_visualizing_2006}.
-		b) Call Graph Analyzer by Bohnet and Döllner, adapted from \cite{bohnet_visual_2006}.
+		a) Dynamic feature trace view by Greevy et al. (adapted from \cite{greevy_visualizing_2006}).
+		b) Call graph analyzer by Bohnet and Döllner (adapted from \cite{bohnet_visual_2006}).
 	}
 \end{figure}
 
 \section{Debugging Object Interactions}
+\todo[inline]{Introduction}
+
+Cunningham and Beck propose a syntax for diagramming the message sending dialogue between objects in object-oriented computations (see Figure \ref{fig:DebugCunningham}) \cite{cunningham_diagram_1986}.
+Similar to \textsc{PathObjects}, objects are drawn as boxes and message sends are represented by directed arcs between them.
+Unlike the notation used by \textsc{PathObjects}, the space inside the boxes is not used to model the object state, but to emphasize method overrides and calls to implementations of superclasses.
+For that purpose, the class hierarchy is represented by layers in a box.
+Since the authors regard overriding as the more important concept over inheritance, subclasses are placed above superclasses in these layers. 
+To allow for the generation of such diagrams, an additional pane is added to the Smalltalk-80 debugger. 
+Objects and messages are added to this diagram area when using the standard debugger commands \emph{step} and \emph{send}. 
+However, as automatic layouting is not supported, objects have to be placed by the user manually.
+
+\textsc{HotWire} by Laffra and Malhota \cite{laffra_hotwire:_1994} is a visual debugger for C++ and Smalltalk that requires source code level instrumentation of the system under investigation.
+It aims to be easily extensible and therefore provides a declarative script language to allow users to define their own custom visualizations.
+In the context of this thesis, one of the predefined views that gives an overview of all objects in a system (cf. Figure \ref{fig:DebugLaffra}) is of particular interest.
+It groups instances according to their type, whereas each box in a line represents an instance of the class in the left column.
+The bottom of the view shows the current call stack, including print strings of method arguments.
+The top of the call stack is represented by arrows between instances, indicating which objects currently participate in the computation.
+The authors also suggest to use different levels of color saturation to indicate how often specific instances receive messages and thus to visualize how the work is distributed across different objects.
+In contrast to \textsc{PathObjects}, \textsc{HotWire} does not include mechanisms to exclude irrelevant objects or messages from the visualization.
+It also does not provide means to find points in the execution history where specific objects or messages are involved.
 
 \begin{figure}[b]
 	\centering
@@ -173,31 +195,11 @@ In contrast to \textsc{PathObjects}, object state exploration is not supported a
 		\label{fig:DebugLaffra}
 	\end{subfigure}
 	
-	\caption[TOC Caption]{
-		a) Cunningham's and Beck's notion of diagramming object interactions, taken from \cite{cunningham_diagram_1986}.
-		b) Object interaction view provided by \textsc{HotWire}, adapted from \cite{laffra_hotwire:_1994}.
+	\caption[Debugging Object Interactions]{
+		a) Cunningham's and Beck's notion of diagramming object interactions (taken from \cite{cunningham_diagram_1986}).
+		b) Object interaction view provided by \textsc{HotWire} (adapted from \cite{laffra_hotwire:_1994}).
 	}
 \end{figure}
-
-Cunningham and Beck propose a syntax for diagramming the message sending dialogue between objects in object-oriented computations (see Figure \ref{fig:DebugCunningham}) \cite{cunningham_diagram_1986}.
-Similar to \textsc{PathObjects}, objects are drawn as boxes and message sends are represented by directed arcs between them.
-Unlike the notation used by \textsc{PathObjects}, the space inside the boxes is not used to model the object state, but to emphasize method overrides and calls to implementations of superclasses.
-For that purpose, the class hierarchy is represented by layers in a box.
-Since the authors regard overriding as the more important concept over inheritance, subclasses are placed above superclasses in these layers. 
-To allow for the generation of such diagrams, an additional pane is added to the Smalltalk-80 debugger. 
-Objects and messages are added to this diagram area when using the standard debugger commands \emph{step} and \emph{send}. 
-However, as automatic layouting is not supported, objects have to be placed by the user manually. 
-The authors state that the debugger extension helped them to understand complicated computations better, enabling them to fix a long standing bug in the Smalltalk core.
-
-\textsc{HotWire} by Laffra and Malhota \cite{laffra_hotwire:_1994} is a visual debugger for C++ and Smalltalk that requires source code level instrumentation of the system under investigation.
-It aims to be easily extensible and therefore provides a declarative script language to allow users to define their own custom visualizations.
-In the context of this thesis, one of the predefined views that gives an overview of all objects in a system (cf. Figure \ref{fig:DebugLaffra}) is of particular interest.
-It groups instances according to their type, whereas each box in a line represents an instance of the class in the left column.
-The bottom of the view shows the current call stack, including print strings of method arguments.
-The top of the call stack is represented by arrows between instances, indicating which objects currently participate in the computation.
-The authors also suggest to use different levels of color saturation to indicate how often specific instances receive messages and thus to visualize how the work is distributed across different objects.
-In contrast to \textsc{PathObjects}, \textsc{HotWire} does not include mechanisms to exclude irrelevant objects or messages from the visualization.
-It also does not provide means to find points in the execution history where specific objects or messages are involved.
 
 \textsc{Jive}, which is presented by Gestwicki and Jayaraman \cite{gestwicki_jive:_2004, gestwicki_methodology_2005}, supports the interactive execution of Java applications through the Java Platform Debugger Architecture.
 Once the client program is loaded, \textsc{Jive} can be used to step forward and backward through the execution.
@@ -211,7 +213,7 @@ At this point, our approach offers greater flexibility, since state information 
 
 Ressia et al. try to close the gap between the static nature of traditional  debugging with breakpoints, and the questions developers ask during debugging,  which often focus on specific individual objects \cite{ressia_object-centric_2012}.
 In addition to conventional breakpoints that refer to static source code entities, their approach which they call \emph{Object-Centric Debugging} allows to specify new kinds of breakpoints with reference to particular objects.
-\todo{wdh} This allows the developer to specify breakpoints on an already running program on two dimensions of object oriented computations.
+Thus, developers are enabled to add breakpoints to an already running program on two dimensions of object oriented computations.
 The first dimension is related to object state and state changes.
 For that purpose, the authors introduce \emph{halt on write} and \emph{halt on read} breakpoints that can be defined on instance variables of specific objects.
 The second dimension covers the interaction of objects and includes, among others, \emph{halt on call}, \emph{halt on invoke} or \emph{halt on interaction}.
@@ -224,10 +226,12 @@ Their queries consist of a definition of the search domain (similarly to a selec
 Consequently, the result of such a query is a collection of objects from the search domain that match the given constraints.
 Thus, questions like "\textit{which objects have a reference on a given object}" or "\textit{which user interface elements are currently visible in a given container}" can be answered.
 However, since the queries are executed against specific system snapshots during a debugging session, they can not be used to investigate actual object interactions.
-For instance, it is impossible to formulate queries about message sends (like "\textit{which objects send or receive s specific message}" or "\textit{to which objects does a given object send messages}".
+For instance, it is impossible to formulate queries about message sends, like "\textit{which objects send or receive s specific message}" or "\textit{to which objects does a given object send messages}".
 \textsc{PathObjects} provides answers to such questions either visually or through the integrated search engine.
 
 \section{Object-Oriented Teaching Environments}
+\todo[inline]{Introduction}
+
 \textsc{JAVAVIS} by Oechsle and Schmitt \cite{diehl_javavis:_2002} was designed to aid in the teaching of the object oriented programming concepts of the Java environment.
 It utilizes the Java Debug Interface to retrieve run-time information and can be used to step through the execution of a program.
 Two main views are offered.
@@ -236,7 +240,7 @@ Second, an UML object diagram is generated for each active invocation on all cal
 These diagrams display the state of the receiving object, of local variables, and of the method's arguments.
 That means that contrary to the approach implemented by \textsc{PathObjects}, object state and communication between objects are presented in different views.
 The choice of using JDI debug sessions as data source implies further restrictions.
-Only those objects that are currently present on the call stack can be inspected, while our solution also allows the user to explore the state of objects that have been used in the past but are not involved in the computation that is displayed.
+Only those objects that are currently present on the call stack can be inspected, while our solution also allows the user to explore the state of objects that have been used in the past but are not involved in the current computation.
 Furthermore, a search for object or method occurrences is not possible for the future execution, and also not offered for the execution history.
 The same applies to the unrestricted navigation to specific points of the execution.
 
@@ -246,7 +250,7 @@ The same applies to the unrestricted navigation to specific points of the execut
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
         \includegraphics[width=\textwidth]{../images/06-Koelling-BlueJ}
-        \caption[User interface of \textsc{BlueJ}]{}
+        \caption[User Interface of \textsc{BlueJ}]{}
 		\label{fig:BlueJ}
 	\end{subfigure}
 	\quad
@@ -254,13 +258,13 @@ The same applies to the unrestricted navigation to specific points of the execut
 		\centering
 		\raisebox{2mm}{
 		\includegraphics[width=\textwidth]{../images/06-Moreno-Jeliot3}}
-		\caption[User interface of \textsc{Jeliot3}]{}
+		\caption[User Interface of \textsc{Jeliot3}]{}
 		\label{fig:Jeliot3}
 	\end{subfigure}
 	
-	\caption[TOC Caption]{
-		a) User interface of \textsc{BlueJ}, showing a static definition and a single instance, taken from \cite{kolling_bluej_2003}.
-		b) ....
+	\caption[Object-Oriented Teaching Environments]{
+		a) User interface of \textsc{BlueJ}, showing a static definition and a single instance (taken from \cite{kolling_bluej_2003}).
+		b) User interface of Jeliot 3 (taken from \cite{moreno_visualizing_2004}).
 	}
 \end{figure}
 
@@ -274,6 +278,6 @@ Theoretically, it would have been conceivable to build on this approach for our 
 
 Moreno et al. present \textsc{Jeliot 3} which aims at teaching object oriented concepts to novice programmers with an interactive Java development environment \cite{moreno_visualizing_2004, bednarik_jeliot_2005}.
 The user interface (cf. Figure \ref{fig:Jeliot3}) consists of two main elements: a code editor in which users are allowed to write own programs and a visualization area that depicts what happens when executing and stepping through the provided code snippet.
-The visualization consists of four separate areas which show methods, constants, the evaluation of the expression and existing object instances and their internal state.
+The visualization consists of four separate areas which show methods, constants, the evaluation of the current expression and existing object instances and their internal state.
 In a user study, the authors worked out that despite the transfer of knowledge from the tool to the user does not work as anticipated, the animation helped all participants in debugging and understanding their programs \cite{moreno_jeliot_2007}.
-However, compared to \textsc{PathObjects}, this approach is only appropriate for much smaller programs and unsuitable to get an overall picture which objects exist and how they interact.
+However, compared to \textsc{PathObjects}, this approach is only appropriate for much smaller programs, and unsuitable to communicate an overall picture over existing objects and their interactions.
