@@ -90,7 +90,7 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 		set label 2 'Cumulative Percentage of Occurrences [%]' at graph 2.0,-0.15 center front
 		
 		# --- GRAPH a
-		set label 1 'a' @POS
+		set label 1 'Seaside-Core' @POS
 		@NOXTICS
 		set ylabel 'Runtime <= x [s]'
 		set origin 0.09,0.0
@@ -100,7 +100,7 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 		
 		unset label 2
 		# --- GRAPH b
-		set label 1 'b' @POS
+		set label 1 'DicThesaurusRex' @POS
 		@NOYTICS
 		set origin 0.30,0.0
 		set size 0.21,1.0
@@ -108,7 +108,7 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 		"../plots/05-Runtime-DicThesaurusRex.data" using ($4):($1/1000) notitle  smooth bezier ls 3
 		
 		# --- GRAPH c
-		set label 1 'c' @POS
+		set label 1 'SUnit' @POS
 		@NOYTICS
 		set origin 0.51,0.0
 		set size 0.21,1.0
@@ -122,7 +122,7 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 		#set y2range [1:100]
 		#set y2tics
 		#set logscale y2 10
-		set label 1 'd' @POS
+		set label 1 'Squeak Browser' @POS
 		set origin 0.72,0.0
 		set size 0.21,1.0
 		plot "../plots/05-Runtime-Browser.data" using ($4):($1/1000) notitle  w p ls 3, \
