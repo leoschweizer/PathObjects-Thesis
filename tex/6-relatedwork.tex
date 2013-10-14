@@ -1,11 +1,19 @@
 \chapter{Related work}
 \label{c:relatedwork}
 
-\todo[inline]{Introductory Paragraph}
+Although the visualization of object interactions itself and the effectiveness of proposed notations and established standards like those specified by the Unified Modeling Language have not been a broad research topic so far, the requirement to clarify how object oriented systems actually behave at runtime has been well recognized in different research areas.
+
+First and foremost, trace analysis tools from various areas like reverse engineering or automated system design recovery typically offer visualizations to aid in the understanding of the traces.
+In this field, which is presented in Section \ref{s:RelatedTraceVis}, the predominant notation are diagrams similar or identical to sequence diagrams.
+Another domain that deals with the problem of exposing object oriented program behavior is debugging.
+The diverse approaches that range from traditional debuggers augmented by visualizations to specialized query languages or custom-tailored breakpoints are presented in Section \ref{s:RelatedDebugging}.
+Lastly, the field of education in computer sciences has similar objectives to first-mentioned research areas when teaching the concepts of object orientation at various stages in the curriculum.
+The visualization approaches that have been proposed therefore are presented in Section \ref{s:RelatedEducational}.
 
 \section[Trace-Based Visualization of Object Interactions]{Trace-Based Visualization of Object Interactions%
 \sectionmark{Trace Visualizations}}
 \sectionmark{Trace Visualizations}
+\label{s:RelatedTraceVis}
 \todo[inline]{Introduction}
 
 De Pauw et al. present a number of object-oriented views \cite{de_pauw_visualizing_1993, tokoro_modeling_1994} that can be generated and updated either live during the execution of instrumented code or post-mortem from recorded execution traces.
@@ -159,6 +167,7 @@ In contrast to \textsc{PathObjects}, object state exploration is not supported a
 \end{figure}
 
 \section{Debugging Object Interactions}
+\label{s:RelatedDebugging}
 \todo[inline]{Introduction}
 
 Cunningham and Beck propose a syntax for diagramming the message sending dialogue between objects in object-oriented computations (see Figure \ref{fig:DebugCunningham}) \cite{cunningham_diagram_1986}.
@@ -231,7 +240,8 @@ However, since the queries are executed against specific system snapshots during
 For instance, it is impossible to formulate queries about message sends, like "\textit{which objects send or receive s specific message}" or "\textit{to which objects does a given object send messages}".
 \textsc{PathObjects} provides answers to such questions either visually or through the integrated search engine.
 
-\section{Object-Oriented Teaching Environments}
+\section{Object-Oriented Educational Environments}
+\label{s:RelatedEducational}
 \todo[inline]{Introduction}
 
 \textsc{JAVAVIS} by Oechsle and Schmitt \cite{diehl_javavis:_2002} was designed to aid in the teaching of the object oriented programming concepts of the Java environment.
