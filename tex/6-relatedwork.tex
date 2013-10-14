@@ -168,7 +168,9 @@ In contrast to \textsc{PathObjects}, object state exploration is not supported a
 
 \section{Debugging Object Interactions}
 \label{s:RelatedDebugging}
-\todo[inline]{Introduction}
+Despite the fact that it abstracts from most of the higher level concepts introduced through object orientation, the predominant metaphor that is found in debuggers is the execution stack.
+The various approaches that have been proposed to close the gap between this technical representation and the actual abstraction level at which software systems are designed are presented in the following.
+Albeit being focused on activities during during debugging, all these approaches aim at easing the investigation of objects and their interactions and thus have similar objectives to the ones \textsc{PathObjects} pursues.
 
 Cunningham and Beck propose a syntax for diagramming the message sending dialogue between objects in object-oriented computations (see Figure \ref{fig:DebugCunningham}) \cite{cunningham_diagram_1986}.
 Similar to \textsc{PathObjects}, objects are drawn as boxes and message sends are represented by directed arcs between them.
