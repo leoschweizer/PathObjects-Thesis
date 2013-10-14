@@ -86,12 +86,13 @@ However, contrary to the timeline offered by \textsc{PathObjects}, murals appear
 	\label{fig:NotationMural}
 \end{figure}
 
-\textsc{Collaboration Browser} by Richner and Ducasse \cite{richner_using_2002} is a tool that focuses on the recovery of object collaborations and roles from dynamic information.
+\textsc{Collaboration Browser} by Richner and Ducasse \cite{richner_using_2002} is a tool that focuses on the recovery of object collaborations and roles from dynamic tracing information.
 Since the process of automatic design recovery is said to yield poor results, the authors favor an iterative process steered by an engineer.
 To facilitate such a process, \textsc{Collaboration Browser} offers two main features: \emph{pattern matching} and \emph{querying}. 
 Typically, a user would first create collaboration patterns by defining pattern matching criteria, and then proceed by iteratively querying about patterns in which classes or methods of interest participate.
 Finally, to understand a collaboration, an instance of a collaboration pattern can be visualized in the form of interaction diagrams, which are almost identical to UML sequence diagrams.
-\todo{compare to PathObjects}
+Unlike \textsc{PathObjects}, \textsc{Collaboration Browser} serves a very confined purpose, namely the retrieval of object roles and their collaborations.
+Thus, features like state exploration, reference tracking or unrestricted navigation through a trace are not supported.
 
 Systä et al. present a reverse engineering environment called \textsc{Shimba} \cite{systa_shimba_2001}, which supports both static and dynamic analysis of Java software systems.
 Static information about software entities like classes, interfaces and their relationships is extracted from the bytecode representation and visualized using \textsc{Rigi} \cite{muller_understanding_1993} in the form of directed dependency graphs.
@@ -100,7 +101,8 @@ Runtime traces are collected with the help of a customized SDK debugger and can 
 \textsc{Shimba} supports bidirectional model slicing between \textsc{Rigi} graphs and \textsc{SCED} diagrams.
 On one side, \textsc{Rigi} can be used to restrict the amount of collected execution events through the selection of components of interest.
 On the other side, starting from a \textsc{SCED} diagram, static views covering the affected components can be obtained.
-\todo{compare to PathObjects}
+Contrary to our approach, the \textsc{Shimba} environment focuses on reverse engineering and does not support integration of the actual source code as a consequence.
+It is also impossible to perform refinement runs to collect additional relevant information, like the state of objects at specific points in time.
 
 Similar to our approach, Cornelissen et al. propose the automated reconstruction of simplified UML sequence diagrams from test cases \cite{cornelissen_visualizing_2007}.
 In order to keep the generated diagrams at a manageable size, the authors suggest and partially implement a number of abstraction and filtering techniques, many of which are also supported by \textsc{PathObjects}.
