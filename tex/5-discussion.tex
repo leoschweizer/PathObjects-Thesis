@@ -146,4 +146,15 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 \section{Limitations of PathObjects}
 \subsection{Collections / Generally: Patterns}
 \subsection{Metaprogramming}
-\subsection{Reliance on Test Quality}
+
+\subsection{Reliance on Test Quality} \todo{missing refs}
+\label{ss:LimitationsTestQuality}
+The best practices for unit testing and the characteristics unit tests should display enjoy broad consent throughout the agile software development community.
+To name a few, tests are supposed to be isolated, to be free of side-effects, to run fast, and to be reproducible, automated and unique.
+However, when being used as entry points for \textsc{PathObjects}, two of those recommendations become requirements.
+
+Tests that do not run fast basically render our approach useless.
+If for instance a test would take 30 seconds to execute, the user not only would have to wait that long before being able to work with our tool, she would also have to wait every time a refinement run has to be performed to collect previously unknown information, like object states or outgoing references.
+This would possibly be still acceptable if refinement runs were executed only occasionally, but \textsc{PathObjects} encourages the continuous use of those features.
+For example, as depicted in Section \ref{missing}, refinement runs are performed automatically when an object state inspector is expanded.
+That means that with every step to another previously unvisited point of time of the execution trace, the underlying test case gets executed automatically, which in turn induces waiting time for the user in the case of long running tests.
