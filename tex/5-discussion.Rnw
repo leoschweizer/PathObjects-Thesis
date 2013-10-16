@@ -65,10 +65,11 @@ f <- function(x) {
 
 # outliers
 o <- function(x) {
-  subset(x, x < quantile(x, c(.04)) | quantile(x, c(.96)) < x)
+  #subset(x, x < quantile(x, c(.04)) | quantile(x, c(.96)) < x)
+  subset(x, x > quantile(x, c(.96)))
 }
 
-runtimes <- read.table("05-Runtimes.data", col.names=c("project","runtime"))
+runtimes <- read.table("../plots/05-Runtimes.data", col.names=c("project","runtime"))
 ggplot(runtimes, aes(project, runtime / 1000)) + 
   stat_summary(fun.data = f, geom="errorbar", aes(width=0.5)) +
   stat_summary(fun.data = f, geom="boxplot", aes(fill = project, width=0.5)) +
