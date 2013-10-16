@@ -49,11 +49,23 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 
 \paragraph{Results}
 
-
+\SweaveOpts{prefix.string=build/}
 \begin{figure}[b!]
 	\centering
 
-\includegraphics{build/-001}
+<<fig=TRUE,echo=FALSE,height=3,width=6>>=
+library("ggplot2")
+runtimes <- read.table("../plots/05-Runtimes.data")
+ggplot(runtimes, aes(V1, V2)) + 
+  stat_boxplot(geom ='errorbar') + 
+  geom_boxplot(aes(fill = V1)) + 
+  ylab("Runtime [ms]") + 
+  scale_y_log10() + 
+  theme_bw() + 
+  theme(axis.title.x = element_blank()) + 
+  guides(fill=FALSE) + 
+  scale_fill_brewer(type="seq", palette=5)
+@
 
 	\caption{Demoplot}
 \end{figure}
