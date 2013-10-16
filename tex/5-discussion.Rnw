@@ -55,10 +55,24 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 
 <<fig=TRUE,echo=FALSE,height=3,width=6>>=
 library("ggplot2")
-runtimes <- read.table("../plots/05-Runtimes.data")
-ggplot(runtimes, aes(V1, V2)) + 
-  stat_boxplot(geom ='errorbar') + 
-  geom_boxplot(aes(fill = V1)) + 
+
+# quantiles / percentiles
+f <- function(x) {
+  r <- quantile(x, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")
+  r
+}
+
+# outliers
+o <- function(x) {
+  subset(x, x < quantile(x, c(.04)) | quantile(x, c(.96)) < x)
+}
+
+runtimes <- read.table("05-Runtimes.data", col.names=c("project","runtime"))
+ggplot(runtimes, aes(project, runtime / 1000)) + 
+  stat_summary(fun.data = f, geom="errorbar", aes(width=0.5)) +
+  stat_summary(fun.data = f, geom="boxplot", aes(fill = project, width=0.5)) +
+  stat_summary(fun.y = o, geom="point") + 
   ylab("Runtime [ms]") + 
   scale_y_log10() + 
   theme_bw() + 
