@@ -1,0 +1,17 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\begin{figure}[htbp]
+   \centering 
+   
+<<fig=TRUE,echo=FALSE>>=
+library("ggplot2")
+runtimes <- read.table("05-Runtimes.data")
+ggplot(runtimes, aes(V1, V2)) + stat_boxplot(geom ='errorbar') + geom_boxplot() + ylab("Runtime [ms]") + scale_y_log10() + theme_bw() + theme(axis.title.x = element_blank())
+@
+
+   \caption{Dies ist die Beschreibung des Bildes} 
+   \label{fig:example} 
+\end{figure}
