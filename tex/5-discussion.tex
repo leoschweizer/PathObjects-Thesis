@@ -76,9 +76,13 @@ To name a few, they are supposed to be isolated, to be free of side-effects, to 
 However, when tests are being used as entry points for \textsc{PathObjects}, two of those recommendations become requirements.
 
 Fast execution times are a key requirement for the applicability of our approach.
-If, for instance, a test would take 30 seconds to execute, the user not only would have to wait that long before being able to work with our tool, she would also have to wait every time a refinement run has to be performed to collect previously unknown information.
+If, for instance, a test would take minutes to execute, the user would have to wait that long every time a refinement run has to be performed to collect previously unknown information.
 This would possibly be still acceptable if such runs were executed only occasionally, but \textsc{PathObjects} encourages the continuous use of those features.
 For example, as depicted in Section \ref{missing}, refinement runs are performed automatically as long as an object state inspector is expanded.
-That means that with every step to a previously unvisited point of the execution trace, the underlying test case gets executed automatically, which in turn induces waiting time for the user in the case of long running tests. The good news is that in practice, tests typically run fast enough to make immediate feedback possible \cite{perscheid_immediacy_2010}.
+That means that with every step to a previously unvisited point of the execution trace, the underlying test case gets executed automatically, which in turn induces waiting time for the user in the case of long running tests. The good news is that in practice, tests usually run fast enough to make immediate feedback possible \cite{perscheid_immediacy_2010}.
 
-Determinism FTW \cite{choi_deterministic_1998, felgentreff_comparison_2012}.
+The second attribute our approach presupposes is strict determinism.
+Again, the main cause of concern are refinement runs.
+If a test case follows divergent branches or produces objects with varying states in repeated executions, the results that are returned from such runs may be incorrect or misleading.
+Admittedly, there are legitimate cases where tests are not completely deterministic, for instance when testing multithreaded applications or when working with current dates and times.
+However, the \emph{record and replay} technique has been proposed to tackle this problem \cite{choi_deterministic_1998} and has successfully been adapted to the step-wise runtime analysis approach \cite{felgentreff_comparison_2012}.
