@@ -1,0 +1,42 @@
+\documentclass{standalone}
+
+\begin{document}
+
+<<fig=TRUE,echo=FALSE,width=6,height=3>>=
+library("ggplot2")
+library("grid")
+
+# quantiles / percentiles
+f <- function(x) {
+  r <- quantile(x, probs = c(0.025, 0.25, 0.5, 0.75, 0.975))
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")
+  r
+}
+
+# outliers
+o <- function(x) {
+  subset(x, x > quantile(x, c(.99)))
+}
+
+runtimes <- read.table("05-Runtimes.data", col.names=c("project","runtime"))
+ggplot(runtimes, aes(project, runtime / 1000)) +
+  stat_summary(fun.data = f, geom="errorbar", aes(width=0.2)) +
+  stat_summary(fun.data = f, geom="boxplot", fill="#31A354", aes(width=0.4)) +
+  stat_summary(fun.y = o, geom="point") +
+  ylab("Runtime [s]") +
+  scale_y_log10(minor_breaks = c(5, 40)) +
+  annotation_logticks(sides = "lr") +
+  theme_bw() +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    axis.title.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    #axis.title.y = element_text(vjust=0.1),
+    plot.margin = unit(c(0,0,0,0), "cm")
+  ) +
+  guides(fill=FALSE)
+@
+
+\end{document}

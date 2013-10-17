@@ -5,3 +5,6 @@ tmp/*
 Thesis.pdf
 images/hpi_logo_v2_cmyk_sl2.pdf
 images/Unilogo.pdf
+plots/*.pdf
+plots/*.log
+plots/*.tex
