@@ -6,6 +6,24 @@ Perscheid et al. already have shown that the step-wise run-time analysis approac
 To ensure that the computational extra work required for visualizing recorded object interactions preserves the immediate character of this approach, an evaluation of the runtime performance of our implementation is given in Section \ref{s:runtime-performance}.
 Since \textsc{PathObjects} also introduces additional tracing effort, an analysis of its memory requirements is presented in Section \ref{s:space-consumption}.
 
+\subsection{Projects}
+\begin{table}
+\centering
+\begin{tabular}{lcccccc}
+\toprule[1.5pt]
+\phantom{abc} & \phantom{abc} & \multicolumn{2}{c}{Classes} & \phantom{abc} & \multicolumn{2}{c}{Methods}  \\
+\cmidrule{3-4} \cmidrule{6-7}
+Project    && System & Test && System & Test \\
+\midrule
+Seaside-Core	&&	163	&	49	&&	1409	&	458	\\
+DicThesaurusRex	&&	23	&	14	&&	204		&	69	\\
+SUnit			&&	8	&	8	&&	160		&	49	\\
+SystemBrowser	&&	54	&	13	&&	1204	&	162	\\
+\bottomrule[1.5pt]
+\end{tabular}
+\caption{Foobar}
+\end{table}
+
 \subsection{Runtime Performance}
 \label{s:runtime-performance}
 The major bottleneck in our approach of the rendering of object interactions can be accounted for by the hierarchical graph drawing that is performed during the visualization phase.
@@ -66,8 +84,15 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 \subsection{Threats to Validity}
 
 \section{Limitations of PathObjects}
-\subsection{Collections / Generally: Patterns}
-\subsection{Metaprogramming}
+\label{s:Limitations}
+
+\subsection{Metaprogramming and Reflection}
+\label{ss:LimitationsMeta}
+While it is not utterly impossible to trace and visualize programs that use meta-programming and reflection capabilities, the application of such techniques still might cause severe issues in conjunction with the tracing approach of \textsc{PathObjects}.
+
+
+\subsection{Reliance on Test Coverage}
+\label{ss:LimitationsCoverage}
 
 \subsection{Reliance on Test Quality} \todo{missing refs}
 \label{ss:LimitationsTestQuality}
