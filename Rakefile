@@ -14,14 +14,32 @@ task :clean do
 	FileUtils.rm_rf 'tmp'
 	FileUtils.rm_rf 'thumbs'
 	FileUtils.rm_rf OUTPUT_NAME
+	Dir.glob('plots/*.pdf').each { |f| File.delete(f) }
+	Dir.glob('plots/*.log').each { |f| File.delete(f) }
+	Dir.glob('plots/*.tex').each { |f| File.delete(f) }
+	FileUtils.rm_rf 'plots/.Rhistory'
 end
 
 task :make_build_directory do
 	Dir.mkdir("build") unless Dir.exists?("build")
 end
 
+desc "Compile R diagrams"
+task :diagrams do
+	Dir.chdir('plots') do
+		`Rscript -e "install.packages('ggplot2', repos='http://cran.rstudio.com/')"`
+		`Rscript -e "install.packages('grid', repos='http://cran.rstudio.com/')"`
+		Dir.glob("*.Rnw") do |plot| 
+			`R CMD Sweave #{plot}`
+		end
+		Dir.glob("*.pdf") do |pdf|
+			FileUtils.mv(pdf, pdf.gsub("-001", ""))
+		end
+	end
+end
+
 desc "Multi run build"
-task :build => [:make_build_directory] do
+task :build => [:make_build_directory, :diagrams] do
 	Dir.chdir('tex') do
 		`pdflatex -shell-escape -output-directory=../build #{MAIN_INPUT_TEX}`
 		`biber --output_directory ../build #{MAIN_INPUT}`
