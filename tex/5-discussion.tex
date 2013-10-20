@@ -90,7 +90,7 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 \section{User Evaluation}
 \subsection{Threats to Validity}
 
-\section{Limitations of PathObjects}
+\section{Conditions of Use}
 \label{s:Limitations}
 
 \subsection{Metaprogramming and Reflection}
@@ -118,3 +118,5 @@ Again, the main cause of concern are refinement runs.
 If a test case follows divergent branches or produces objects with varying states in repeated executions, the results that are returned from such runs may be incorrect or misleading.
 Admittedly, there are legitimate cases where tests are not completely deterministic, for instance when testing multithreaded applications or when working with current dates and times.
 However, the \emph{record and replay} technique has been proposed to tackle this problem \cite{choi_deterministic_1998} and has successfully been adapted to the step-wise runtime analysis approach \cite{felgentreff_comparison_2012}.
+
+\subsection{Applicability to other Programming Languages}
