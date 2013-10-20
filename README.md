@@ -27,6 +27,15 @@ PathObjects-Thesis
 ![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page24.png)
 ![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page25.png)
 ![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page26.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page27.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page28.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page29.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page30.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page31.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page32.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page33.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page34.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page35.png)
 
 Status
 ------
@@ -37,17 +46,17 @@ Status
 | Background     | 0             | ?       |
 | Concept        | 0             | ?       |
 | Implementation | 0             | ?       |
-| Discussion     | 0             | ?       |
-| Related Work   | 5             | 8       |
+| Discussion     | 4             | 10      |
+| Related Work   | 9             | 8       |
 | Conclusion     | 1             | 3       |
-| **Overall**    | **6**         | **60**  |
+| **Overall**    | **15**        | **60**  |
 
 Building
 --------
 
 **Requirements**
   * Install latest `caption` package ([trunk](http://sourceforge.net/p/latex-caption/code/HEAD/tree/trunk/tex/))
-  * Gnuplot 4.7 or newer
+  * R 3.0 or newer
   * Graphviz 2.34 or newer
   * ImageMagick in case you want to use the `thumbs` task
   
