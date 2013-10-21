@@ -1,12 +1,22 @@
 \chapter{Discussion}
 \label{c:discussion}
+\todo[inline]{Intro}
 
 \section{Performance Evaluation}
 Perscheid et al. already have shown that the step-wise run-time analysis approach that serves as a basis of \textsc{PathObjects} enables the immediate exploration of a programs run-time while maintaining a low memory footprint  \cite{perscheid_immediacy_2010}.
 To ensure that the computational extra work required for visualizing recorded object interactions preserves the immediate character of this approach, an evaluation of the runtime performance of our implementation is given in Section \ref{s:runtime-performance}.
 Since \textsc{PathObjects} also introduces additional tracing effort, an analysis of its memory requirements is presented in Section \ref{s:space-consumption}.
+The projects that have been used to conduct those evaluations are presented in Section \ref{ss:EvaluationProjects}.
 
 \subsection{Projects}
+\label{ss:EvaluationProjects}
+In order to get a meaningful performance estimation, four real-world software projects with different backgrounds were chosen as a basis for the measurements.
+The extent of those projects (cf. Table \ref{t:EvaluationProjects}) ranges from roughly 210 methods in 16 classes to almost 1900 methods in over 210 classes.
+Seaside\footnote{http://seaside.st, last checked \today} is a full-fledged, industry grade web application framework.
+DicThesauruasRex\footnote{https://www.hpi.uni-potsdam.de/hirschfeld/trac/SqueakCommunityProjects/wiki/dicThesaurusRex. last checked \today} is the result of an undergraduate student project which adds spelling correction and synonym search facilities to the Squeak development environment.
+SUnit\footnote{http://sunit.sourceforge.net/, last checked \today} is the de-facto standard for unit testing frameworks in Smalltalk environments and constitutes a landmark of test driven development.
+The System Browser\footnote{http://wiki.squeak.org/squeak/673, last checked \today} is the fundamental development tool in Squeak images that allows to browse and edit the source codes of the image.
+
 \begin{table}
 \centering
 \begin{tabular}{lcccccc}
@@ -21,7 +31,8 @@ SUnit			&&	8	&	8	&&	160		&	49	\\
 SystemBrowser	&&	54	&	13	&&	1204	&	162	\\
 \bottomrule[1.5pt]
 \end{tabular}
-\caption{Foobar}
+\caption[Test Subjects]{Scale of the software systems that served as a basis for the performance evaluation.}
+\label{t:EvaluationProjects}
 \end{table}
 
 \subsection{Runtime Performance}
