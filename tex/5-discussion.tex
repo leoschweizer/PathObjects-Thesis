@@ -14,7 +14,7 @@ In order to get a meaningful performance estimation, four real-world software pr
 The extent of those projects (cf. Table \ref{t:EvaluationProjects}) ranges from roughly 210 methods in 16 classes to almost 1900 methods in over 210 classes.
 Seaside\footnote{http://seaside.st, last checked \today} is a full-fledged, industry grade web application framework.
 DicThesauruasRex\footnote{https://www.hpi.uni-potsdam.de/hirschfeld/trac/SqueakCommunityProjects/wiki/dicThesaurusRex. last checked \today} is the result of an undergraduate student project which adds spelling correction and synonym search facilities to the Squeak development environment.
-SUnit\footnote{http://sunit.sourceforge.net/, last checked \today} is the de-facto standard for unit testing frameworks in Smalltalk environments and constitutes a landmark of test driven development.
+SUnit\footnote{http://sunit.sourceforge.net/, last checked \today} is the de-facto standard for unit testing frameworks in Smalltalk environments and constitutes a landmark of test-driven development.
 The System Browser\footnote{http://wiki.squeak.org/squeak/673, last checked \today} is the fundamental development tool in Squeak images that allows to browse and edit the source codes of the image.
 
 \begin{table}
@@ -28,7 +28,7 @@ Project    && System & Test && System & Test \\
 Seaside-Core	&&	163	&	49	&&	1409	&	458	\\
 DicThesaurusRex	&&	23	&	14	&&	204		&	69	\\
 SUnit			&&	8	&	8	&&	160		&	49	\\
-SystemBrowser	&&	54	&	13	&&	1204	&	162	\\
+System Browser	&&	54	&	13	&&	1204	&	162	\\
 \bottomrule[1.5pt]
 \end{tabular}
 \caption[Test Subjects]{Scale of the software systems that served as a basis for the performance evaluation.}
@@ -131,3 +131,16 @@ Admittedly, there are legitimate cases where tests are not completely determinis
 However, the \emph{record and replay} technique has been proposed to tackle this problem \cite{choi_deterministic_1998} and has successfully been adapted to the step-wise runtime analysis approach \cite{felgentreff_comparison_2012}.
 
 \subsection{Applicability to other Programming Languages}
+The fact that the prototypical implementation of our approach targets an environment that leads a niche existence raises the question to which extent the approach is transferable to other programming languages and environments.
+To answer this question, one can consider the requirements \textsc{PathObjects} is based on.
+
+First and foremost, the approach is specifically tailored to object-oriented systems.
+However, a programming language does not necessarily have to feature object-oriented concepts to the same comprehensive extent that Smalltalk exhibits in order to qualify for the application of our approach.
+For instance, most popular object-oriented programming languages do not expose classes as objects conceptually. 
+Nevertheless, classes can readily be depicted as objects (or generally speaking: senders and receivers of messages) without impairing the expressiveness and comprehensibility of our proposed visualization.
+The second requirement is the existence of reproducible entry points - which typically are available through unit tests in most development environments - and their traceability, whereas the concrete tracing technique is of no significance.
+
+Consequently, it is fair to say that our approach is applicable to the vast majority of object-oriented programming languages.
+Furthermore, since the re-implementation for other languages and platforms would undoubtedly be a tedious task, it is worth mentioning that it has been proven to be feasible to embed the existing tools of the \textsc{PathTools} framework into other development environments \cite{oli}\todo{cite when available}.
+The approach consists of a unified meta-model which is used to feed collected information from programs written in other target languages to the existing tools.
+The only requirement is the implementation of a custom tracer and the conversion of the collected traces to the proposed meta-model.
