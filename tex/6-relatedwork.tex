@@ -1,21 +1,19 @@
 \chapter{Related work}
 \label{c:relatedwork}
 
-Although the visualization of object interactions itself and the effectiveness of proposed notations and established standards like those specified by the Unified Modeling Language have not been a broad research topic so far, the requirement to clarify how object oriented systems actually behave at runtime has been well recognized in different research areas.
-
-First and foremost, trace analysis tools from various areas like reverse engineering or automated system design recovery typically offer visualizations to aid in the understanding of the traces.
-In this field, which is presented in Section \ref{s:RelatedTraceVis}, the predominant notation are diagrams similar or identical to sequence diagrams.
-Another domain that deals with the problem of exposing object oriented program behavior is debugging.
+The requirement to clarify how object-oriented systems actually behave at runtime has been well recognized in different research areas. First and foremost, trace analysis tools from various areas like reverse engineering or automated system design recovery typically offer visualizations to aid in the understanding of execution traces.
+In this field, which is presented in Section \ref{s:RelatedTraceVis}, the predominant notation are diagrams similar to sequence diagrams.
+The second domain that deals with the problem of exposing object-oriented program behavior is debugging.
 The diverse approaches that range from traditional debuggers augmented by visualizations to specialized query languages or custom-tailored breakpoints are presented in Section \ref{s:RelatedDebugging}.
-Lastly, the field of education in computer sciences has similar objectives to first-mentioned research areas when teaching the concepts of object orientation at various stages in the curriculum.
+The third and last area is the field of education in computer science, which has similar objectives to first-mentioned research areas when teaching the concepts of object-orientation at various stages in the curriculum.
 The visualization approaches that have been proposed therefore are presented in Section \ref{s:RelatedEducational}.
 
 \section[Trace-Based Visualization of Object Interactions]{Trace-Based Visualization of Object Interactions%
 \sectionmark{Trace Visualizations}}
 \sectionmark{Trace Visualizations}
 \label{s:RelatedTraceVis}
-The motives and techniques execution traces are generated with are manifold.
-Reverse engineering, back-in-time debugging, and design and architecture reconstruction are popular areas of application.
+Execution traces are generated with manifold techniques and different motives.
+Reverse engineering, back-in-time debugging, and architecture reconstruction are popular areas of application.
 All these instruments have in common that they typically provide visualizations to make the traces perceptive for the user.
 Those approaches that offer a visualization at the abstraction level of objects and their interactions are presented and related to \textsc{PathObjects} in the following.
 
@@ -31,9 +29,10 @@ DePauw et al. also propose a derivative of Jacobson's interaction diagrams \cite
 The so-called execution pattern notation (cf. Figure \ref{fig:NotationExecutionPattern}) resembles a horizontal tree structure and adopts the concepts of displaying active objects as vertical boxes and of using straight arrows to represent message sends between objects.
 But in contrast to Jacobson's proposal, there is no one-to-one mapping of objects and rails (the vertical lines in a diagram), since arrows are drawn strictly from left to right and top to bottom.
 Therefore, each object has to be allowed to appear multiple times in a diagram, as otherwise it would be impossible to depict all object interactions (e.g. the call from object B to object A in Figure \ref{fig:NotationExecutionPattern}).
-In their interactive implementation that allows to expand and collapse sub-trees, the objects' classes are illustrated through different colors and objects are labeled with an integer identifier.
-The authors favor their concept over directed graphs, since the latter do not inherently offer a notation of time and sequence (a problem that \textsc{PathObjects} solves through interactivity).
-Through the automatic aggregation of execution patterns, their approach increases readability while at the same time reducing the required space to depict object interactions.
+The interactive implementation allows to expand and collapse sub-trees, illustrates the objects' classes through different colors, and labels objects with an integer identifier.
+Through the automatic aggregation of execution patterns, the approach increases readability while at the same time reducing the  space required to depict object interactions.
+The authors favor their concept over directed graphs, since the latter do not inherently offer a notation of time and sequence.
+\textsc{PahtObjects} solves this problem through interactivity.
 
 \begin{figure}[tb]
 	\centering
@@ -71,7 +70,7 @@ However, contrary to our approach which displays the actual state of objects and
 \textsc{Scene} also does not offer ways to filter a trace by methods or classes or to search for specific entities of interest.
 
 Lange and Nakamura present \textsc{Program Explorer} in the context of design pattern based framework understanding \cite{lange_interactive_1995, lange_program_1995, lange_object-oriented_1997}.
-Based on the assumption that the combination of abstract concepts like classes and their relationships and the concrete objects and their interactions is the fundamental requirement to the understanding of object oriented systems, \textsc{Program Explorer} offers class inheritance views, object graphs and interaction charts.
+Based on the assumption that the combination of abstract concepts like classes and their relationships and the concrete objects and their interactions is the fundamental requirement to the understanding of object-oriented systems, \textsc{Program Explorer} offers class inheritance views, object graphs and interaction charts.
 Contrary to our approach, object state exploration is not supported.
 To ensure a certain degree of scalability of the information presentation, \emph{view navigation} and \emph{integration} are provided.
 Within a given view, \emph{navigation} can be used to explore the presented information interactively, starting from an initial focus point and going to regions of further interest.
@@ -171,9 +170,9 @@ In contrast to \textsc{PathObjects}, object state exploration is not supported a
 
 \section{Debugging Object Interactions}
 \label{s:RelatedDebugging}
-Despite the fact that it abstracts from most of the higher level concepts introduced through object orientation, the predominant metaphor that is found in debuggers is the execution stack.
+Despite the fact that it abstracts from most of the higher level concepts introduced through object-orientation, the predominant metaphor that is found in debuggers is the execution stack.
 The various approaches that have been proposed to close the gap between this technical representation and the actual abstraction level at which software systems are designed are presented in the following.
-Albeit being focused on activities during during debugging, all these approaches aim at easing the investigation of objects and their interactions and thus have similar objectives to the ones \textsc{PathObjects} pursues.
+Although being focused on activities during debugging, all these approaches aim at easing the investigation of objects and their interactions and thus have similar objectives to the ones \textsc{PathObjects} pursues.
 
 Cunningham and Beck propose a syntax for diagramming the message sending dialogue between objects in object-oriented computations (see Figure \ref{fig:DebugCunningham}) \cite{cunningham_diagram_1986}.
 Similar to \textsc{PathObjects}, objects are drawn as boxes and message sends are represented by directed arcs between them.
@@ -229,7 +228,7 @@ At this point, our approach offers greater flexibility, since state information 
 
 Ressia et al. try to close the gap between the static nature of traditional  debugging with breakpoints, and the questions developers ask during debugging,  which often focus on specific individual objects \cite{ressia_object-centric_2012}.
 In addition to conventional breakpoints that refer to static source code entities, their approach which they call \emph{Object-Centric Debugging} allows to specify new kinds of breakpoints with reference to particular objects.
-Thus, developers are enabled to add breakpoints to an already running program on two dimensions of object oriented computations.
+Thus, developers can add breakpoints to an already running program on two dimensions of object-oriented computations.
 The first dimension is related to object state and state changes.
 For that purpose, the authors introduce \emph{halt on write} and \emph{halt on read} breakpoints that can be defined on instance variables of specific objects.
 The second dimension covers the interaction of objects and includes, among others, \emph{halt on call}, \emph{halt on invoke} or \emph{halt on interaction}.
@@ -242,7 +241,7 @@ Their queries consist of a definition of the search domain (similarly to a selec
 Consequently, the result of such a query is a collection of objects from the search domain that match the given constraints.
 Thus, questions like "\textit{which objects have a reference on a given object}" or "\textit{which user interface elements are currently visible in a given container}" can be answered.
 However, since the queries are executed against specific system snapshots during a debugging session, they can not be used to investigate actual object interactions.
-For instance, it is impossible to formulate queries about message sends, like "\textit{which objects send or receive s specific message}" or "\textit{to which objects does a given object send messages}".
+For instance, it is impossible to formulate queries about message sends, like "\textit{which objects send or receive a specific message}" or "\textit{to which objects does a given object send messages}".
 \textsc{PathObjects} provides answers to such questions either visually or through the integrated search engine.
 
 \section{Object-Oriented Educational Environments}
@@ -251,7 +250,7 @@ In the context of the teaching of object-oriented concepts in computer sciences,
 Some authors suggest interactive environments for that purpose that offer visualizations of program executions at the abstraction level of objects.
 These approaches are presented in this Section.
 
-\textsc{JAVAVIS} by Oechsle and Schmitt \cite{diehl_javavis:_2002} was designed to aid in the teaching of the object oriented programming concepts of the Java environment.
+\textsc{JAVAVIS} by Oechsle and Schmitt \cite{diehl_javavis:_2002} was designed to aid in the teaching of the object-oriented programming concepts of the Java environment.
 It utilizes the Java Debug Interface to retrieve run-time information and can be used to step through the execution of a program.
 Two main views are offered.
 First, an UML sequence diagram is used to display the function call history of the current execution which grows successively as the user steps through the program.
@@ -287,7 +286,7 @@ The same applies to the unrestricted navigation to specific points of the execut
 	}
 \end{figure}
 
-\textsc{Blue} \cite{kolling_object-oriented_1996, kolling_blue_1996} and its adaption for Java called \textsc{BlueJ} \cite{kolling_bluej_2003} follow an alternative approach to the teaching of the concepts of object orientation.
+\textsc{Blue} \cite{kolling_object-oriented_1996, kolling_blue_1996} and its adaption for Java called \textsc{BlueJ} \cite{kolling_bluej_2003} follow an alternative approach to the teaching of the concepts of object-orientation.
 Instead of focusing on code, users first define the abstract structure of their system with the help of UML class diagrams.
 Instances of these classes then can be created and manipulated through  context menus, which also allow to send messages to objects.
 Methods can be defined with the aid of the \textsc{Blue} language or with Java in the case of \textsc{BlueJ}.
@@ -295,7 +294,7 @@ Although the user interface provides a dedicated area to display those instances
 The focus is rather on pointing out the differences  between objects and classes, than on the relationships between specific objects.
 Theoretically, it would have been conceivable to build on this approach for our purposes by constructing such scenarios from existing source code, but the visualization does not seem to be suitable to present more sophisticated computations.
 
-Moreno et al. present \textsc{Jeliot 3} which aims at teaching object oriented concepts to novice programmers with an interactive Java development environment \cite{moreno_visualizing_2004, bednarik_jeliot_2005}.
+Moreno et al. present \textsc{Jeliot 3} which aims at teaching object-oriented concepts to novice programmers with an interactive Java development environment \cite{moreno_visualizing_2004, bednarik_jeliot_2005}.
 The user interface (cf. Figure \ref{fig:Jeliot3}) consists of two main elements: a code editor in which users are allowed to write own programs and a visualization area that depicts what happens when executing and stepping through the provided code snippet.
 The visualization consists of four separate areas which show methods, constants, the evaluation of the current expression and existing object instances and their internal state.
 In a user study, the authors worked out that despite the transfer of knowledge from the tool to the user does not work as anticipated, the animation helped all participants in debugging and understanding their programs \cite{moreno_jeliot_2007}.
