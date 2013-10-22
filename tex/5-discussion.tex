@@ -84,8 +84,6 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 	\caption{Demoplot}
 \end{figure}
 
-\paragraph{Threats to Validity}
-
 \subsection{Space Consumption}
 \label{s:space-consumption}
 
@@ -97,6 +95,9 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 \end{figure}
 
 \subsection{Threats to Validity}
+The runtime measurements have been performed with the help of the \ovalbox{BlockClosure>>timeToRunWithoutGC} method.
+This means that in practice, the start-up time of \textsc{PathObjects} will be slightly worse than depicted by the results of the runtime evaluation.
+However, the differences are negligible, since (no long running tasks) and objects are not created and destroyed excessively.
 
 \section{User Evaluation}
 \subsection{Threats to Validity}
@@ -111,6 +112,12 @@ While it is not utterly impossible to trace and visualize programs that use meta
 
 \subsection{Reliance on Test Coverage}
 \label{ss:LimitationsCoverage}
+Since only test cases can serve as reproducible entry points in our current prototypic implementation, only those parts of a system can be visualized that are covered by at least one test case.
+In practice, this means that not all entities and execution branches that are actually in use during productive executions of the system can necessarily be visualized with existing tests.
+Nonetheless, it is also feasible to write specific unit tests for the soul purpose of visualization.
+Such a test then can be seen as the description of a scenario that the user wishes to examine through our tool.
+However, this strategy requires that the user already has a certain degree of knowledge about the system, which might not apply when dealing with completely unknown systems. 
+In such cases, one might not be able to construct a working scenario.
 
 \subsection{Reliance on Test Quality} \todo{missing refs}
 \label{ss:LimitationsTestQuality}
