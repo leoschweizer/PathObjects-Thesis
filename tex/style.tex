@@ -112,7 +112,14 @@
 
 \lstset{defaultdialect=[80]{Smalltalk}}
 
-\usepackage{fancybox}
+% inline ocde
+\definecolor{inlinecodeborder}{HTML}{DDDDDD}
+\definecolor{inlinecodetext}{HTML}{666666}
+\newcommand\inlinecode[1]{
+  \tikz[baseline=(s.base)]{
+    \node(s)[rounded corners,draw=inlinecodeborder,text=inlinecodetext]{\texttt{#1}};
+  }
+}
 
 % to indicate removed code
 \newcommand{\coderem}{\textit{\footnotesize{[\ldots]}}}
