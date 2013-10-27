@@ -19,17 +19,12 @@
 
 \subsection{UML Collaboration Diagrams}
 
-\begin{smalltalk}[float=htbp,caption=Smalltalk Sample]
-newRandomIdInRange: maxVal
-	"This is just a sample of smalltalk code"
-	
-	| pick |
-	self objectIds size >= maxVal ifTrue: [self error: 'Woop'].
-	
-	pick := maxVal atRandom.
-	[self objectIds values includes: pick] 
-		whileTrue: [pick := pick atRandom].
-	^  pick
-\end{smalltalk}
+\subsection{Discussion}
+Due to the fact that the Unified Modeling Language makes a strict distinction between structural and behavioral diagrams, none of them offers a combined view on object interactions as well as the internal state of objects.
+However, to understand the behavior of object-oriented systems, it is important to get an insight into both.
+Interactions have to be depicted in order to make the behavior of a system perceivable to the observer.
+To understand why a systems behaves the way it does, the internal state of objects has to be unveiled.
+
+Apart from this fundamental problem, the diagrams all have drawbacks of their own that make them inadequate for our objectives.
 
 \section{Challenges}
