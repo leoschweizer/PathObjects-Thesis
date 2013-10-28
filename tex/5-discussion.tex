@@ -4,12 +4,12 @@
 
 \section{Performance Evaluation}
 Perscheid et al. already have shown that the step-wise run-time analysis approach that serves as a basis of \textsc{PathObjects} enables the immediate exploration of a programs run-time while maintaining a low memory footprint  \cite{perscheid_immediacy_2010}.
-To ensure that the computational extra work required for visualizing recorded object interactions preserves the immediate character of this approach, an evaluation of the runtime performance of our implementation is given in Section \ref{s:runtime-performance}.
-Since \textsc{PathObjects} also introduces additional tracing effort, an analysis of its memory requirements is presented in Section \ref{s:DiscussionSpace}.
-The projects that have been used to conduct those evaluations are presented in Section \ref{ss:EvaluationProjects}.
+To ensure that the computational extra work required for visualizing recorded object interactions preserves the immediate character of this approach, an evaluation of the runtime performance of our implementation is given in Section \ref{ss:DiscussionPerformance}.
+Since \textsc{PathObjects} also introduces additional tracing effort, an analysis of its memory requirements is presented in Section \ref{ss:DiscussionSpace}.
+The projects that have been used to conduct those evaluations are presented in Section \ref{ss:DiscussionProjects}.
 
 \subsection{Projects}
-\label{ss:EvaluationProjects}
+\label{ss:DiscussionProjects}
 In order to get a meaningful performance estimation, four real-world software projects with different backgrounds were chosen as a basis for the measurements.
 The extent of those projects (cf. Table \ref{t:EvaluationProjects}) ranges from roughly 210 methods in 16 classes to almost 1900 methods in over 210 classes.
 \textsc{Seaside}\footnote{http://seaside.st, last checked \today} is a full-fledged, industry grade web application framework.
@@ -36,7 +36,7 @@ Project    && System & Test && System & Test \\
 \end{table}
 
 \subsection{Runtime Performance}
-\label{s:runtime-performance}
+\label{ss:DiscussionPerformance}
 The major bottleneck in our approach of the rendering of object interactions can be accounted for by the hierarchical graph drawing that is performed during the visualization phase.
 \todo{point out seq triv.}
 Although the applied algorithm has been designed with its interactive application in mind and generally performs fast enough therefor \cite{gansner_technique_1993}, its runtime is heavily dependent on the specific structure of the graph at hand.
@@ -93,7 +93,7 @@ The outliers reach up to 34 seconds with the worst-case occurring in the \textsc
 \end{figure}
 
 \subsection{Space Consumption}
-\label{s:DiscussionSpace}
+\label{ss:DiscussionSpace}
 
 \usetikzlibrary{positioning,shapes,shadows,arrows}
 \tikzstyle{class}=[
@@ -154,8 +154,8 @@ However, the differences are negligible, since (no long running tasks) and objec
 \section{User Evaluation}
 \subsection{Threats to Validity}
 
-\section{Conditions of Use}
-\label{s:Limitations}
+\section{Limitations}
+\label{s:DiscussionLimitations}
 
 \subsection{Metaprogramming and Reflection}
 \label{ss:LimitationsMeta}
@@ -189,7 +189,7 @@ If a test case follows divergent branches or produces objects with varying state
 Admittedly, there are legitimate cases where tests are not completely deterministic, for instance when testing multithreaded applications or when working with current dates and times.
 However, the \emph{record and replay} technique has been proposed to tackle this problem \cite{choi_deterministic_1998} and has successfully been adapted to the step-wise runtime analysis approach \cite{felgentreff_comparison_2012}.
 
-\subsection{Applicability to other Programming Languages}
+\section{Applicability to other Programming Languages}
 The fact that the prototypical implementation of our approach targets an environment that leads a niche existence raises the question to which extent the approach is transferable to other programming languages and environments.
 To answer this question, one can consider the requirements \textsc{PathObjects} is based on.
 
