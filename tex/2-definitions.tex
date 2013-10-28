@@ -5,8 +5,11 @@
 
 \section{Static vs. Dynamic Analysis}
 
-\section{Object Interaction Modeling}
+\section{Modeling of Objects, States, and Interactions}
+\label{s:BackgroundModeling}
+
 \subsection{Object Diagrams}
+\label{ss:BackgroundModelingObject}
 
 \begin{figure}
 	\centering
@@ -15,7 +18,19 @@
 	\label{fig:ModelingObject}
 \end{figure}
 
+Object diagrams are structural diagrams that can be seen as concretization of a class diagram for a definite point in time.
+As such, their notation (cf. Figure \ref{fig:ModelingObject}) covers instances and their state as well as links between instances.
+The description of an instance includes an optional identifier, the type of the instance, and a list of attributes and their values.
+Links can be annotated with roles and link names, whereby the latter are equipped with indicators for the reading direction.
+In addition, links can be declared as forward-navigable and non-backward navigable.
+
+Object diagrams allow the diagram creator to place objects freely on the two-dimensional canvas.
+This has the advantage that objects that are closely related can be depicted in spatial proximity.
+Likewise, groups of objects that are not related can be placed in different parts of the canvas.
+Thus, a map of the system's runtime structure can be created that allows the observer to intuitively get an understanding of the parts of a system and their connections.
+
 \subsection{Sequence Diagrams}
+\label{ss:BackgroundModelingSequence}
 
 \begin{figure}
 	\centering
@@ -43,6 +58,7 @@ One could argue that the arrangement of the objects on the horizontal axis shoul
 This optimization would certainly introduce computational complexity, but does not seem to be a common practice among the wide range of tools offering the generation of sequence diagrams that are reviewed in the related work section (cf. Chapter \ref{c:relatedwork}).
 
 \subsection{Communication Diagrams}
+\label{ss:BackgroundModelingCommunication}
 
 \begin{figure}
 	\centering
