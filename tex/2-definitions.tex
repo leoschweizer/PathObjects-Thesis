@@ -21,9 +21,17 @@ Sequence diagrams are used to model the interaction of objects.
 Thereby, the focus is on the exchange of messages in a specific scenario rather than the depiction of all possible execution branches.
 The fundamental notation elements are depicted in Figure \ref{fig:ModelingSequence}.
 
+Objects and their lifelines are aligned along the horizontal axis.
+Execution specifications on the lifelines indicate whether an object is currently participating in a computation.
+Messages between two objects are represented by arrows.
+They are aligned along the vertical axis according to their chronological appearance.
+Each message is complemented by a return message which indicates the end of a method invocation and which is depicted as dashed arrow.
+Apart from those basic components, sequence diagrams also can be used to model duration constraints, state invariants and asynchronous behavior.
+However, those advanced notation elements are of no great importance in our context.
+
 Sequence diagrams have two major advantages.
-In the first place, they feature an inherent chronological ordering, which makes following the communication thread easier for the observer.
-In the second place, the automatic generation of sequence diagrams from execution traces is comparatively trivial and consequently fast, as no computation-intensive layout strategies have to be performed.
+Firstly, they feature an inherent chronological ordering, which makes following the communication thread easier for the observer.
+Secondly, the automatic generation of sequence diagrams from execution traces is comparatively trivial and consequently fast, as no computation-intensive layout strategies have to be performed.
 One could argue that the arrangement of the objects on the horizontal axis should be adjusted to minimize the distance between objects that exchange messages.
 This optimization would certainly introduce computational complexity, but does not seem to be a common practice among the wide range of tools offering the generation of sequence diagrams that are reviewed in the related work section (cf. Chapter \ref{c:relatedwork}).
 
