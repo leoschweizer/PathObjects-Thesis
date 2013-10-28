@@ -67,6 +67,17 @@ This optimization would certainly introduce computational complexity, but does n
 	\label{fig:ModelingCommunication}
 \end{figure}
 
+Similar to sequence diagrams, communication diagrams \cite{rumbaugh_unified_2010} are used to model the exchange of messages between objects during a specific scenario.
+However, the latter rather focus on the relationships between participating objects than on the sequence of exchanged messages.
+The notation elements that are used in communication diagrams (cf. Figure \ref{fig:ModelingCommunication}) are similar to the fundamental components of sequence diagrams.
+Objects are depicted as lifelines, but everything except the header is omitted.
+Objects that are related through message exchanges are connected with an undirected line.
+Messages between objects are aligned along those connectors and an orientation indicator shows which object is the sender and respectively the receiver of a message.
+Since the notation does not offer an inherent ordering of messages, the sequence is determined through an explicit consecutive hierarchical numbering.
+
+As with object diagrams (cf. Section \ref{ss:BackgroundModelingObject}), the main advantage of communication diagrams lies in the unrestricted placement of objects on the two-dimensional canvas.
+It is for this reason that they are often used complementary with sequence diagrams, since the latter are not particularly suitable to communicate which objects belong together in consequence of their communication.
+
 \subsection{Discussion}
 Due to the fact that the Unified Modeling Language makes a strict distinction between structural and behavioral diagrams, none of them offers a combined view on object interactions as well as the internal state of objects.
 However, to understand the behavior of object-oriented systems, it is important to get an insight into both.
