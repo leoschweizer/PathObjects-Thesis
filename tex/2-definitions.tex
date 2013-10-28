@@ -6,8 +6,9 @@
 \section{Static vs. Dynamic Analysis}
 
 \section{Object Interaction Modeling}
-\subsection{UML Object Diagrams}
-\subsection{UML Sequence Diagrams}
+\subsection{Object Diagrams}
+
+\subsection{Sequence Diagrams}
 
 \begin{figure}
 	\centering
@@ -16,8 +17,17 @@
 	\label{fig:ModelingSequence}
 \end{figure}
 
+Sequence diagrams are used to model the interaction of objects.
+Thereby, the focus is on the exchange of messages in a specific scenario rather than the depiction of all possible execution branches.
+The fundamental notation elements are depicted in Figure \ref{fig:ModelingSequence}.
 
-\subsection{UML Communication Diagrams}
+Sequence diagrams have two major advantages.
+In the first place, they feature an inherent chronological ordering, which makes following the communication thread easier for the observer.
+In the second place, the automatic generation of sequence diagrams from execution traces is comparatively trivial and consequently fast, as no computation-intensive layout strategies have to be performed.
+One could argue that the arrangement of the objects on the horizontal axis should be adjusted to minimize the distance between objects that exchange messages.
+This optimization would certainly introduce computational complexity, but does not seem to be a common practice among the wide range of tools offering the generation of sequence diagrams that are reviewed in the related work section (cf. Chapter \ref{c:relatedwork}).
+
+\subsection{Communication Diagrams}
 
 \begin{figure}
 	\centering
