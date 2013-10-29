@@ -86,4 +86,13 @@ To understand why a systems behaves the way it does, the internal state of objec
 
 Apart from this fundamental problem, the diagrams all have drawbacks of their own that make them inadequate for our objectives.
 
+Sequence diagrams dictate to use one dimension strictly for objects (the horizontal axis) and the second dimension strictly for messages (the vertical axis).
+As a result, the extent of such diagrams grows fast and does not scale well with the number of objects and messages that shall be depicted.
+Adding objects inevitably leads to an extension of the x-axis, just like adding messages inevitably leads to an extension of the y-axis.
+With regard to the extent requirements, it would be much more efficient to allow objects to be placed freely on the canvas, and to route messages between and around objects.
+Though our objective is to depict single test cases which are comparatively small units in a software system, they usually still involve dozens of objects and messages respectively.
+Scenarios of this magnitude are already sufficient to cause sequence diagrams to grow enormously.
+But with the growing size of a diagram, it also becomes increasingly difficult to understand its contents and the relationships between specific components.
+In this regard, sequence diagrams do not seem to be the most appropriate choice when it comes down to presenting an execution trace in a manner that is perceivable efficiently.
+
 \section{Challenges}
