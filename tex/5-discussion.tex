@@ -99,13 +99,24 @@ However, the differences are negligible, since (no long running tasks) and objec
 
 \subsection{Space Consumption}
 \label{ss:DiscussionSpace}
-
 As pointed out in Section \ref{s:BackgroundAnalysis}, the major problem of dynamic analysis techniques is the huge amount of data arising during tracing runs.
 Perscheid et al. have proposed the \emph{Step-wise Run-time Analysis} approach \cite{perscheid_immediacy_2010} as tracing technique with considerably lowered space requirements. 
 This approach also serves as a basis of \textsc{PathObjects}, but additional tracing effort had to be introduced to allow for the reconstruction of object interaction diagrams from those traces.
 For that reason, an estimation of the additional space consumption \textsc{PathObjects} adds on top of the underlying tracing framework is presented in this section.
 
-\subsubsection{Setup}
+\subsubsection{Preliminary Considerations}
+The main memory consumption of a specific part of the system is hard to measure exactly in a garbage collected environment like the Squeak virtual machine.
+For that reason, the space requirements are estimated by means of theoretical deduction.
+Figure \ref{fig:DiscussionStructure} depicts the basic components a \textsc{PathObjects} trace consists of in the form of a simplified class diagram.
+
+Each occurring object is represented by a proxy object that basically consists of an integer identifier and a pointer to its type.
+Sent messages are represented by instances of the Message class.
+They consist of pointers to the preceding and succeeding messages as well as a collection of integer object identifiers.
+This collection includes identifiers for the sender and receiver of a message, its arguments, and for its return value.
+Since all attributes are either integer values or pointers to other objects, the size of each attribute can be assumed to be one word.
+In addition, there is an overhead of two words for each object instance consumed by the object header.
+
+$$s(o,m)=o*4 + m*5 + (\sum_{i=1}^{m} 5 + a(m_i))$$
 
 \usetikzlibrary{positioning,shapes,shadows,arrows}
 \tikzstyle{class}=[
@@ -121,7 +132,7 @@ For that reason, an estimation of the additional space consumption \textsc{PathO
 	
 \tikzset{every node/.style={draw}}
 
-\begin{figure}
+\begin{figure}[b]
 	\centering
 	\begin{tikzpicture}[node distance=2cm, font=\sffamily]
 
@@ -132,7 +143,7 @@ For that reason, an estimation of the additional space consumption \textsc{PathO
 
 		\node (Message) [class, rectangle split, rectangle split parts=2, below right=0cm and 1.5cm of ObjectProxy.north east] {
 			\textbf{Message}
-			\nodepart{second} involvedObjects \\ previous \\ next \\ ...
+			\nodepart{second} involvedObjects \\ previous \\ next
 		};
 		
 		\node (Collection) [class, rectangle split, rectangle split parts=2, below right=0.6cm and 2cm of Message.north east] {
@@ -142,11 +153,11 @@ For that reason, an estimation of the additional space consumption \textsc{PathO
 		};
 		
 		\draw[>-, >=diamond, shorten >=1pt, thick] 
-    		(Message.east) ++(0,0.4) -| ([yshift=1.45cm]Collection.west); 
+    		(Message.east) ++(0,0.2) -| ([yshift=1.5cm]Collection.west); 
 			
 	\end{tikzpicture}
 	\caption[TOC Caption]{FooBar}
-	\label{f:DiscussionStructure}
+	\label{fig:DiscussionStructure}
 \end{figure}
 
 \subsubsection{Results}
