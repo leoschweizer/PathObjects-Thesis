@@ -95,6 +95,11 @@ The outliers reach up to 34 seconds with the worst-case occurring in the \textsc
 \subsection{Space Consumption}
 \label{ss:DiscussionSpace}
 
+As pointed out in Section \ref{s:BackgroundAnalysis}, the major problem of dynamic analysis techniques is the huge amount of data arising during tracing runs.
+Perscheid et al. have proposed the \emph{Step-wise Run-time Analysis} approach \cite{perscheid_immediacy_2010} as tracing technique with considerably lowered space requirements. 
+This approach also serves as a basis of \textsc{PathObjects}, but additional tracing effort had to be introduced to allow for the reconstruction of object interaction diagrams from those traces.
+For that reason, an estimation of the additional space consumption \textsc{PathObjects} adds on top of the underlying tracing framework is presented in this section.
+
 \usetikzlibrary{positioning,shapes,shadows,arrows}
 \tikzstyle{class}=[
 	rectangle,
