@@ -103,15 +103,15 @@ The outliers reach up to 34 seconds with the worst-case occurring in the \textsc
 	anchor=north,
 	text=black,
 	text width=3cm,
-	minimum height=0.5cm
-	%shading=axis,bottom color=black!20,top color=white,shading angle=45
+	minimum height=0.6cm,
+	shading=axis,bottom color=black!20,top color=white,shading angle=45
 	]
 	
 \tikzset{every node/.style={draw}}
 
 \begin{figure}
 	\centering
-	\begin{tikzpicture}[node distance=2cm]
+	\begin{tikzpicture}[node distance=2cm, font=\sffamily]
 
 		\node (ObjectProxy) [class, rectangle split, rectangle split parts=2] {
 				\textbf{ObjectProxy}
@@ -123,15 +123,14 @@ The outliers reach up to 34 seconds with the worst-case occurring in the \textsc
 			\nodepart{second} involvedObjects \\ previous \\ next \\ ...
 		};
 		
-		\node (Collection) [class, rectangle split, rectangle split parts=7, below right=0cm and 2cm of Message.north east] {
-			\textbf{Collection}
-			\nodepart{second} senderId
-			\nodepart{third} receiverId
-			\nodepart{fourth} argumentId 1
-			\nodepart{five}...
-			\nodepart{six} argumentId n
-			\nodepart{seven} resultId
+		\node (Collection) [class, rectangle split, rectangle split parts=2, below right=0.6cm and 2cm of Message.north east] {
+			\textbf{Collection\vphantom{g}}
+			\nodepart{second} senderId \\ receiverId \\ argumentId 1 \\ ... \\
+			 argumentId n \\ resultId
 		};
+		
+		\draw[>-, >=diamond, shorten >=1pt, thick] 
+    		(Message.east) ++(0,0.4) -| ([yshift=1.45cm]Collection.west); 
 			
 	\end{tikzpicture}
 	\caption[TOC Caption]{FooBar}
