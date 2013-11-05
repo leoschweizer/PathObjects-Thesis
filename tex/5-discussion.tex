@@ -103,9 +103,16 @@ The outliers reach up to 34 seconds with the worst-case occurring in the \textsc
 \end{figure}
 
 \subsubsection{Threats to Validity}
-The runtime measurements have been performed with the help of the \inlinecode{BlockClosure>>timeToRunWithoutGC} method.
-This means that in practice, the start-up time of \textsc{PathObjects} will be slightly worse than depicted by the results of the runtime evaluation.
-However, the differences are negligible, since (no long running tasks) and objects are not created and destroyed excessively.
+The runtime measurements have been performed with the help of the \inlinecode{BlockClosure>>timeToRunWithoutGC} method, which has two implications.
+First, the precision of the measurement is limited by the precision of the millisecond clock of the Squeak image.
+Another side effect of measuring clock time instead of CPU time is that other running operating system processes can have an effect on the results.
+But as millisecond precision is not important for our evaluation, both limitations are acceptable.
+
+The second implication is that in practice, the start-up time of \textsc{PathObjects} will be slightly worse than depicted by the results of the runtime evaluation.
+However, garbage collection should not be of major importance during the start-up phase.
+Objects are not created and destroyed excessively through the tracing framework, so the main parts that are qualified for garbage collection are the ones of the system under investigation.
+Furthermore, the start-ups are short running tasks.
+Even if garbage collection would account for a significant share of the runtime, the overall start-up time would still be feast enough in most cases.
 
 \subsection{Space Consumption}
 \label{ss:DiscussionSpace}
