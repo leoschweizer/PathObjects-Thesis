@@ -181,13 +181,13 @@ s_B(o,m) = 2 * s(o,m)\label{eq:SpaceConsumptionBytes}
 \end{figure}
 
 \subsubsection{Threats to Validity}
-The calculated memory consumption should be seen as lower limit of the values that are reached in practice.
-Although we took the overhead implicated by object instances in the Squeak virtual machine into consideration, the memory consumption will effectively be higher than determined by our calculations.
-First, the memory overhead the virtual machine itself introduces to manage objects could not be considered with the chosen approach.
+The calculated memory consumption should be interpreted as lower limit of the values that are reached in practice.
+Although the overhead implicated by object instances themself in the Squeak virtual machine is taken into consideration, the memory consumption will effectively be higher than determined by our calculations.
+First, the memory overhead the virtual machine itself introduces to manage objects can not be considered with the chosen approach.
 Second, memory allocation is rather performed in blocks than with byte precision.
 Consequently, the actual memory consumption depends on the number of blocks that have to be allocated to satisfy the requirements.
 Third, a similar problem is memory alignment or rather data misalignment, which can cause objects to consume more memory than necessary.
-All those pitfalls of memory management can not be taken into consideration reasonably with our theoretical deduction.
+These pitfalls of memory management can not be taken into consideration reasonably with our theoretical deduction.
 
 Nonetheless, all those factors will not add up to invalidate the basic results of the evaluation.
 Even when assuming huge deviations that lead to a tenfold memory consumption compared to the result of formula \ref{eq:SpaceConsumptionWords}, the consumption still would lie within a range of a few megabytes.
