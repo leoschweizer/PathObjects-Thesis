@@ -1,8 +1,18 @@
 \chapter{Discussion}
 \label{c:discussion}
-\todo[inline]{Intro}
+The research question that is tackled in this thesis has two primary objectives.
+The first goal is to provide a visualization of program behavior at the abstraction level of objects that preservers the immediate character and low memory footprint of the underlying tracing framework.
+The second goal is to provide a visualization that imparts the underlying information in a perceivable manner and supports the developer in the understanding of the software system at hand.
+
+Section \ref{s:DiscussionPerformance} gives an insight to which extent the first goal could be reached with the prototypic implementation of our approach.
+To validate that the extensions that had to be made to the tracing framework and the computational complexity introduced through the visualization do not jeopardize immediacy, an evaluation of the runtime performance of our approach is given in Section \ref{ss:DiscussionPerformance}.
+An evaluation of the additional memory consumption that our specialized variant of  step-wise run-time analysis brings along is presented in Section \ref{ss:DiscussionSpace}. 
+The achievement of the second goal is examined with the help of a user evaluation which is presented in Section \ref{s:DiscussionEvaluation}.
+
+In addition, the limitations of our approach are explained in Section \ref{s:DiscussionLimitations}, and finally the applicability of our approach to other programming languages and environments is discussed in Section \ref{s:DiscussionApplicability}.
 
 \section{Performance Evaluation}
+\label{s:DiscussionPerformance}
 Perscheid et al. already have shown that the step-wise run-time analysis approach that serves as a basis of \textsc{PathObjects} enables the immediate exploration of a programs run-time while maintaining a low memory footprint  \cite{perscheid_immediacy_2010}.
 To ensure that the computational extra work required for visualizing recorded object interactions preserves the immediate character of this approach, an evaluation of the runtime performance of our implementation is given in Section \ref{ss:DiscussionPerformance}.
 Since \textsc{PathObjects} also introduces additional tracing effort, an analysis of its memory requirements is presented in Section \ref{ss:DiscussionSpace}.
@@ -195,6 +205,7 @@ Nowadays, this is a scale that can be demanded from hardware with clear conscien
 
 \clearpage
 \section{User Evaluation}
+\label{s:DiscussionEvaluation}
 \subsection{Probands}
 \subsection{Questions}
 \subsection{Execution}
@@ -238,6 +249,7 @@ Admittedly, there are legitimate cases where tests are not completely determinis
 However, the \emph{record and replay} technique has been proposed to tackle this problem \cite{choi_deterministic_1998} and has successfully been adapted to the step-wise runtime analysis approach \cite{felgentreff_comparison_2012}.
 
 \section{Applicability to other Programming Languages}
+\label{s:DiscussionApplicability}
 The fact that the prototypical implementation of our approach targets an environment that leads a niche existence raises the question to which extent the approach is transferable to other programming languages and environments.
 To answer this question, one can consider the requirements \textsc{PathObjects} is based on.
 
