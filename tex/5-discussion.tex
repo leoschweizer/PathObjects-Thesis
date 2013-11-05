@@ -54,10 +54,10 @@ Precisely, the edge crossing minimization problem is NP-hard and the applied heu
 An example graph with $n$ ranks that shows this characteristic is depicted in Figure \ref{fig:graph-worst-case}.
 Since it is practically impossible to predict to which degree call trees of test cases conform to this structure, an empirical study has been carried out with real-world software systems to examine the runtime behavior of our approach.
 
-\begin{figure}[tb]
+\begin{figure}[b]
 	\centering	
 	\digraph
-	[scale=1.0]{worstCaseRuntimeComplexity}
+	[scale=0.8]{worstCaseRuntimeComplexity}
 	{
 		margin=0
 		nodesep=0.4
@@ -81,7 +81,7 @@ Since it is practically impossible to predict to which degree call trees of test
 \end{figure}
 
 \subsubsection{Test Arrangement}
-Bla blubb foo.
+\todo[inline]{Missing}
 
 \subsubsection{Test Environment}
 All measurements have been performed on an Intel\copyright{} Core\texttrademark{}  i7-2620M CPU @ 2.70GHz.
@@ -95,7 +95,7 @@ More than 75\% of all measurements are below two seconds.
 In the case of \textsc{DicThesaurusRex} and \textsc{SUnit}, the third quartiles are even below one second.
 The outliers reach up to 34 seconds with the worst-case occurring in the \textsc{Seaside-Core} project.
 
-\begin{figure}[h!]
+\begin{figure}[b!]
 	\centering
 	\includegraphics[width=0.9\textwidth]{../plots/05-Runtimes}
 	\caption[Runtime Performance of \textsc{PathObjects}]{Runtime performance of \textsc{PathObjects} with various projects (whiskers indicate 2.5th and 97.5th percentiles).}
@@ -190,6 +190,8 @@ s_B(o,m) = 2 * s(o,m)\label{eq:SpaceConsumptionBytes}
 \end{figure}
 
 \subsubsection{Results}
+\todo[inline]{Missing}
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.9\textwidth]{../plots/05-SpaceConsumption}
@@ -222,11 +224,12 @@ Nowadays, this is a scale that can be demanded from hardware with clear conscien
 \clearpage
 \section{Limitations}
 \label{s:DiscussionLimitations}
+\todo[inline]{Introduction}
 
 \subsection{Metaprogramming and Reflection}
 \label{ss:LimitationsMeta}
 While it is not utterly impossible to trace and visualize programs that use meta-programming and reflection capabilities, the application of such techniques still might cause severe issues in conjunction with the tracing approach of \textsc{PathObjects}.
-
+\todo{finish}
 
 \subsection{Reliance on Test Coverage}
 \label{ss:LimitationsCoverage}
