@@ -130,22 +130,21 @@ Each occurring object is represented by a proxy object that basically consists o
 Sent messages are represented by instances of the \inlinecode{Message} class.
 They consist of pointers to the preceding and succeeding messages as well as a collection of integer object identifiers.
 This collection includes identifiers for the sender and receiver of a message, its arguments, and for its return value.
+In case of the \inlinecode{ObjectProxy} and \inlinecode{Message} classes, there is an overhead of two words for each object instance consumed by the object header.
 Since all attributes are either integer values or pointers to other objects, the size of each attribute can be assumed to be one word.
-In addition, there is an overhead of two words for each object instance consumed by the object header.
+The size of the \inlinecode{involvedObjects} collection has a constant part of four words for object headers and attributes and three words for the identifiers for sender, receiver, and return value, but ultimately depends on the number of arguments of the according message.
 In other words, the space consumption of our traces is dependent on the number of objects, the number of messages, and the number of arguments of each message.
-There is a constant consumption of four words for each object and of five words for each message.
-The size of the \inlinecode{involvedObjects} collection has a constant part of five words, but ultimately depends on the number of arguments of the according message.
 
-Taken as a whole, the space consumption in words can be expressed as a function $s(o,m)$ of the number of objects $o$ and the number of messages $m$:
+Taken as a whole, the space consumption (in words) can be expressed as a function $s(o,m)$ of the number of objects $o$ and the number of messages $m$:
 \begin{equation}
-s(o,m)=o*4 + m*5 + \sum_{n=1}^{m} (5 + a(M_n))\label{eq:SpaceConsumptionWords}
+s(o,m)=o*4 + m*5 + \sum_{n=1}^{m} (7 + a(M_n))\label{eq:SpaceConsumptionWords}
 \end{equation}
 Thereby, the number of arguments of a message $M_n$ are represented by the function $a$.
-To get a reasonable estimation of the three variable parts $o$, $m$, and $a(M_n)$, their actual numbers in the case of the four evaluation projects have been measured.
-Since a word consumes two bytes in the virtual machine we used, the total space consumption in bytes $s_B$ can be calculated with the help of formula \ref{eq:SpaceConsumptionBytes}. 
+Since a word consumes four bytes in the virtual machine we used, the total space consumption in kilobytes $s_{kB}$ can be calculated with the help of formula \ref{eq:SpaceConsumptionBytes}. 
 \begin{equation}
-s_B(o,m) = 2 * s(o,m)\label{eq:SpaceConsumptionBytes}
+s_{kB}(o,m) = \frac{4 * s(o,m)}{1024}\label{eq:SpaceConsumptionBytes}
 \end{equation}
+To get a reasonable estimation of the three variable parts $o$, $m$, and $a(M_n)$, their actual numbers in the case of the four evaluation projects have been measured.
 
 \usetikzlibrary{positioning,shapes,shadows,arrows}
 \tikzstyle{class}=[
