@@ -223,7 +223,11 @@ Nowadays, this is a scale that can be demanded from hardware with clear conscien
 \clearpage
 \section{Limitations}
 \label{s:DiscussionLimitations}
-\todo[inline]{Introduction}
+The operation of our prototype and the underlying tracing mechanism take some preconditions for granted whose non-compliance could potentially render them non-functional.
+Those requirements are depicted in the following sections.
+The restrictions that apply when dealing with systems that use the meta-programming and reflection capabilities of the Squeak environment are described in Section \ref{ss:LimitationsMeta}.
+The importance of test coverage is presented in Section \ref{ss:LimitationsCoverage}.
+Finally, the reliance on test quality is depicted in Section \ref{ss:LimitationsTestQuality}.
 
 \subsection{Metaprogramming and Reflection}
 \label{ss:LimitationsMeta}
