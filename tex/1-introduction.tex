@@ -3,19 +3,25 @@
 
 Program comprehension is an essential requirement during software development.
 During this process, developers construct a mental model that maps the features of a software system to their source code representation \cite{latoza_maintaining_2006}.
-But although development tools have evolved notably, it still remains a tedious task.
-Consequently, it is reported that developers spend up to 60\% of the software engineering effort on building a satisfactory understanding of the system at hand \cite{corbi_program_1989, basili_evolving_1997, ducasse_class_2005, rothlisberger_feature_2007, cornelissen_execution_2008}.
+But while the programming languages and concepts developers use have evolved notably from eighty-column cards and assembler to object-oriented programming, the further development of established tools that are supposed to help in the understanding of software systems seemingly was not able to keep pace.
 
-At the same time, "programmers tend to adapt to the level of representation
-provided by the computer, instead of adapting the computer's representations
-to their perceptive abilities" \cite{diehl_software_2007}.
-As a result, there is a huge gap between the metaphors and concepts used during development, and the representation tools provide of a program's behavior.
+In other words, Diehl states that "programmers tend to adapt to the level of representation provided by the computer, instead of adapting the computer's representations to their perceptive abilities" \cite{diehl_software_2007}.
+As a result, there is a huge gap between the metaphors and concepts used during development, and the representation of program behavior tools provide.
 
 Conventional symbolic debuggers that commonly are included in object-oriented development environments constitute a paragon for this phenomenon.
+While developers design a system with objects and their interactions in mind, the information presentation of those debuggers is centered around the call stack of the current execution.
+This presentation rather conforms to the processes on machine level than to the object-oriented concepts...
+It is not particularly suited to answer questions that often arise during development.
+
+Consequently, it is reported that developers spend up to 60\% of the software engineering effort on building a satisfactory understanding of the system at hand \cite{corbi_program_1989, basili_evolving_1997, ducasse_class_2005, rothlisberger_feature_2007, cornelissen_execution_2008}.
+
 
 \todo[inline]{Context}
 \todo[inline]{Problem}
 \todo[inline]{Significance -> Research Question}
+\begin{quote}
+Can the behavior of software systems be presented at the abstraction level of objects while maintaining immediacy and perceiveability?
+\end{quote}
 \todo[inline]{Solution}
 
 \section{Contributions}
