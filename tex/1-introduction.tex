@@ -17,7 +17,7 @@ Consequently, it is reported that developers spend up to 60\% of the software en
 And not only software developers would benefit if the effort that has to be spent on program comprehension could be reduced significantly.
 One could argue that reducing this necessary evil would allow developers to focus on productive tasks,... blubb blubb \todo{...}.
 
-proposed solution \todo{...}
+schwenk zu representation at abstraction level of objects \todo{...}
 
 The question is why such an information presentation has not been established yet.
 The problem is that in order to visualize program behavior at the abstraction level of objects, the application of dynamic analysis techniques is inevitable.
@@ -25,12 +25,22 @@ This means that information about the behavior of a program has to be collected 
 Source code models the structure of a system in terms of classes and their relationships rather than its actual behavior.
 But due to object-oriented concepts like polymorphism and late binding, the actual participating objects of a computation and the messages that are exchanged between them are only known at runtime.
 
+Dynamic analysis has four closely related problems that hinder its broad application down to the present day.
+First, to collect runtime information, the execution of a program has to be manipulated in a way that traces of the execution can be generated.
+Typically this is done by instrumentation at the source code or byte code level or through the utilization of debug interfaces.
+The side effect of this manipulation is that it often decelerates the time required to run a program excessively.
+Consequently, developers have to wait a significant amount of time before they can start analyzing the traces, which in turn increases the amount of time required for comprehending the program.
+
 \todo[inline]{Context}
 \todo[inline]{Problem}
 \todo[inline]{Significance -> Research Question}
 \begin{quote}
 Can the behavior of software systems be presented at the abstraction level of objects while maintaining immediacy and perceiveability?
 \end{quote}
+\begin{quote}
+Can such an information presentation actually aid in the process of program comprehension?
+\end{quote}
+
 \todo[inline]{Solution}
 
 \section{Contributions}
