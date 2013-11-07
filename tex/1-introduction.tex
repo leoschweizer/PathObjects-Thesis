@@ -35,11 +35,13 @@ Can the behavior of software systems be presented at the abstraction level of ob
 
 
 \section{Thesis Structure}
-\label{s:structure}
-
 The remainder of this thesis is structured as follows:
-...
-
-%% Sub chapters in separate files:
-% \input{1-1-contributions}
-% \input{1-2-structure}
+Chapter \ref{c:Background} gives an overview of the background of program comprehension, of techniques that are typically used to collect the runtime information required for the analysis of object interactions, and of established diagram notations that cover the state of objects and their interactions.
+The chapter concludes with a summary of the problems of the presented methods and techniques and their inadequacy for our objectives.
+Chapter \ref{c:approach} outlines our approach to the solution of those problems.
+Chapter \ref{c:implementation} presents \textsc{PathObjects}, our prototypical implementation of our approach for the Squeak Smalltalk environment.
+Chapter \ref{c:discussion} gives an overview over the runtime performance and space consumption of our approach and shows that both are sufficient to provide an immediate user experience.
+The user study that was performed to validate the perceivability of our information presentation and its effectiveness in terms of aiding in program comprehension is presented.
+The chapter concludes with an overview of the limitations of our approach and an analysis of the applicability to other programming languages and environments.
+Chapter \ref{c:relatedwork} shows related work in the areas of trace visualization, debugging, and education and relates the presented approaches to \textsc{PathObjects}.
+Chapter \ref{c:conclusions} concludes with an outlook on possible future work and a summary of the research problem, our proposed solution, and the results of our research.
