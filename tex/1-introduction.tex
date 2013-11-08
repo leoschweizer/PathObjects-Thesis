@@ -18,10 +18,10 @@ Consequently, it is reported that developers spend up to 60\% of the software en
 And not only software developers would benefit if the effort that has to be spent on program comprehension could be reduced significantly.
 One could argue that reducing this necessary evil would allow developers to focus on productive tasks,... blubb blubb \todo{...}.
 
-It seems reasonable that an reduction of the gap between the presentation of information of a program's behavior and the concepts that are used at design time would help to reduce the amount of time developers spend on program comprehension.
+It seems reasonable that a reduction of the gap between the presentation of information of a program's behavior and the concepts that are used at design time would help to reduce the amount of time developers have to spend on program comprehension.
+If an information presentation at the abstraction level of objects and their interactions could be provided, developers no longer would have to map the low level concepts provided by development tools to the high level concepts used mentally.
 
-
-The question is why such an information presentation has not been established yet.
+The question is why such an information presentation has not been established so far.
 The problem is that in order to visualize program behavior at the abstraction level of objects, the application of dynamic analysis techniques is inevitable.
 This means that information about the behavior of a program has to be collected during actual executions of the program under investigation, as it is impossible to derive this kind of information from the source code alone.
 Source code models the structure of a system in terms of classes and their relationships rather than its actual behavior.
@@ -42,15 +42,27 @@ The fourth and last problem also is a direct result of outsized traces.
 The visualization of a trace itself also grows with the size of the trace.
 This makes it increasingly difficult for the observer to perceive and comprehend the actual information which is encoded in the visualization.
 
-\todo[inline]{Significance -> Research Question}
+\section{Research Questions}
+As pointed out, program comprehension and dynamic analysis are both time consuming tasks on their own.
+Beyond that, dynamic analysis does not necessarily ease the process of program understanding due to the sheer amount of data that is presented to the observer.
+This seems to imply that the latter are ill-suited to help in the reduction of the time spent on comprehending the system at hand.
+
+
 \begin{quote}
-Can the behavior of software systems be presented at the abstraction level of objects while maintaining immediacy and perceiveability?
+Can the behavior of software systems be presented at the abstraction level of objects while maintaining immediacy and perceivability?
 \end{quote}
 \begin{quote}
 Can such an information presentation actually aid in the process of program comprehension?
 \end{quote}
 
-\todo[inline]{Solution}
+Perscheid et al. have conducted preliminary research on how to cope with the shortcomings of dynamic analysis and have proposed \emph{Step-wise Run-time Analysis} as lightweight alternative to conventional tracing approaches \cite{perscheid_immediacy_2010}.
+The fundamental idea is to use test cases as reproducible entry points ...
+Instead of collecting potentially useful information in its entirety up front, a shallow analysis is done during the first tracing run that yields only the bare minimum of data that is required to reconstruct the test execution.
+During the inspection of such a shallow trace, the developer can perform refinement runs to collect further information of interest, like the internal state of objects or the concrete values that are used as arguments.
+As a result, the approach enables immediacy and displays only that information to the developer that is actually relevant.
+But this solution still lacks an appropriate information representation at the abstraction level of objects.
+
+
 
 \section{Contributions}
 \label{s:contributions}
