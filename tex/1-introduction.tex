@@ -3,7 +3,7 @@
 
 Program comprehension is an essential requirement during software development.
 During this process, developers construct a mental model that maps the features of a software system to their source code representation \cite{latoza_maintaining_2006}.
-But while the programming languages and concepts developers use have evolved notably from eighty-column cards and assembler to object-oriented programming, the further development of established tools that are supposed to help in the understanding of software systems seemingly was not able to keep pace.
+But while the programming languages and concepts developers use have evolved notably from eighty-column cards and assembler to object-oriented programming, the further development of established tools that are supposed to help in the understanding of software systems seemingly was unable to keep pace.
 
 In other words, Diehl states that "programmers tend to adapt to the level of representation provided by the computer, instead of adapting the computer's representations to their perceptive abilities" \cite{diehl_software_2007}.
 As a result, there is a huge gap between the metaphors and concepts used during development, and the representation of program behavior tools provide.
@@ -11,13 +11,15 @@ As a result, there is a huge gap between the metaphors and concepts used during 
 Conventional symbolic debuggers that commonly are included in object-oriented development environments constitute a paragon for this phenomenon.
 While developers design a system with objects and their interactions in mind, the information presentation of those debuggers is centered around the call stack of the current execution.
 This presentation rather conforms to the processes on machine level than to the object-oriented concepts...
-It is not particularly suited to answer questions that often arise during development.
+Consequently, it is not particularly suited to answer questions that often arise during development of object-oriented systems.
+For instance, the presentation of the call stack does not help to identify which objects are involved in the current computation, at which other parts of the call stack those objects reappear, or which other objects they are communicating with.
 
 Consequently, it is reported that developers spend up to 60\% of the software engineering effort on building a satisfactory understanding of the system at hand \cite{corbi_program_1989, basili_evolving_1997, ducasse_class_2005, rothlisberger_feature_2007, cornelissen_execution_2008}.
 And not only software developers would benefit if the effort that has to be spent on program comprehension could be reduced significantly.
 One could argue that reducing this necessary evil would allow developers to focus on productive tasks,... blubb blubb \todo{...}.
 
-schwenk zu representation at abstraction level of objects \todo{...}
+It seems reasonable that an reduction of the gap between the presentation of information of a program's behavior and the concepts that are used at design time would help to reduce the amount of time developers spend on program comprehension.
+
 
 The question is why such an information presentation has not been established yet.
 The problem is that in order to visualize program behavior at the abstraction level of objects, the application of dynamic analysis techniques is inevitable.
@@ -30,9 +32,16 @@ First, to collect runtime information, the execution of a program has to be mani
 Typically this is done by instrumentation at the source code or byte code level or through the utilization of debug interfaces.
 The side effect of this manipulation is that it often decelerates the time required to run a program excessively.
 Consequently, developers have to wait a significant amount of time before they can start analyzing the traces, which in turn increases the amount of time required for comprehending the program.
+The second problem is the huge amount of data that arises even during short executions of complex software systems.
+For instance, it is reported that ...
+This issue is so prevalent that the question how the size of such traces can be reduced  has become a research area of its own.
+As a result, the third problem turns out to be the time that is required to analyze and visualize traces.
+Due to the huge amount of data, they often can not be kept in main memory, which slows down the process further.
+Again, time that developers have to wait for results is time that slows down the process of program comprehension and thus should preferably be spent on more productive tasks.
+The fourth and last problem also is a direct result of outsized traces.
+The visualization of a trace itself also grows with the size of the trace.
+This makes it increasingly difficult for the observer to perceive and comprehend the actual information which is encoded in the visualization.
 
-\todo[inline]{Context}
-\todo[inline]{Problem}
 \todo[inline]{Significance -> Research Question}
 \begin{quote}
 Can the behavior of software systems be presented at the abstraction level of objects while maintaining immediacy and perceiveability?
@@ -46,12 +55,9 @@ Can such an information presentation actually aid in the process of program comp
 \section{Contributions}
 \label{s:contributions}
 
-\begin{description}[leftmargin=0pt]
-\item[First Contribution]
-...
-\end{description}
-
-
+\paragraph{A Lightweight Approach of Tracing Object Interactions}
+\paragraph{An Interactive Diagram Notation for Object Interactions}
+\paragraph{A Prototypic Implementation for Squeak Smalltalk}
 
 \section{Thesis Structure}
 The remainder of this thesis is structured as follows:
