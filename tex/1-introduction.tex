@@ -10,7 +10,7 @@ As a result, there is a huge gap between the metaphors and concepts used during 
 
 Conventional symbolic debuggers that commonly are included in object-oriented development environments constitute a paragon for this phenomenon.
 While developers design a system with objects and their interactions in mind, the information presentation of those debuggers is centered around the call stack of the current execution.
-This presentation rather conforms to the processes on machine level than to the object-oriented concepts...
+This presentation rather conforms to the processes on machine level than to the object-oriented concepts used during the development of the system.
 Consequently, it is not particularly suited to answer questions that often arise during development of object-oriented systems.
 For instance, the presentation of the call stack does not help to identify which objects are involved in the current computation, at which other parts of the call stack those objects reappear, or which other objects they are communicating with.
 
@@ -62,7 +62,9 @@ During the inspection of such a shallow trace, the developer can perform refinem
 As a result, the approach enables immediacy and displays only that information to the developer that is actually relevant.
 But this solution still lacks an appropriate information representation at the abstraction level of objects.
 
-
+This thesis suggests an approach that is based on \emph{Step-wise Run-time Analysis} as solution to the afore-mentioned problems. 
+We propose to extend the approach in a way that preserves its immediate character and low memory footprint while at the same time making it suitable for the reconstruction of object interactions.
+Based on this tracing approach, we further propose an interactive information presentation at the abstraction level of objects that aims at avoiding the cognitive overload caused by existing dynamic analysis tools.
 
 \section{Contributions}
 \label{s:contributions}
