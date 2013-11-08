@@ -45,14 +45,17 @@ This makes it increasingly difficult for the observer to perceive and comprehend
 \section{Research Questions}
 As pointed out, program comprehension and dynamic analysis are both time consuming tasks on their own.
 Beyond that, dynamic analysis does not necessarily ease the process of program understanding due to the sheer amount of data that is presented to the observer.
-This seems to imply that the latter are ill-suited to help in the reduction of the time spent on comprehending the system at hand.
-
+This seems to imply that the latter is ill-suited to help in the reduction of the time spent on comprehending the system at hand.
+This results in the main research question that is tackled in this thesis:
 
 \begin{quote}
-Can the behavior of software systems be presented at the abstraction level of objects while maintaining immediacy and perceivability?
+1) Can the behavior of software systems be presented at the abstraction level of objects while maintaining immediacy and perceivability?
 \end{quote}
+
+Since it is only an assumption that such an information presentation would actually help developers to better understand the software system at hand, the second research question we derive is:
+
 \begin{quote}
-Can such an information presentation actually aid in the process of program comprehension?
+2) Can such an information presentation actually aid in the process of program comprehension?
 \end{quote}
 
 Perscheid et al. have conducted preliminary research on how to cope with the shortcomings of dynamic analysis and have proposed \emph{Step-wise Run-time Analysis} as lightweight alternative to conventional tracing approaches \cite{perscheid_immediacy_2010}.
@@ -62,16 +65,19 @@ During the inspection of such a shallow trace, the developer can perform refinem
 As a result, the approach enables immediacy and displays only that information to the developer that is actually relevant.
 But this solution still lacks an appropriate information representation at the abstraction level of objects.
 
-This thesis suggests an approach that is based on \emph{Step-wise Run-time Analysis} as solution to the afore-mentioned problems. 
+This thesis suggests an approach that is based on \emph{Step-wise Run-time Analysis} as solution to the before-mentioned problems. 
 We propose to extend the approach in a way that preserves its immediate character and low memory footprint while at the same time making it suitable for the reconstruction of object interactions.
 Based on this tracing approach, we further propose an interactive information presentation at the abstraction level of objects that aims at avoiding the cognitive overload caused by existing dynamic analysis tools.
 
 \section{Contributions}
 \label{s:contributions}
 
-\paragraph{A Lightweight Approach of Tracing Object Interactions}
-\paragraph{An Interactive Diagram Notation for Object Interactions}
-\paragraph{A Prototypic Implementation for Squeak Smalltalk}
+\paragraph{A Lightweight Approach for Tracing Object Interactions} We present an extension of the \emph{Step-wise Run-time Analysis} approach that enables us to reconstruct object interactions from traces while maintaining immediacy and a low memory footprint.
+
+\paragraph{An Interactive Diagram Notation for Object Interactions} We propose a way of diagramming object states and interactions interactively that allows the user to navigate through traces, to explore object states and relationships, to focus on specific parts of interest, and to augment the displayed information through user-defined information layers.
+
+\paragraph{A Prototypic Implementation for Squeak Smalltalk} We validate the applicability of our approach with the help of an implementation for the Squeak development environment.
+Furthermore, we use this prototype to verify that our proposed solution actually can help developers in the process of program comprehension with the help of a user evaluation.
 
 \section{Thesis Structure}
 The remainder of this thesis is structured as follows:
