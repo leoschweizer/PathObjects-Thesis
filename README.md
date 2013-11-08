@@ -42,14 +42,14 @@ Status
 
 | Chapter        | Status        | Target  |
 | -------------- | ------------- | ------- |
-| Introduction   | 0             | 4       |
-| Background     | 2             | 12      |
+| Introduction   | 3             | 4       |
+| Background     | 3             | 12      |
 | Concept        | 0             | 12      |
 | Implementation | 0             | 9       |
-| Discussion     | 6             | 12      |
+| Discussion     | 8             | 12      |
 | Related Work   | 9             | 8       |
 | Conclusion     | 1             | 3       |
-| **Overall**    | **18**        | **60**  |
+| **Overall**    | **24**        | **60**  |
 
 Building
 --------
