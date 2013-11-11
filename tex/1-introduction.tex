@@ -9,7 +9,7 @@ Diehl describes the first and prevalent issue as follows: "programmers tend to a
 In other words, the way program behavior is presented to the developers is characterized by the low level concepts computers operate on, instead of the high level concepts that are used to design software systems.
 The result of this phenomenon is a huge gap between the metaphors and concepts used during development, and the representation of program behavior tools provide.
 
-Conventional symbolic debuggers that commonly are included in object-oriented development environments constitute a paragon for this phenomenon.
+Conventional symbolic debuggers that commonly are included in object-oriented development environments constitute an example par excellence.
 While developers design a system with objects and their interactions in mind, the information presentation of those debuggers is centered around the call stack of the current execution.
 This presentation rather conforms to the processes on machine level than to the object-oriented concepts used during the development of the system.
 Consequently, it is not particularly suited to answer questions that often arise during development of object-oriented systems.
@@ -22,10 +22,10 @@ However, there is no established combined view on information from these differe
 This can be a tedious and time consuming task.
 
 Consequently, it is reported that developers spend up to 60\% of the software engineering effort on building a satisfactory understanding of the system at hand \cite{corbi_program_1989, basili_evolving_1997, ducasse_class_2005, rothlisberger_feature_2007, cornelissen_execution_2008}.
-And not only software developers would benefit if the effort that has to be spent on program comprehension could be reduced significantly.
-Building an understanding of a software system faster enables developers to eliminate defects at a faster pace.
-This would in turn on the one hand reduce the costs of software maintenance which are reported to account for 40\%-80\% of the total costs \cite{glass_frequently_2001}, and on the other hand increase the overall quality of the system.
-Assisting in the understanding of a program also eases the process of adding new features to it.
+And not only software developers would benefit if the effort that is spent on program comprehension could be reduced significantly.
+Speeding up the activity of understanding a software system enables developers to eliminate defects faster.
+In turn, this would on the one hand reduce the costs of software maintenance - which are reported to account for 40\%-80\% of the total costs \cite{glass_frequently_2001} - and on the other hand increase the overall quality of the system.
+Assisting in the understanding of a program also eases the process of adding new features.
 Again, this activity accounts for a significant share of the costs of software maintenance.
 As a result, even the end-users could benefit from a reduction of the program comprehension effort in the form of high-quality and feature-rich software systems.
 
@@ -36,26 +36,26 @@ If an information presentation at the abstraction level of objects and their int
 This situation raises the question why such an information presentation has not been established so far.
 The problem is that in order to visualize program behavior at the abstraction level of objects, the application of dynamic analysis techniques is inevitable.
 This means that information about the behavior of a program has to be collected during actual executions of the program under investigation, as it is impossible to derive this kind of information from the source code alone.
-Source code models the structure of a system in terms of classes and their relationships rather than its actual behavior.
+The latter models the structure of a system in terms of classes and their relationships rather than its actual behavior.
 But due to object-oriented concepts like polymorphism and late binding, the objects that are actually participating in a computation and the messages that are exchanged between them are only known at runtime.
 
 However, dynamic analysis has four closely related problems that hinder its broad application down to the present day.
 First, to collect runtime information, the execution of a program has to be manipulated in a way that traces of the execution can be generated.
 Typically this is done by instrumentation at the source code or byte code level or through the utilization of debug interfaces.
-The side effect of this manipulation is that it often decelerates the execution time of a program excessively.
+The side effect of such manipulations is that they often decelerate the execution speed of a program excessively.
 The runtime costs of instrumentation are reported to range from around 10-15 times the costs of standalone executions up to 115 times in worst case scenarios \cite{pothier_scalable_2007, karran_synctrace:_2013}.
-Consequently, developers have to wait a significant amount of time before they can start analyzing the traces, which in turn increases the amount of time required for comprehending the program.
+Consequently, developers have to wait a significant amount of time for tracing runs to finish until they can start analyzing the traces, which in turn increases the amount of time required for comprehending the program.
 
 The second problem is the huge amount of data that arises even during short executions of complex software systems.
-For instance, Karran et al. report that an execution of the Firefox browser and subsequent loading of a Google result page yield 3GB of trace data \cite{missing}.
+For instance, Karran et al. report that an execution of the Firefox browser and subsequent loading of a Google result page yield 3GB of trace data \cite{karran_synctrace:_2013}.
 Pothier et al. state that a tracing session of the Eclipse IDE that involved the creation of classes, editing of source code, and a step-by-step execution with the debugger resulted in a trace of 33GB \cite{pothier_scalable_2007}.
-This issue is so prevalent that the question how the size of such traces can be reduced  has become a research area of its own.
+This issue is so prevalent that the topic of trace size reduction has become a research area of its own.
 
 As a result, the third problem turns out to be the time that is required to analyze and visualize traces.
 Due to the huge amount of data, they often can not be kept in main memory, which slows down the process further.
 Again, time that developers have to wait for results is time that slows down the process of program comprehension and thus should preferably be spent on more productive tasks.
 The fourth and last problem also is a direct result of overly large traces.
-The visualization of a trace itself also grows with the size of the trace.
+The visualizations of traces themselves grow proportional to the size of the traces.
 This makes it increasingly difficult for the observer to perceive and comprehend the actual information which is encoded in the visualization.
 
 \section{Research Questions}
@@ -76,16 +76,16 @@ Since it is only an assumption that such an information presentation would actua
 
 Perscheid et al. have conducted preliminary research on how to cope with some of the shortcomings of dynamic analysis and have proposed \emph{Step-wise Run-time Analysis} as lightweight alternative to conventional tracing approaches \cite{perscheid_immediacy_2010}.
 The fundamental idea is to use test cases as reproducible entry points into the behavior of specific usage scenarios of a system.
-Instead of collecting potentially useful information in its entirety up front, a shallow analysis is done during the first tracing run that yields only the bare minimum of data that is required to reconstruct the test execution.
-During the inspection of such a shallow trace, the developer can perform refinement runs to collect further information of interest, like the internal state of objects or the concrete values that are used as arguments.
+Instead of collecting potentially useful information in its entirety up front, a shallow analysis is performed during the first tracing run that only yields the bare minimum of data required for the reconstruction of test executions.
+During the inspection of such a shallow trace, the developer can perform refinement runs to collect further information of interest, like the internal state of objects or the specific values that are used as arguments.
 As a result, the approach enables immediacy and displays only that information to the developer that is actually relevant.
 However, this solution still lacks an appropriate information representation at the abstraction level of objects.
 
-We identified two main problems: first, traditional development tools tend to adapt the low level concepts of computers instead of adapting the high level concepts used during development.
+The solution we propose tackles the two main problems identified above: first, traditional development tools tend to adapt the low level concepts of computers instead of adapting the high level concepts used during development.
 However, an information representation of objects and their interactions is hard to provide in a beneficial manner due to the scalability issues of dynamic analysis techniques.
 Therefore, we propose to extend the \emph{Step-wise Run-time Analysis} tracing technique in a way that preserves its immediate character and low memory footprint while at the same time making it suitable for the reconstruction of object interactions.
 Based on this extension, we further propose an interactive information presentation at the abstraction level of objects that aims at avoiding the cognitive overload caused by existing dynamic analysis tools.
-The second problem are the information requirements developers have during the process of program comprehension.
+The information requirements developers have during the process of program comprehension constitute the second main problem.
 We show how information from various domains can be integrated into the visualization of object interactions with the help of user defined information layers.
 Thus, the need to manually collect information from a multitude of separate tools can be eliminated.
 
@@ -94,7 +94,7 @@ Thus, the need to manually collect information from a multitude of separate tool
 
 \paragraph{A Lightweight Approach for Tracing Object Interactions} We present an extension of the \emph{Step-wise Run-time Analysis} approach that enables us to reconstruct object interactions from traces while maintaining immediacy and a low memory footprint.
 
-\paragraph{An Interactive Diagram Notation for Object Interactions} We propose a way of diagramming object states and interactions interactively that allows the user to navigate through traces, to explore object states and relationships, to focus on specific parts of interest, and to augment the displayed information through user-defined information layers.
+\paragraph{An Interactive Diagram Notation for Object Interactions} We propose a way of diagramming object states and interactions interactively that allows users to navigate through traces, to explore object states and relationships, to focus on specific parts of interest, and to augment the displayed information through user-defined information layers.
 
 \paragraph{A Prototypic Implementation for Squeak Smalltalk} We validate the applicability of our approach with the help of an implementation for the Squeak development environment.
 Furthermore, we use this prototype to verify that our proposed solution actually can help developers in the process of program comprehension with the help of a user evaluation.
@@ -103,9 +103,9 @@ Furthermore, we use this prototype to verify that our proposed solution actually
 The remainder of this thesis is structured as follows:
 Chapter \ref{c:Background} gives an overview of the background of program comprehension, of techniques that are typically used to collect the runtime information required for the analysis of object interactions, and of established diagram notations that cover the state of objects and their interactions.
 The chapter concludes with a summary of the problems of the presented methods and techniques and their inadequacy for our objectives.
-Chapter \ref{c:approach} presents \textsc{PathObjects}, which represents our approach to the solution of those problems.
+Chapter \ref{c:approach} describes \textsc{PathObjects}, which represents our approach to the solution of those problems.
 Chapter \ref{c:implementation} presents a prototypical implementation of \textsc{PathObjects} for the Squeak Smalltalk environment.
-Chapter \ref{c:discussion} gives an overview over the runtime performance and space consumption of our approach and shows that both are sufficient to provide an immediate user experience.
+Chapter \ref{c:discussion} gives an overview of the runtime performance and space consumption of our approach and shows that both are sufficient to provide an immediate user experience.
 The user study that was performed to validate the perceivability of our information presentation and its effectiveness in terms of aiding in program comprehension is presented.
 The chapter concludes with an overview of the limitations of our approach and an analysis of the applicability to other programming languages and environments.
 Chapter \ref{c:relatedwork} shows related work in the areas of trace visualization, debugging, and education and relates the presented approaches to \textsc{PathObjects}.
