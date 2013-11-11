@@ -5,7 +5,7 @@ Program comprehension is an essential requirement during software development.
 During this process, developers construct a mental model that maps the behavior of a software system to its source code representation \cite{latoza_maintaining_2006}.
 But while the programming languages and concepts developers use have evolved notably from eighty-column cards and assembly language to object-oriented programming, the further development of established tools that are supposed to help in the understanding of software systems seemingly was unable to keep pace in two respects.
 
-Diehl describes the first issue as follows: "programmers tend to adapt to the level of representation provided by the computer, instead of adapting the computer's representations to their perceptive abilities" \cite{diehl_software_2007}.
+Diehl describes the first and prevalent issue as follows: "programmers tend to adapt to the level of representation provided by the computer, instead of adapting the computer's representations to their perceptive abilities" \cite{diehl_software_2007}.
 In other words, the way program behavior is presented to the developers is characterized by the low level concepts computers operate on, instead of the high level concepts that are used to design software systems.
 The result of this phenomenon is a huge gap between the metaphors and concepts used during development, and the representation of program behavior tools provide.
 
@@ -74,16 +74,20 @@ Since it is only an assumption that such an information presentation would actua
 2) Can such an information presentation actually aid in the process of program comprehension?
 \end{quote}
 
-Perscheid et al. have conducted preliminary research on how to cope with the shortcomings of dynamic analysis and have proposed \emph{Step-wise Run-time Analysis} as lightweight alternative to conventional tracing approaches \cite{perscheid_immediacy_2010}.
-The fundamental idea is to use test cases as reproducible entry points ...
+Perscheid et al. have conducted preliminary research on how to cope with some of the shortcomings of dynamic analysis and have proposed \emph{Step-wise Run-time Analysis} as lightweight alternative to conventional tracing approaches \cite{perscheid_immediacy_2010}.
+The fundamental idea is to use test cases as reproducible entry points into the behavior of specific usage scenarios of a system.
 Instead of collecting potentially useful information in its entirety up front, a shallow analysis is done during the first tracing run that yields only the bare minimum of data that is required to reconstruct the test execution.
 During the inspection of such a shallow trace, the developer can perform refinement runs to collect further information of interest, like the internal state of objects or the concrete values that are used as arguments.
 As a result, the approach enables immediacy and displays only that information to the developer that is actually relevant.
-But this solution still lacks an appropriate information representation at the abstraction level of objects.
+However, this solution still lacks an appropriate information representation at the abstraction level of objects.
 
-This thesis suggests an approach that is based on \emph{Step-wise Run-time Analysis} as solution to the before-mentioned problems. 
-We propose to extend the approach in a way that preserves its immediate character and low memory footprint while at the same time making it suitable for the reconstruction of object interactions.
-Based on this tracing approach, we further propose an interactive information presentation at the abstraction level of objects that aims at avoiding the cognitive overload caused by existing dynamic analysis tools.
+We identified two main problems: first, traditional development tools tend to adapt the low level concepts of computers instead of adapting the high level concepts used during development.
+However, an information representation of objects and their interactions is hard to provide in a beneficial manner due to the scalability issues of dynamic analysis techniques.
+Therefore, we propose to extend the \emph{Step-wise Run-time Analysis} tracing technique in a way that preserves its immediate character and low memory footprint while at the same time making it suitable for the reconstruction of object interactions.
+Based on this extension, we further propose an interactive information presentation at the abstraction level of objects that aims at avoiding the cognitive overload caused by existing dynamic analysis tools.
+The second problem are the information requirements developers have during the process of program comprehension.
+We show how information from various domains can be integrated into the visualization of object interactions with the help of user defined information layers.
+Thus, the need to manually collect information from a multitude of separate tools can be eliminated.
 
 \section{Contributions}
 \label{s:contributions}
