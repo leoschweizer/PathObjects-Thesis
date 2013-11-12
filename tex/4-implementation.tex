@@ -22,6 +22,25 @@ This could have undesired side effects, like excessive memory consumption or slo
 For these reasons, we chose a different approach that allows us to generate unique, stable identifiers for objects.
 It exploits the fact that that a comparison for referential quality provided by the \inlinecode{==} method will always yield the correct result.
 It returns true if the two objects have the same object pointer, and false otherwise.
+Squeak provides a \inlinecode{WeakKeyIdentityDictionary} that has two beneficial properties for our use case.
+First, it uses \inlinecode{==} comparison to test dictionary keys for equality.
+That means that when using the objects that occur during tracing runs as keys, it is guaranteed that no two objects will be identified as the same key, and an object will always be mapped to the same key once it is present in the dictionary.
+The second property is that it uses weak references to manage keys, which implicates that garbage collection of an object is not suspended by the fact that it is used as key in a dictionary.
+
+Consequently, this allows us to use the objects occurring during tracing runs as keys, without interfering with the test execution.
+Identifiers can be assigned to objects as values of the dictionary.
+Thus, it is guaranteed that one object will always be mapped to the same identifier.
+To ensure that no identifier is assigned to two referentially different objects, it is sufficient to use a continuously incrementing integer counter when assigning new identities, or respectively adding new entries to the dictionary.
+
+Since we presuppose that test cases are strictly deterministic (cf. Section \ref{s:DiscussionLimitations}), this strategy results in another benefit.
+Namely, objects will always be assigned the same identifier in different tracing runs, since the identifier is only dependent on the relative position in which objects occur for the first time in a trace.
+In other words, to stick to the observer example, the instance of \inlinecode{DigitalClock} will always be assigned with the identifier \inlinecode{27} no matter how often the test is executed, since it is the 27th object that occurs in the trace.
+This is an important property and prerequisite for the tracing and mapping of outbound object pointers (cf. Section \ref{ss:ImplementationTracingReferences}).
+
+The current implementation constructs a new dictionary of identifiers for each test execution.
+But it would also be possible to share identifiers of long living objects like classes across all tracing runs, if a global dictionary were used.
+However, we are unaware of a use case that could exploit this possibility, and additional measures would be required to ensure the property described in the previous paragraph.
+For that reasons, we favored trace-local over global identity generation.
 
 \subsection{Tracing Approach}
 \label{ss:ImplementationTracingApproach}
