@@ -13,34 +13,34 @@ Unfortunately, the Squeak image does not provide such a functionality out of the
 Though objects do have an \inlinecode{identityHash} attribute, the value of this attribute is neither unique nor stable \cite{goldberg_smalltalk-80:_1983}.
 In the virtual machine we used, it is derived from the least significant bits of the object pointer which is managed by the virtual machine and represents the object's address in main memory.
 Hence, the value of the object pointer and thus the value of the \inlinecode{identityHash} are subject to change during garbage collection, which may cause objects to be moved in main memory.
-Furthermore, since the \inlinecode{identityHash} uses only the 12 least significant bits, there is no guarantee that two objects that are not referential equal cannot share a common hash value \cite{goldberg_smalltalk-80:_1983}.
+Furthermore, since the \inlinecode{identityHash} uses only the 12 least significant bits, there is no guarantee that two objects that are not referentially equal cannot share a common hash value \cite{goldberg_smalltalk-80:_1983}.
 
-The Squeak image does not offer a convenient way to access the object pointers, which could serve as unique identifier for objects.
+The Squeak image does not offer a convenient way to access the object pointer, which could serve as unique identifier for objects.
 There are workarounds that would allow to determine its value, but since this value still is subject to change during a tracing run due to the reasons pointed out above, it would require to disable garbage collection during this time span.
 This could have undesired side effects, like excessive memory consumption or slow execution speeds due to increased memory allocation effort.
 
 For these reasons, we chose a different approach that allows us to generate unique, stable identifiers for objects.
-It exploits the fact that that a comparison for referential quality provided by the \inlinecode{==} method will always yield the correct result.
+It exploits the fact that that a comparison for referential equality provided by the \inlinecode{==} method will always yield the correct result.
 It returns true if the two objects have the same object pointer, and false otherwise.
 Squeak provides a \inlinecode{WeakKeyIdentityDictionary} that has two beneficial properties for our use case.
 First, it uses \inlinecode{==} comparison to test dictionary keys for equality.
-That means that when using the objects that occur during tracing runs as keys, it is guaranteed that no two objects will be identified as the same key, and an object will always be mapped to the same key once it is present in the dictionary.
-The second property is that it uses weak references to manage keys, which implicates that garbage collection of an object is not suspended by the fact that it is used as key in a dictionary.
+That means that when using the objects that occur during tracing runs as keys, it is guaranteed that no two referentially distinct objects will be identified as the same key, and an object will always be mapped to the same key once it is present in the dictionary.
+The second property is that it uses weak references to manage keys, which implicates that garbage collection of an object is not suspended by the fact that it is used as key in such a dictionary.
 
-Consequently, this allows us to use the objects occurring during tracing runs as keys, without interfering with the test execution.
+Consequently, this allows us to use objects occurring during tracing runs as keys, without interfering with the test execution.
 Identifiers can be assigned to objects as values of the dictionary.
 Thus, it is guaranteed that one object will always be mapped to the same identifier.
-To ensure that no identifier is assigned to two referentially different objects, it is sufficient to use a continuously incrementing integer counter when assigning new identities, or respectively adding new entries to the dictionary.
+To ensure that no identifier is assigned to two referentially different objects, it is sufficient to use a continuously incrementing integer counter when assigning new identities, or respectively when adding new entries to the dictionary.
 
 Since we presuppose that test cases are strictly deterministic (cf. Section \ref{s:DiscussionLimitations}), this strategy results in another benefit.
-Namely, objects will always be assigned the same identifier in different tracing runs, since the identifier is only dependent on the relative position in which objects occur for the first time in a trace.
+Namely, objects will always be assigned the same identifier in different tracing runs, since the identifier is only dependent on the chronological order in which objects occur in a trace.
 In other words, to stick to the observer example, the instance of \inlinecode{DigitalClock} will always be assigned with the identifier \inlinecode{27} no matter how often the test is executed, since it is the 27th object that occurs in the trace.
 This is an important property and prerequisite for the tracing and mapping of outbound object pointers (cf. Section \ref{ss:ImplementationTracingReferences}).
 
 The current implementation constructs a new dictionary of identifiers for each test execution.
 But it would also be possible to share identifiers of long living objects like classes across all tracing runs, if a global dictionary were used.
 However, we are unaware of a use case that could exploit this possibility, and additional measures would be required to ensure the property described in the previous paragraph.
-For that reasons, we favored trace-local over global identity generation.
+For these reasons, we favored trace-local over global identity generation.
 
 \subsection{Tracing Approach}
 \label{ss:ImplementationTracingApproach}
