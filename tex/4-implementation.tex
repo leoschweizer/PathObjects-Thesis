@@ -44,8 +44,11 @@ For these reasons, we favored trace-local over global identity generation.
 
 \subsection{Tracing Approach}
 \label{ss:ImplementationTracingApproach}
+This section depicts the fundamental functional principles of the \textsc{PathTools} tracing framework that served as a basis of our prototypic implementation and describes the extensions that were required to adapt this framework to our requirements.
 
-\begin{figure}
+\subsubsection{Fundamental Functional Principles}
+
+\begin{figure}[tb]
 	\centering
 	\includegraphics[width=0.9\textwidth]{../images/04-Tracing}
 	\caption[TOC Caption]{Tracing foo}
@@ -53,8 +56,11 @@ For these reasons, we favored trace-local over global identity generation.
 \end{figure}
 
 Figure \ref{fig:ImplementationTracing} depicts the fundamental steps that are performed by the \textsc{PathTools} tracing framework to generate an execution trace.
-First, the user selects a test case she wishes to analyze.
-For instance, this can be done through the test coverage information
+First, the user selects a test case of interest that should be traced and visualized.
+For instance, this selection can be done through the list of test coverage information that is displayed next to methods in the source browser provided by the \textsc{PathTools} framework.
+A \inlinecode{Tracer} object is generated which subsequently initiates the instrumentation phase.
+Each method covered by the selected test case is replaced by a \inlinecode{MethodWrapper} that contains the fundamental tracing functionalities.
+Thereby, only those methods are regarded that lie within the user-defined tracing scope, i.e. are a member of one of the packages the user selected for tracing.
 
 Method wrappers \cite{brant_wrappers_1998} offer a convenient way to intercept the execution of specific methods.
 As the name suggests, they wrap instances of \inlinecode{CompiledMethod} and take their place in the method dictionary of the corresponding class.
@@ -62,6 +68,16 @@ They can be utilized to execute code before and after the invocation of the wrap
 Furthermore, they allow the inspection and manipulation of arguments as well as of the return value of a message send.
 Thereby, the operation of method wrappers is fully transparent for the callers of wrapped methods.
 
+Afterwards, the tracer executes the specified test case.
+Since all methods of interest are instrumented at this stage, they automatically report their execution to the tracer.
+As method entry and exit events are recorded, a call tree of the selected test case can be constructed.
+
+Once the execution of the test case finishes, the tracer triggers the de-instrumentation phase.
+The previously created method wrappers are removed from the method dictionaries and the wrapped compiled methods are put back into their original places.
+
+Finally, the collected information can be converted to a \textsc{PathObjects} trace, which resembles a sequential representation of the execution rather than a tree structure.
+
+\subsubsection{Extensions}
 In order to be suitable for the purposes of \textsc{PathObjects}, the tracing framework had to be extended in two places.
 First, a custom \inlinecode{MethodWrapper} had to be implemented that collects the information required for the reconstruction of object interactions.
 For each wrapped executed method, this specialized wrapper reports integer identifiers of the receiving object, of the method arguments, and of the return value to the tracer.
