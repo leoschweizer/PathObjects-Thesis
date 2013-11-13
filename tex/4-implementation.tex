@@ -52,12 +52,20 @@ This section depicts the fundamental functional principles of the \textsc{PathTo
 
 \subsubsection{Fundamental Functional Principles}
 
+The fundamental idea behind the \textsc{PathTools} tracing approach is the distinction between shallow analysis and subsequent refinement runs.
+During the shallow analysis phase, a trace of a selected test case is constructed that consists only of the bare minimum of information that is required for the reconstruction of the test execution.
+This trace is presented to the developer who then can define which additional information is relevant for this specific scenario.
+Refinements runs are performed to gather that additional information.
+Thus, an extensive up-front collection of potentially useful information can be avoided. 
+
 \begin{figure}[tb]
 	\centering
 	\includegraphics[width=0.9\textwidth]{../images/04-Tracing}
 	\caption[TOC Caption]{Tracing foo}
 	\label{fig:ImplementationTracing}
 \end{figure}
+
+\subsubsection{Shallow Analysis}
 
 Figure \ref{fig:ImplementationTracing} depicts the fundamental steps that are performed by the \textsc{PathTools} tracing framework to generate an execution trace.
 First, the user selects a test case of interest that should be traced and visualized.
@@ -80,6 +88,8 @@ Once the execution of the test case finishes, the tracer triggers the de-instrum
 The previously created method wrappers are removed from the method dictionaries and the wrapped compiled methods are put back into their original places.
 
 Finally, the collected information can be converted to a \textsc{PathObjects} trace, which resembles a sequential representation of the execution rather than a tree structure.
+
+\subsubsection{Refinement Runs}
 
 \subsubsection{Extensions}
 In order to be suitable for the purposes of \textsc{PathObjects}, the tracing framework had to be extended in two places.
