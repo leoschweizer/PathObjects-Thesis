@@ -90,6 +90,13 @@ The previously created method wrappers are removed from the method dictionaries 
 Finally, the collected information can be converted to a \textsc{PathObjects} trace, which resembles a sequential representation of the execution rather than a tree structure.
 
 \subsubsection{Refinement Runs}
+Conceptually, refinement runs are very similar to the shallow analysis process.
+The differences are that no test case has to be selected, since the tracer already has a reference to the covered test case.
+Furthermore, only those methods are instrumented that are actually required to collect the data that should be refined.
+For instance, if the developer queries the state of an argument for a specific message send, only this method is instrumented.
+Afterwards, the test is executed again and the installed method wrapper verifies if the current message send is the one the developer specified.
+If this is the case, the state of this argument is recorded and reported to the tracer.
+Once the test is finished, all method wrappers are removed, and the trace visualization can be updated with the refined information.
 
 \subsubsection{Extensions}
 In order to be suitable for the purposes of \textsc{PathObjects}, the tracing framework had to be extended in two places.
