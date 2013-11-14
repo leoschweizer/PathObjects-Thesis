@@ -5,12 +5,12 @@
 
 \section{Prototypic Implementation}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=1\textwidth]{../images/04-ImplMainWindow}
-	\caption[TOC Caption]{Foobar}
-	\label{fig:ImplementationMainWindow}
-\end{figure}
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=1\textwidth]{../images/04-ImplMainWindow}
+%	\caption[TOC Caption]{Foobar}
+%	\label{fig:ImplementationMainWindow}
+%\end{figure}
 
 \subsection{Navigation}
 \subsection{Exploration}
@@ -148,7 +148,13 @@ For these reasons, we decided to implement the tracking of object references wit
 As soon as the user selects an object for reference tracing, the outbound pointers of this object are collected whenever the user steps to another part of of the execution history.
 The respective referenced objects are highlighted with a user-defined background color.
 
-
+As pointed out in Section \ref{ss:ImplementationTracingIdentification}, objects will always be associated with the same identifier in repeated test executions.
+This fact is exploited to map the references that are returned from refinement runs to the objects of the current trace.
+However, to guarantee that the identifiers from the refinement runs correspond to the identifiers from the shallow analysis run, both executions have to be identical in terms of the tracing code that is executed.
+Hence, it is not sufficient to instrument only the method that represents the current step of the execution history.
+It is important that the method wrappers request identifiers from the tracer in the exact same order and quantity as in the shallow analysis run.
+For instance, if an object identifier would not be requested, all subsequent assigned identifiers would differ from the ones assigned during the first tracing run.
+Therefore, the refinement runs for object reference tracing mostly correspond to a shallow analysis run.
 
 \section{Visualization}
 \subsection{Graph Layouting}
