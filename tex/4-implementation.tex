@@ -1,4 +1,4 @@
-\chapter{\textsc{PathObjects} for Squeak Smalltalk}
+\chapter{\textsc{PathObjects} for Squeak/Smalltalk}
 \label{c:implementation}
 
 \todo[inline]{Introduction}
@@ -141,9 +141,14 @@ More often than not, this is the actually relevant information for a developer.
 Therefore, we decided to flatten the objects returned by \inlinecode{outboundPointers}, and generate identifiers as depicted in Section \ref{ss:ImplementationTracingIdentification} for the resulting objects.
 Thus, objects that are wrapped in collections are included when a developer queries the outbound references of a specific object.
 
-However, this is an expensive operation in two respects.
-First, a call of this method is time consuming and thus could slow down the tracing process significantly.
+Unfortunately, the collection of object references is an expensive operation in two respects.
+First, a call of \inlinecode{outboundPointers} is time consuming and thus could slow down the tracing process significantly.
 Second, the amount of collected data could grow rapidly if all outbound pointers of all involved objects were collected up-front.
+For these reasons, we decided to implement the tracking of object references with the help of refinement runs.
+As soon as the user selects an object for reference tracing, the outbound pointers of this object are collected whenever the user steps to another part of of the execution history.
+The respective referenced objects are highlighted with a user-defined background color.
+
+
 
 \section{Visualization}
 \subsection{Graph Layouting}
