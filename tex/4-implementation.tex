@@ -124,6 +124,18 @@ Furthermore, it provides entry points for the exploration of outbound object ref
 
 \subsection{Reference Tracing}
 \label{ss:ImplementationTracingReferences}
+Outbound object pointers - or in other words the set of objects a specific object references - can be determined with the help of  \inlinecode{Object>>outboundPointers}.
+However, this method returns only the set of directly referenced objects.
+For example, if an instance of \inlinecode{Subject} administers a collection of observers, it would return only the collection object itself, but not the observer objects contained in this collection.
+Undoubtedly, this is the technically correct behavior.
+But for our purposes it seems more suitable to return those indirectly referenced objects along with the actual references. 
+More often than not, this is the actually relevant information for a developer.
+Therefore, we decided to flatten the objects returned by \inlinecode{outboundPointers}, and generate identifiers as depicted in Section \ref{ss:ImplementationTracingIdentification} for the resulting objects.
+Thus, objects that are wrapped in collections are included when a developer queries the outbound references of a specific object.
+
+However, this is an expensive operation in two respects.
+First, a call of this method is time consuming and thus could slow down the tracing process significantly.
+Second, the amount of collected data could grow rapidly if all outbound pointers of all involved objects were collected up-front.
 
 \section{Visualization}
 \subsection{Graph Layouting}
