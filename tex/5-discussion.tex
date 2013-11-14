@@ -244,17 +244,17 @@ Section \ref{ss:DiscussionEvaluationResults} depicts the results of the evaluati
 \label{s:DiscussionLimitations}
 The operation of our prototype and the underlying tracing mechanism take some preconditions for granted whose non-compliance could potentially render them non-functional.
 Those requirements are depicted in the following sections.
-The restrictions that apply when dealing with systems that use the meta-programming and reflection capabilities of the Squeak environment are described in Section \ref{ss:LimitationsMeta}.
-The importance of test coverage is presented in Section \ref{ss:LimitationsCoverage}.
-Finally, the reliance on test quality is depicted in Section \ref{ss:LimitationsTestQuality}.
+The restrictions that apply when dealing with systems that use the meta-programming and reflection capabilities of the Squeak environment are described in Section \ref{ss:DiscussionLimitationsMeta}.
+The importance of test coverage is presented in Section \ref{ss:DiscussionLimitationsCoverage}.
+Finally, the reliance on test quality is depicted in Section \ref{ss:DiscussionLimitationsTestQuality}.
 
 \subsection{Metaprogramming and Reflection}
-\label{ss:LimitationsMeta}
+\label{ss:DiscussionLimitationsMeta}
 While it is not utterly impossible to trace and visualize programs that use meta-programming and reflection capabilities, the application of such techniques still might cause severe issues in conjunction with the tracing approach of \textsc{PathObjects}.
 \todo{finish}
 
 \subsection{Reliance on Test Coverage}
-\label{ss:LimitationsCoverage}
+\label{ss:DiscussionLimitationsCoverage}
 Since only test cases can serve as reproducible entry points in our current prototypic implementation, only those parts of a system can be visualized that are covered by at least one test case.
 In practice, this means that not all entities and execution branches that are actually in use during productive executions of the system can necessarily be visualized with existing tests.
 Nonetheless, it is also feasible to write specific unit tests for the soul purpose of visualization.
@@ -263,7 +263,7 @@ However, this strategy requires that the user already has a certain degree of kn
 In such cases, one might not be able to construct a working scenario.
 
 \subsection{Reliance on Test Quality} \todo{missing refs}
-\label{ss:LimitationsTestQuality}
+\label{ss:DiscussionLimitationsTestQuality}
 The best practices for unit testing and the characteristics unit tests should display enjoy broad consent throughout the agile software development community.
 To name a few, they are supposed to be isolated, to be free of side-effects, to run fast, and to be reproducible, automated and unique \cite{meszaros_xunit_2006, beck_test_2002}.
 However, when tests are being used as entry points for \textsc{PathObjects}, two of those recommendations become requirements.

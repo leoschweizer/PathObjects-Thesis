@@ -98,6 +98,11 @@ Afterwards, the test is executed again and the installed method wrapper verifies
 If this is the case, the state of this argument is recorded and reported to the tracer.
 Once the test is finished, all method wrappers are removed, and the trace visualization can be updated with the refined information.
 
+The fundamental prerequisite of this strategy is that test cases are strictly deterministic (cf. Section \ref{ss:DiscussionLimitationsTestQuality}).
+Otherwise, the returned information might not be related to the developer's query.
+For instance, the state of a different object might be returned when a method is called with different arguments in repeated executions.
+Additionally, non-deterministic branching that yields a diverging call tree could have the consequence that the refinement run never reaches the specified point of the execution.
+
 \subsubsection{Extensions}
 In order to be suitable for the purposes of \textsc{PathObjects}, the tracing framework had to be extended in two places.
 First, a custom \inlinecode{MethodWrapper} had to be implemented that collects the information required for the reconstruction of object interactions.
