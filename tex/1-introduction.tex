@@ -6,18 +6,18 @@ During this process, developers construct a mental model that maps the behavior 
 But while the programming languages and concepts developers use have evolved notably from eighty-column cards and assembly language to object-oriented programming, the further development of established tools that are supposed to help in the understanding of software systems seemingly was unable to keep pace in two respects.
 
 Diehl describes the first and prevalent issue as follows: "programmers tend to adapt to the level of representation provided by the computer, instead of adapting the computer's representations to their perceptive abilities" \cite{diehl_software_2007}.
-In other words, the way program behavior is presented to the developers is characterized by the low level concepts computers operate on, instead of the high level concepts that are used to design software systems.
+In other words, the way program behavior is presented to developers is characterized by the low level concepts computers operate on, instead of the high level concepts that are used to design software systems.
 The result of this phenomenon is a huge gap between the metaphors and concepts used during development, and the representation of program behavior tools provide.
 
 Conventional symbolic debuggers that commonly are included in object-oriented development environments constitute an example par excellence.
 While developers design a system with objects and their interactions in mind, the information presentation of those debuggers is centered around the call stack of the current execution.
 This presentation rather conforms to the processes on machine level than to the object-oriented concepts used during the development of the system.
-Consequently, it is not particularly suited to answer questions that often arise during development of object-oriented systems.
+Consequently, it is not particularly suited to answer questions about object-oriented programs straightforwardly.
 For instance, the presentation of the call stack does not help to identify which objects are involved in the current computation, at which other parts of the call stack those objects reappear, or which other objects they are communicating with.
 
 The second issue is related to the questions developers frequently ask during development and the information that is required to answer these questions \cite{sillito_asking_2008, latoza_hard--answer_2010, abi-antoun_questions_2010}.
 Aspects covered by such questions range from information that is typically maintained by version control systems, like which recent changes have been made to specific parts of the system, to information that commonly has to be collected with the help of external tools, like profiling information.
-Beyond that, questions about the actual program behavior at runtime play an important role when developers are confronted with the source code of an unknown system.
+Beyond that, questions about the actual program behavior play an important role when developers are confronted with the source code of an unknown system.
 However, there is no established combined view on information from these different dimensions, and developers have to collect it manually from the different tools.
 This can be a tedious and time consuming task.
 
@@ -86,7 +86,7 @@ The primary purpose of \textsc{PathFinder}, the tool that is provided to present
 Therefore, it offers visualizations in the form of call trees.
 Again, this presentation conforms to the technical procedures rather than being guided by the high level concepts of object-orientation.
 
-The solution we propose tackles the two main problems identified above: first, traditional development tools tend to adapt the low level concepts of computers instead of adapting the high level concepts used during development.
+This work proposes to tackle the two main problems identified above: first, traditional development tools tend to adapt the low level concepts of computers instead of adapting the high level concepts used during development.
 However, an information representation of objects and their interactions is hard to provide in a beneficial manner due to the scalability issues of dynamic analysis techniques.
 Therefore, we propose to extend the \emph{Step-wise Run-time Analysis} tracing technique in a way that preserves its immediate character and low memory footprint while at the same time making it suitable for the reconstruction of object interactions.
 Based on this extension, we further propose an interactive information presentation at the abstraction level of objects that aims at avoiding the cognitive overload caused by existing dynamic analysis tools.
@@ -97,9 +97,9 @@ Thus, the need to manually collect information from a multitude of separate tool
 \section{Contributions}
 \label{s:contributions}
 
-\paragraph{A Lightweight Approach for Tracing Object Interactions} We present an extension of the \emph{Step-wise Run-time Analysis} approach that allows to reconstruct object interactions from traces while maintaining immediacy and a low memory footprint.
-
 \paragraph{An Interactive Diagram Notation for Object Interactions} We propose an interactive way of diagramming object states and interactions that allows users to navigate through program executions, to explore object states and relationships, to focus on specific parts of interest, and to augment the displayed information through user-defined information layers.
+
+\paragraph{A Lightweight Approach for Tracing Object Interactions} We present an extension of the \emph{Step-wise Run-time Analysis} approach that allows to reconstruct object interactions from traces while maintaining immediacy and a low memory footprint.
 
 \paragraph{A Prototypic Implementation for Squeak/Smalltalk} We validate the applicability of our approach with the help of an implementation for the Squeak development environment.
 
@@ -107,12 +107,12 @@ Furthermore, we use this prototype to verify that our proposed solution actually
 
 \section{Thesis Structure}
 The remainder of this thesis is structured as follows:
-Chapter \ref{c:Background} gives an overview of the background of program comprehension, of techniques that are typically used to collect the runtime information required for the analysis of object interactions, and of established diagram notations that cover the state of objects and their interactions.
-The chapter concludes with a summary of the problems of the presented methods and techniques and their inadequacy for our objectives.
-Chapter \ref{c:approach} describes \textsc{PathObjects}, which represents our approach to the solution of those problems.
-Chapter \ref{c:implementation} presents a prototypical implementation of \textsc{PathObjects} for the Squeak Smalltalk environment.
-Chapter \ref{c:discussion} gives an overview of the runtime performance and space consumption of our approach and shows that both are sufficient to provide an immediate user experience.
-The user study that was performed to validate the perceivability of our information presentation and its effectiveness in terms of aiding in program comprehension is presented.
-The chapter concludes with an overview of the limitations of our approach and an analysis of the applicability to other programming languages and environments.
-Chapter \ref{c:relatedwork} shows related work in the areas of trace visualization, debugging, and education and relates the presented approaches to \textsc{PathObjects}.
-Chapter \ref{c:conclusions} concludes this work and presents reasonable directories for future research.
+Chapter \ref{c:Background} looks into the background of program comprehension and into techniques that are typically used to collect the runtime information required for the analysis of object interactions.
+Furthermore, established diagram notations that cover the state of objects and their interactions are presented.
+The chapter concludes with a discussion of the presented techniques and their inadequacy for our objectives.
+Chapter \ref{c:approach} describes \textsc{PathObjects}, which represents our proposed solution to those problems.
+Chapter \ref{c:implementation} presents a prototypical implementation of \textsc{PathObjects} for the Squeak/Smalltalk environment and describes the required extensions of the \textsc{PathTools} framework.
+Chapter \ref{c:discussion} evaluates our approach with the help of a performance analysis and a user evaluation. 
+The chapter concludes with a discussion of the limitations of our approach and its applicability to other programming languages and environments.
+Chapter \ref{c:relatedwork} shows related work in the areas of trace visualization, debugging, and education.
+Chapter \ref{c:conclusions} concludes this work and presents reasonable directions for future research.
