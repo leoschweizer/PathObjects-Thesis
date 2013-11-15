@@ -21,6 +21,7 @@ Beyond that, questions about the actual program behavior play an important role 
 However, there is no established combined view on information from these different dimensions, and developers have to collect it manually from the different tools.
 This can be a tedious and time consuming task.
 
+\section{Problem}
 Consequently, it is reported that developers spend up to 60\% of the software engineering effort on building a satisfactory understanding of the system at hand \cite{corbi_program_1989, basili_evolving_1997, ducasse_class_2005, rothlisberger_feature_2007, cornelissen_execution_2008}.
 And not only software developers would benefit if the effort that is spent on program comprehension could be reduced significantly.
 Speeding up the activity of understanding a software system enables developers to eliminate defects faster.
@@ -60,7 +61,6 @@ The fourth and last problem also is a direct result of overly large traces.
 The visualizations of traces themselves grow proportional to the size of the traces.
 This makes it increasingly difficult for the observer to perceive and comprehend the actual information which is encoded in the visualization.
 
-\section{Research Questions}
 As pointed out, program comprehension and dynamic analysis are both time consuming tasks on their own.
 Beyond that, dynamic analysis does not necessarily ease the process of program understanding due to the sheer amount of data that is presented to the observer.
 This seems to imply that the latter is ill-suited to help in the reduction of the time spent on comprehending the system at hand.
@@ -75,6 +75,8 @@ Since it is only an assumption that such an information presentation would actua
 \begin{quote}
 2) Can such an information presentation actually aid in the process of program comprehension?
 \end{quote}
+
+\section{Revealing Object Interactions with \textsc{PathObjects}}
 
 Perscheid et al. have conducted research on how to cope with some of the shortcomings of dynamic analysis and have proposed \emph{Step-wise Run-time Analysis} as lightweight alternative to conventional tracing approaches \cite{perscheid_immediacy_2010}.
 The fundamental idea is to use test cases as reproducible entry points into the behavior of specific usage scenarios of a system.
@@ -94,16 +96,19 @@ The information requirements developers have during the process of program compr
 We show how information from various domains can be integrated into the visualization of object interactions with the help of user defined information layers.
 Thus, the need to manually collect information from a multitude of separate tools can be eliminated.
 
-\section{Contributions}
-\label{s:contributions}
+\todo[inline]{introduce contributions}
 
-\paragraph{An Interactive Diagram Notation for Object Interactions} We propose an interactive way of diagramming object states and interactions that allows users to navigate through program executions, to explore object states and relationships, to focus on specific parts of interest, and to augment the displayed information through user-defined information layers.
+\begin{itemize}
+\renewcommand{\labelitemiv}{$\ast$}
 
-\paragraph{A Lightweight Approach for Tracing Object Interactions} We present an extension of the \emph{Step-wise Run-time Analysis} approach that allows to reconstruct object interactions from traces while maintaining immediacy and a low memory footprint.
+\item \textbf{An Interactive Diagram Notation for Object Interactions} We propose an interactive way of diagramming object states and interactions that allows users to navigate through program executions, to explore object states and relationships, to focus on specific parts of interest, and to augment the displayed information through user-defined information layers.
 
-\paragraph{A Prototypic Implementation for Squeak/Smalltalk} We validate the applicability of our approach with the help of an implementation for the Squeak development environment.
+\item \textbf{A Lightweight Approach for Tracing Object Interactions} We present an extension of the \emph{Step-wise Run-time Analysis} approach that allows to reconstruct object interactions from traces while maintaining immediacy and a low memory footprint.
 
-Furthermore, we use this prototype to verify that our proposed solution actually can help developers in the process of program comprehension with the help of a user evaluation.
+\item \textbf{A Prototypic Implementation for Squeak/Smalltalk} We validate the applicability of our approach with the help of an implementation for the Squeak development environment.
+\end{itemize}
+
+Furthermore, we use this prototype to verify that our proposed solution actually can help developers in the process of program comprehension with the help of a user evaluation. \todo{summarize results}
 
 \section{Thesis Structure}
 The remainder of this thesis is structured as follows:
