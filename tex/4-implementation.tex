@@ -159,31 +159,42 @@ Therefore, the refinement runs for object reference tracing mostly correspond to
 \section{Visualization}
 \subsection{Object Placement and Edge Routing}
 
+This Section describes how \textsc{PathObjects} traces can be mapped to directed multigraphs and describes how we used the state of the art in graph drawing to place objects and messages in our interactive diagrams.
+Furthermore, the interoperability of \textsc{Graphviz} and the Squeak environment is depicted.
+
 \subsubsection{Preliminary Considerations}
-The structure of a \textsc{PathObjects} trace can be interpreted as directed multigraph $G=(V,E)$, meaning that the edges constitute a multiset rather than a set.
+The structure of a \textsc{PathObjects} trace can be interpreted as directed multigraph $G$, meaning that the edges constitute a multiset rather than a set (cf. Definition \ref{eq:ImplementationGraph}).
+
+\begin{equation}
+G = (V, E)
+\label{eq:ImplementationGraph}
+\end{equation}
+
 Objects are the set of vertices $V$ in this graph.
 Message sends between two objects form the multiset of ordered pairs $E$, with each element having the form $(S,R)$.
 Thereby, $S$ denotes the sender of a message, and $R$ its receiver.
-Contrarily to the traditional definition of simple directed graphs, loops have to be allowed, since message exchange between objects is bidirectional more than often.
+Contrarily to the traditional definition of simple directed graphs \cite{berge_graphs_1985}, loops have to be allowed, since message exchange between objects is bidirectional more than often.
 
-The multiset $M \subseteq E$ of messages that are exchanged between two specific objects $N_1$ and $N_2$ can be expressed with the help of formula \ref{eq:ImplementationGraphMessages}.
+The multiset $M \subseteq E$ of messages that are exchanged between two specific objects $n_1$ and $n_2$ can be expressed with the help of formula \ref{eq:ImplementationGraphMessages}.
 
 \begin{equation}
-M(N_1, N_2) = \left\{ (s,r) \in E \phantom{i}| \phantom{i} (N_1 = s \land N_2 = r) \lor (N_1 = r \land N_2 = s) \right\}
+M(n_1, n_2) = \left\{ (s,r) \in E \phantom{i}| \phantom{i} (n_1 = s \land n_2 = r) \lor (n_1 = r \land n_2 = s) \right\}
 \label{eq:ImplementationGraphMessages}
 \end{equation}
 
-Consequently, this allows to express the number of messages $n_M$ that are exchanged between two objects as cardinality of $M(N_1, N_2)$ (cf. Formula \ref{eq:ImplementationGraphMessageCardinality}).
+Consequently, this allows to express the number of messages $C_M$ that are exchanged between two objects as cardinality of $M$ (cf. Formula \ref{eq:ImplementationGraphMessageCardinality}).
 
 \begin{equation}
-n_M(N_1, N_2) = \left\vert \phantom{i} M(N_1, N_2) \phantom{i} \right\vert
+C_M(n_1, n_2) = \left\vert \phantom{i} M(n_1, n_2) \phantom{i} \right\vert
 \label{eq:ImplementationGraphMessageCardinality}
 \end{equation}
 
-\subsubsection{Graphviz}
+\subsubsection{Graph Drawing}
+
+\subsubsection{Graphviz Integration}
 
 \begin{equation}
-e(N_1, N_2) = min(n_M(N_1, N_2),\phantom{i} \text{MAX\_MESSAGES})
+e(n_1, n_2) = min(C_M(n_1, n_2),\phantom{i} \text{MAX\_MESSAGES})
 \end{equation}
 
 \subsection{Information Layers}
