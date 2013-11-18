@@ -45,45 +45,6 @@
 
 \newcommand{\cursor}{\textcolor{black}{\rule[-0.6ex]{1.1pt}{2.5ex}}}
 
-\lstdefinelanguage{JavaScript}{
-  basicstyle=\ttfamily\small,
-  keywords={typeof, for, new, try, true, false, function, return, null, catch, switch, var, if, in, while, do, else, case, break,throw,this,debugger},
-  keywordstyle=\color{black}\bfseries,
-  classoffset=1,
-  morekeywords={module, require, requires, exports, define, subclass, import, export, from},
-  keywordstyle=\color{black}\bfseries\itshape,
-  classoffset=0,
-  moredelim=**[is][{\btHL\color{btFont}}]{@}{@},
-  moredelim=**[is][{\btHL}]{@@}{@@},
-  moredelim=**[is][{\btHL[fill=btBack3]}]{@@@}{@@@},
-  moredelim=**[is][{\btHL[fill=btBack1, rounded corners=0pt, text width=\textwidth-5ex]}]{@[}{]@},
-  moredelim=**[is][{\btHL[fill=btBack2, rounded corners=0pt, text width=\textwidth-5ex]}]{@@[}{]@@},
-  moredelim=**[is][{\btHL[fill=btBack3, rounded corners=0pt]}]{@@@[}{]@@@},
-  moredelim=**[is][\cursor\ignorespaces]{|@}{|},
-  %identifierstyle=\large,
-  sensitive=false,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  commentstyle=\color{gray}\slshape,
-  stringstyle=\color{darkgray},
-  morestring=[b]',
-  morestring=[b]",
-  captionpos=b,
-  showstringspaces=false,
-  tabsize=2,
-  resetmargins=true,
-  frame=lines,
-  framexleftmargin=5.0ex,
-  upquote=true,
-  basewidth={0.57em,0.45em},
-  aboveskip=\bigskipamount,
-  lineskip=.2ex,
-  escapechar=\`,
-  escapeinside={(*@}{@*)},
-  numbers=left,
-  xleftmargin=5ex
-}
-
 \lstdefinelanguage[80]{Smalltalk}{
   basicstyle=\ttfamily\small,
   morekeywords={true,false,self,super,nil,thisContext},
@@ -108,6 +69,26 @@
 \lstdefinestyle{SmalltalkStyle}{
   literate={:=}{{\(\gets\)}}1
         {^}{{\(\uparrow\)}}1
+}
+
+\lstdefinelanguage{Graphviz}{
+  basicstyle=\ttfamily\small,
+  morekeywords={digraph},
+  sensitive=true,
+  morestring=[d]',
+  numbers=left,
+  basewidth={0.57em,0.45em},
+  aboveskip=\bigskipamount,
+  lineskip=.2ex,
+  frame=lines,
+  framexleftmargin=5.0ex,
+  xleftmargin=5ex,
+  tabsize=4,
+  morecomment=[s]{"}{"},
+  commentstyle=\color{gray}\slshape,
+  morestring=[d]',
+  stringstyle=\color{-red!75!green!50!blue},
+  captionpos=b
 }
 
 \lstset{defaultdialect=[80]{Smalltalk}}
@@ -137,13 +118,6 @@
 }
 \xpfDefaultMode
 
-\lstnewenvironment{javascript}[1][]{
-	\lstset{language=JavaScript,#1}
-	\xpfListingMode
-}{
-	\xpfDefaultMode
-}
-
 \lstnewenvironment{smalltalk}[1][]{
 	\lstset{language=Smalltalk,#1}
 	\xpfListingMode
@@ -151,13 +125,11 @@
 	\xpfDefaultMode
 }
 
-\lstnewenvironment{javascriptcolumn}[1][]{
-	\lstset{language=JavaScript,frame=none,aboveskip=0pt,belowskip=0pt,#1}
+\lstnewenvironment{graphviz}[1][]{
+	\lstset{language=Graphviz,float=tb,frame=single,#1}
 	\xpfListingMode
-	\minipage{0.375\linewidth}
 }{
-  \endminipage
-	\xpfDefaultMode 
+	\xpfDefaultMode
 }
 
 \selectlanguage{english}
