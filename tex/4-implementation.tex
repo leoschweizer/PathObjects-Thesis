@@ -189,12 +189,19 @@ C_M(n_1, n_2) = \left\vert \phantom{i} M(n_1, n_2) \phantom{i} \right\vert
 \label{eq:ImplementationGraphMessageCardinality}
 \end{equation}
 
+The transformation of a \textsc{PathObjects} trace to a graph structure is straightforward.
+All occurring objects are mapped one-to-one to vertices of the graph.
+However, not all messages have to be represented by corresponding edges due to the fact that only a predefined number of messages $M_{max}$ are maximally shown in a diagram at the same time.
+For instance, if $M_{max}$ is set to $4$, the graph that is presented to the user can never show more than $4$ edges between two objects, even if $5$ or more messages are exchanged between them.
+Consequently, the number of edges $C_E$ that are required between two specific vertices is the minimum of the predefined maximum value $M_{max}$ and the number of messages that are actually exchanged between them.
+
+\begin{equation}
+C_E(n_1, n_2) = min(C_M(n_1, n_2),\phantom{i} M_{max})
+\end{equation}
+
 \subsubsection{Graph Drawing}
 
 \subsubsection{Graphviz Integration}
 
-\begin{equation}
-e(n_1, n_2) = min(C_M(n_1, n_2),\phantom{i} \text{MAX\_MESSAGES})
-\end{equation}
 
 \subsection{Information Layers}
