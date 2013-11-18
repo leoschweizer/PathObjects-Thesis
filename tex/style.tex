@@ -62,7 +62,6 @@
   tabsize=4,
   morecomment=[s]{"}{"},
   commentstyle=\color{gray}\slshape,
-  morestring=[d]',
   stringstyle=\color{-red!75!green!50!blue},
   captionpos=b
 }
@@ -71,23 +70,24 @@
         {^}{{\(\uparrow\)}}1
 }
 
+\definecolor{mygreen}{rgb}{0,0.6,0}
 \lstdefinelanguage{Graphviz}{
   basicstyle=\ttfamily\small,
-  morekeywords={digraph},
+  morekeywords={digraph, graph, node, edge},
   sensitive=true,
-  morestring=[d]',
+  morestring=[d]",
   numbers=left,
   basewidth={0.57em,0.45em},
   aboveskip=\bigskipamount,
   lineskip=.2ex,
-  frame=lines,
+  frame=single,
+  stringstyle=\color{mygreen},
+  showspaces=false,
+  showstringspaces=false,
   framexleftmargin=5.0ex,
   xleftmargin=5ex,
   tabsize=4,
-  morecomment=[s]{"}{"},
   commentstyle=\color{gray}\slshape,
-  morestring=[d]',
-  stringstyle=\color{-red!75!green!50!blue},
   captionpos=b
 }
 
@@ -126,7 +126,7 @@
 }
 
 \lstnewenvironment{graphviz}[1][]{
-	\lstset{language=Graphviz,float=tb,frame=single,#1}
+	\lstset{language=Graphviz,float=tb,#1}
 	\xpfListingMode
 }{
 	\xpfDefaultMode
