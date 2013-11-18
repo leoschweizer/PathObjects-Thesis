@@ -203,9 +203,16 @@ C_E(n_1, n_2) = min(C_M(n_1, n_2),\phantom{i} M_{max})
 
 \subsubsection{Graphviz Integration}
 
-\inlinecode{dot graph.dot -s100 -y -Tplain-ext -o graph2.dot}
+The graph drawing process consists of three phases.
+First, a so-called dot-file is generated that contains a description of the graph in the format \textsc{Graphviz} expects.
+Second, \textsc{Graphviz} is executed and the generated file is used as input parameter.
+The result of this execution is a file that contains the coordinates of nodes as well as the coordinates of all edge bends.
+Third, this file is parsed, the coordinates are translated to the Squeak coordinate system, and the morphs of the visualization are placed accordingly.
 
-\begin{graphviz}[caption={Foobar}]
+For each object that occurs in a trace, a node definition is added to the \textsc{Graphviz} graph definition.
+For each pair of objects $(n_1, n_2)$, $C_E(n_1, n_2)$ edge definitions are added to the definition.
+
+\begin{graphviz}[caption={Exemplary definition of a \textsc{Graphviz} graph, consisting of two nodes and three directed edges.}, label=lst:ImplementationGraphDot]
 digraph Observers {
 	graph [rankdir=LR, splines=ortho]
 	node [shape=none, fixedsize=true]
@@ -221,7 +228,26 @@ digraph Observers {
 }
 \end{graphviz}
 
-\begin{graphviz}[caption={Foobar}]
+An example dot-file that results from the generation phase is given in Listing \ref{lst:ImplementationGraphDot}.
+Line one starts with a definition of a directed graph.
+Edge routing is configured to be orthogonal, and nodes and edges are configured to fit exactly to the extent definitions that are given later.
+Lines six and seven show two exemplary definitions of nodes.
+They start with an identifier, which conforms to the identifiers that are used during tracing, and is followed by a specification of the extents.
+The labels are for illustration purposes only and are not required for the graph drawing functionality in our use case.
+Lines $9-11$ show three definitions of edges, whereby one is a self loop and the other two illustrate that graphs are multigraphs.
+
+Once the dot-file is written, a native installation of \textsc{Graphviz} is invoked through the Squeak Foreign Function Interface with the following command line:
+\begin{center}
+\inlinecode{dot graph.dot -s100 -y -Tplain-ext -o layout.dot}
+\end{center}
+The \inlinecode{-s100} argument instructs \textsc{Graphviz} to use a scale of 100 dots per inch.
+This is necessary since \textsc{Graphviz} uses inches as internal measurement unit, and all coordinates and extent attributes have to be converted from points to inches and vice versa.
+Using a multiple of 10 ensures that no rounding errors occur on that account.
+The \inlinecode{-y} flag causes an inversion of the vertical axis, and thus the usage of a coordinate system with top-left origin.
+Since Squeak uses such a coordinate system, this obviates the need to manually perform this conversion later.
+Finally, \textsc{Graphviz} is instructed to use the \inlinecode{plain-ext} format for the results, and to write the calculated layout to a new file called \inlinecode{layout.dot}.
+
+\begin{graphviz}[caption={Output in plain-ext format as produced by \textsc{Graphviz} for the input from Listing \ref{lst:ImplementationGraphDot}}, label=lst:ImplementationGraphPlainExt]
 graph 1 14.306 4.5451
 node 1002 9.9444 3.1528 1.5417 0.375 "a ClockTimer" ...
 node 1027 13.042 2.0139 1.6111 0.375 "a SDigitalClock" ...
