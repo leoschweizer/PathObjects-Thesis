@@ -11,14 +11,47 @@ Finally, Section \ref{s:ImplementationLayouting} illustrates how \textsc{PathObj
 \section{Prototypic Implementation}
 \label{s:ImplementationPrototype}
 
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=1\textwidth]{../images/04-ImplMainWindow}
-%	\caption[TOC Caption]{Foobar}
-%	\label{fig:ImplementationMainWindow}
-%\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=1\textwidth]{../images/04-ImplMainWindow}
+	\caption[TOC Caption]{Foobar}
+	\label{fig:ImplementationMainWindow}
+\end{figure}
 
 \subsection{Navigation}
+
+\begin{figure}[tb]
+	\centering
+	
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+        \includegraphics[width=\textwidth]{../images/04-ImplTimeline1}
+        \caption[Default View]{}
+		\label{fig:ImplementationTimelineDefault}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../images/04-ImplTimeline2}
+		\caption[Search Result Highlighting]{}
+		\label{fig:ImplementationTimelineSearch}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../images/04-ImplTimeline3}
+		\caption[Differing Metrics Applied to Item Height and Color]{}
+		\label{fig:ImplementationTimelineMetrics}
+	\end{subfigure}
+	
+	\caption[Variations of the Timeline View]{Three variations of the timeline view that show the exact same execution history; in each case, the current step is highlighted and the according return point is marked in red.
+		a) Default view with mapping of stack depth to item height.
+		b) Search result highlighting for the attach: message.
+		c) Differing metrics applied to item height (number of variable accesses in each method) and item color (lines of code).
+	}
+	\label{fig:ImplementationTimeline}
+\end{figure}
+
 \subsection{Exploration}
 \subsection{Focusing}
 \subsection{Information Layers}
