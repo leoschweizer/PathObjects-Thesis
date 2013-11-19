@@ -1,9 +1,15 @@
-\chapter{\textsc{PathObjects} for Squeak/Smalltalk}
+\chapter{PathObjects for Squeak/Smalltalk}
 \label{c:implementation}
-
-\todo[inline]{Introduction}
+To validate the applicability of the \textsc{PathObjects} concept, we put it into practice in the form of a prototype for the Squeak/Smalltalk environment.
+This chapter describes the implementation of this prototype, which also served as a basis for the performance analysis and user evaluation (cf. Chapter \ref{c:discussion}).
+Section \ref{s:ImplementationPrototype} shows how the single concepts - namely navigation, exploration, focusing, and information layers - are realized.
+The subsequent sections present technical implementation details.
+Section \ref{s:ImplementationTracing} describes how the lightweight tracing approach works.
+Furthermore, it explains the necessary extensions of the \textsc{PathTools} framework that allow us to reconstruct object interactions and referential relationships.
+Finally, Section \ref{s:ImplementationLayouting} illustrates how \textsc{PathObjects} traces can be mapped to graphs, and how this circumstance is exploited to arrange objects and to route messages with the help of \textsc{Graphviz}.
 
 \section{Prototypic Implementation}
+\label{s:ImplementationPrototype}
 
 %\begin{figure}
 %	\centering
@@ -18,6 +24,7 @@
 \subsection{Information Layers}
 
 \section{Data Acquisition}
+\label{s:ImplementationTracing}
 This section describes how the data required for the reconstruction of object interactions is gathered.
 The basic prerequisite is that objects can be distinguished and identified.
 Since the Squeak image does not offer an adequate functionality, the strategy that was applied to solve this issue is depicted in Section \ref{ss:ImplementationTracingIdentification}.
@@ -159,6 +166,7 @@ Therefore, the refinement runs for object reference tracing mostly correspond to
 \section[Object Placement and Edge Routing]{Object Placement and Edge Routing%
 \sectionmark{Graph Drawing}}
 \sectionmark{Graph Drawing}
+\label{s:ImplementationLayouting}
 
 This Section describes how \textsc{PathObjects} traces can be mapped to directed multigraphs and describes how we used the state of the art in graph drawing to place objects and messages in our interactive diagrams.
 Furthermore, the interoperability of \textsc{Graphviz} and the Squeak environment is depicted.
@@ -193,7 +201,7 @@ C_M(n_1, n_2) = \left\vert \phantom{i} M(n_1, n_2) \phantom{i} \right\vert
 The transformation of a \textsc{PathObjects} trace to a graph structure is straightforward.
 All occurring objects are mapped one-to-one to vertices of the graph.
 However, not all messages have to be represented by corresponding edges due to the fact that only a predefined number of messages $M_{max}$ are maximally shown in a diagram at the same time.
-For instance, if $M_{max}$ is set to $4$, the graph that is presented to the user can never show more than $4$ edges between two objects, even if $5$ or more messages are exchanged between them.
+For instance, if $M_{max}$ is set to $4$, the graph that is presented to the user can never show more than $4$ edges between two objects at once, even if $5$ or more messages are exchanged between them.
 Consequently, the number of edges $C_E$ that are required between two specific vertices is the minimum of the predefined maximum value $M_{max}$ and the number of messages that are actually exchanged between them.
 
 \begin{equation}
@@ -252,6 +260,18 @@ Each line represents either a graph definition, a node definition, an edge defin
 Analogous to the input values, the measurement unit for widths, heights, and coordinates is inches.
 To convert those values to pixel values, they have to be multiplied with the resolution argument passed to the \inlinecode{dot} executable.
 
+\begin{graphviz}[caption={Output in plain-ext format as produced by \textsc{Graphviz} for the input from Listing \ref{lst:ImplementationGraphDot}}, label=lst:ImplementationGraphPlainExt]
+graph 1 14.306 4.5451
+node 1002 9.9444 3.1528 1.5417 0.375 "a ClockTimer" ...
+node 1027 13.042 2.0139 1.6111 0.375 "a SDigitalClock" ...
+...
+edge 1002 1002 16 9.1735 3.255 8.6827 3.255 8.1389 3.255 ...
+edge 1002 1027 7 9.8472 2.9659 9.8472 2.6371 9.8472 1.9896 ...
+edge 1002 1027 7 10.719 3.2316 11.558 3.2316 12.778 3.2316 ...
+...
+stop
+\end{graphviz}
+
 The graph definition consists of the scaling factor, the width of the graph (1430px), and its height (454px).
 The node definition contains the identifier of the node, the coordinates of its center, its extent, and its label.
 The styling attributes like border- and background-colors were omitted from the output since they are not relevant for our use case.
@@ -268,18 +288,3 @@ E_i(n_1, n_2, m_i) = m_i \bmod C_E(n_1, n_2)
 \end{equation}
 This ensures that one message will always be mapped to the same edge when a user navigates to a specific point of the execution history repeatedly.
 Furthermore, as pointed out above, it is guaranteed that enough edge definitions exists to depict any given point of the execution history.
-
-\begin{graphviz}[caption={Output in plain-ext format as produced by \textsc{Graphviz} for the input from Listing \ref{lst:ImplementationGraphDot}}, label=lst:ImplementationGraphPlainExt]
-graph 1 14.306 4.5451
-node 1002 9.9444 3.1528 1.5417 0.375 "a ClockTimer" ...
-node 1027 13.042 2.0139 1.6111 0.375 "a SDigitalClock" ...
-...
-edge 1002 1002 16 9.1735 3.255 8.6827 3.255 8.1389 3.255 ...
-edge 1002 1027 7 9.8472 2.9659 9.8472 2.6371 9.8472 1.9896 ...
-edge 1002 1027 7 10.719 3.2316 11.558 3.2316 12.778 3.2316 ...
-...
-stop
-\end{graphviz}
-
-
-\section{Information Layers}
