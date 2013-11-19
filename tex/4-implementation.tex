@@ -247,6 +247,20 @@ The \inlinecode{-y} flag causes an inversion of the vertical axis, and thus the 
 Since Squeak uses such a coordinate system, this obviates the need to manually perform this conversion later.
 Finally, \textsc{Graphviz} is instructed to use the \inlinecode{plain-ext} format for the results, and to write the calculated layout to a new file called \inlinecode{layout.dot}.
 
+As soon as the \textsc{Graphviz} process exits, the resulting layout can be parsed from the generated file.
+An example of this \inlinecode{plain-ext} format is given in Listing \ref{lst:ImplementationGraphDot}.
+Each line represents either a graph definition, a node definition, an edge definition, or the stop identifier which marks the end of the file.
+Analogous to the input values, the measurement unit for widths, heights, and coordinates is inches.
+To convert those values to pixel values, they have to be multiplied with the resolution argument passed to the \inlinecode{dot} executable.
+
+The graph definition consists of the scaling factor, the width of the graph (1430px), and its height (454px).
+The node definition contains the identifier of the node, the coordinates of its center, its extent, and its label.
+The styling attributes like border- and background-colors were omitted from the output since they are not relevant for our use case.
+An edge definition starts with the identifiers of the two nodes connected through this edge.
+It is followed by the number of control points defining the B-spline forming the edge, which conform to edge bends in the case of orthogonal edge routing.
+For instance, the edge in line 5 has 16 bends, and their x and y coordinates are subsequently enumerated in pairs.
+Again, styling information like edge style and color have been omitted.
+
 \begin{graphviz}[caption={Output in plain-ext format as produced by \textsc{Graphviz} for the input from Listing \ref{lst:ImplementationGraphDot}}, label=lst:ImplementationGraphPlainExt]
 graph 1 14.306 4.5451
 node 1002 9.9444 3.1528 1.5417 0.375 "a ClockTimer" ...
