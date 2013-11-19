@@ -156,13 +156,14 @@ It is important that the method wrappers request identifiers from the tracer in 
 For instance, if an object identifier would not be requested, all subsequent assigned identifiers would differ from the ones assigned during the first tracing run.
 Therefore, the refinement runs for object reference tracing mostly correspond to a shallow analysis run.
 
-\section{Visualization}
-\subsection{Object Placement and Edge Routing}
+\section[Object Placement and Edge Routing]{Object Placement and Edge Routing%
+\sectionmark{Graph Drawing}}
+\sectionmark{Graph Drawing}
 
 This Section describes how \textsc{PathObjects} traces can be mapped to directed multigraphs and describes how we used the state of the art in graph drawing to place objects and messages in our interactive diagrams.
 Furthermore, the interoperability of \textsc{Graphviz} and the Squeak environment is depicted.
 
-\subsubsection{Preliminary Considerations}
+\subsection{Preliminary Considerations}
 The structure of a \textsc{PathObjects} trace can be interpreted as directed multigraph $G$, meaning that the edges constitute a multiset rather than a set (cf. Definition \ref{eq:ImplementationGraph}).
 
 \begin{equation}
@@ -199,9 +200,7 @@ Consequently, the number of edges $C_E$ that are required between two specific v
 C_E(n_1, n_2) = min(C_M(n_1, n_2),\phantom{i} M_{max})
 \end{equation}
 
-\subsubsection{Graph Drawing}
-
-\subsubsection{Graphviz Integration}
+\subsection{Graphviz Integration}
 
 The graph drawing process consists of three phases.
 First, a so-called dot-file is generated that contains a description of the graph in the format \textsc{Graphviz} expects.
@@ -274,4 +273,4 @@ stop
 \end{graphviz}
 
 
-\subsection{Information Layers}
+\section{Information Layers}
