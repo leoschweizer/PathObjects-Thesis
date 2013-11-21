@@ -80,6 +80,18 @@ One can see that the current step is the one with by far the most variable acces
 Furthermore, the visualization indicates that most methods have an acceptable length, with the exception of the method that is the implementation of the selected message.
 
 \subsubsection{Minimap}
+Contrary to the timeline, which allows to explore the chronological dimension of execution traces, the mini-map supports developers in the navigation of the spatial dimension of object interaction diagrams.
+It shows all objects that occur in a trace at a glance and allows to jump to any part of the canvas through mouse interactions.
+Furthermore, it depicts which part of the canvas is currently displayed through a miniaturized viewport indicator.
+Figure \ref{fig:ImplementationMinimapDefault} depicts the default mini-map visualization.
+All objects that are involved in the current step, either as sender, receiver, or argument of a message, are marked in green.
+Objects that already occurred in the past of the execution history are depicted as black boxes.
+Objects that did not occur up to the current step but will occur in future steps are marked in light gray.
+Figure \ref{fig:ImplementationMinimapMetric} represents an example how information layers can be applied to the mini-map.
+In this case, the fan-in metric is mapped to the color of the object's representatives.
+The heated-object scale indicates few received messages with light colors and the percipience of many messages in dark colors.
+One can see that one object, namely the clock timer, receives more messages than any other object in this trace.
+
 \subsubsection{Search}
 
 
