@@ -93,7 +93,13 @@ The heated-object scale indicates few received messages with light colors and th
 One can see that one object, namely the clock timer, receives more messages than any other object in this trace.
 
 \subsubsection{Search}
-
+The search bar allows developers to find specific entities of interest.
+It supports two different operational modes, namely precise and fuzzy search.
+Fuzzy search performs a simple substring matching of the given input, and will return any class instance, class, or message whose name partly or fully matches the given search term.
+For instance, this mode makes it possible to find all occurrences of instances of a specific class, by searching for \inlinecode{a ClassName} and omitting the object identifier, which as a matter of fact is part of an object name.
+The precise mode, which is enabled as soon as the developer selects an entry from the list of suggested results, allows to search for specific classes, class instances, or messages.
+For instance, this allows to search for all occurrences of a specific class.
+This would not be possible with fuzzy search alone, since all instances of a class would always also match the search term and would thus lead to a cluttered search result.
 
 \begin{figure}[tb]
 	\centering
