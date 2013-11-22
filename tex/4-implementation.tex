@@ -18,6 +18,26 @@ Finally, Section \ref{s:ImplementationLayouting} illustrates how \textsc{PathObj
 	\label{fig:ImplementationMainWindow}
 \end{figure}
 
+\subsection{Exploration}
+
+\begin{figure}[tb]
+	\centering
+	
+	\begin{subfigure}[b]{0.90\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../images/04-ImplExploration1}
+		\caption[Foo]{}
+		\label{fig:ImplementationMinimapDefault}
+	\end{subfigure}
+	
+	\caption[Foo]{Foo}
+	\label{fig:ImplementationMinimap}
+\end{figure}
+
+\subsubsection{State Exploration}
+\subsubsection{Reference Exploration}
+
+
 \subsection{Navigation}
 \label{ss:ImplementationNavigation}
 The implementation of the \textsc{PathObjects} concept for Squeak/Smalltalk offers three features that assist developers in navigating through an execution history.
@@ -98,8 +118,16 @@ Furthermore, the visualization indicates that most methods have an acceptable le
 		\label{fig:ImplementationMinimapMetric}
 	\end{subfigure}
 	
-	\caption[Foo]{
-	}
+	\vspace{0.5cm}	
+	
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../images/04-ImplSearch}
+		\caption[Foo]{}
+		\label{fig:ImplementationSearch}
+	\end{subfigure}
+	
+	\caption[Foo]{Foo}
 	\label{fig:ImplementationMinimap}
 \end{figure}
 
@@ -116,7 +144,7 @@ The heated-object scale indicates few received messages with light colors and th
 One can see that one object, namely the clock timer, receives more messages than any other object in this trace.
 
 \subsubsection{Search}
-The search bar allows developers to find specific entities of interest.
+The search bar (cf. Figure \ref{fig:ImplementationSearch}) allows developers to find specific entities of interest.
 To simplify the process, entities that match a search term are shown and updated as the developer types.
 The search functionality supports two different operational modes, namely precise and fuzzy search.
 Fuzzy search performs a simple substring matching of the given input, and will return any class instance, class, or message whose name partly or fully matches the given search term.
@@ -125,10 +153,6 @@ The precise mode, which is enabled as soon as the developer selects an entry fro
 For instance, this allows to search for all occurrences of a specific class.
 This would not be possible with fuzzy search alone, since all instances of a class would always also match the search term and would thus lead to a cluttered search result.
 As pointed out before, search results are indicated by highlighting timeline items (cf. Figure \ref{fig:ImplementationTimelineSearch}).
-
-\subsection{Exploration}
-\subsubsection{State Exploration}
-\subsubsection{Reference Exploration}
 
 \subsection{Focusing}
 \subsubsection{Message Filter}
