@@ -228,23 +228,33 @@ As pointed out before, search results are indicated by highlighting timeline ite
 \end{figure}
 
 Information layers allow developers to project arbitrary metrics to various dimensions of \textsc{PathObjects} diagrams.
-The dialog that allows to configure information layers is shown in figure \ref{fig:ImplementationLayers}.
+Thereby, metrics can provide data for messages, objects, or both.
+Consequently, the dimensions that are supported for the visualization of a metric are dependent on the kind of data it provides.
+
+The dialog that allows to add and remove information layers is shown in figure \ref{fig:ImplementationLayers}.
 New layers can be configured with the help of three selection boxes.
 First, developers select a metric they wish to visualize.
 The second box is then populated with all diagram dimensions the selected metric can be mapped to.
-If a dimension is selected that requires the definition of a color scale, this scale can be selected from the third list, which can be ignored otherwise.
-In the depicted example, the developer selected to visualize which methods have been changed last, and wishes to display this information with the help of the width of the edges that represent message sends.
+If the selected dimension requires the definition of a color scale, this scale can be selected from the third list, which can be ignored otherwise.
+In the depicted example, the developer chooses to display which methods have been changed last, and wishes to visualize this information with the help of the width of the edges that represent message sends.
 
-The list filling the center of the dialog shows layers that are currently active.
+Layers that are currently active are shown in the list filling the center of the dialog.
 For instance, one user-defined layer maps the \textsc{Fanin}-metric to the color of objects on the mini-map.
 Another layer maps the \textsc{Fanout}-metric to the background color of objects, and uses a different color scale for this purpose.
-Examples how such layers affect the visualization of various diagram dimensions already have been given in the previous sections (cf. Figures \ref{fig:ImplementationTimelineMetrics}, \ref{fig:ImplementationTimelineMetrics}).
+Examples how such layers affect the visualization of various diagram dimensions already have been given in the previous sections (cf. Figures \ref{fig:ImplementationTimelineMetrics}, \ref{fig:ImplementationMinimapMetric}).
 
-The metrics that are currently supported are listed in Table x and related to the diagram dimensions they can be applied to.
+Table \ref{t:ImplementationLayers} lists the metrics that are currently supported and relates them to applicable diagram dimensions.
 However, the supported metrics as well as the dimensions these metrics can be mapped to constitute an extension point of \textsc{PathObjects}.
-The implementation of metrics follow the strategy pattern.
+The implementation of metrics follows the strategy pattern.
 For instance, if a new metric should be added that measures the main memory consumption of single objects, one would have to implement a subclass that lazily executes the test case under observation, performs the required measurements, and returns the measured values for specific objects on demand.
 This new metric then could automatically be mapped to any dimension that is suitable to visualize object metrics.
+
+The supported diagram dimensions are represented by a visitor pattern.
+For example, adding support for the border color of objects would require implementing a new visitor.
+This visitor has to accept objects and change their border color corresponding to the values retrieved from an object metric.
+Again, this new dimension would automatically be available to all metrics that cover objects.
+
+\todo{inline}[Color scales + Refs]
 
 \begin{table}[tb]
 	\centering
@@ -280,7 +290,8 @@ This new metric then could automatically be mapped to any dimension that is suit
 		\end{tabular}
 		\caption[Foo]{}
 	\end{subtable}
-\caption[Test Subjects]{Scale of the software systems that served as a basis for the performance evaluation.}
+	\caption[Test Subjects]{Scale of the software systems that served as a basis for the performance evaluation.}
+	\label{t:ImplementationLayers}
 \label{t:EvaluationProjects}
 \end{table}
 
