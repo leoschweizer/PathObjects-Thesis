@@ -53,7 +53,7 @@ All of these features are explained in the following.
 
 \subsubsection{State Exploration}
 
-\begin{figure}[tb]
+\begin{figure}[b]
 	\centering
 	
 	\begin{subfigure}{0.45\textwidth}
@@ -76,6 +76,16 @@ All of these features are explained in the following.
 
 Developers can toggle state tracking through an object's context menu.
 As long as state tracking is enabled, the state of an object is expanded below the object header and automatically updated whenever the developer steps to a different point of the execution history.
+
+Figure \ref{fig:ImplementationExplorationState} gives an example with the aid of the process of adding observers to the subject.
+In Figure \ref{fig:ImplementationExplorationState1}, the state of the system is shown before the \inlinecode{attach:} message has been processed.
+\inlinecode{SAnalogClock class} is the sender of this message, and an instance of \inlinecode{SAnalogClock} is the argument of this message (but not shown in the figure).
+State tracking is enabled for the clock timer instance, and the state explorer shows that no observers are currently registered and that the hour, minute, and second attributes are equal to \inlinecode{0}.
+Figure \ref{fig:ImplementationExplorationState2} depicts the state of the system after the \inlinecode{attach:} message has been processed, or respectively after the developer took a step forward in the execution history.
+The message label now has an additional field to explore the return value.
+The latter turns out to be the clock timer instance, and this fact is also clarified through the role indicator that is attached to the object.
+But the most important change is visible in the state explorer.
+It can be seen that the collection of observers now has one entry, and this entry is the instance of \inlinecode{SAnalogClock} that has been passed as argument.
 
 \subsubsection{Reference Exploration}
 
