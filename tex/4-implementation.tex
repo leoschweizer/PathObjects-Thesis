@@ -246,12 +246,12 @@ The implementation of metrics follow the strategy pattern.
 For instance, if a new metric should be added that measures the main memory consumption of single objects, one would have to implement a subclass that lazily executes the test case under observation, performs the required measurements, and returns the measured values for specific objects on demand.
 This new metric then could automatically be mapped to any dimension that is suitable to visualize object metrics.
 
-\begin{figure}[tb]
+\begin{table}[tb]
 	\centering
 	\footnotesize
-	\begin{subfigure}[t]{0.45\textwidth}
+	\begin{subtable}[t]{0.45\textwidth}
 		\begin{tabular}{ll}
-		\toprule[1.5pt]
+		\toprule[1.2pt]
 		Message Metrics		& Dimensions 			\\
 		\midrule
 		Complexity			& Edge Color 			\\
@@ -260,25 +260,29 @@ This new metric then could automatically be mapped to any dimension that is suit
 		Runtime Profiling	& Timeline Item Height	\\
 		Stack Size			&						\\
 		Variable Accesses	&						\\
-		\bottomrule[1.5pt]
+		\bottomrule[1.2pt]
 		\end{tabular}
-	\end{subfigure}
+		\caption[Foo]{}
+	\end{subtable}
 	\qquad
-	\begin{subfigure}[t]{0.45\textwidth}
+	\begin{subtable}[t]{0.45\textwidth}
 		\begin{tabular}{ll}
-		\toprule[1.5pt]
+		\toprule[1.2pt]
 		Object Metrics		& Dimensions 			\\
 		\midrule
 		\textsc{Fanin}		& Mini-Map Color		\\
 		\textsc{Fanout}		& Object Color			\\
-		\textsc{Faninout}	& Object Width			\\
-							& Object Height			\\
-		\bottomrule[1.5pt]
+		\textsc{Faninout}	& Object Height			\\
+		\hphantom{Runtime Profiling}	& Object Width			\\
+							& \hphantom{Timeline Item Height} \\
+							& \\
+		\bottomrule[1.2pt]
 		\end{tabular}
-	\end{subfigure}
+		\caption[Foo]{}
+	\end{subtable}
 \caption[Test Subjects]{Scale of the software systems that served as a basis for the performance evaluation.}
 \label{t:EvaluationProjects}
-\end{figure}
+\end{table}
 
 
 \section{Data Acquisition}
