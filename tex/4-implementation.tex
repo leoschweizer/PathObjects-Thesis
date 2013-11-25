@@ -88,6 +88,13 @@ But the most important change is visible in the state explorer.
 It can be seen that the collection of observers now has one entry, and this entry is the instance of \inlinecode{SAnalogClock} that has been passed as argument.
 
 \subsubsection{Reference Exploration}
+\textsc{PathObjects} not only allows developers to track object state changes, but also to chase outbound pointers of specific objects.
+The mechanism works similar to the state exploration described above.
+Developers can toggle reference exploration through the context menu of an object.
+When enabling exploration, the developer is prompted to select a color.
+This selection will then be used as background color of all referenced objects.
+The current outbound pointers are collected when stepping through the execution history, and the background colors of referenced objects are updated accordingly.
+This allows developers to get an insight which other objects a specific one references, when these references are gained, and when they are released.
 
 
 \subsection{Navigation}
@@ -170,15 +177,15 @@ Furthermore, the visualization indicates that most methods have an acceptable le
 		\label{fig:ImplementationMinimapMetric}
 	\end{subfigure}
 	
-	\vspace{0.5cm}	
-	
-	\begin{subfigure}[b]{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../images/04-ImplSearch}
-		\caption[Foo]{}
-		\label{fig:ImplementationSearch}
-	\end{subfigure}
-	
+	%\vspace{0.5cm}	
+	%
+	%\begin{subfigure}[b]{0.45\textwidth}
+	%	\centering
+	%	\includegraphics[width=\textwidth]{../images/04-ImplSearch}
+	%	\caption[Foo]{}
+	%	\label{fig:ImplementationSearch}
+	%\end{subfigure}
+	%
 	\caption[Foo]{Foo}
 	\label{fig:ImplementationMinimap}
 \end{figure}
@@ -211,6 +218,68 @@ As pointed out before, search results are indicated by highlighting timeline ite
 \subsubsection{Object Filter}
 
 \subsection{Information Layers}
+\label{ss:ImplementationLayers}
+
+\begin{figure}[tb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{../images/04-ImplOverlays}
+	\caption[Foo]{}
+	\label{fig:ImplementationLayers}
+\end{figure}
+
+Information layers allow developers to project arbitrary metrics to various dimensions of \textsc{PathObjects} diagrams.
+The dialog that allows to configure information layers is shown in figure \ref{fig:ImplementationLayers}.
+New layers can be configured with the help of three selection boxes.
+First, developers select a metric they wish to visualize.
+The second box is then populated with all diagram dimensions the selected metric can be mapped to.
+If a dimension is selected that requires the definition of a color scale, this scale can be selected from the third list, which can be ignored otherwise.
+In the depicted example, the developer selected to visualize which methods have been changed last, and wishes to display this information with the help of the width of the edges that represent message sends.
+
+The list filling the center of the dialog shows layers that are currently active.
+For instance, one user-defined layer maps the \textsc{Fanin}-metric to the color of objects on the mini-map.
+Another layer maps the \textsc{Fanout}-metric to the background color of objects, and uses a different color scale for this purpose.
+Examples how such layers affect the visualization of various diagram dimensions already have been given in the previous sections (cf. Figures \ref{fig:ImplementationTimelineMetrics}, \ref{fig:ImplementationTimelineMetrics}).
+
+The metrics that are currently supported are listed in Table x and related to the diagram dimensions they can be applied to.
+However, the supported metrics as well as the dimensions these metrics can be mapped to constitute an extension point of \textsc{PathObjects}.
+The implementation of metrics follow the strategy pattern.
+For instance, if a new metric should be added that measures the main memory consumption of single objects, one would have to implement a subclass that lazily executes the test case under observation, performs the required measurements, and returns the measured values for specific objects on demand.
+This new metric then could automatically be mapped to any dimension that is suitable to visualize object metrics.
+
+\begin{figure}[tb]
+	\centering
+	\footnotesize
+	\begin{subfigure}[t]{0.45\textwidth}
+		\begin{tabular}{ll}
+		\toprule[1.5pt]
+		Message Metrics		& Dimensions 			\\
+		\midrule
+		Complexity			& Edge Color 			\\
+		Last Change			& Edge Width			\\
+		Lines of Code		& Timeline Item Color	\\
+		Runtime Profiling	& Timeline Item Height	\\
+		Stack Size			&						\\
+		Variable Accesses	&						\\
+		\bottomrule[1.5pt]
+		\end{tabular}
+	\end{subfigure}
+	\qquad
+	\begin{subfigure}[t]{0.45\textwidth}
+		\begin{tabular}{ll}
+		\toprule[1.5pt]
+		Object Metrics		& Dimensions 			\\
+		\midrule
+		\textsc{Fanin}		& Mini-Map Color		\\
+		\textsc{Fanout}		& Object Color			\\
+		\textsc{Faninout}	& Object Width			\\
+							& Object Height			\\
+		\bottomrule[1.5pt]
+		\end{tabular}
+	\end{subfigure}
+\caption[Test Subjects]{Scale of the software systems that served as a basis for the performance evaluation.}
+\label{t:EvaluationProjects}
+\end{figure}
+
 
 \section{Data Acquisition}
 \label{s:ImplementationTracing}
