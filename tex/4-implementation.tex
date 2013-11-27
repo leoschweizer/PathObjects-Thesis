@@ -254,7 +254,10 @@ For example, adding support for the border color of objects would require implem
 This visitor has to accept objects and change their border color corresponding to the values retrieved from an object metric.
 Again, this new dimension would automatically be available to all metrics that cover objects.
 
-\todo{inline}[Color scales + Refs]
+When a developer chooses to visualize a metric through colors, the scale can be either threshold-based or linear.
+In the first case, a traditional traffic light rating system is used ranging from red (metric indicates room for improvement) to green (metric indicates satisfactory conditions).
+In the second case, the developer can select from a range of linear and perceptually linearized color scales as proposed by Levkowitz et al. \cite{levkowitz_color_1992, levkowitz_color_1997}.
+The currently supported scales are grayscale, rainbow scale, heated-object scale, magenta scale, linearized optimal color Scale (all perceptually linearized), as well as blue-to-cyan scale, blue-to-yellow scale, and optimal color scale.
 
 \begin{table}[tb]
 	\centering
