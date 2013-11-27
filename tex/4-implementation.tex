@@ -214,7 +214,33 @@ This would not be possible with fuzzy search alone, since all instances of a cla
 As pointed out before, search results are indicated by highlighting timeline items (cf. Figure \ref{fig:ImplementationTimelineSearch}).
 
 \subsection{Focusing}
+\label{ss:ImplementationFocusing}
+In order to allow developers to focus on specific entities of interest, \textsc{PathObjects} supports filtering of irrelevant objects and messages.
+Both mechanisms are presented in the following.
+
 \subsubsection{Message Filter}
+
+\begin{figure}[tb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{../images/04-ImplMessageFilter}
+	\caption{Focusing on relevant messages with the help of \textsc{PathView}.}
+	\label{fig:ImplementationFocusingMessages}
+\end{figure}
+
+The message filter functionality makes use of another tool of the \textsc{PathTools} suite, namely \textsc{PathView}.
+The primary purpose of this tool is to provide views of the static structure of entities that are involved in a execution.
+For that purpose, it generates UML class diagrams on the basis of execution traces.
+We use \textsc{PathView} to allow developers to define which messages should be displayed by \textsc{PathObjects}, and which messages should be omitted.
+The message filter can be invoked at any time during the visualization of an execution trace.
+
+An example of the result of such an invocation is depicted in Figure \ref{fig:ImplementationFocusingMessages}.
+It shows all classes that are represented by object instances in the current trace, namely the abstract and concrete \inlinecode{Subject} and \inlinecode{Observer} classes as well as a class from the test environment (\inlinecode{TestDriver}).
+Thereby, classes contain only those methods that occur in a trace.
+Methods that are defined but not used in the current scenario are initially collapsed and can be expanded if the developer wishes to review this information.
+With the help of this information presentation, single methods can be selected and deselected.
+Whenever the developer changes a selection, the \textsc{PathObjects} visualization is updated automatically, and messages that represent those methods are removed from or re-added to the visualization.
+In the depicted example, all methods are selected, except those implemented by the abstract \inlinecode{Subject} and \inlinecode{Observer} classes.
+
 \subsubsection{Object Filter}
 
 \subsection{Information Layers}
