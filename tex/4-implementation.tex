@@ -245,11 +245,11 @@ Examples how such layers affect the visualization of various diagram dimensions 
 
 Table \ref{t:ImplementationLayers} lists the metrics that are currently supported and relates them to applicable diagram dimensions.
 However, the supported metrics as well as the dimensions these metrics can be mapped to constitute an extension point of \textsc{PathObjects}.
-The implementation of metrics follows the strategy pattern.
+The implementation of metrics follow a strategy pattern \cite{gamma_design_1995}.
 For instance, if a new metric should be added that measures the main memory consumption of single objects, one would have to implement a subclass that lazily executes the test case under observation, performs the required measurements, and returns the measured values for specific objects on demand.
 This new metric then could automatically be mapped to any dimension that is suitable to visualize object metrics.
 
-The supported diagram dimensions are represented by a visitor pattern.
+The supported diagram dimensions are represented by a visitor pattern \cite{gamma_design_1995}.
 For example, adding support for the border color of objects would require implementing a new visitor.
 This visitor has to accept objects and change their border color corresponding to the values retrieved from an object metric.
 Again, this new dimension would automatically be available to all metrics that cover objects.
