@@ -242,6 +242,16 @@ Whenever the developer changes a selection, the \textsc{PathObjects} visualizati
 In the depicted example, all methods are selected, except those implemented by the abstract \inlinecode{Subject} and \inlinecode{Observer} classes.
 
 \subsubsection{Object Filter}
+The primary purpose of the object filter is to allow developers to focus on one specific object of interest.
+For that reason, this feature is accessible through the context menu of objects (cf. Figure \ref{fig:ImplementationExplorationBasic}).
+Rather than selecting objects that should be hidden, developers chose objects of interest, and other uninvolved objects are excluded from the visualization.
+For instance, if one chooses to focus on the digital clock instance, the objects \inlinecode{SAnalogClockClass} and \inlinecode{a SAnalogClock} will be removed from the canvas.
+All other objects remain on the canvas, since they exchange messages with the selected object at some point of the execution history.
+However, all messages that do not involve the selected object are removed from the timeline.
+Developers now could broaden the focus area through the selection of further objects of interest.
+For example, the clock timer instance could be added to the selection, which would bring back the analog clock components and the according messages to the canvas.
+Since the selection of a small set of relevant objects usually reduces the number of displayed objects drastically, objects are rearranged automatically with every change of the current selection.
+Thus, the information presentation can be compacted for perceivability purposes.
 
 \subsection{Information Layers}
 \label{ss:ImplementationLayers}
