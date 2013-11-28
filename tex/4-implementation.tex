@@ -16,7 +16,7 @@ Finally, Section \ref{s:ImplementationLayouting} illustrates how \textsc{PathObj
 \begin{figure}
 	\centering
 	\includegraphics[width=1\textwidth]{../images/04-ImplMainWindow}
-	\caption[TOC Caption]{Foobar}
+	\caption[PathObjects for Squeak/Smalltalk]{Prototypic implementation of \textsc{PathObjects} for Squeak/Smalltalk. 1) Diagram Area 2) Timeline 3) Mini-Map 4) Search Bar.}
 	\label{fig:ImplementationMainWindow}
 \end{figure}
 
@@ -24,16 +24,9 @@ Finally, Section \ref{s:ImplementationLayouting} illustrates how \textsc{PathObj
 
 \begin{figure}[tb]
 	\centering
-	
-	\begin{subfigure}[b]{0.90\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../images/04-ImplExploration1}
-		\caption[Foo]{}
-		\label{fig:ImplementationExplorationBasic}
-	\end{subfigure}
-	
-	\caption[Foo]{Foo}
-	\label{fig:ImplementationMinimap}
+	\includegraphics[width=0.9\textwidth]{../images/04-ImplExploration1}
+	\caption[Foo]{}
+	\label{fig:ImplementationExplorationBasic}
 \end{figure}
 
 Figure \ref{fig:ImplementationExplorationBasic} shows the basic visualization of object interactions that allows developers to explore the behavior of a system.
@@ -158,7 +151,7 @@ The color of the items indicates the lines of code of each message.
 One can see that the current step is the one with by far the most variable accesses.
 Furthermore, the visualization indicates that most methods have an acceptable length, with the exception of the method that is the implementation of the selected message.
 
-\subsubsection{Minimap}
+\subsubsection{Mini-Map}
 
 \begin{figure}[tb]
 	\centering
@@ -166,27 +159,20 @@ Furthermore, the visualization indicates that most methods have an acceptable le
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../images/04-ImplMinimap1}
-		\caption[Foo]{}
+		\caption[Default View]{}
 		\label{fig:ImplementationMinimapDefault}
 	\end{subfigure}
 	\quad
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../images/04-ImplMinimap2}
-		\caption[Foo]{}
+		\caption[Application of Information Layers]{}
 		\label{fig:ImplementationMinimapMetric}
 	\end{subfigure}
 	
-	%\vspace{0.5cm}	
-	%
-	%\begin{subfigure}[b]{0.45\textwidth}
-	%	\centering
-	%	\includegraphics[width=\textwidth]{../images/04-ImplSearch}
-	%	\caption[Foo]{}
-	%	\label{fig:ImplementationSearch}
-	%\end{subfigure}
-	%
-	\caption[Foo]{Foo}
+	\caption[Variations of the Mini-Map View]{a) Default configuration of the mini-map view; green represents objects that are involved in the current step, black and gray represent objects occurring in the past or future of the current execution history.
+	
+	b) \textsc{Fanin} metric applied to the color of objects; black indicates a high number of received messages.}
 	\label{fig:ImplementationMinimap}
 \end{figure}
 
@@ -202,8 +188,8 @@ In this case, the fan-in metric is mapped to the color of the object's represent
 The heated-object scale indicates few received messages with light colors and the percipience of many messages in dark colors.
 One can see that one object, namely the clock timer, receives more messages than any other object in this trace.
 
-\subsubsection{Search}
-The search bar (cf. Figure \ref{fig:ImplementationSearch}) allows developers to find specific entities of interest.
+\subsubsection{Search Bar}
+The search bar (cf. Figure \ref{fig:ImplementationMainWindow}) allows developers to find specific entities of interest.
 To simplify the process, entities that match a search term are shown and updated as the developer types.
 The search functionality supports two different operational modes, namely precise and fuzzy search.
 Fuzzy search performs a simple substring matching of the given input, and will return any class instance, class, or message whose name partly or fully matches the given search term.
@@ -259,7 +245,7 @@ Thus, the information presentation can be compacted for perceivability purposes.
 \begin{figure}[tb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{../images/04-ImplOverlays}
-	\caption[Foo]{}
+	\caption{Configuration Dialog for Information Layers.}
 	\label{fig:ImplementationLayers}
 \end{figure}
 
@@ -311,7 +297,7 @@ The currently supported scales are grayscale, rainbow scale, heated-object scale
 		Variable Accesses	&						\\
 		\bottomrule[1.2pt]
 		\end{tabular}
-		\caption[Foo]{}
+		\caption[Message Metrics]{}
 	\end{subtable}
 	\qquad
 	\begin{subtable}[t]{0.45\textwidth}
@@ -327,9 +313,9 @@ The currently supported scales are grayscale, rainbow scale, heated-object scale
 							& \\
 		\bottomrule[1.2pt]
 		\end{tabular}
-		\caption[Foo]{}
+		\caption[Object Metrics]{}
 	\end{subtable}
-	\caption[Test Subjects]{Scale of the software systems that served as a basis for the performance evaluation.}
+	\caption[Information Layers: Supported Metrics and Diagram Dimensions]{Currently supported message (a) and object (b) metrics that can be used as data source for information layers, together with the diagram dimensions they can be mapped to.}
 	\label{t:ImplementationLayers}
 \label{t:EvaluationProjects}
 \end{table}
