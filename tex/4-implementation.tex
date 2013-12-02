@@ -25,7 +25,7 @@ Finally, Section \ref{s:ImplementationLayouting} illustrates how \textsc{PathObj
 \begin{figure}[tb]
 	\centering
 	\includegraphics[width=0.9\textwidth]{../images/04-ImplExploration1}
-	\caption[Foo]{}
+	\caption[Basic Representation of Object Interactions]{Basic representation of object interactions; \inlinecode{SAnalogClockClass} sends the \inlinecode{attach:} message to a clock timer instance, with an analog clock instance being the argument of the message.}
 	\label{fig:ImplementationExplorationBasic}
 \end{figure}
 
@@ -52,18 +52,18 @@ All of these features are explained in the following.
 	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../images/04-ImplExplorationState1}
-		\caption[Foo]{}
+		\caption[Object State Before Message Execution]{}
 		\label{fig:ImplementationExplorationState1}
 	\end{subfigure}
 	\quad
 	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../images/04-ImplExplorationState2}
-		\caption[Foo]{}
+		\caption[Object State After Message Execution]{}
 		\label{fig:ImplementationExplorationState2}
 	\end{subfigure}
 	
-	\caption[Foo]{Foo}
+	\caption[Exploration of Object State Changes]{Exploration of object state changes. a) State of the clock timer instance before the execution of \inlinecode{attach:}. b) State of the same instance after the execution of said message.}
 	\label{fig:ImplementationExplorationState}
 \end{figure}
 
