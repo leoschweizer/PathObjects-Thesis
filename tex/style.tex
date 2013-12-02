@@ -96,10 +96,21 @@
 % inline ocde
 \definecolor{inlinecodeborder}{HTML}{DDDDDD}
 \definecolor{inlinecodetext}{HTML}{666666}
-\newcommand\inlinecode[1]{
-  \tikz[baseline=(s.base)]{
-    \node(s)[rounded corners=2pt,draw=inlinecodeborder,text=inlinecodetext]{\texttt{#1}};
-  }
+
+\newcommand\inlinecode[2][]{
+    \tikz[baseline=(s.base)]{
+        \node(s)[
+            rounded corners=2pt,
+            %fill=blue!5,        % background color
+            draw=inlinecodeborder, % border of box
+            text=inlinecodetext, % text color
+            inner xsep =3pt,    % horizontal space between text and border
+            inner ysep =0pt,    % vertical space between text and border
+            text height=1.8ex,    % height of box
+            text depth =0.6ex,    % depth of box
+            #1                  % other options
+        ]{\texttt{#2}};
+    }
 }
 
 % to indicate removed code
