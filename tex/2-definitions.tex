@@ -10,6 +10,20 @@
 	\label{fig:ObserverExample}
 \end{figure}
 
+Throughout the following chapters, the manifestation of the observer pattern \cite{gamma_design_1995} that is depicted in Figure \ref{fig:ObserverExample} will serve as an illustrating example.
+The component that emits events and thus functions as the \inlinecode{Subject} is a clock timer.
+It has internal state describing the current time and provides various accessors to this state.
+In addition, an interface which allows to increment the clock timer is exposed through the \inlinecode{tick} method.
+
+Several clock visualizations can act as observers of this clock timer.
+Their common base class is \inlinecode{VisibleClock}, which provides a factory method \cite{gamma_design_1995} and implements the drawing of clocks through a template method \cite{gamma_design_1995}.
+\inlinecode{AnalogClock} and \inlinecode{DigitalClock} provide two different visualizations for clock timers in analog and digital fashion.
+Therefore, they implement the \inlinecode{draw} method which is a part of the template method \inlinecode{drawText:}.
+Furthermore, they provide an interface for subject notifications through the \inlinecode{update:} method.
+
+The components form a pull-observer pattern, meaning that subjects notify observers of changes, but do not pass the new state along with the notification.
+All observers have to pull required information from the subject on notifications. 
+
 \section{Static vs. Dynamic Analysis}
 \label{s:BackgroundAnalysis}
 
