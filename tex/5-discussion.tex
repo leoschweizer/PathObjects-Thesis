@@ -1,4 +1,4 @@
-\chapter{Discussion}
+\chapter{Evaluation}
 \label{c:discussion}
 The research question that is tackled in this thesis has two primary objectives.
 The first goal is to provide a visualization of program behavior at the abstraction level of objects that preservers the immediate character and low memory footprint of the underlying tracing framework.
@@ -240,13 +240,14 @@ Section \ref{ss:DiscussionEvaluationResults} depicts the results of the evaluati
 \label{ss:DiscussionEvaluationThreats}
 
 \clearpage
-\section{Limitations}
+\section{Discussion}
 \label{s:DiscussionLimitations}
 The operation of our prototype and the underlying tracing mechanism take some preconditions for granted whose non-compliance could potentially render them non-functional.
 Those requirements are depicted in the following sections.
 The restrictions that apply when dealing with systems that use the meta-programming and reflection capabilities of the Squeak environment are described in Section \ref{ss:DiscussionLimitationsMeta}.
 The importance of test coverage is presented in Section \ref{ss:DiscussionLimitationsCoverage}.
 Finally, the reliance on test quality is depicted in Section \ref{ss:DiscussionLimitationsTestQuality}.
+\todo{Rephrase}
 
 \subsection{Metaprogramming and Reflection}
 \label{ss:DiscussionLimitationsMeta}
@@ -280,7 +281,7 @@ If a test case follows divergent branches or produces objects with varying state
 Admittedly, there are legitimate cases where tests are not completely deterministic, for instance when testing multithreaded applications or when working with current dates and times.
 However, the \emph{record and replay} technique has been proposed to tackle this problem \cite{choi_deterministic_1998} and has successfully been adapted to the step-wise runtime analysis approach \cite{felgentreff_comparison_2012}.
 
-\section{Applicability to other Programming Languages}
+\subsection{Applicability to other Programming Languages}
 \label{s:DiscussionApplicability}
 The fact that the prototypical implementation of our approach targets an environment that leads a niche existence raises the question to which extent the approach is transferable to other programming languages and environments.
 To answer this question, one can consider the requirements \textsc{PathObjects} is based on.
