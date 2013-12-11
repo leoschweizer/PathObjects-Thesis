@@ -7,10 +7,14 @@
 \section{Diagram Notation}
 \subsection{Basic Concept}
 \subsection{Diagram Aesthetics}
-The object communication diagrams of \textsc{PathObjects} form a graph structure, whereby the objects constitute vertices, and the arrows representing messages constitute edges.
+The object communication diagrams of \textsc{PathObjects} form graph structures, whereby  objects constitute nodes, and the arrows representing messages constitute edges.
 Graph drawing is a research area with a long history of its own, and the aesthetic properties that should be aimed at in order to maximize perceivability are well known.
+Consequently, it stands to reason that these criteria should also be applied to the diagrams created through our approach.
 
 \paragraph{Crossing Minimization} User studies suggest that the most important aesthetic criterion is the minimization of edge crossings \cite{purchase_effective_2000, purchase_graph_2004, purchase_graph_2010}.
+The more edges cross each other, the harder it becomes for the human eye to keep track of which nodes are connected by an edge.
+Graph drawings that do not entail edge crossings are called planar, and are regarded as the best-case scenario.
+But although planar graph drawing algorithms are comparatively simple, the excessive optimization of drawings in these premises will most likely interfere with other aesthetic criteria.
 
 \paragraph{Bend Minimization}
 
