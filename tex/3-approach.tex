@@ -18,11 +18,13 @@ Graph drawings that do not entail edge crossings are called planar, and are rega
 But although planar graph drawing algorithms are comparatively simple, the excessive optimization of drawings in these premises will most likely interfere with other aesthetic criteria.
 
 \paragraph{Bend Minimization} Bends make it harder for the human eye to follow the route of an edge.
-Consequently, edges should have as few bends as possible.
+Consequently, both the maximum number of bends on a single edge as well as the total number of bends on all edges should be as low as possible.
+Furthermore, the variance of the number of bends on edges should be minimized.
 However, recent studies suggest that continuity is more important than the number of bends \cite{diehl_software_2007}.
 
 \paragraph{Length Minimization} Similar to crossings and bends, increasing edge lengths make it increasingly difficult for the viewer of a graph drawing to follow their paths.
 Therefore, both the length of the longest edge and the total edge length should be minimized.
+In addition, some authors state that the overall variance of lengths should be minimized in order to provide uniform edge lengths.
 
 \paragraph{Area Minimization} The minimization of the area a diagram takes up is especially important when it cannot be scaled down arbitrarily.
 This is the case with \textsc{PathObjects} diagrams, since textual information associated with nodes and edges has to stay above perceptive thresholds and may not overlap.
@@ -32,7 +34,9 @@ Although our interactive information presentation offers scrolling functionality
 \paragraph{Symmetry} Nodes should be distributed evenly on the canvas and thus should form a homogeneous density.
 Furthermore, if the underlying graph structure features symmetries, these symmetries should also be reflected by the graph drawing.
 
-\paragraph{Clustering}
+\paragraph{Clustering} Interconnected parts of a graph should be drawn distinguishable from other so-called clusters.
+In our case, connections are established through message exchanges, and objects or respectively nodes are connected stronger if they exchange more messages among each other than with other objects.
+In addition, the edges between members of the same cluster should be shorter than edges that connect nodes from different clusters.
 
 \paragraph{Orthogonality} Some authors state that fixing nodes and edges to an orthogonal grid improves the understandability of graph drawings \cite{sugiyama_methods_1981, batini_what_1985}.
 And although Purchase et al. could not find significant evidence for this claim in a user study \cite{purchase_which_1997}, the majority of participants that were confronted with different variations of UML collaboration diagrams in another study nevertheless favored this edge routing strategy over other approaches \cite{purchase_graph_2004}.
