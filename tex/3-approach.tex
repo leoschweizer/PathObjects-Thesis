@@ -16,7 +16,11 @@ The more edges cross each other, the harder it becomes for the human eye to keep
 Graph drawings that do not entail edge crossings are called planar, and are regarded as the best-case scenario.
 But although planar graph drawing algorithms are comparatively simple, the excessive optimization of drawings in these premises will most likely interfere with other aesthetic criteria.
 
-\paragraph{Bend Minimization} 
+\paragraph{Bend Minimization} Bends make it harder for the human eye to follow the route of an edge.
+Consequently, edges should have as few bends as possible.
+However, recent studies suggest that continuity is more important than the number of bends.
+
+\paragraph{Length Minimization} Similar to crossings and bends, it becomes increasingly difficult 
 
 \paragraph{Area Minimization} The minimization of the area a diagram takes up is especially important when it cannot be scaled down arbitrarily.
 This is the case with \textsc{PathObjects} diagrams, since textual information associated with nodes and edges has to stay above perceptive thresholds and may not overlap.
