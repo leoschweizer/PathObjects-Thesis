@@ -57,8 +57,65 @@ Furthermore, the costs of communication and thus the total costs of production a
 But the strongest reason to rely on the automated generation of diagram layouts becomes evident when taking the intended use of \textsc{PathTools} into account.
 
 
-\section{Tools}
+\section{Interactive Components}
+
 \subsection{Navigation}
+\subsubsection{Temporal Navigation}
+\begin{figure}[tb]
+	\centering
+	
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+        \includegraphics[width=\textwidth]{../images/04-ImplTimeline1}
+        \caption[Default View]{}
+		\label{fig:ImplementationTimelineDefault}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../images/04-ImplTimeline2}
+		\caption[Search Result Highlighting]{}
+		\label{fig:ImplementationTimelineSearch}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../images/04-ImplTimeline3}
+		\caption[Differing Metrics Applied to Item Height and Color]{}
+		\label{fig:ImplementationTimelineMetrics}
+	\end{subfigure}
+	
+	\caption[Variations of the Timeline View]{Three variations of the timeline view that show the exact same execution history; in each case, the current step is highlighted and the according return point is marked in red.
+		a) Default view with mapping of stack depth to item height.
+		b) Search result highlighting.
+		c) Differing metrics applied to item height and item color.
+	}
+	\label{fig:ImplementationTimeline}
+\end{figure}
+
+Figure \ref{fig:ImplementationTimeline} shows examples of the timeline view.
+Each bar represents a step of the execution history, or respectively either a message send or the return from a message send.
+The alignment along the horizontal axis corresponds to the chronological order of appearances.
+The current step is marked with a blue overlay, and the corresponding send or return step is marked in red.
+Developers can use the timeline to navigate through the execution history by either selection a specific step, by using the keyboard's left and right arrows, or by clicking the arrows that are displayed alongside the timeline.
+
+All three examples in Figure \ref{fig:ImplementationTimeline} show the exact same execution history at the exact same point of the execution.
+Figure \ref{fig:ImplementationTimelineDefault} represents the default configuration of the timeline view.
+In this case, the height of the single timeline items corresponds to the depth of the call stack.
+However, the concept of information layers (cf. \ref{??}\todo{cite}) allows to map arbitrary metrics to this dimension of the diagram.
+Figure \ref{fig:ImplementationTimelineSearch} shows how search results are highlighted within the timeline.
+In the depicted example, the developer performed a search for occurrences of the \inlinecode{attach:} message.
+Two matches are found, whereby each consists of a send and a returns step.
+These occurrences correspond to the registration of the analog and digital clock instances at the clock timer.
+Figure \ref{fig:ImplementationTimelineMetrics} illustrates the usage of information layers in conjunction with the timeline view.
+The height of the items now no longer represents the stack depth, but the number of variable accesses in each method.
+The color of the items indicates the lines of code of each message.
+One can see that the current step is the one with by far the most variable accesses.
+Furthermore, the visualization indicates that most methods have an acceptable length, with the exception of the method that is the implementation of the selected message.
+
+\subsubsection{Spatial Navigation}
+\subsubsection{}
+
 \subsection{Exploration}
 \subsection{Focusing}
 
