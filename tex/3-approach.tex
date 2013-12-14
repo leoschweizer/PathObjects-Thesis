@@ -8,8 +8,9 @@
 \subsection{Basic Concept}
 \subsection{Diagram Aesthetics}
 The object communication diagrams of \textsc{PathObjects} form graph structures, whereby  objects constitute nodes, and the arrows representing messages constitute edges.
-Graph drawing is a research area with a long history of its own, and the aesthetic properties that should be aimed at in order to maximize perceivability are well known.
-Consequently, it stands to reason that these criteria should also be applied to the diagrams created through our approach.
+Graph drawing is a research area with a long history of its own, and there is broad consent about the aesthetic properties that should be aimed at in order to maximize perceivability \cite{battista_graph_1998, kaufmann_drawing_2001, diehl_software_2007}.
+Consequently, it stands to reason that these criteria should also be applied to our interactive object communication diagrams.
+The seven most important criteria are presented in the following.
 
 \paragraph{Crossing Minimization} User studies suggest that the most important aesthetic criterion is the minimization of edge crossings \cite{purchase_effective_2000, purchase_graph_2004, purchase_graph_2010}.
 The more edges cross each other, the harder it becomes for the human eye to keep track of which nodes are connected by an edge.
@@ -18,7 +19,7 @@ But although planar graph drawing algorithms are comparatively simple, the exces
 
 \paragraph{Bend Minimization} Bends make it harder for the human eye to follow the route of an edge.
 Consequently, edges should have as few bends as possible.
-However, recent studies suggest that continuity is more important than the number of bends.
+However, recent studies suggest that continuity is more important than the number of bends \cite{diehl_software_2007}.
 
 \paragraph{Length Minimization} Similar to crossings and bends, increasing edge lengths make it increasingly difficult for the viewer of a graph drawing to follow their paths.
 Therefore, both the length of the longest edge and the total edge length should be minimized.
@@ -26,9 +27,10 @@ Therefore, both the length of the longest edge and the total edge length should 
 \paragraph{Area Minimization} The minimization of the area a diagram takes up is especially important when it cannot be scaled down arbitrarily.
 This is the case with \textsc{PathObjects} diagrams, since textual information associated with nodes and edges has to stay above perceptive thresholds and may not overlap.
 Furthermore, the efficient utilization of screen space is important.
-Although the interactive information presentation offers scrolling functionality and thus allows diagram extents to exceed the viewport, scrolling interferes with reading the diagram and consequently complicates the assimilation of information.
+Although our interactive information presentation offers scrolling functionality and thus allows diagram extents to exceed the viewport, scrolling interferes with reading the diagram and consequently complicates the assimilation of information.
 
-\paragraph{Symmetry}
+\paragraph{Symmetry} Nodes should be distributed evenly on the canvas and thus should form a homogeneous density.
+Furthermore, if the underlying graph structure features symmetries, these symmetries should also be reflected by the graph drawing.
 
 \paragraph{Clustering}
 
