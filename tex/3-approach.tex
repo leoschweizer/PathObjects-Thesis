@@ -20,7 +20,8 @@ But although planar graph drawing algorithms are comparatively simple, the exces
 Consequently, edges should have as few bends as possible.
 However, recent studies suggest that continuity is more important than the number of bends.
 
-\paragraph{Length Minimization} Similar to crossings and bends, it becomes increasingly difficult 
+\paragraph{Length Minimization} Similar to crossings and bends, increasing edge lengths make it increasingly difficult for the viewer of a graph drawing to follow their paths.
+Therefore, both the length of the longest edge and the total edge length should be minimized.
 
 \paragraph{Area Minimization} The minimization of the area a diagram takes up is especially important when it cannot be scaled down arbitrarily.
 This is the case with \textsc{PathObjects} diagrams, since textual information associated with nodes and edges has to stay above perceptive thresholds and may not overlap.
