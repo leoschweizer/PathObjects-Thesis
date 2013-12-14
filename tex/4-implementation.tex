@@ -89,66 +89,6 @@ This selection will then be used as background color of all referenced objects.
 The current outbound pointers are collected when stepping through the execution history, and the background colors of referenced objects are updated accordingly.
 This allows developers to get an insight which other objects a specific one references, when these references are gained, and when they are released.
 
-
-\subsection{Navigation}
-\label{ss:ImplementationNavigation}
-The implementation of the \textsc{PathObjects} concept for Squeak/Smalltalk offers three features that assist developers in navigating through an execution history.
-First, the timeline gives an overview of all steps of the execution, or respectively the message sends and returns.
-Second, the mini-map displays which objects are currently in the viewport, and which other objects also occur during the execution.
-Third, the search bar allows developers to find classes, message sends, or specific instances
-
-\subsubsection{Timeline}
-
-
-
-\subsubsection{Mini-Map}
-
-\begin{figure}[tb]
-	\centering
-	
-	\begin{subfigure}[b]{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../images/04-ImplMinimap1}
-		\caption[Default View]{}
-		\label{fig:ImplementationMinimapDefault}
-	\end{subfigure}
-	\quad
-	\begin{subfigure}[b]{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../images/04-ImplMinimap2}
-		\caption[Application of Information Layers]{}
-		\label{fig:ImplementationMinimapMetric}
-	\end{subfigure}
-	
-	\caption[Variations of the Mini-Map View]{a) Default configuration of the mini-map view; green represents objects that are involved in the current step, black and gray represent objects occurring in the past or future of the current execution history.
-	
-	b) \textsc{Fanin} metric applied to the color of objects; black indicates a high number of received messages.}
-	\label{fig:ImplementationMinimap}
-\end{figure}
-
-Contrary to the timeline, which allows to explore the chronological dimension of execution traces, the mini-map supports developers in the navigation of the spatial dimension of object interaction diagrams.
-It shows all objects that occur in a trace at a glance and allows to jump to any part of the canvas through mouse interactions.
-Furthermore, it depicts which part of the canvas is currently displayed through a miniaturized viewport indicator.
-Figure \ref{fig:ImplementationMinimapDefault} depicts the default mini-map visualization.
-All objects that are involved in the current step, either as sender, receiver, or argument of a message, are marked in green.
-Objects that already occurred in the past of the execution history are depicted as black boxes.
-Objects that did not occur up to the current step but will occur in future steps are marked in light gray.
-Figure \ref{fig:ImplementationMinimapMetric} represents an example how information layers can be applied to the mini-map.
-In this case, the fan-in metric is mapped to the color of the object's representatives.
-The heated-object scale indicates few received messages with light colors and the percipience of many messages in dark colors.
-One can see that one object, namely the clock timer, receives more messages than any other object in this trace.
-
-\subsubsection{Search Bar}
-The search bar (cf. Figure \ref{fig:ImplementationMainWindow}) allows developers to find specific entities of interest.
-To simplify the process, entities that match a search term are shown and updated as the developer types.
-The search functionality supports two different operational modes, namely precise and fuzzy search.
-Fuzzy search performs a simple substring matching of the given input, and will return any class instance, class, or message whose name partly or fully matches the given search term.
-For instance, this mode makes it possible to find all occurrences of instances of a specific class, by searching for \inlinecode{a ClassName} and omitting the object identifier, which as a matter of fact is part of an object name.
-The precise mode, which is enabled as soon as the developer selects an entry from the list of suggested results, allows to search for specific classes, class instances, or messages.
-For instance, this allows to search for all occurrences of a specific class.
-This would not be possible with fuzzy search alone, since all instances of a class would always also match the search term and would thus lead to a cluttered search result.
-As pointed out before, search results are indicated by highlighting timeline items (cf. Figure \ref{fig:ImplementationTimelineSearch}).
-
 \subsection{Focusing}
 \label{ss:ImplementationFocusing}
 In order to allow developers to focus on specific entities of interest, \textsc{PathObjects} supports filtering of irrelevant objects and messages.
