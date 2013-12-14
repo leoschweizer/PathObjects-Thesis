@@ -98,6 +98,11 @@ Third, the search bar allows developers to find classes, message sends, or speci
 	\label{fig:ImplementationTimeline}
 \end{figure}
 
+Developers have to be enabled to navigate through the temporal dimension of execution traces.
+On the one hand, stepwise forward and backward navigation should be facilitated.
+On the other hand, it also should be possible to jump to specifics points of time in the execution history.
+For these reasons, we propose an interactive diagram element, the so-called timeline.
+
 Figure \ref{fig:ImplementationTimeline} shows examples of the timeline view.
 Each bar represents a step of the execution history, or respectively either a message send or the return from a message send.
 The alignment along the horizontal axis corresponds to the chronological order of appearances.
@@ -142,8 +147,10 @@ Furthermore, the visualization indicates that most methods have an acceptable le
 	\label{fig:ImplementationMinimap}
 \end{figure}
 
-Contrary to the timeline, which allows to explore the chronological dimension of execution traces, the mini-map supports developers in the navigation of the spatial dimension of object interaction diagrams.
-It shows all objects that occur in a trace at a glance and allows to jump to any part of the canvas through mouse interactions.
+Contrary to temporal navigation, which allows to explore the chronological dimension of execution traces, developers also have to be enabled to navigate the spatial dimension of interactive communication diagrams.
+For that reason, we suggest an interactive miniature representation of diagrams, the so-called mini-map.
+
+The mini-map shows all objects that occur in a trace at a glance and allows to jump to any part of the canvas through mouse interactions.
 Furthermore, it depicts which part of the canvas is currently displayed through a miniaturized viewport indicator.
 Figure \ref{fig:ImplementationMinimapDefault} depicts the default mini-map visualization.
 All objects that are involved in the current step, either as sender, receiver, or argument of a message, are marked in green.
@@ -155,7 +162,11 @@ The heated-object scale indicates few received messages with light colors and th
 One can see that one object, namely the clock timer, receives more messages than any other object in this trace.
 
 \subsubsection{Target-Oriented Navigation}
-The search bar (cf. Figure \ref{fig:ImplementationMainWindow}) allows developers to find specific entities of interest.
+The spatial and temporal navigation components primarily support explorative approaches.
+As opposed to this, developers also should be allowed to navigate to specific entities of interest provided that these entities are already known.
+To make this possible, the third interactive navigation component of our communication diagrams is a search bar.
+
+The search bar (cf. Figure \ref{fig:ImplementationMainWindow}) allows developers to find specific entities by reference to their name.
 To simplify the process, entities that match a search term are shown and updated as the developer types.
 The search functionality supports two different operational modes, namely precise and fuzzy search.
 Fuzzy search performs a simple substring matching of the given input, and will return any class instance, class, or message whose name partly or fully matches the given search term.
