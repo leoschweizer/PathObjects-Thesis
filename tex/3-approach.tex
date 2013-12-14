@@ -41,6 +41,15 @@ In addition, the edges between members of the same cluster should be shorter tha
 \paragraph{Orthogonality} Some authors state that fixing nodes and edges to an orthogonal grid improves the understandability of graph drawings \cite{sugiyama_methods_1981, batini_what_1985}.
 And although Purchase et al. could not find significant evidence for this claim in a user study \cite{purchase_which_1997}, the majority of participants that were confronted with different variations of UML collaboration diagrams in another study nevertheless favored this edge routing strategy over other approaches \cite{purchase_graph_2004}.
 
+Most of those drawing optimization criteria are NP-hard computational problems for tree structures \cite{battista_graph_1998}.
+And since the graphs that should be presented through our interactive communication diagrams are call trees, this raises the question if the immediate character of the underlying tracing approach can be maintained.
+For that reason, a runtime performance evaluation of the diagram construction is presented in Section \ref{s:DiscussionPerformance}.
+
+So far, the presented aesthetic criteria are generally valid for all graph drawings regardless of their specific purpose.
+In addition, Purchase et al. analyzed the user preferences and perceivability impacts of different variations of UML communication diagrams \cite{purchase_uml_2002, purchase_graph_2004}.
+Since our interactive diagram notation is very similar to communication diagrams, the results of those studies also were taken into account.
+\todo{blubb}
+
 \subsection{Automatic Diagram Layout}
 In general, there are many profound arguments for generating diagram layouts automatically.
 For instance, automated drawing of diagrams has the side-effect that conformance to a certain style guide .
@@ -52,4 +61,14 @@ But the strongest reason to rely on the automated generation of diagram layouts 
 \subsection{Navigation}
 \subsection{Exploration}
 \subsection{Focusing}
+
 \subsection{Information Layers}
+Program comprehension usually does not end in itself but rather serves a specific purpose.
+Consequently, the situations in which developers try to build an understanding of a software system are manifold.
+Furthermore, different purposes require different additional information that can assist developers in specific situations.
+
+For instance, if a developer wants to fix a defect, information such as recent changes that have been made to the system might be of interest.
+Furthermore, one might want to display root cause probabilities along with methods.
+In contrast, if the goal is a general refactoring to improve the overall code quality, one might be interested in metrics like lines of code or cyclomatic complexity.
+The elimination of performance bottlenecks constitutes another common scenario.
+In this case, developers most likely are interest in runtime profiling data.
