@@ -193,6 +193,7 @@ Furthermore, one might want to display root cause probabilities along with metho
 In contrast, if the goal is a general refactoring to improve the overall code quality, one might be interested in metrics like lines of code or cyclomatic complexity.
 The elimination of performance bottlenecks constitutes another common scenario.
 In this case, developers most likely are interested in runtime profiling data.
+When using conventional development tools, all this information usually has to be collected with different tools, and has to be integrated into the current context by developers manually.
 
 At the same time, many dimensions of \textsc{PathObjects} diagrams are unused in the sense that they do not transport any semantic information.
 The size of object nodes, the width of message connectors, the color and extent of timeline items, or the size and color of fonts constitute examples.
@@ -215,6 +216,9 @@ Similarly, the \textsc{Fanin} metric which yields data about objects could be ma
 
 Developers can add as many information layers to a \textsc{PathObjects} diagram as they want.
 The number of layer combinations and their expressiveness is only limited by the number of diagram dimensions that are available.
+Thus, developers are enabled to integrate a diversity of information into the scenarios that are used to build an understanding of the system at hand.
+The requirement to collect information from various tools manually can be eliminated for many use-cases.
+Consequently, the concept of information layers allows to reduce the time spent on program comprehension even further.
 
 \begin{table}[tb]
 	\centering
