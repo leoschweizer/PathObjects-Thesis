@@ -139,10 +139,6 @@ Thus, the information presentation can be compacted for perceivability purposes.
 	\label{fig:ImplementationLayers}
 \end{figure}
 
-Information layers allow developers to project arbitrary metrics to various dimensions of \textsc{PathObjects} diagrams.
-Thereby, metrics can provide data for messages, objects, or both.
-Consequently, the dimensions that are supported for the visualization of a metric are dependent on the kind of data it provides.
-
 The dialog that allows to add and remove information layers is shown in figure \ref{fig:ImplementationLayers}.
 New layers can be configured with the help of three selection boxes.
 First, developers select a metric they wish to visualize.
@@ -171,44 +167,7 @@ In the first case, a traditional traffic light rating system is used ranging fro
 In the second case, the developer can select from a range of linear and perceptually linearized color scales as proposed by Levkowitz et al. \cite{levkowitz_color_1992, levkowitz_color_1997}.
 The currently supported scales are grayscale, rainbow scale, heated-object scale, magenta scale, linearized optimal color Scale (all perceptually linearized), as well as blue-to-cyan scale, blue-to-yellow scale, and optimal color scale.
 
-\begin{table}[tb]
-	\centering
-	\footnotesize
-	\begin{subtable}[t]{0.45\textwidth}
-		\begin{tabular}{ll}
-		\toprule[1.2pt]
-		Message Metrics		& Dimensions 			\\
-		\midrule
-		Complexity			& Edge Color 			\\
-		Last Change			& Edge Width			\\
-		Lines of Code		& Timeline Item Color	\\
-		Runtime Profiling	& Timeline Item Height	\\
-		Stack Size			&						\\
-		Variable Accesses	&						\\
-		\bottomrule[1.2pt]
-		\end{tabular}
-		\caption[Message Metrics]{}
-	\end{subtable}
-	\qquad
-	\begin{subtable}[t]{0.45\textwidth}
-		\begin{tabular}{ll}
-		\toprule[1.2pt]
-		Object Metrics		& Dimensions 			\\
-		\midrule
-		\textsc{Fanin}		& Mini-Map Color		\\
-		\textsc{Fanout}		& Object Color			\\
-		\textsc{Faninout}	& Object Height			\\
-		\hphantom{Runtime Profiling}	& Object Width			\\
-							& \hphantom{Timeline Item Height} \\
-							& \\
-		\bottomrule[1.2pt]
-		\end{tabular}
-		\caption[Object Metrics]{}
-	\end{subtable}
-	\caption[Information Layers: Supported Metrics and Diagram Dimensions]{Currently supported message (a) and object (b) metrics that can be used as data source for information layers, together with the diagram dimensions they can be mapped to.}
-	\label{t:ImplementationLayers}
-\label{t:EvaluationProjects}
-\end{table}
+
 
 
 \section{Data Acquisition}

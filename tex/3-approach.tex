@@ -188,4 +188,53 @@ For instance, if a developer wants to fix a defect, information such as recent c
 Furthermore, one might want to display root cause probabilities along with methods.
 In contrast, if the goal is a general refactoring to improve the overall code quality, one might be interested in metrics like lines of code or cyclomatic complexity.
 The elimination of performance bottlenecks constitutes another common scenario.
-In this case, developers most likely are interest in runtime profiling data.
+In this case, developers most likely are interested in runtime profiling data.
+
+At the same time, many dimensions of \textsc{PathObjects} diagrams are unused in the sense that they do not transport any semantic information.
+The size of object nodes, the width of message connectors, the color and extent of timeline items, or the size and color of fonts constitute examples.
+In addition, some facts are encoded redundantly.
+For instance, objects that are somehow involved in the current step of the execution history are highlighted.
+However, senders and receivers of messages are also clearly recognizable through  message connectors, and arguments and return values are flagged with role indicators.
+Consequently, the color dimension of objects might also be used to encode additional information.
+
+For these reasons, we propose the concept of information layers, which allow developers to project arbitrary metrics to various dimensions of \textsc{PathObjects} diagrams.
+Thereby, metrics can provide data for messages, objects, or both.
+Consequently, the dimensions that are supported for the visualization of a metric are dependent on the kind of data it provides.
+
+\begin{table}[tb]
+	\centering
+	\footnotesize
+	\begin{subtable}[t]{0.45\textwidth}
+		\begin{tabular}{ll}
+		\toprule[1.2pt]
+		Message Metrics		& Dimensions 			\\
+		\midrule
+		Complexity			& Edge Color 			\\
+		Last Change			& Edge Width			\\
+		Lines of Code		& Timeline Item Color	\\
+		Runtime Profiling	& Timeline Item Height	\\
+		Stack Size			&						\\
+		Variable Accesses	&						\\
+		\bottomrule[1.2pt]
+		\end{tabular}
+		\caption[Message Metrics]{}
+	\end{subtable}
+	\qquad
+	\begin{subtable}[t]{0.45\textwidth}
+		\begin{tabular}{ll}
+		\toprule[1.2pt]
+		Object Metrics		& Dimensions 			\\
+		\midrule
+		\textsc{Fanin}		& Mini-Map Color		\\
+		\textsc{Fanout}		& Object Color			\\
+		\textsc{Faninout}	& Object Height			\\
+		\hphantom{Runtime Profiling}	& Object Width			\\
+							& \hphantom{Timeline Item Height} \\
+							& \\
+		\bottomrule[1.2pt]
+		\end{tabular}
+		\caption[Object Metrics]{}
+	\end{subtable}
+	\caption[Information Layers: Possible Metrics and Diagram Dimensions]{Possible (a) message and (b) object metrics that could be used as data source for information layers, together with the diagram dimensions they could be mapped to.}
+	\label{t:ApproachLayers}
+\end{table}
