@@ -73,21 +73,21 @@ Third, the search bar allows developers to find classes, message sends, or speci
 		\centering
         \includegraphics[width=\textwidth]{../images/04-ImplTimeline1}
         \caption[Default View]{}
-		\label{fig:ImplementationTimelineDefault}
+		\label{fig:ApproachTimelineDefault}
 	\end{subfigure}
 	\quad
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../images/04-ImplTimeline2}
 		\caption[Search Result Highlighting]{}
-		\label{fig:ImplementationTimelineSearch}
+		\label{fig:ApproachTimelineSearch}
 	\end{subfigure}
 	\quad
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../images/04-ImplTimeline3}
 		\caption[Differing Metrics Applied to Item Height and Color]{}
-		\label{fig:ImplementationTimelineMetrics}
+		\label{fig:ApproachTimelineMetrics}
 	\end{subfigure}
 	
 	\caption[Variations of the Timeline View]{Three variations of the timeline view that show the exact same execution history; in each case, the current step is highlighted and the according return point is marked in red.
@@ -95,7 +95,7 @@ Third, the search bar allows developers to find classes, message sends, or speci
 		b) Search result highlighting.
 		c) Differing metrics applied to item height and item color.
 	}
-	\label{fig:ImplementationTimeline}
+	\label{fig:ApproachTimeline}
 \end{figure}
 
 Developers have to be enabled to navigate through the temporal dimension of execution traces.
@@ -103,27 +103,28 @@ On the one hand, stepwise forward and backward navigation should be facilitated.
 On the other hand, it also should be possible to jump to specifics points of time in the execution history.
 For these reasons, we propose an interactive diagram element, the so-called timeline.
 
-Figure \ref{fig:ImplementationTimeline} shows examples of the timeline view.
+Figure \ref{fig:ApproachTimeline} shows examples of the timeline view.
 Each bar represents a step of the execution history, or respectively either a message send or the return from a message send.
 The alignment along the horizontal axis corresponds to the chronological order of appearances.
 The current step is marked with a blue overlay, and the corresponding send or return step is marked in red.
 Developers can use the timeline to navigate through the execution history by either selection a specific step, by using the keyboard's left and right arrows, or by clicking the arrows that are displayed alongside the timeline.
 
-All three examples in Figure \ref{fig:ImplementationTimeline} show the exact same execution history at the exact same point of the execution.
-Figure \ref{fig:ImplementationTimelineDefault} represents the default configuration of the timeline view.
+All three examples in Figure \ref{fig:ApproachTimeline} show the exact same execution history at the exact same point of the execution.
+Figure \ref{fig:ApproachTimelineDefault} represents the default configuration of the timeline view.
 In this case, the height of the single timeline items corresponds to the depth of the call stack.
 However, the concept of information layers (cf. \ref{??}\todo{cite}) allows to map arbitrary metrics to this dimension of the diagram.
-Figure \ref{fig:ImplementationTimelineSearch} shows how search results are highlighted within the timeline.
+Figure \ref{fig:ApproachTimelineSearch} shows how search results are highlighted within the timeline.
 In the depicted example, the developer performed a search for occurrences of the \inlinecode{attach:} message.
 Two matches are found, whereby each consists of a send and a returns step.
 These occurrences correspond to the registration of the analog and digital clock instances at the clock timer.
-Figure \ref{fig:ImplementationTimelineMetrics} illustrates the usage of information layers in conjunction with the timeline view.
+Figure \ref{fig:ApproachTimelineMetrics} illustrates the usage of information layers in conjunction with the timeline view.
 The height of the items now no longer represents the stack depth, but the number of variable accesses in each method.
 The color of the items indicates the lines of code of each message.
 One can see that the current step is the one with by far the most variable accesses.
 Furthermore, the visualization indicates that most methods have an acceptable length, with the exception of the method that is the implementation of the selected message.
 
 \subsubsection{Spatial Navigation}
+
 \begin{figure}[tb]
 	\centering
 	
@@ -131,20 +132,20 @@ Furthermore, the visualization indicates that most methods have an acceptable le
 		\centering
 		\includegraphics[width=\textwidth]{../images/04-ImplMinimap1}
 		\caption[Default View]{}
-		\label{fig:ImplementationMinimapDefault}
+		\label{fig:ApproachMinimapDefault}
 	\end{subfigure}
 	\quad
 	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../images/04-ImplMinimap2}
 		\caption[Application of Information Layers]{}
-		\label{fig:ImplementationMinimapMetric}
+		\label{fig:ApproachMinimapMetric}
 	\end{subfigure}
 	
 	\caption[Variations of the Mini-Map View]{a) Default configuration of the mini-map view; green represents objects that are involved in the current step, black and gray represent objects occurring in the past or future of the current execution history.
 	
 	b) \textsc{Fanin} metric applied to the color of objects; black indicates a high number of received messages.}
-	\label{fig:ImplementationMinimap}
+	\label{fig:ApproachMinimap}
 \end{figure}
 
 Contrary to temporal navigation, which allows to explore the chronological dimension of execution traces, developers also have to be enabled to navigate the spatial dimension of interactive communication diagrams.
@@ -152,11 +153,11 @@ For that reason, we suggest an interactive miniature representation of diagrams,
 
 The mini-map shows all objects that occur in a trace at a glance and allows to jump to any part of the canvas through mouse interactions.
 Furthermore, it depicts which part of the canvas is currently displayed through a miniaturized viewport indicator.
-Figure \ref{fig:ImplementationMinimapDefault} depicts the default mini-map visualization.
+Figure \ref{fig:ApproachMinimapDefault} depicts the default mini-map visualization.
 All objects that are involved in the current step, either as sender, receiver, or argument of a message, are marked in green.
 Objects that already occurred in the past of the execution history are depicted as black boxes.
 Objects that did not occur up to the current step but will occur in future steps are marked in light gray.
-Figure \ref{fig:ImplementationMinimapMetric} represents an example how information layers can be applied to the mini-map.
+Figure \ref{fig:ApproachMinimapMetric} represents an example how information layers can be applied to the mini-map.
 In this case, the fan-in metric is mapped to the color of the object's representatives.
 The heated-object scale indicates few received messages with light colors and the percipience of many messages in dark colors.
 One can see that one object, namely the clock timer, receives more messages than any other object in this trace.
@@ -166,7 +167,7 @@ The spatial and temporal navigation components primarily support explorative app
 As opposed to this, developers also should be allowed to navigate to specific entities of interest provided that these entities are already known.
 To make this possible, the third interactive navigation component of our communication diagrams is a search bar.
 
-The search bar (cf. Figure \ref{fig:ImplementationMainWindow}) allows developers to find specific entities by reference to their name.
+The search bar allows developers to find specific entities by reference to their name.
 To simplify the process, entities that match a search term are shown and updated as the developer types.
 The search functionality supports two different operational modes, namely precise and fuzzy search.
 Fuzzy search performs a simple substring matching of the given input, and will return any class instance, class, or message whose name partly or fully matches the given search term.
@@ -174,7 +175,7 @@ For instance, this mode makes it possible to find all occurrences of instances o
 The precise mode, which is enabled as soon as the developer selects an entry from the list of suggested results, allows to search for specific classes, class instances, or messages.
 For instance, this allows to search for all occurrences of a specific class.
 This would not be possible with fuzzy search alone, since all instances of a class would always also match the search term and would thus lead to a cluttered search result.
-As pointed out before, search results are indicated by highlighting timeline items (cf. Figure \ref{fig:ImplementationTimelineSearch}).
+As pointed out before, search results are indicated by highlighting timeline items (cf. Figure \ref{fig:ApproachTimelineSearch}).
 
 \subsection{Exploration}
 \subsection{Focusing}
