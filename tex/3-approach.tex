@@ -112,11 +112,13 @@ Developers can use the timeline to navigate through the execution history by eit
 All three examples in Figure \ref{fig:ApproachTimeline} show the exact same execution history at the exact same point of the execution.
 Figure \ref{fig:ApproachTimelineDefault} represents the default configuration of the timeline view.
 In this case, the height of the single timeline items corresponds to the depth of the call stack.
-However, the concept of information layers (cf. \ref{??}\todo{cite}) allows to map arbitrary metrics to this dimension of the diagram.
+However, the concept of information layers (cf. Section \ref{ss:ApproachInteractiveLayers}) allows to map arbitrary metrics to this dimension of the diagram.
+
 Figure \ref{fig:ApproachTimelineSearch} shows how search results are highlighted within the timeline.
 In the depicted example, the developer performed a search for occurrences of the \inlinecode{attach:} message.
 Two matches are found, whereby each consists of a send and a returns step.
 These occurrences correspond to the registration of the analog and digital clock instances at the clock timer.
+
 Figure \ref{fig:ApproachTimelineMetrics} illustrates the usage of information layers in conjunction with the timeline view.
 The height of the items now no longer represents the stack depth, but the number of variable accesses in each method.
 The color of the items indicates the lines of code of each message.
@@ -181,6 +183,7 @@ As pointed out before, search results are indicated by highlighting timeline ite
 \subsection{Focusing}
 
 \subsection{Information Layers}
+\label{ss:ApproachInteractiveLayers}
 Program comprehension usually does not end in itself but rather serves a specific purpose.
 Consequently, the situations in which developers try to build an understanding of a software system are manifold.
 Furthermore, different purposes require different additional information that can assist developers in specific situations.
@@ -196,15 +199,22 @@ The size of object nodes, the width of message connectors, the color and extent 
 In addition, some facts are encoded redundantly.
 For instance, objects that are somehow involved in the current step of the execution history are highlighted.
 However, senders and receivers of messages are also clearly recognizable through  message connectors, and arguments and return values are flagged with role indicators.
-Consequently, the color dimension of objects might also be used to encode additional information.
+As a consequence, this dimension could also be used to visualize additional information that would otherwise not be present in a diagram.
+
+Apart from this, developers also might not be interested in the information that is encoded by default.
+For instance, there is a visual differentiation between objects that will occur in future parts of the execution trace and those that already occurred in the past.
+Consequently, the color dimension of objects might also be used to encode purpose-specific information that is relevant to the developer in a specific usage scenario.
 
 For these reasons, we propose the concept of information layers, which allow developers to project arbitrary metrics to various dimensions of \textsc{PathObjects} diagrams.
-Thereby, metrics can provide data for messages or objects.
-Table \ref{t:ApproachLayers} lists exemplary message and object metrics, which also are supported by our prototypical implementation of \textsc{PathObjects} for Squeak/Smalltalk (cf. Chapter \ref{c:implementation}).
+Thereby, metrics can provide data for messages and objects.
+Table \ref{t:ApproachLayers} lists exemplary metrics that are also provided by our prototypical implementation of \textsc{PathObjects} for Squeak/Smalltalk (cf. Chapter \ref{c:implementation}).
 The dimensions that are supported for the visualization of a metric are dependent on the kind of data it provides.
 Therefore, Table \ref{t:ApproachLayers} relates the metrics to the diagram dimensions they could be mapped to.
 For instance, the information about recent method changes could be projected to the color of timeline items or the width of message connectors.
 Similarly, the \textsc{Fanin} metric which yields data about objects could be mapped to the color of object nodes or their color on the mini-map.
+
+Developers can add as many information layers to a \textsc{PathObjects} diagram as they want.
+The number of layer combinations and their expressiveness is only limited by the number of diagram dimensions that are available.
 
 \begin{table}[tb]
 	\centering
