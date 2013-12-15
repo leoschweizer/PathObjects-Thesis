@@ -199,8 +199,12 @@ However, senders and receivers of messages are also clearly recognizable through
 Consequently, the color dimension of objects might also be used to encode additional information.
 
 For these reasons, we propose the concept of information layers, which allow developers to project arbitrary metrics to various dimensions of \textsc{PathObjects} diagrams.
-Thereby, metrics can provide data for messages, objects, or both.
-Consequently, the dimensions that are supported for the visualization of a metric are dependent on the kind of data it provides.
+Thereby, metrics can provide data for messages or objects.
+Table \ref{t:ApproachLayers} lists exemplary message and object metrics, which also are supported by our prototypical implementation of \textsc{PathObjects} for Squeak/Smalltalk (cf. Chapter \ref{c:implementation}).
+The dimensions that are supported for the visualization of a metric are dependent on the kind of data it provides.
+Therefore, Table \ref{t:ApproachLayers} relates the metrics to the diagram dimensions they could be mapped to.
+For instance, the information about recent method changes could be projected to the color of timeline items or the width of message connectors.
+Similarly, the \textsc{Fanin} metric which yields data about objects could be mapped to the color of object nodes or their color on the mini-map.
 
 \begin{table}[tb]
 	\centering
