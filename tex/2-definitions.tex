@@ -27,6 +27,18 @@ All observers have to pull required information from the subject on notification
 \section{Static vs. Dynamic Analysis}
 \label{s:BackgroundAnalysis}
 
+\subsection{The Need for Dynamic Analysis}
+Program comprehension usually is facilitated through two different analysis techniques, namely static and dynamic analysis.
+Static analysis is executed solely with the help of source code entities.
+Common examples of information that can be derived via such analyses are inheritance relationships and metrics like cyclomatic complexity or lines of code.
+Furthermore, lint-tools and static code verifiers fall within the same category.
+Static program analysis has two advantages.
+First, it is complete in the sense that all of the source code can be considered, and thus all possible executions of a program are covered by an analysis.
+Second, many static analyses can be performed rapidly.
+However, this factor is largely dependent on the deepness of the analysis, and especially in the case of formal verification tools runtime is an issue \cite{wichmann_industrial_1995}.
+
+
+
 \subsection{Tracing Approach}
 \label{ss:ApproachTracing}
 
