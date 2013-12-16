@@ -37,7 +37,16 @@ First, it is complete in the sense that all of the source code can be considered
 Second, many static analyses can be performed rapidly.
 However, this factor is largely dependent on the deepness of the analysis, and especially in the case of formal verification tools runtime is an issue \cite{wichmann_industrial_1995}.
 
+However, when it comes to the analysis of objects and their interactions, information is required that no longer can be derived from the source code alone.
+Due to object oriented concepts like polymorphism and late binding, the concrete manifestation of static source code entities is only known at runtime.
+The consequence is a huge gap between the code structure and the runtime structure of object oriented programs.
+Consequently, it is inevitable to investigate the properties of a running system over one or more executions.
+In other words, dynamic analysis techniques have to be utilized to retrieve the necessary information.
 
+Dynamic analysis has the advantage that it is goal-oriented, meaning that specific scenarios can be executed and analyzed that cover the functionality the developer is interested in.
+Furthermore, it is precise in the sense that polymorphic method calls and late binding can be resolved.
+However, this comes at the cost of completeness, since dynamic analysis never can cover any possible behavior of a software system, but only that displayed during the analyzed execution.
+Apart from that, dynamic analysis suffers from four major scalability issues that are presented in the following section.
 
 \subsection{Tracing Approach}
 \label{ss:ApproachTracing}
