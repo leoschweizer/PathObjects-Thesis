@@ -57,7 +57,7 @@ Furthermore, it is precise in the sense that polymorphic method calls and late b
 However, this comes at the cost of completeness, since dynamic analysis never can cover any possible behavior of a software system, but only that displayed during the analyzed execution.
 Apart from that, dynamic analysis suffers from four major scalability issues that are presented in the following section.
 
-\subsection{The Problems of Dynamic Analysis}
+\subsection{The Four Problems of Dynamic Analysis}
 
 \subsubsection{Execution Time}
 In order to get an insight into the behavior of a software system at runtime, the execution of said system has to be recorded somehow.
@@ -74,7 +74,11 @@ Less common approaches in the field of dynamic program analysis are sampling tec
 
 But regardless of the strategy that is chosen, all these approaches slow down the execution of the system under observation massively.
 Instrumented program executions are reported to be 15 up to over 100 times slower compared to undisturbed executions \cite{pothier_scalable_2007, karran_synctrace:_2013}.
-For instance, Karran reports that the instrumented execution of the Firefox browser and the subsequent loading of the Google search page take up to ten minutes \cite{karran_extraction_2013}.
+For instance, Karran reports that the instrumented execution of the Firefox browser and the subsequent loading of a Google search result page take up to two minutes \cite{karran_extraction_2013}.
+
+As a consequence, developers have to wait a long time for the generation of an execution trace.
+In other words, developers already have to wait before they even can start with the analysis of the behavior of a program.
+Provided that dynamic analysis tools are actually used by developers, this idle time then directly plays a part in contributing to the amount of time that is spent on program comprehension.
 
 \paragraph{Trace Size}
 \paragraph{Processing Time}
