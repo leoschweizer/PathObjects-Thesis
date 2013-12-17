@@ -58,7 +58,24 @@ However, this comes at the cost of completeness, since dynamic analysis never ca
 Apart from that, dynamic analysis suffers from four major scalability issues that are presented in the following section.
 
 \subsection{The Problems of Dynamic Analysis}
-\paragraph{Execution Time}
+
+\subsubsection{Execution Time}
+In order to get an insight into the behavior of a software system at runtime, the execution of said system has to be recorded somehow.
+The most common approach for this purpose is instrumentation, which can be done at the source code or byte code level.
+In this process, code is automatically added to the program under observation before its execution.
+For instance, this could be tracing calls before and after every method execution which subsequently record the methods that get executed and their chronological order.
+
+Another common strategy is to exploit debug interfaces to simulate the execution of a program.
+For instance, the Java Virtual Machine Debug Interface (JVMDI) can be utilized to step through a program automatically.
+At the same time, the internal state of the program can be inspected.
+Thus, a trace of the call stack and of the effects of method executions on program state can be recorded.
+
+Less common approaches in the field of dynamic program analysis are sampling techniques, which are usually used for performance measurements, and tracing at the level of the virtual machine.
+
+But regardless of the strategy that is chosen, all these approaches slow down the execution of the system under observation massively.
+Instrumented program executions are reported to be 15 up to over 100 times slower compared to undisturbed executions \cite{pothier_scalable_2007, karran_synctrace:_2013}.
+For instance, Karran reports that the instrumented execution of the Firefox browser and the subsequent loading of the Google search page take up to ten minutes \cite{karran_extraction_2013}.
+
 \paragraph{Trace Size}
 \paragraph{Processing Time}
 \paragraph{Cognitive Overload}
