@@ -55,9 +55,16 @@ This procedure is known as dynamic analysis.
 Dynamic analysis has the advantage that it is goal-oriented, meaning that specific scenarios can be executed and analyzed that cover the functionality the developer is interested in.
 Furthermore, it is precise in the sense that polymorphic method calls and late binding can be resolved.
 However, this comes at the cost of completeness, since dynamic analysis never can cover any possible behavior of a software system, but only that displayed during the analyzed execution.
-Apart from that, dynamic analysis suffers from four major scalability issues that are presented in the following section.
+
+In summary, in can be stated that there is no way around the application of dynamic analysis techniques when it comes to the exploration of objects and their interactions.
+However, dynamic analysis entails severe problems that hindered its broad application for a long time.
 
 \subsection{The Four Problems of Dynamic Analysis}
+
+Conventional dynamic analysis suffers from four closely related problems.
+Primarily, it has a negative impact on the time that has to be spent on program comprehension, since developers have to wait long for the results of an analysis.
+Furthermore, the amount of data that arises during program analysis poses a problem. 
+It is difficult to store and to process, and once processing is finished, developers are confronted with much more information than they are capable of perceiving.
 
 \subsubsection{Execution Time}
 In order to get an insight into the behavior of a software system at runtime, the execution of said system has to be recorded somehow.
