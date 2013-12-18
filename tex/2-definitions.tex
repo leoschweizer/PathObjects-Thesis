@@ -33,7 +33,7 @@ Static analysis is executed solely with the help of source code entities.
 Common examples of information that can be derived via such analyses are inheritance relationships and metrics like cyclomatic complexity or lines of code.
 Furthermore, lint-tools and static code verifiers fall within the same category.
 Static program analysis has two advantages.
-First, it is complete in the sense that all of the source code can be considered, and thus all possible executions of a program are covered by an analysis.
+First, it is complete in the sense that all of the source code can be considered, and the derived information holds true for all executions of a program.
 Second, many static analyses can be performed rapidly.
 However, this factor is largely dependent on the deepness of the analysis, and especially in the case of formal verification tools runtime is an issue \cite{wichmann_industrial_1995}.
 
@@ -50,7 +50,7 @@ Trying to understand one from the other is like trying to understand the dynamis
 \end{quote}
 
 Consequently, it is inevitable to investigate the properties of a running system in order to draw conclusions about objects and their interactions.
-This procedure is known as dynamic analysis.
+This procedure is known as dynamic analysis \cite{bell_concept_1999}.
 
 Dynamic analysis has the advantage that it is goal-oriented, meaning that specific scenarios can be executed and analyzed that cover the functionality the developer is interested in.
 Furthermore, it is precise in the sense that polymorphic method calls and late binding can be resolved.
