@@ -88,10 +88,15 @@ In other words, developers already have to wait before they even can start with 
 Provided that dynamic analysis tools are actually used by developers, this idle time then directly plays a part in contributing to the amount of time that is spent on program comprehension.
 
 \subsubsection{Trace Size}
-Conventional dynamic analysis tools collect the entirety of information that might be relevant to the developer up front.
+At the time of a tracing execution it is not yet known which information will actually be required during analysis.
+Consequently, conventional dynamic analysis tools collect the entirety of information that might be relevant to the developer up front.
 On the one hand, that means that many datasets are created which later do not matter to the developer.
 On the other hand, much of the information has to be omitted during tracing, since otherwise the amount of data that has to be stored would get out of hand.
 For instance, arguments of method invocations or the temporal progress of object state changes are rarely covered by traditional tracing tools (cf. Section \ref{s:RelatedTraceVis}).
+
+As a result, the traces that result from dynamic analysis become very large, even though most tools only cover the sequence of method invocations.
+For instance, Karran et al. report that the start-up of the Firefox browser alone yields 1GB of trace data \cite{karran_extraction_2013}.
+Pothier et al. state that a tracing session of the Eclipse IDE that involved the creation of classes, editing of source code, and a step-by-step execution with the debugger resulted in a trace file of 33GB \cite{pothier_scalable_2007}.
 
 \subsubsection{Processing Time}
 \subsubsection{Cognitive Overload}
