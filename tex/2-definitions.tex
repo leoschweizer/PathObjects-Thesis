@@ -103,14 +103,15 @@ Pothier et al. state that a tracing session of the Eclipse IDE that involved the
 
 \subsection{Step-Wise Run-Time Analysis to the Rescue}
 \label{ss:ApproachTracing}
+To overcome the technical issues of dynamic analysis, Perscheid et al. propose an approach called \emph{Step-wise Run-time Analysis}.
+The essential idea is to utilize test cases as reproducible entry points into scenarios of expressive program behavior.
+Instead of collecting huge amounts of data up front, the required information is collected successively in an iterative and interactive process that is steered by the developer.
 
-\subsubsection{Fundamental Functional Principles}
-
-The fundamental idea behind the \textsc{PathTools} tracing approach is the distinction between shallow analysis and subsequent refinement runs.
+The primary feature of this tracing approach is the distinction between shallow analysis and subsequent refinement runs.
 During the shallow analysis phase, a trace of a selected test case is constructed that consists only of the bare minimum of information that is required for the reconstruction of the test execution.
 This trace is presented to the developer who then can define which additional information is relevant for this specific scenario.
 Refinements runs are performed to gather that additional information.
-Thus, an extensive up-front collection of potentially useful information can be avoided. 
+Thus, an extensive up-front collection of potentially useful information can be avoided.
 
 \begin{figure}[tb]
 	\centering
@@ -120,7 +121,6 @@ Thus, an extensive up-front collection of potentially useful information can be 
 \end{figure}
 
 \subsubsection{Shallow Analysis}
-
 Figure \ref{fig:ImplementationTracing} depicts the fundamental steps that are performed by the \textsc{PathTools} tracing framework to generate an execution trace.
 First, the user selects a test case of interest that should be traced and visualized.
 For instance, this selection can be done through the list of test coverage information that is displayed next to methods in the source browser provided by the \textsc{PathTools} framework.
