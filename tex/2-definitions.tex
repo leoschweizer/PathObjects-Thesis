@@ -98,6 +98,12 @@ As a result, the traces that result from dynamic analysis become very large, eve
 For instance, Karran et al. report that the start-up of the Firefox browser alone yields 1GB of trace data \cite{karran_extraction_2013}.
 Pothier et al. state that a tracing session of the Eclipse IDE that involved the creation of classes, editing of source code, and a step-by-step execution with the debugger resulted in a trace file of 33GB \cite{pothier_scalable_2007}.
 
+This issue is so prevalent that tackling it has become a research area of its own, and diverse suggestions have been made.
+For instance, Pothier et al. propose to distribute traces across different machines to allow for efficient querying and storage \cite{pothier_scalable_2007}.
+Other authors suggest the application of pattern recognition strategies in order to reduce the size of traces by replacing recurring patterns with representative occurrences \todo{cite}.
+And still others propose specialized file formats that are supposed to reduce the disk space that is consumed by execution traces \todo{cite}.
+However, none of these proposals constitutes a fundamental change to the way of doing dynamic analysis.
+
 \subsubsection{Processing Time}
 \subsubsection{Cognitive Overload}
 
