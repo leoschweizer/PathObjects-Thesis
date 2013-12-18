@@ -105,6 +105,11 @@ And still others propose specialized file formats that are supposed to reduce th
 However, none of these proposals constitutes a fundamental change to the way of doing dynamic analysis.
 
 \subsubsection{Processing Time}
+The factor of processing time is closely related to the size of execution traces.
+The larger a trace becomes, the longer it takes to process the amount of data and consequently also to present results to developers.
+Measurements of this overhead rarely can be found in literature.
+However, the fact that Pothier et al. identified the necessity to distribute the analysis of execution traces across multiple machines illustrates the gravity of this issue \cite{pothier_scalable_2007}.
+
 \subsubsection{Cognitive Overload}
 
 \subsection{Step-Wise Run-Time Analysis to the Rescue}
