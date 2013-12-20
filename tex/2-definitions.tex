@@ -1,16 +1,17 @@
 \chapter{Background}
 \label{c:Background}
 
-\section{Program Comprehension}
+\section{Motivating Example}
+\label{s:BackgroundExample}
 
 \begin{figure}[tb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{../images/02-ObserverExample}
 	\caption[foo]{Foo}
-	\label{fig:ObserverExample}
+	\label{fig:BackgroundExample}
 \end{figure}
 
-Throughout the following chapters, the manifestation of the observer pattern \cite{gamma_design_1995} that is depicted in Figure \ref{fig:ObserverExample} will serve as an illustrating example.
+Throughout the following chapters, the manifestation of the observer pattern \cite{gamma_design_1995} that is depicted in Figure \ref{fig:BackgroundExample} will serve as an illustrating example.
 The component that emits events and thus functions as the \inlinecode{Subject} is a clock timer.
 It has internal state describing the current time and provides various accessors to this state.
 In addition, an interface which allows to increment the clock timer is exposed through the \inlinecode{tick} method.
@@ -22,12 +23,15 @@ Therefore, they implement the \inlinecode{draw} method which is a part of the te
 Furthermore, they provide an interface for subject notifications through the \inlinecode{update:} method.
 
 The components form a pull-observer pattern, meaning that subjects notify observers of changes, but do not pass the new state along with the notification.
-All observers have to pull required information from the subject on notifications. 
+All observers have to pull required information from the subject on notifications.
+
+\section{Program Comprehension}
 
 \section{Dynamic Analysis: A Necessary Evil}
 \label{s:BackgroundAnalysis}
 
 \subsection{The Need for Dynamic Analysis}
+\label{ss:BackgroundAnalysisNeccessity}
 Program comprehension usually is facilitated through two different analysis techniques, namely static and dynamic analysis.
 Static analysis is executed solely with the help of source code entities.
 Common examples of information that can be derived via such analyses are inheritance relationships and metrics like cyclomatic complexity or lines of code.
@@ -60,7 +64,7 @@ In summary, in can be stated that there is no way around the application of dyna
 However, dynamic analysis entails severe problems that hindered its broad application for a long time.
 
 \subsection{The Four Problems of Dynamic Analysis}
-
+\label{ss:BackgroundAnalysisProblems}
 Conventional dynamic analysis suffers from four closely related problems.
 Primarily, it has a negative impact on the time that has to be spent on program comprehension, since developers have to wait long for the results of an analysis.
 Furthermore, the amount of data that arises during program analysis poses a problem. 
@@ -128,11 +132,11 @@ Thus, an extensive up-front collection of potentially useful information can be 
 	\centering
 	\includegraphics[width=0.9\textwidth]{../images/02-TracingProcess}
 	\caption[TOC Caption]{Tracing foo}
-	\label{fig:ImplementationTracing}
+	\label{fig:BackgroundTracingApproach}
 \end{figure}
 
 \subsubsection{Shallow Analysis}
-Figure \ref{fig:ImplementationTracing} depicts the fundamental steps that are performed by the \textsc{PathTools} tracing framework to generate an execution trace.
+Figure \ref{fig:BackgroundTracingApproach} depicts the fundamental steps that are performed by the \textsc{PathTools} tracing framework to generate an execution trace.
 First, the user selects a test case of interest that should be traced and visualized.
 For instance, this selection can be done through the list of test coverage information that is displayed next to methods in the source browser provided by the \textsc{PathTools} framework.
 A \inlinecode{Tracer} object is generated which subsequently initiates the instrumentation phase.
@@ -207,11 +211,11 @@ Consequently, developers still are not assisted in the creation of a mental map 
 	\centering
 	\includegraphics[width=0.7\textwidth]{../images/02-Object}
 	\caption[TOC Caption]{UML Object Diagram}
-	\label{fig:ModelingObject}
+	\label{fig:BackgroundModelingObject}
 \end{figure}
 
 Object diagrams \cite{rumbaugh_unified_2010} are structural diagrams that can be seen as concretization of a class diagram for a definite point in time.
-As such, their notation (cf. Figure \ref{fig:ModelingObject}) covers instances and their state as well as links between instances.
+As such, their notation (cf. Figure \ref{fig:BackgroundModelingObject}) covers instances and their state as well as links between instances.
 The description of an instance includes an optional identifier, the type of the instance, and a list of attributes and their values.
 Links can be annotated with roles and link names, whereby the latter are equipped with indicators for the reading direction.
 In addition, links can be declared as forward-navigable and non-backward navigable.
@@ -228,12 +232,12 @@ Thus, a map of the system's runtime structure can be created that allows the obs
 	\centering
 	\includegraphics[width=0.6\textwidth]{../images/02-Sequence}
 	\caption[TOC Caption]{UML Sequence Diagram}
-	\label{fig:ModelingSequence}
+	\label{fig:BackgroundModelingSequence}
 \end{figure}
 
 Sequence diagrams \cite{rumbaugh_unified_2010} are used to model the interaction of objects.
 Thereby, the focus is on the exchange of messages in a specific scenario rather than the depiction of all possible execution branches.
-The fundamental notation elements are depicted in Figure \ref{fig:ModelingSequence}.
+The fundamental notation elements are depicted in Figure \ref{fig:BackgroundModelingSequence}.
 
 Objects and their lifelines are aligned along the horizontal axis.
 Execution specifications on the lifelines indicate whether an object is currently participating in a computation.
@@ -256,12 +260,12 @@ This optimization would certainly introduce computational complexity, but does n
 	\centering
 	\includegraphics[width=0.6\textwidth]{../images/02-Communication}
 	\caption[TOC Caption]{UML Communication Diagram}
-	\label{fig:ModelingCommunication}
+	\label{fig:BackgroundModelingCommunication}
 \end{figure}
 
 Similar to sequence diagrams, communication diagrams \cite{rumbaugh_unified_2010} are used to model the exchange of messages between objects during a specific scenario.
 However, the latter rather focus on the relationships between participating objects than on the sequence of exchanged messages.
-The notation elements that are used in communication diagrams (cf. Figure \ref{fig:ModelingCommunication}) are similar to the fundamental components of sequence diagrams.
+The notation elements that are used in communication diagrams (cf. Figure \ref{fig:BackgroundModelingCommunication}) are similar to the fundamental components of sequence diagrams.
 Objects are depicted as lifelines, but everything except the header is omitted.
 Objects that are related through message exchanges are connected with an undirected line.
 Messages between objects are aligned along those connectors and an orientation indicator shows which object is the sender and respectively the receiver of a message.
