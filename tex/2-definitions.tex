@@ -168,6 +168,15 @@ Otherwise, the returned information might not be related to the developer's quer
 For instance, the state of a different object might be returned when a method is called with different arguments in repeated executions.
 Additionally, non-deterministic branching that yields a diverging call tree could have the consequence that the refinement run never reaches the specified point of the execution.
 
+\subsubsection{Information Presentation}
+
+\begin{figure}[tb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{../images/02-TracingPathFinder}
+	\caption[Information Presentation Provided by PathFinder]{Information presentation provided by \textsc{PathFinder}, the lightweight back-in-time debugger that implements \emph{step-wise run-time analysis}.}
+	\label{fig:BackgroundPathFinder}
+\end{figure}
+
 \section{Modeling of Objects, States, and Interactions}
 \label{s:BackgroundModeling}
 
