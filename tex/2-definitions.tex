@@ -177,6 +177,24 @@ Additionally, non-deterministic branching that yields a diverging call tree coul
 	\label{fig:BackgroundPathFinder}
 \end{figure}
 
+Figure \ref{fig:BackgroundPathFinder} shows the lightweight back-in-time debugger named \textsc{PathFinder} that implements the step-wise run-time analysis approach.
+As depicted, it presents a call tree of the current test execution to the developer.
+Single nodes can be expanded, revealing further details like the underlying source code.
+Refinement runs are performed in the background when features like state exploration are used.
+Thus, developers can inspect the state of arguments, of return values, and of the receiving object before and after the execution.
+
+However, this information presentation is still very technical.
+A call tree is not a representation that conforms to the events on the abstraction level of objects.
+The debugger shows a sequence of method invocations rather than objects and their interactions.
+Consequently, it is still rather hard to figure out which objects participate in the current computation.
+Furthermore, the relationships between those objects not immediately obvious.
+They have to be figured out by the developer manually, and this activity is potentially time consuming.
+
+What this all amounts to is that \emph{step-wise run-time analysis} constitutes a practicable solution for three of the four major problems of dynamic analysis, namely for computation time, trace size, and computation time.
+However, the presented information representation still does not play a part in closing the gap of abstraction levels.
+\textsc{PathFinder} displays execution traces of object-oriented programs, but objects and their interactions are no first-class entity.
+Consequently, developers still have to create a mental map of objects manually.
+
 \section{Modeling of Objects, States, and Interactions}
 \label{s:BackgroundModeling}
 
