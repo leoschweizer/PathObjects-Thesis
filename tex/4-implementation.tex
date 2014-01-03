@@ -1,5 +1,6 @@
 \chapter{PathObjects for Squeak/Smalltalk}
 \label{c:implementation}
+\todo[inline]{Update Intro}
 To validate the applicability of the \textsc{PathObjects} concept, we put it into practice in the form of a prototype for the Squeak/Smalltalk environment.
 This chapter describes the implementation of this prototype, which also served as a basis for the performance analysis and user evaluation (cf. Chapter \ref{c:discussion}).
 Section \ref{s:ImplementationPrototype} shows how the single concepts - namely navigation, exploration, focusing, and information layers - are realized.
@@ -45,6 +46,7 @@ From left to right, these are toggling state tracking, toggling outbound referen
 All of these features are explained in the following.
 
 \subsubsection{State Exploration}
+\todo[inline]{Move}
 
 \begin{figure}[b]
 	\centering
@@ -91,6 +93,7 @@ This allows developers to get an insight which other objects a specific one refe
 
 \subsection{Focusing}
 \label{ss:ImplementationFocusing}
+\todo[inline]{Move}
 In order to allow developers to focus on specific entities of interest, \textsc{PathObjects} supports filtering of irrelevant objects and messages.
 Both mechanisms are presented in the following.
 
@@ -131,6 +134,7 @@ Thus, the information presentation can be compacted for perceivability purposes.
 
 \subsection{Information Layers}
 \label{ss:ImplementationLayers}
+\todo[inline]{Move to End of Chapter?}
 
 \begin{figure}[tb]
 	\centering
@@ -166,8 +170,6 @@ When a developer chooses to visualize a metric through colors, the scale can be 
 In the first case, a traditional traffic light rating system is used ranging from red (metric indicates room for improvement) to green (metric indicates satisfactory conditions).
 In the second case, the developer can select from a range of linear and perceptually linearized color scales as proposed by Levkowitz et al. \cite{levkowitz_color_1992, levkowitz_color_1997}.
 The currently supported scales are grayscale, rainbow scale, heated-object scale, magenta scale, linearized optimal color Scale (all perceptually linearized), as well as blue-to-cyan scale, blue-to-yellow scale, and optimal color scale.
-
-
 
 
 \section{Data Acquisition}
@@ -258,6 +260,7 @@ Therefore, the refinement runs for object reference tracing mostly correspond to
 \sectionmark{Graph Drawing}}
 \sectionmark{Graph Drawing}
 \label{s:ImplementationLayouting}
+\todo[inline]{Update Roassal}
 
 This Section describes how \textsc{PathObjects} traces can be mapped to directed multigraphs and describes how we used the state of the art in graph drawing to place objects and messages in our interactive diagrams.
 Furthermore, the interoperability of \textsc{Graphviz} and the Squeak environment is depicted.
