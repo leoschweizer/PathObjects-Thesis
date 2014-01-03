@@ -257,12 +257,12 @@ However, the underlying tracing approach based on method wrappers is not very re
 For instance, our prototypical implementation collects values of the program counter during tracing in order to permit the highlighting of the current message send within the corresponding method.
 For that purpose, it browses the call stack, and expects a specific structure while doing so.
 All method calls that originate from the tracing framework have to be skipped in order to find the actual call context and thus the appropriate program counter value.
-If a program under observation manipulates the call stack, for instance by using method wrappers itself, the assumptions made about the sequence of tracing framework calls will no longer hold true.
-Consequently, the information that is gained during such tracing runs will be incorrect.
+If a program under observation manipulates the call stack, for instance by using method wrappers itself, the assumptions made about the sequence of tracing framework calls no longer hold true.
+Consequently, information that is collected during such tracing runs would be incorrect.
 
 Other tracing approaches might be less susceptible to such interferences, especially if traces are built via external observation of the target system, as is the case with the utilization of debug interfaces or with tracing on the virtual machine level.
 However, the application of that sort of reflective capabilities is rarely found in practice.
-Therefore, the limitations that are introduced in conjunction with metaprogramming and reflection are acceptable.
+Therefore, the limitations that are introduced in conjunction with tracing on the basis of method wrappers are acceptable.
 Furthermore, these limitations do not invalidate the concept of \textsc{PathObjects} itself, since it might just as well be implemented with other, more resistant tracing approaches.
 
 \subsection{Reliance on Test Coverage}
