@@ -271,8 +271,12 @@ Since only test cases can serve as reproducible entry points in our current prot
 In practice, this means that not all entities and execution branches that are actually in use during productive executions of the system can necessarily be visualized with existing tests.
 Nonetheless, it is also feasible to write specific unit tests for the soul purpose of visualization.
 Such a test then can be seen as the description of a scenario that the user wishes to examine through our tool.
-However, this strategy requires that the user already has a certain degree of knowledge about the system, which might not apply when dealing with completely unknown systems. 
+Admittedly, this strategy requires the user to already have a certain degree of knowledge, which might not apply when dealing with previously unknown systems.
 In such cases, one might not be able to construct a working scenario.
+
+However, the concept of \textsc{PathObjects} is not limited to test cases.
+The underlying tracing approach works with any reproducible entry point into program behavior.
+Consequently, the restriction to test cases is a limitation of the prototypical implementation rather than of the concept itself.
 
 \subsection{Reliance on Test Quality} \todo{missing refs}
 \label{ss:DiscussionLimitationsTestQuality}
