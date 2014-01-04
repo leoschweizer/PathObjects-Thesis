@@ -92,8 +92,17 @@ This combination of CPU and VM performs at 528.1 million bytecodes/sec and 27.3 
 The results of the measurement are depicted in Figure \ref{f:DiscussionRuntime}.
 The start-up time is faster than one second in more than 50\% of all measured test cases.
 More than 75\% of all measurements are below two seconds.
-In the case of \textsc{DicThesaurusRex} and \textsc{SUnit}, the third quartiles are even below one second.
+In the case of \textsc{DicThesaurusRex} and \textsc{SUnit}, even the third quartiles are below one second.
 The outliers reach up to 34 seconds with the worst-case occurring in the \textsc{Seaside-Core} project.
+
+In comparison to the majority of test cases, the start-up times of the outliers are significantly slower.
+However, when compared to traditional dynamic analysis tools (cf. Section \ref{ss:BackgroundAnalysisProblems}), the results nevertheless are available considerably faster.
+Furthermore, those test case are rather comprehensive in terms of the number of objects and messages, and it is doubtful that developers want to visualize these amounts of data in their entirety.
+Consequently, a possible solution to speed up the visualization of these test cases would be to provide an alternative entry point that allows developers to specify entities of interest through the \textsc{PathView} filter.
+Thus, the graph that has to be processed during the graph drawing phase could be narrowed down before the first layout computation.
+
+In summary, it can be said that the total time required for tracing and processing is entirely satisfactory in case of the four investigated projects.
+Since these projects are real-world software systems rather than synthetic benchmarks, it can be concluded that the approach is suitable to achieve considerably better performance compared to traditional dynamic analysis tools.
 
 \begin{figure}[b!]
 	\centering
