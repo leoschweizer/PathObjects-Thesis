@@ -47,12 +47,16 @@ Project    && System & Test && System & Test \\
 
 \subsection{Runtime Performance}
 \label{ss:DiscussionPerformance}
-The major bottleneck in our approach of the rendering of object interactions can be accounted for by the hierarchical graph drawing that is performed during the visualization phase.
-\todo{point out seq triv.}
-Although the applied algorithm has been designed with its interactive application in mind and generally performs fast enough therefor \cite{gansner_technique_1993}, its runtime is heavily dependent on the specific structure of the graph at hand.
+Most traditional dynamic analysis tools refrain from information presentations that require complex computations.
+Instead, they rely on sequence diagrams or similar visualizations that can be generated trivially.
+In contrast, the major bottleneck of our approach can be accounted to the hierarchical graph drawing that is performed in order to render object interactions.
+
+The applied algorithm has been designed with its interactive application in mind and generally performs fast enough therefor \cite{gansner_technique_1993}.
+Nevertheless, its runtime is heavily dependent on the specific structure of the graph at hand.
 Precisely, the edge crossing minimization problem is NP-hard and the applied heuristic requires quadratic time in the number of nodes in the worst case \cite{tamassia_handbook_2013}, which eventuates when edges span the maximum possible number of ranks.
 An example graph with $n$ ranks that shows this characteristic is depicted in Figure \ref{fig:graph-worst-case}.
-Since it is practically impossible to predict to which degree call trees of test cases conform to this structure, an empirical study has been carried out with real-world software systems to examine the runtime behavior of our approach.
+
+Since it is practically impossible to predict to which degree call trees of test cases conform to this structure, the four real-world projects depicted in section \ref{ss:DiscussionProjects} have been used to carry out an empirical evaluation of the runtime behavior of our approach.
 
 \begin{figure}[b]
 	\centering	
