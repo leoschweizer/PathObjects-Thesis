@@ -18,7 +18,7 @@ To ensure that the computational extra work required for visualizing recorded ob
 Since \textsc{PathObjects} also introduces additional tracing effort, an analysis of its memory requirements is presented in Section \ref{ss:DiscussionSpace}.
 The projects that have been used to conduct those evaluations are presented in Section \ref{ss:DiscussionProjects}.
 
-\subsection{Projects}
+\subsection{Evaluated Projects}
 \label{ss:DiscussionProjects}
 In order to get a meaningful performance estimation, four real-world software projects with different backgrounds were chosen as a basis for the measurements.
 The extent of those projects (cf. Table \ref{t:EvaluationProjects}) ranges from roughly 210 methods in 16 classes to almost 1900 methods in over 210 classes.
@@ -135,12 +135,12 @@ Even if garbage collection would account for a significant share of the runtime,
 
 \subsection{Space Consumption}
 \label{ss:DiscussionSpace}
-As pointed out in Section \ref{s:BackgroundAnalysis}, the major problem of dynamic analysis techniques is the huge amount of data arising during tracing runs.
+As pointed out in Section \ref{s:BackgroundAnalysis}, one major problem of dynamic analysis techniques is the huge amount of data arising during tracing runs.
 Perscheid et al. have proposed the \emph{Step-wise Run-time Analysis} approach \cite{perscheid_immediacy_2010} as tracing technique with considerably lowered space requirements. 
 This approach also serves as a basis of \textsc{PathObjects}, but additional tracing effort had to be introduced to allow for the reconstruction of object interaction diagrams from those traces.
 For that reason, an estimation of the additional space consumption \textsc{PathObjects} adds on top of the underlying tracing framework is presented in this section.
 
-\subsubsection{Preliminary Considerations}
+\subsubsection{Evaluation Procedure}
 The main memory consumption of a specific part of the system is hard to measure exactly in a garbage collected environment like the Squeak virtual machine.
 For that reason, the space requirements are estimated by means of theoretical deduction.
 Figure \ref{fig:DiscussionStructure} depicts the basic components \textsc{PathObjects} traces consists of in the form of a simplified class diagram.
