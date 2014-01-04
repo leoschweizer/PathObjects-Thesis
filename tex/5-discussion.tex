@@ -53,10 +53,11 @@ In contrast, the major bottleneck of our approach can be accounted to the hierar
 
 The applied algorithm has been designed with its interactive application in mind and generally performs fast enough therefor \cite{gansner_technique_1993}.
 Nevertheless, its runtime is heavily dependent on the specific structure of the graph at hand.
-Precisely, the edge crossing minimization problem is NP-hard and the applied heuristic requires quadratic time in the number of nodes in the worst case \cite{tamassia_handbook_2013}, which eventuates when edges span the maximum possible number of ranks.
+Precisely, the edge crossing minimization problem is NP-hard and the applied heuristic requires quadratic time in the number of nodes in the worst case \cite{tamassia_handbook_2013}.
+This case eventuates when edges span the maximum possible number of ranks.
 An example graph with $n$ ranks that shows this characteristic is depicted in Figure \ref{fig:graph-worst-case}.
 
-Since it is practically impossible to predict to which degree call trees of test cases conform to this structure, the four real-world projects depicted in section \ref{ss:DiscussionProjects} have been used to carry out an empirical evaluation of the runtime behavior of our approach.
+Since it is practically impossible to predict to which degree call trees of test cases conform to this structure, the four real-world projects depicted in Section \ref{ss:DiscussionProjects} have been used to carry out an empirical evaluation of the runtime behavior of our approach.
 
 \begin{figure}[b]
 	\centering	
@@ -84,13 +85,16 @@ Since it is practically impossible to predict to which degree call trees of test
 	\label{fig:graph-worst-case}
 \end{figure}
 
-\subsubsection{Test Arrangement}
-\todo[inline]{Missing}
+\subsubsection{Evaluation Procedure}
+For each test case of the evaluated software systems, a time measurement was taken.
+The selection of a test case constitutes the start of a measurement, and the completion of the start-up of \textsc{PathObjects} its end.
+In other words, the measurements include all operations that have to be performed before the developer can start analyzing a test case through \textsc{PathObjects}.
+Namely these are the execution of a shallow analysis, the initialization of all user interface elements, the computation of a graph layout, and its application to the generated diagram.
+Between each measurement, garbage collection has been triggered multiple times in order to prevent unintended side effects through growing memory consumption.
 
-\subsubsection{Test Environment}
 All measurements have been performed on an Intel\copyright{} Core\texttrademark{}  i7-2620M CPU @ 2.70GHz.
-The Squeak image version 4.4-12327 has been executed with the Croquet Closure Stack VM, version StackInterpreter VMMaker-oscog-EstebanLorenzano.237\footnote{http://source.squeak.org/VMMaker/VMMaker-oscog-EstebanLorenzano.237.mcz, last checked \today}. 
-This combination of CPU and VM performs at 528.1 million bytecodes/sec and 27.3 million sends/sec in the Squeak Tiny Benchmarks. Graphviz has been available in version 2.34.
+The Squeak image version 4.4-12327 has been executed on a Windows 7 x64 host operating system with the Croquet Closure Stack VM, version StackInterpreter VMMaker-oscog-EstebanLorenzano.237\footnote{http://source.squeak.org/VMMaker/VMMaker-oscog-EstebanLorenzano.237.mcz, last checked \today}. 
+This combination of CPU and VM performs at 528.1 million bytecodes/sec and 27.3 million sends/sec in the Squeak Tiny Benchmarks. \textsc{Graphviz} served as graph drawing engine and was present in version 2.34.
 
 \subsubsection{Results}
 
