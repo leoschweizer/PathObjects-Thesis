@@ -89,6 +89,14 @@ The Squeak image version 4.4-12327 has been executed with the Croquet Closure St
 This combination of CPU and VM performs at 528.1 million bytecodes/sec and 27.3 million sends/sec in the Squeak Tiny Benchmarks. Graphviz has been available in version 2.34.
 
 \subsubsection{Results}
+
+\begin{figure}[tb!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{../plots/05-Runtimes}
+	\caption[Runtime Performance of \textsc{PathObjects}]{Runtime performance of \textsc{PathObjects} with various projects (whiskers indicate 2.5th and 97.5th percentiles).}
+	\label{f:DiscussionRuntime}
+\end{figure}
+
 The results of the measurement are depicted in Figure \ref{f:DiscussionRuntime}.
 The start-up time is faster than one second in more than 50\% of all measured test cases.
 More than 75\% of all measurements are below two seconds.
@@ -104,13 +112,6 @@ Thus, the graph that has to be processed during the graph drawing phase could be
 In summary, it can be said that the total time required for tracing and processing is entirely satisfactory in case of the four investigated projects.
 These projects are real-world software systems rather than synthetic benchmarks.
 Hence, it can be concluded that even though our approach entails operations with high computational complexity, it still is suitable to achieve considerably better performance compared to traditional dynamic analysis tools.
-
-\begin{figure}[b!]
-	\centering
-	\includegraphics[width=0.9\textwidth]{../plots/05-Runtimes}
-	\caption[Runtime Performance of \textsc{PathObjects}]{Runtime performance of \textsc{PathObjects} with various projects (whiskers indicate 2.5th and 97.5th percentiles).}
-	\label{f:DiscussionRuntime}
-\end{figure}
 
 \subsubsection{Threats to Validity}
 The runtime measurements have been performed with the help of the \inlinecode{BlockClosure>>timeToRunWithoutGC} method, which has two implications.
