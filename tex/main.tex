@@ -51,9 +51,6 @@
 \include{7-conclusion}
 \cleardoublepage
 
-\printglossaries
-\cleardoublepage
-
 %\include{appendix}
 %\cleardoublepage
 
@@ -61,12 +58,20 @@
 \backmatter
 
 \phantomsection
+\addcontentsline{toc}{chapter}{\protect\numberline{}Acronyms}
+\pagestyle{plain}
+\raggedright
+\sloppy
+\printglossaries
+\cleardoublepage
+
+\phantomsection
 \addcontentsline{toc}{chapter}{\protect\numberline{}Bibliography}
 \pagestyle{plain}
 \raggedright
 \sloppy
 \printbibliography
-%\cleardoublepage
+\cleardoublepage
 %--------------------------------------------------------------
 
 \include{statement}

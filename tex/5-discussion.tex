@@ -161,8 +161,9 @@ s(o,m)=o*4 + m*5 + \sum_{n=1}^{m} (7 + a(M_n))\label{eq:SpaceConsumptionWords}
 Thereby, the number of arguments of a message $M_n$ are represented by the function $a$.
 Since a word consumes four bytes in the virtual machine we used, the total space consumption in kilobytes $s_{kB}$ can be calculated with the help of formula \ref{eq:SpaceConsumptionBytes}. 
 \begin{equation}
-s_{kB}(o,m) = \frac{4 * s(o,m)}{1024}\label{eq:SpaceConsumptionBytes}
+s_{kB}(o,m) = \frac{4 * s(o,m)}{1000}\label{eq:SpaceConsumptionBytes}
 \end{equation}
+\todo{update diagram kB}
 To get a reasonable estimation of the three variable parts $o$, $m$, and $a(M_n)$, their actual numbers in the case of the four evaluation projects have been measured.
 
 \usetikzlibrary{positioning,shapes,shadows,arrows}
