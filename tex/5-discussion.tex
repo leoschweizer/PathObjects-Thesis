@@ -179,7 +179,7 @@ To get a reasonable estimation of the three variable parts $o$, $m$, and $a(M_n)
 	
 \tikzset{every node/.style={draw}}
 
-\begin{figure}[b!]
+\begin{figure}[tb!]
 	\centering
 	\begin{tikzpicture}[node distance=2cm, font=\sffamily]
 
@@ -208,13 +208,22 @@ To get a reasonable estimation of the three variable parts $o$, $m$, and $a(M_n)
 \end{figure}
 
 \subsubsection{Results}
-\todo[inline]{Missing}
+The results of the evaluation are depicted in Figure \ref{fig:DiscussionSpace}.
+It shows the space consumption that is introduced through \textsc{PathObjects} in addition to the data that is collected through the underlying tracing framework \cite{perscheid_immediacy_2010}.
 
-\begin{figure}[h!]
+In each of the evaluated projects, over 50\% of the test cases imply less than 10kB of additionally collected data.
+More than 97.5\% of all evaluated test cases require less than 200kB in addition.
+The worst case occurs in a unit test of the Squeak System Browser.
+In this case, the additional space requirements add up to nearly 900kB.
+
+Perscheid et al. already have shown that \emph{step-wise run-time analysis} maintains a low memory footprint during tracing.
+With the worst case introducing less than 1MB of additional tracing data, it can be concluded that the space consumption overhead that is required for the reconstruction of object interactions is negligible.
+
+\begin{figure}[tb!]
 	\centering
 	\includegraphics[width=0.9\textwidth]{../plots/05-SpaceConsumption}
 	\caption[Space Requirements Introduced Through \textsc{PathObjects}]{Additional space consumption introduced through the tracing requirements of \textsc{PathObjects} (whiskers indicate 2.5th and 97.5th percentiles).}
-	\label{f:DiscussionSpace}
+	\label{fig:DiscussionSpace}
 \end{figure}
 
 \subsubsection{Threats to Validity}
