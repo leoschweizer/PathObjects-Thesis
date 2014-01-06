@@ -67,9 +67,17 @@ But the strongest reason to rely on the automated generation of diagram layouts 
 \todo[inline]{ctd.}
 
 \section{Interactive Components}
-\todo[inline]{Intro}
+\label{s:ApproachInteractivity}
+As depicted in Section \ref{missing}\todo{cite}, interactivity is an integral part of \textsc{PathObjects} diagrams.
+Consequently, they provide a number of interactive components, which are covered in the following sections.
+The components that allow developers to navigate through the temporal and spatial dimensions of diagrams are presented in Section \ref{ss:ApproachInteractiveNavigation}.
+The explorative features that can be used to gain insight into the runtime state and the state of the according source code representations are depicted in Section \ref{ss:ApproachInteractiveExploration}.
+In order to allow developers to focus on specific entities of interest, \textsc{PathObjects} diagrams feature object and message filters, which are presented in Section \ref{ss:ApproachInteractiveFocusing}.
+Finally, information layers can be used to enrich diagrams with use-case specific information, like source code metrics or profiling data.
+They are presented in Section \ref{ss:ApproachInteractiveLayers}.
 
 \subsection{Navigation}
+\label{ss:ApproachInteractiveNavigation}
 Developers have to be allowed to navigate the temporal and spatial dimensions of object interaction diagrams.
 For that reason, \textsc{PathObjects} diagrams offer two interactive components, namely the timeline and the mini-map, which allow to examine execution traces in an explorative manner.
 The timeline gives an overview of all steps of the execution, or respectively the message sends and returns.
@@ -196,6 +204,7 @@ This would not be possible with fuzzy search alone, since all instances of a cla
 As pointed out before, search results are indicated by highlighting timeline items (cf. Figure \ref{fig:ApproachTimelineSearch}).
 
 \subsection{Exploration}
+\label{ss:ApproachInteractiveExploration}
 Developers have to be enabled to explore the state of the system under observation and to reenact how it changes over the course of time.
 For that reason, \textsc{PathObjects} provides two interactive components.
 First, state exploration allows to inspect the internal state of objects.
@@ -234,7 +243,7 @@ The context in which a method is called - the implementation of the calling meth
 This pop-up also provides convenient entry points for the Smalltalk System Browser, that subsequently can be used to explore related parts of the system implementation.
 
 \subsection{Focusing}
-\label{ss:ImplementationFocusing}
+\label{ss:ApproachInteractiveFocusing}
 In order to allow developers to focus on specific entities of interest, \textsc{PathObjects} diagrams provide interactive components for the filtering of irrelevant objects and messages.
 Both mechanisms are presented in the following.
 
