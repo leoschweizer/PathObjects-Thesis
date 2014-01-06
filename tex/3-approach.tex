@@ -248,9 +248,9 @@ Both mechanisms are presented in the following.
 \end{figure}
 
 The message filter functionality makes use of another tool of the \textsc{PathTools} suite, namely \textsc{PathView} \cite{perscheid_test-driven_2013}.
-The primary purpose of this tool is to provide views of the static structure of entities that are involved in a execution.
-For that purpose, it generates UML class diagrams on the basis of execution traces.
-\textsc{PathObjects} uses \textsc{PathView} to allow developers to define the messages that should be displayed.
+The primary purpose of this tool is to provide views of the static structure of entities that occur in an execution trace.
+For that purpose, it generates UML class diagrams.
+\textsc{PathObjects} diagrams use \textsc{PathView} as interactive component to allow developers to define the messages that should be displayed.
 The message filter can be invoked at any time during the visualization of an execution trace.
 
 An example of the result of such an invocation is depicted in Figure \ref{fig:ImplementationFocusingMessages}.
@@ -263,11 +263,13 @@ In the depicted example, all methods are selected, except those implemented by t
 
 \subsubsection{Object Filter}
 The primary purpose of the object filter is to allow developers to focus on one or more specific objects of interest.
-For instance, if one chooses to focus on the digital clock instance, the objects \inlinecode{SAnalogClockClass} and \inlinecode{a SAnalogClock} will be removed from the canvas.
+For instance, if one chooses to focus on the digital clock instance, the \inlinecode{SAnalogClock} class object and the instance of \inlinecode{SAnalogClock} will be removed from the canvas.
+In addition, all messages that do not involve the selected object are removed from the timeline.
 All other objects remain on the canvas, since they exchange messages with the selected object at some point of the execution history.
-However, all messages that do not involve the selected object are removed from the timeline.
-Developers now could broaden the focus area through the selection of further objects of interest.
-For example, the clock timer instance could be added to the selection, which would bring back the analog clock components and the according messages to the canvas.
+
+Developers now can broaden the focus area through the selection of further objects of interest.
+For example, the clock timer instance can be added to the selection, which will bring back the analog clock components and the according messages to the canvas.
+
 Since the selection of a small set of relevant objects usually reduces the number of displayed objects drastically, objects can be rearranged automatically with every change of the current selection.
 Thus, the information presentation can be compacted for perceivability purposes.
 
