@@ -199,41 +199,17 @@ As pointed out before, search results are indicated by highlighting timeline ite
 \todo[inline]{Intro}
 
 \subsubsection{State Exploration}
-
-\begin{figure}[b]
-	\centering
-	
-	\begin{subfigure}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../images/04-ImplExplorationState1}
-		\caption[Object State Before Message Execution]{}
-		\label{fig:ApproachExplorationState1}
-	\end{subfigure}
-	\quad
-	\begin{subfigure}{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../images/04-ImplExplorationState2}
-		\caption[Object State After Message Execution]{}
-		\label{fig:ApproachExplorationState2}
-	\end{subfigure}
-	
-	\caption[Exploration of Object State Changes]{Exploration of object state changes. a) State of the clock timer instance before the execution of \inlinecode{attach:}. b) State of the same instance after the execution of said message.}
-	\label{fig:ApproachExplorationState}
-\end{figure}
+To allow developers to understand the reasons for the behavior of a system, it is important to give them an insight into the internal state of the system, or respectively of its objects.
+For that reason, state exploration constitutes an important interactive component of \textsc{PathObjects} diagrams.
 
 State exploration enables developers to monitor the internal state of specific objects over the course of time.
 As long as state exploration is enabled for an object, the state of this object is expanded below the object header.
+This means that the values of all instance variables are shown, and complex referenced objects can be explored recursively.
 Through automated executions of refinement runs (cf. Section \ref{ss:BackgroundTracing}), the state can be updated whenever the developer steps to a different point of the execution history.
 
-Figure \ref{fig:ImplementationExplorationState} gives an example with the aid of the process of adding observers to the subject.
-In Figure \ref{fig:ImplementationExplorationState1}, the state of the system is shown before the \inlinecode{attach:} message has been processed.
-\inlinecode{SAnalogClock class} is the sender of this message, and an instance of \inlinecode{SAnalogClock} is the argument of this message (but not shown in the figure).
-State tracking is enabled for the clock timer instance, and the state explorer shows that no observers are currently registered and that the hour, minute, and second attributes are equal to \inlinecode{0}.
-Figure \ref{fig:ImplementationExplorationState2} depicts the state of the system after the \inlinecode{attach:} message has been processed, or respectively after the developer took a step forward in the execution history.
-The message label now has an additional field to explore the return value.
-The latter turns out to be the clock timer instance, and this fact is also clarified through the role indicator that is attached to the object.
-But the most important change is visible in the state explorer.
-It can be seen that the collection of observers now has one entry, and this entry is the instance of \inlinecode{SAnalogClock} that has been passed as argument.
+State exploration is not only available for senders and receivers of messages, but also for all arguments and return values.
+However, objects that occur in the latter two roles only show up on the canvas if they are either a message sender or receiver elsewhere in an execution history. 
+In order to allow for the exploration of the states of those objects, \textsc{PathObjects} diagrams also feature an external state explorer that is not tied to specific objects.
 
 \subsubsection{Reference Exploration}
 \textsc{PathObjects} not only allows developers to track object state changes, but also to chase outbound pointers of specific objects.
@@ -243,6 +219,12 @@ When enabling exploration, the developer is prompted to select a color.
 This selection will then be used as background color of all referenced objects.
 The current outbound pointers are collected when stepping through the execution history, and the background colors of referenced objects are updated accordingly.
 This allows developers to get an insight which other objects a specific one references, when these references are gained, and when they are released.
+
+\subsubsection{Source Code Exploration}
+The essential goal during program comprehension is to map the behavior of a software system to its source code representation.
+For that reason, \textsc{PathObjects} diagrams stay connected to the underlying source code of the system under observation at all times during the exploration of an execution trace.
+The context in which a method is called - the implementation of the calling method - and the implementation of the called method itself can be explored through a source browser pop-up.
+This pop-up also provides convenient entry points for the Smalltalk System Browser, that subsequently can be used to explore related parts of the system implementation.
 
 \subsection{Focusing}
 \label{ss:ImplementationFocusing}
