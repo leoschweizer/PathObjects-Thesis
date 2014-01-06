@@ -43,13 +43,13 @@ Status
 | Chapter        | Status        | Target  |
 | -------------- | ------------- | ------- |
 | Introduction   | 5             | 4       |
-| Background     | 8             | 12      |
-| Concept        | 7             | 12      |
-| Implementation | 12            | 9       |
-| Discussion     | 8             | 12      |
+| Background     | 10            | 12      |
+| Concept        | 10            | 12      |
+| Implementation | 10            | 9       |
+| Discussion     | 11            | 12      |
 | Related Work   | 9             | 8       |
-| Conclusion     | 1             | 3       |
-| **Overall**    | **50**        | **60**  |
+| Conclusion     | 2             | 3       |
+| **Overall**    | **57**        | **60**  |
 
 Building
 --------
