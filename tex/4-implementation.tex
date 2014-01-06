@@ -21,6 +21,27 @@ Finally, Section \ref{s:ImplementationLayouting} illustrates how \textsc{PathObj
 	\label{fig:ImplementationMainWindow}
 \end{figure}
 
+\begin{figure}[tb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{../images/04-ImplExploration1}
+	\caption[Basic Representation of Object Interactions]{Basic representation of object interactions; \inlinecode{SAnalogClockClass} sends the \inlinecode{attach:} message to a clock timer instance, with an analog clock instance being the argument of the message.}
+	\label{fig:ImplementationExplorationBasic}
+\end{figure}
+
+Figure \ref{fig:ImplementationExplorationBasic} shows the basic visualization of object interactions that allows developers to explore the behavior of a system.
+Objects that are involved in the current step of the execution are emphasized through green background color (in the given example, all shown objects are involved).
+The current message send is indicated through a black arrow, and the previous three steps are drawn in lighter colors.
+The example shows that the class \inlinecode{SAnalogClock} sends the \inlinecode{attach:} message to an instance of \inlinecode{ClockTimer}.
+The argument of the \inlinecode{attach:} message is an instance of \inlinecode{SAnalogClock}.
+This is illustrated through the yellow flag that is attached to the object.
+To clarify the role of an object in the current step even further, this indicator also shows the name the underlying method defines for this argument, namely \inlinecode{anObserver}.
+
+The developer can explore the implementations of the current message and of the context in which this message is sent through clicking on the icon left of the message name.
+The icon on the right of the message name allows to directly explore the state of the argument.
+The icons that are shown above the clock timer instance are a context sensitive menu that is displayed when the developer hovers an object.
+It allows to take further actions regarding the respective object.
+From left to right, these are toggling state tracking, toggling outbound reference tracking, setting of a quick filter, and execution of a quick search.
+
 
 \section{Data Acquisition}
 \label{s:ImplementationTracing}
