@@ -196,7 +196,14 @@ This would not be possible with fuzzy search alone, since all instances of a cla
 As pointed out before, search results are indicated by highlighting timeline items (cf. Figure \ref{fig:ApproachTimelineSearch}).
 
 \subsection{Exploration}
-\todo[inline]{Intro}
+Developers have to be enabled to explore the state of the system under observation and to reenact how it changes over the course of time.
+For that reason, \textsc{PathObjects} provides two interactive components.
+First, state exploration allows to inspect the internal state of objects.
+Second, reference exploration allows developers to track the outbound object pointers of specific objects.
+Thus, it is possible to reenact how an object obtains and releases references to other objects.
+Furthermore, not only the runtime state of the system under observation is relevant, but also the state of the underlying implementation.
+Consequently, \textsc{PathObjects} diagrams also keep connections to the source code of the investigated system, and allow developers to explore the according implementations of messages and their senders.
+All three components are depicted in the following sections.
 
 \subsubsection{State Exploration}
 To allow developers to understand the reasons for the behavior of a system, it is important to give them an insight into the internal state of the system, or respectively of its objects.
