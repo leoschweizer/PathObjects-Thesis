@@ -163,7 +163,6 @@ Since a word consumes four bytes in the virtual machine we used, the total space
 \begin{equation}
 s_{kB}(o,m) = \frac{4 * s(o,m)}{1000}\label{eq:SpaceConsumptionBytes}
 \end{equation}
-\todo{update diagram kB}
 To get a reasonable estimation of the three variable parts $o$, $m$, and $a(M_n)$, their actual numbers in the case of the four evaluation projects have been measured.
 
 \usetikzlibrary{positioning,shapes,shadows,arrows}
@@ -210,14 +209,15 @@ To get a reasonable estimation of the three variable parts $o$, $m$, and $a(M_n)
 
 \subsubsection{Results}
 The results of the evaluation are depicted in Figure \ref{fig:DiscussionSpace}.
-It shows the space consumption that is introduced through \textsc{PathObjects} in addition to the data that is collected through the underlying tracing framework \cite{perscheid_immediacy_2010}.
+It shows the space consumption that is introduced through \textsc{PathObjects} in addition to the data that is collected through the underlying tracing framework.
+All results have been calculated by applying formula \ref{eq:SpaceConsumptionBytes} to the specific values of $o$, $m$, and $a(M_n)$ that have been measured per test case.
 
 In each of the evaluated projects, over 50\% of the test cases imply less than 10kB of additionally collected data.
 More than 97.5\% of all evaluated test cases require less than 200kB in addition.
 The worst case occurs in a unit test of the Squeak System Browser.
-In this case, the additional space requirements add up to nearly 900kB.
+In this case, the additional space requirements add up to around 900kB.
 
-Perscheid et al. already have shown that \emph{step-wise run-time analysis} maintains a low memory footprint during tracing.
+Perscheid et al. already have shown that \emph{step-wise run-time analysis} maintains a low memory footprint during tracing \cite{perscheid_immediacy_2010}.
 With the worst case introducing less than 1MB of additional tracing data, it can be concluded that the space consumption overhead that is required for the reconstruction of object interactions is negligible.
 
 \begin{figure}[tb!]

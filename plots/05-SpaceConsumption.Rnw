@@ -19,6 +19,7 @@ o <- function(x) {
 }
 
 runtimes <- read.table("05-Space.data", col.names=c("project","objects", "messages", "pointers"))
+# 9 = constant part per message + constant part per involved objects collection
 ggplot(runtimes, aes(project, (((4 * objects + 9 * messages + pointers) * 4) / 1000))) +
   stat_summary(fun.data = f, geom="errorbar", aes(width=0.2)) +
   stat_summary(fun.data = f, geom="boxplot", fill="#3182BD", aes(width=0.4)) +
