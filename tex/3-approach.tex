@@ -235,7 +235,7 @@ This pop-up also provides convenient entry points for the Smalltalk System Brows
 
 \subsection{Focusing}
 \label{ss:ImplementationFocusing}
-In order to allow developers to focus on specific entities of interest, \textsc{PathObjects} allows for the filtering of irrelevant objects and messages.
+In order to allow developers to focus on specific entities of interest, \textsc{PathObjects} diagrams provide interactive components for the filtering of irrelevant objects and messages.
 Both mechanisms are presented in the following.
 
 \subsubsection{Message Filter}
@@ -247,7 +247,7 @@ Both mechanisms are presented in the following.
 	\label{fig:ImplementationFocusingMessages}
 \end{figure}
 
-The message filter functionality makes use of another tool of the \textsc{PathTools} suite, namely \textsc{PathView}.
+The message filter functionality makes use of another tool of the \textsc{PathTools} suite, namely \textsc{PathView} \cite{perscheid_test-driven_2013}.
 The primary purpose of this tool is to provide views of the static structure of entities that are involved in a execution.
 For that purpose, it generates UML class diagrams on the basis of execution traces.
 \textsc{PathObjects} uses \textsc{PathView} to allow developers to define the messages that should be displayed.
