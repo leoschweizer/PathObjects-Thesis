@@ -46,6 +46,26 @@ On the physical machine level, computer programs are nothing more than millions 
 As opposed to this, the abstraction level of design descriptions for instance is characterized by the description of objects and their interactions.
 As a result, a further difficult task during program comprehension is the selection of relevant details on the low abstraction levels, and, the building of abstract representations on that basis.
 
+Rugaber describes the third gap as discrepancy between coherent models and incoherent artifacts.
+At the design time of a program and the initial implementation of a design, programs are coherently structured.
+However, by the time program comprehension is required, the high-level design documents might have gotten out of date or might even be lost.
+Furthermore, the original structure of the program might be completely altered through maintenance activities like feature enhancement or bug fixing.
+Consequently, developers have to understand the high level architecture of a program whose original purpose may have been shifted massively.
+
+The fourth gap lies between the formal world of computer programs and the associative nature of human cognition.
+Programs are subject to strict syntactic and semantic rules that on the one hand control how they are executed but on the other hand limit how ideas can be expressed.
+In contrast, human cognition is said to work associatively.
+That means that patterns are detected within raw data, and relations between detected patterns are built subsequently.
+In the context of program comprehension, this means that developers have to find patterns in the application domain, in their knowledge of the programming language and related best practices, as well as in data structures and algorithms.
+Only if correct relations between those patterns can be built, a program will be understood.
+
+According to Rugaber, the fifth and last discrepancy gapes between program analysis and model synthesis.
+Program analysis is a bottom-up activity.
+Developers try to detect low level patterns that reveal some intent, and subsequently identify the purpose of higher-level constructs these patterns are part of.
+As opposed to this, model synthesis is a top-down activity.
+Developers have an overall idea of the purpose of a program, and this idea is refined successively through the consideration of lower-level details.
+During the process of program comprehension, both of these activities have to be accomplished at the same time.
+
 \section{Dynamic Analysis: A Necessary Evil}
 \label{s:BackgroundAnalysis}
 When it comes to the analysis of objects and their interactions, the application of dynamic analysis techniques is inevitable.
