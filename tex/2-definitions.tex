@@ -35,9 +35,16 @@ All observers have to pull required information from the subject on notification
 \subsection{Why Program Comprehension is Hard}
 Generally speaking, program comprehension requires to bridge the gaps between different conceptual areas.
 Rugaber has identified five gaps that are particularly relevant in this context \cite{kent_program_1996}.
+
 First, there is a gap between the application domain and the domain of programming languages.
 A problem exists in the first domain, but the solution to this problem is implemented with programming languages that usually are not tailored to the application domain.
-Second, there is a gap between the low-level functional principles of physical machines, the abstraction levels of programming languages, and the high-level design descriptions.
+Consequently, an important task for programmers during program comprehension is to map the concepts of the application domain to the concepts in the source code.
+And although this task requires knowledge from both domains, tools that are supposed to assist in program comprehension usually do not address the application domain.
+
+The second gap is identified between the low-level functional principles of physical machines, the abstraction levels of programming languages, and the high-level design descriptions.
+On the physical machine level, computer programs are nothing more than millions of bytes represented by the presence or absence of current.
+As opposed to this, the abstraction level of design descriptions for instance is characterized by the description of objects and their interactions.
+As a result, a further difficult task during program comprehension is the selection of relevant details on the low abstraction levels, and, the building of abstract representations on that basis.
 
 \section{Dynamic Analysis: A Necessary Evil}
 \label{s:BackgroundAnalysis}
