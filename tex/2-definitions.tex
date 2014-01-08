@@ -27,9 +27,11 @@ The components form a pull-observer pattern, meaning that subjects notify observ
 All observers have to pull required information from the subject on notifications.
 
 \section{Program Comprehension}
+\label{s:BackgroundComprehension}
 \todo[inline]{Intro}
 
 \subsection{Why Program Comprehension is Hard}
+\label{ss:BackgroundComprehensionDifficulties}
 Generally speaking, program comprehension requires to bridge the gaps between different conceptual areas.
 Rugaber has identified five gaps that are particularly relevant in this context \cite{kent_program_1996}.
 
@@ -64,12 +66,12 @@ Developers have an overall idea of the purpose of a program, and this idea is re
 During the process of program comprehension, both of these activities have to be accomplished at the same time.
 
 \subsection{The Mental Model Approach to Program Comprehension}
+\label{ss:BackgroundComprehensionMentalModel}
 Many different models have been proposed that aim at describing the process of program comprehension.
 Hierarchical plan models as proposed by Shneiderman \cite{shneiderman_exploratory_1976} or by Soloway and Ehrlich \cite{soloway_empirical_1984}, and programming strategy models as proposed by Davies \cite{davies_role_1991} are popular representatives.
 However, the approach that emerged as the dominant one is the mental model approach.
 Mental models describe the current state of understanding of the system under observation, and are successively updated during the process of comprehension.
 They are not to be confused with cognitive models that describe how information is processed and how this contributes to the construction of a mental model.
-Cognitive theory is ..., and consequently these models are not covered here.
 
 The mental model approach originally has been established in the context of text comprehension, for instance by van Dijk and Kintsch \cite{van_dijk_strategies_1983}, and has been adapted to procedural program comprehension by Pennington \cite{pennington_comprehension_1987, pennington_stimulus_1987}.
 With the help of empirical studies, she verified the existence of two different mental representations that are built during program comprehension.
@@ -79,9 +81,8 @@ Second, the domain model represents entities from the application domain and the
 According to Pennington, function and data flow information also are to be attributed to this model.
 Analogous to the observations about the program model, the domain model typically emerged later during program comprehension with successive analysis of a program.
 
-
-
-\subsubsection{Comprehension of Object-Oriented Programs}
+\subsection{Towards a Mental Map of Objects}
+\label{ss:BackgroundComprehensionMentalMap}
 \todo[inline]{Missing}
 
 \section{Dynamic Analysis: A Necessary Evil}
