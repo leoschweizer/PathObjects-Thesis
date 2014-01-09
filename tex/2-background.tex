@@ -100,6 +100,12 @@ Traditional dynamic debuggers that are included in every modern IDE are exemplar
 Even when they are used to debug object-oriented programs, the information presentation of those debuggers is centered around the call stack.
 This representation shows a sequence of function calls, but objects are no first-class entities.
 Consequently, questions like which objects are actually involved in the current computation and how these objects are related are typically hard to answer.
+The mere fact that these debuggers could just as well be used for the debugging of procedural programs illustrates how little they are adapted to the domain of object-oriented programming.
+
+Consequently, the information presentations as offered by debuggers and other widely used development tools hardly seem to be suitable to aid in the construction of a mental map of objects.
+This disparity raises the question why tools that offer information at the abstraction level of objects and their interactions have not been established successfully to the present day.
+A major reason might be that the analysis of object interactions necessarily imply the application of dynamic analysis techniques, which struggle from major problems themselves.
+A detailed insight into the necessity of dynamic analysis in this context, its problems, and a possible solution is presented in the following section.
 
 \section{Dynamic Analysis: A Necessary Evil}
 \label{s:BackgroundAnalysis}
