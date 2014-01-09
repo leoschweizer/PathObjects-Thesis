@@ -90,8 +90,16 @@ With the help of an empirical evaluation, they verified the validity of their mo
 
 \subsection{Towards a Mental Map of Objects}
 \label{ss:BackgroundComprehensionMentalMap}
-As depicted in the previous section, research in the area of object-oriented program comprehension unsurprisingly suggests that...
-\todo[inline]{Missing}
+As depicted in the previous section, research in the area of object-oriented program comprehension unsurprisingly suggests that objects and their interactions constitute an essential part of mental models.
+At the same time, as stated in Section \ref{ss:BackgroundComprehensionDifficulties}, one of the main difficulties during program comprehension is attributable to the gab between the low-level abstraction levels of computers and the high-level abstraction levels of programming languages and design documents.
+This would suggest that tools that aim at assisting program comprehension actually provide an information presentation that covers objects and their interactions.
+Without doubt, it is reasonable to presume that such an information presentation could help to close this gap.
+
+However, the opposite can be observed when looking at established development tools.
+Traditional dynamic debuggers that are included in every modern IDE are exemplary for this phenomenon.
+Even when they are used to debug object-oriented programs, the information presentation of those debuggers is centered around the call stack.
+This representation shows a sequence of function calls, but objects are no first-class entities.
+Consequently, questions like which objects are actually involved in the current computation and how these objects are related are typically hard to answer.
 
 \section{Dynamic Analysis: A Necessary Evil}
 \label{s:BackgroundAnalysis}
