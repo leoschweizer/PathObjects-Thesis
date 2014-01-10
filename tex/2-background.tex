@@ -13,7 +13,9 @@ The reasons that make it such a time-consuming task are depicted and related to 
 Section \ref{s:BackgroundAnalysis} shows why dynamic analysis is an inevitable instrument when it comes to assisting in the comprehension of object-oriented programs.
 Furthermore, it depicts the problems that have hindered its broad application for a long time, and describes how Perscheid et al. propose to solve some of those problems. 
 
-\section{Cognitive Aspects of Object-Oriented Program Comprehension}
+\section[Cognitive Aspects of Program Comprehension]{Cognitive Aspects of Program Comprehension%
+\sectionmark{Cognitive Aspects}}
+\sectionmark{Cognitive Aspects}
 \label{s:BackgroundComprehension}
 As depicted above, program comprehension is a tedious and time-consuming activity.
 The reasons therefore are depicted in Section \ref{ss:BackgroundComprehensionDifficulties}.
@@ -278,11 +280,13 @@ Consequently, developers still are not assisted in the creation of a mental map 
 
 %%=====================================================
 
-\chapter{Modeling of Objects, States, and Interactions}
+\section[Modeling of Objects, States, and Interactions]{Modeling of Objects, States, and Interactions%
+\sectionmark{Modeling}}
+\sectionmark{Modeling}
 \label{s:BackgroundModeling}
 \todo[inline]{Intro}
 
-\section{Motivating Example}
+\subsection{Motivating Example}
 \label{s:BackgroundExample}
 
 \begin{figure}[tb]
@@ -306,8 +310,10 @@ Furthermore, they provide an interface for subject notifications through the \in
 The components form a pull-observer pattern, meaning that subjects notify observers of changes, but do not pass the new state along with the notification.
 All observers have to pull required information from the subject on notifications.
 
-\section{Object Diagrams}
-\label{ss:BackgroundModelingObject}
+\subsection{Objects in the Unified Modeling Language}
+\label{ss:BackgroundModelingUML}
+
+\subsubsection{Object Diagrams}
 
 \begin{figure}
 	\centering
@@ -327,8 +333,7 @@ This has the advantage that objects that are closely related can be depicted in 
 Likewise, groups of objects that are not related can be placed in different parts of the canvas.
 Thus, a map of the system's runtime structure can be created that allows the observer to intuitively get an understanding of the parts of a system and their connections.
 
-\section{Sequence Diagrams}
-\label{ss:BackgroundModelingSequence}
+\subsubsection{Sequence Diagrams}
 
 \begin{figure}
 	\centering
@@ -355,8 +360,7 @@ Secondly, the automatic generation of sequence diagrams from execution traces is
 One could argue that the arrangement of the objects on the horizontal axis should be adjusted to minimize the distance between objects that exchange messages.
 This optimization would certainly introduce computational complexity, but does not seem to be a common practice among the wide range of tools offering the generation of sequence diagrams that are reviewed in the related work section (cf. Chapter \ref{c:relatedwork}).
 
-\section{Communication Diagrams}
-\label{ss:BackgroundModelingCommunication}
+\subsubsection{Communication Diagrams}
 
 \begin{figure}
 	\centering
@@ -376,7 +380,8 @@ Since the notation does not offer an inherent ordering of messages, the sequence
 As with object diagrams (cf. Section \ref{ss:BackgroundModelingObject}), the main advantage of communication diagrams lies in the unrestricted placement of objects on the two-dimensional canvas.
 It is for this reason that they are often used complementary with sequence diagrams, since the latter are not particularly suitable to communicate which objects belong together in consequence of their communication.
 
-\section{Discussion}
+\subsection{Challenges}
+\label{ss:BackgroundModelingChallenges}
 Due to the fact that the Unified Modeling Language makes a strict distinction between structural and behavioral diagrams, none of them offers a combined view on object interactions as well as the internal state of objects.
 However, to understand the behavior of object-oriented systems, it is important to get an insight into both.
 Interactions have to be depicted in order to make the behavior of a system perceivable to the observer.
