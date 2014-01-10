@@ -1,32 +1,8 @@
-\chapter{Background}
+\chapter{Program Comprehension}
 \label{c:Background}
 \todo[inline]{Intro}
 
-\section{Motivating Example}
-\label{s:BackgroundExample}
-
-\begin{figure}[tb]
-	\centering
-	\includegraphics[width=0.7\textwidth]{../images/02-ObserverExample}
-	\caption[foo]{Foo}
-	\label{fig:BackgroundExample}
-\end{figure}
-
-Throughout the following chapters, the manifestation of the observer pattern \cite{gamma_design_1995} that is depicted in Figure \ref{fig:BackgroundExample} will serve as an illustrating example.
-The component that emits events and thus functions as the \inlinecode{Subject} is a clock timer.
-It has internal state describing the current time and provides various accessors to this state.
-In addition, an interface which allows to increment the clock timer is exposed through the \inlinecode{tick} method.
-
-Several clock visualizations can act as observers of this clock timer.
-Their common base class is \inlinecode{VisibleClock}, which provides a factory method \cite{gamma_design_1995} and implements the drawing of clocks through a template method \cite{gamma_design_1995}.
-\inlinecode{AnalogClock} and \inlinecode{DigitalClock} provide two different visualizations for clock timers in analog and digital fashion.
-Therefore, they implement the \inlinecode{draw} method which is a part of the template method \inlinecode{drawText:}.
-Furthermore, they provide an interface for subject notifications through the \inlinecode{update:} method.
-
-The components form a pull-observer pattern, meaning that subjects notify observers of changes, but do not pass the new state along with the notification.
-All observers have to pull required information from the subject on notifications.
-
-\section{Program Comprehension}
+\section{Cognitive Aspects of Object-Oriented Program Comprehension}
 \label{s:BackgroundComprehension}
 Program comprehension, or in other words the activity of gaining knowledge about a software system, is a fundamental element of software engineering.
 For instance, many maintenance tasks such as bug fixing, feature enhancement, refactoring, or documentation cannot be performed without having a satisfactory understanding of the system at hand.
@@ -292,11 +268,37 @@ However, the presented information representation still does not play a part in 
 \textsc{PathFinder} displays execution traces of object-oriented programs, but objects and their interactions are no first-class entity.
 Consequently, developers still are not assisted in the creation of a mental map of objects.
 
-\section{Modeling of Objects, States, and Interactions}
+%%=====================================================
+
+\chapter{Modeling of Objects, States, and Interactions}
 \label{s:BackgroundModeling}
 \todo[inline]{Intro}
 
-\subsection{Object Diagrams}
+\section{Motivating Example}
+\label{s:BackgroundExample}
+
+\begin{figure}[tb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{../images/02-ObserverExample}
+	\caption[foo]{Foo}
+	\label{fig:BackgroundExample}
+\end{figure}
+
+Throughout the following chapters, the manifestation of the observer pattern \cite{gamma_design_1995} that is depicted in Figure \ref{fig:BackgroundExample} will serve as an illustrating example.
+The component that emits events and thus functions as the \inlinecode{Subject} is a clock timer.
+It has internal state describing the current time and provides various accessors to this state.
+In addition, an interface which allows to increment the clock timer is exposed through the \inlinecode{tick} method.
+
+Several clock visualizations can act as observers of this clock timer.
+Their common base class is \inlinecode{VisibleClock}, which provides a factory method \cite{gamma_design_1995} and implements the drawing of clocks through a template method \cite{gamma_design_1995}.
+\inlinecode{AnalogClock} and \inlinecode{DigitalClock} provide two different visualizations for clock timers in analog and digital fashion.
+Therefore, they implement the \inlinecode{draw} method which is a part of the template method \inlinecode{drawText:}.
+Furthermore, they provide an interface for subject notifications through the \inlinecode{update:} method.
+
+The components form a pull-observer pattern, meaning that subjects notify observers of changes, but do not pass the new state along with the notification.
+All observers have to pull required information from the subject on notifications.
+
+\section{Object Diagrams}
 \label{ss:BackgroundModelingObject}
 
 \begin{figure}
@@ -317,7 +319,7 @@ This has the advantage that objects that are closely related can be depicted in 
 Likewise, groups of objects that are not related can be placed in different parts of the canvas.
 Thus, a map of the system's runtime structure can be created that allows the observer to intuitively get an understanding of the parts of a system and their connections.
 
-\subsection{Sequence Diagrams}
+\section{Sequence Diagrams}
 \label{ss:BackgroundModelingSequence}
 
 \begin{figure}
@@ -345,7 +347,7 @@ Secondly, the automatic generation of sequence diagrams from execution traces is
 One could argue that the arrangement of the objects on the horizontal axis should be adjusted to minimize the distance between objects that exchange messages.
 This optimization would certainly introduce computational complexity, but does not seem to be a common practice among the wide range of tools offering the generation of sequence diagrams that are reviewed in the related work section (cf. Chapter \ref{c:relatedwork}).
 
-\subsection{Communication Diagrams}
+\section{Communication Diagrams}
 \label{ss:BackgroundModelingCommunication}
 
 \begin{figure}
@@ -366,7 +368,7 @@ Since the notation does not offer an inherent ordering of messages, the sequence
 As with object diagrams (cf. Section \ref{ss:BackgroundModelingObject}), the main advantage of communication diagrams lies in the unrestricted placement of objects on the two-dimensional canvas.
 It is for this reason that they are often used complementary with sequence diagrams, since the latter are not particularly suitable to communicate which objects belong together in consequence of their communication.
 
-\subsection{Discussion}
+\section{Discussion}
 Due to the fact that the Unified Modeling Language makes a strict distinction between structural and behavioral diagrams, none of them offers a combined view on object interactions as well as the internal state of objects.
 However, to understand the behavior of object-oriented systems, it is important to get an insight into both.
 Interactions have to be depicted in order to make the behavior of a system perceivable to the observer.
@@ -384,6 +386,3 @@ But with the growing size of a diagram, it also becomes increasingly difficult t
 In this regard, sequence diagrams do not seem to be the most appropriate choice when it comes down to presenting an execution trace in a manner that is perceivable efficiently.
 
 \todo[inline]{Finish other 2 diagrams}
-
-\section{Challenges}
-\todo[inline]{Summarize Problems}
