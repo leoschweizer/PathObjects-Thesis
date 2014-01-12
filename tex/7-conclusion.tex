@@ -31,10 +31,14 @@ The third and last category are questions about object state and state changes.
 Ko and Myers have shown with \textsc{Whyline} that this area can very well be covered by a graphical query "editor" \cite{ko_debugging_2008}.
 Such an approach could also be integrated into \textsc{PathObjects}.
 
-\paragraph{Entry Points} -> still intuition \& trial and error
-
-\paragraph{Visualization of Testsuites} -> not only test-cases, broader context
-
+\paragraph{Entry Point Suggestion} The detection of suitable entry points is still largely a matter of trial and error.
+With the current prototype, developers can browse the source code, and test cases that cover a method are displayed alongside.
+But the only indication whether a unit test actually includes the scenario the developer wishes to analyze is its name.
+In other words, the selection of suitable test cases either requires expertise or is a game of chance.
+Consequently, assisting developers in finding proper entry points could be a beneficial task.
+For instance, it could help to allow to search for test cases with simple criteria, like definitions of objects or message sequences that have to occur in a unit test.
+On a more abstract level, one could provide tools that allow to formulate requirements, such as "list test cases where an instance of the analog clock class acts as observer of a clock timer".
+The question is to which extent such abstract semantic definitions can be matched to static source code.
 
 \section{Summary}
 \label{s:ConclusionsSummary}
