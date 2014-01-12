@@ -8,17 +8,12 @@
 \todo[inline]{Intro}
 
 \paragraph{Pattern Recognition} Many trace visualization approaches that cover complete program executions employ pattern recognition techniques to reduce the traces to a manageable size (cf. Chapter \ref{c:relatedwork}).
-While our approach of the utilization of test cases as representative program executions in conjunction with Step-wise Run-time Analysis mostly solves the trace size scalability issue in terms of processing time and memory consumption, some test cases are still too large to serve as foundations of comprehensible scenarios.
+Our approach of using test cases as representative program executions in conjunction with Step-wise Run-time Analysis mostly solves the trace size scalability issue in terms of processing time and memory consumption.
+Nevertheless, some test cases are still too large to serve as foundations of comprehensible scenarios.
 However, our observations are that the traces of large test cases are often repetitive in nature. Commonly, the same set of operations is performed in the same order on different objects.
 Recurring instances of such execution patterns could be omitted, presenting only relevant instances to the user, and thus avoiding cognitive overload.
 In this regard, the execution structure of such test cases might be particularly advantageous for the application of pattern detection techniques.
 The suitability of such an approach could be the subject of further research.
-
-\paragraph{Object Pooling} Due to the reasons depicted in Section \todo{missing ref}, collections of objects are flattened and all members of a collection, but not the collection object itself is displayed in an interaction diagram. However, some test cases involve iterations over rather large collections.
-For instance, a test of the \textsc{DicThesaurusRex} project covering the synonym search functionality involves dozens of synonym objects, which excessively bloat the visualization without much added value, since the same operation is performed on each instance.
-In such cases, it might be favorable to depict only one representative object instead of the whole collection.
-In conjunction with above mentioned pattern recognition techniques, iterations of that kind could be reduced to the depiction of one single run.
-In a broader context, it is also conceivable that not only the pooling of objects within collections, but objects of the same kind in general could have beneficial effects on the perceivability of interaction diagrams.
 
 \paragraph{Advanced Querying} The keyword-based search engine in it's current form allows to answer questions like "when is an object used (next)?", "where is a specific method called?" or "where are instances of a specific class used?".
 A more sophisticated search functionality with a dedicated query language - be it textual or graphical - would be desirable.
@@ -33,12 +28,12 @@ Such an approach could also be integrated into \textsc{PathObjects}.
 
 \paragraph{Entry Point Suggestion} The detection of suitable entry points is still largely a matter of trial and error.
 With the current prototype, developers can browse the source code, and test cases that cover a method are displayed alongside.
-But the only indication whether a unit test actually includes the scenario the developer wishes to analyze is its name.
+But the sole indication whether a unit test actually includes the scenario the developer wishes to analyze is its name.
 In other words, the selection of suitable test cases either requires expertise or is a game of chance.
 Consequently, assisting developers in finding proper entry points could be a beneficial task.
-For instance, it could help to allow to search for test cases with simple criteria, like definitions of objects or message sequences that have to occur in a unit test.
+For instance, developers could be allowed to search for test cases with simple criteria, like definitions of objects or message sequences that have to occur in a unit test.
 On a more abstract level, one could provide tools that allow to formulate requirements, such as "list test cases where an instance of the analog clock class acts as observer of a clock timer".
-The question is to which extent such abstract semantic definitions can be matched to static source code.
+Accordingly, further research could tackle the questions are if entry point selection actually is a significant issue in practice, how such abstract semantic definitions can be matched to static source code, and to which extent this could help developers.
 
 \section{Summary}
 \label{s:ConclusionsSummary}
