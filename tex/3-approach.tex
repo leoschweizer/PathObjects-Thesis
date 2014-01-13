@@ -341,16 +341,18 @@ Consequently, the concept of information layers allows to reduce the time spent 
 
 \section{Diagram Layout and Aesthetics}
 \label{s:ApproachLayout}
-\todo[inline]{Intro}
+When considering the intended usage of \textsc{PathObjects} diagrams, it becomes evident that the automatic computation of diagram layouts is an essential feature of potential implementations of the concept.
+The primary purpose is to provide immediate information presentations of selected test cases.
+If developers first would have to arrange elements in those diagrams manually, a time-consuming task would be introduced by a tool that aims at reducing the time share of another activity, namely program comprehension.
 
-\subsection{Automatic Diagram Layout}
-In general, there are many profound arguments for generating diagram layouts automatically.
-For instance, automated drawing of diagrams has the side-effect that conformance to a certain style guide .
-Furthermore, the costs of communication and thus the total costs of production and maintenance can be reduced by use of automated drawing of diagrams.
-But the strongest reason to rely on the automated generation of diagram layouts becomes evident when taking the intended use of \textsc{PathTools} into account.
-\todo[inline]{ctd.}
+For that reason, it is important do define the aesthetic criteria such automatically generated layouts should adhere to.
+Since \textsc{PathObjects} diagrams display graph structures, the research on graph drawing aesthetics can be incorporated.
+Criteria that originate from this research area are presented in Section \ref{ss:ApproachLayoutUniversal}.
+Furthermore, the characteristics of UML collaboration diagrams have been subject to empirical research.
+Its results also can be incorporated into the layout of \textsc{PathObjects} diagrams, since they are very similar to collaboration diagrams. Section \ref{ss:ApproachLayoutUML} presents the policies that can be derived from this research work.
 
 \subsection{Universal Graph Drawing Aesthetics}
+\label{ss:ApproachLayoutUniversal}
 The object communication diagrams of \textsc{PathObjects} form graph structures, whereby  objects constitute nodes, and the arrows representing messages constitute edges.
 Graph drawing is a research area with a long history of its own, and there is broad consent about the aesthetic properties that should be aimed at in order to maximize perceivability \cite{battista_graph_1998, kaufmann_drawing_2001, diehl_software_2007}.
 Consequently, it stands to reason that these criteria should also be applied to our interactive object communication diagrams.
@@ -390,6 +392,7 @@ And since the graphs that should be presented through our interactive communicat
 For that reason, a runtime performance evaluation of the diagram construction is presented in Section \ref{s:DiscussionPerformance}.
 
 \subsection{Aesthetics of UML Communication Diagrams}
+\label{ss:ApproachLayoutUML}
 So far, the presented aesthetic criteria are generally valid for all graph drawings regardless of their specific purpose.
 In addition, Purchase et al. analyzed the user preferences and perceivability impacts of different variations of UML communication diagrams \cite{purchase_uml_2002, purchase_graph_2004}.
 Since our interactive diagram notation is very similar to communication diagrams, the results of those studies also were taken into account.
