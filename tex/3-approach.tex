@@ -34,8 +34,17 @@ Since refinement runs have to be performed to gather information of interest (cf
 This can only be done in an interactive and iterative process.
 
 But there is a further, non-technical reason why interactivity is important.
+As pointed out in Section \ref{ss:BackgroundAnalysisProblems}, the usefulness of many dynamic analysis tools is on the one hand limited due to the sheer amount of data has to be displayed but on the other hand constrained to the information that has been collected up front.
+However, to maintain perceivability, it is essential to limit the amount of information that is displayed to developers.
+An interactive environment is ideal to achieve this purpose.
+Developers can be enabled to hide irrelevant information, but they also can request to display information that has neither been displayed nor collected before.
+Thus, developers can construct diagrams that cover exactly the scenario that is relevant.
 
-\todo[inline]{ctd.}
+Furthermore, execution traces represent data with a chronological ordering.
+Instead of displaying the whole chronology at once, interactivity allows developers to jump to specific points of an execution history, and thus to replay a recorded execution.
+Again, this drastically reduces the amount of data that is presented to developers simultaneously.
+Consequently, the \textsc{PathObjects} concept features a number of interactive components.
+They are described in detail in Section \ref{s:ApproachInteractivity}.
 
 \section{Diagram Notation}
 \label{s:ApproachNotation}
