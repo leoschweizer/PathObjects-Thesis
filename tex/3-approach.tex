@@ -4,6 +4,7 @@
 \todo[inline]{Intro}
 
 \section{Concept}
+\label{s:ApproachConcept}
 As depicted in Chapter \ref{c:Background}, there are three related problem areas which are tackled in this thesis.
 First, there is a huge gap between the abstraction level of the inner workings of computers and the abstraction level of object-oriented source code and design documents.
 Moreover, widespread development tools such as symbolic debuggers contribute little to the bridging of this gap.
@@ -11,15 +12,33 @@ This is one of the reasons why program comprehension is a tedious and time-consu
 
 Second, dynamic analysis is a fundamental requirement for the analysis and thus for the comprehension of object-oriented programs.
 However, traditional approaches suffer from the massive amount of data that arises during program tracing.
-Perscheid et al. have proposed Step-Wise Run-Time Analysis to deal with this problem, but the verification of applicability of this approach for the visualization of object interactions is still pending.
+Perscheid et al. have proposed Step-Wise Run-Time Analysis to deal with this problem.
+Nevertheless, this approach also is not capable to cover object interactions in its current form, and he verification of its applicability to the visualization of object interactions is still pending.
 
-Third, well-known diagram notations that cover objects and their states and interactions like those included in the Unified Modeling Language are of static nature.
+Third, well-known diagram notations that cover objects states and interactions like those included in the Unified Modeling Language are of static nature.
 Mainly for this reason, they seem ill-suited for the use in conjunction with execution traces.
-They grow fast, are not capable to cover the progress of object states over the course of time, and generally do not ease perceivability when used to visualize scenarios of larger scale, such as those resulting from unit test executions.
+They grow fast, are not capable of covering the progress of object states over the course of time, and generally do not ease perceivability when being used to visualize scenarios of larger scale, such as those resulting from unit test executions.
+
+As solution to those problems, we propose \textsc{PathObjects}, a concept for the interactive diagraming of object interactions.
+The basic idea is to provide developers with an information presentation of object-oriented program behavior at the abstraction level of objects and their interactions.
+Thus, we aim at closing the gap between the low-level abstractions of the inner workings of computers, and the high-level abstractions of object-oriented programming languages and design documents.
+The fundamental elements of \textsc{PathObjects} diagrams are depicted in Section \ref{s:ApproachNotation}.
+
+In order to allow for the immediate provisioning of such interactive object diagrams, we propose to utilize Step-wise run-time Analysis as underlying tracing mechanism.
+The extensions to this approach that were necessary to cover object interactions are depicted in Chapter \ref{c:implementation}.
+
+This choice entails two consequences.
+The first is that developers will be enabled to visualize execution traces of test cases, or any reproducible program execution for that matter.
+Second, it implies interactivity as fundamental technical requirement of the information presentation.
+Since refinement runs have to be performed to gather information of interest (cf. Section \ref{ss:BackgroundTracing}), the information presentation must provide means that allow developers to specify this information.
+This can only be done in an interactive and iterative process.
+
+But there is a further, non-technical reason why interactivity is important.
 
 \todo[inline]{ctd.}
 
 \section{Diagram Notation}
+\label{s:ApproachNotation}
 \todo[inline]{Intro}
 
 \subsection{Basic Concept}
