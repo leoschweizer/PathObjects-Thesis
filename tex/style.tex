@@ -56,7 +56,7 @@
   basewidth={0.57em,0.45em},
   aboveskip=\bigskipamount,
   lineskip=.2ex,
-  frame=lines,
+  frame=single,
   framexleftmargin=5.0ex,
   xleftmargin=5ex,
   tabsize=4,
@@ -130,7 +130,7 @@
 \xpfDefaultMode
 
 \lstnewenvironment{smalltalk}[1][]{
-	\lstset{language=Smalltalk,#1}
+	\lstset{language=Smalltalk,float=tb,#1}
 	\xpfListingMode
 }{
 	\xpfDefaultMode

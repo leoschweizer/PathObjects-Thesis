@@ -132,6 +132,19 @@ After stepping forward through the execution history, the view changes as depict
 Now the diagram shows the state of the object after the execution of the \inlinecode{attach:} message.
 Just as the underlying implementation of this message indicates, the analog clock instance now has been added to the list of observers.
 
+\begin{smalltalk}[caption={Foo}, label=lst:ApproachExample, escapechar=!]
+Observer >> on: aSubject
+	| observer |
+	observer := self new
+		subject: aSubject;
+		yourself.
+	!\colorbox{YellowGreen}{aSubject attach: observer.}!
+	^ observer.
+
+ClockTimer >> attach: anObserver
+	observers add: anObserver.
+\end{smalltalk}
+
 \section{Interactive Components}
 \label{s:ApproachInteractivity}
 As depicted in Section \ref{s:ApproachConcept}, interactivity is an integral part of \textsc{PathObjects} diagrams.
