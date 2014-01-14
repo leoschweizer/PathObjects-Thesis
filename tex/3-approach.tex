@@ -54,12 +54,6 @@ They are described in detail in Section \ref{s:ApproachInteractivity}.
 
 \section{Fundamental Diagram Notation}
 \label{s:ApproachNotation}
-This Section describes the fundamental elements of the \textsc{PathObjects} diagram notation.
-To ensure a certain degree of recall value, it is closely oriented on the concepts that are defined by the Unified Modeling Language (cf. Section \ref{s:BackgroundModeling}).
-Section \ref{ss:ApproachNotationObjects} shows the representation of objects, which is very similar to communication diagrams.
-Section \ref{ss:ApproachNotationMessages} presents the basic illustration of message exchanges, which borrows elements from sequence diagrams.
-Section \ref{ss:ApproachNotationRoles} describes role indicators, which are used to mark arguments and return values. 
-Finally, Section \ref{ss:ApproachNotationState} presents state indicators, which are comparable to the illustration of object states in UML object diagrams.
 
 \begin{figure}[tb]
 	\centering
@@ -84,11 +78,26 @@ Finally, Section \ref{ss:ApproachNotationState} presents state indicators, which
 	\label{fig:ApproachBasic}
 \end{figure}
 
+This Section describes the fundamental elements of the \textsc{PathObjects} diagram notation.
+To ensure a certain degree of recall value, it is closely oriented on the concepts that are defined by the Unified Modeling Language (cf. Section \ref{s:BackgroundModeling}).
+Section \ref{ss:ApproachNotationObjects} shows the representation of objects, which is very similar to communication diagrams.
+Section \ref{ss:ApproachNotationMessages} presents the basic illustration of message exchanges, which borrows elements from sequence diagrams.
+Section \ref{ss:ApproachNotationRoles} describes role indicators, which are used to mark arguments and return values. 
+Finally, Section \ref{ss:ApproachNotationState} presents state indicators, which are comparable to the illustration of object states in UML object diagrams.
+All components are illustrated in Figure \ref{fig:ApproachBasic} with the help of the process of registering clock instances (observers) at a clock timer instance (subject).
+
 \subsection{Objects}
 \label{ss:ApproachNotationObjects}
 
 \subsection{Messages}
 \label{ss:ApproachNotationMessages}
+Messages are represented as directed arrows between objects.
+The name of a message is displayed besides the according arrow in plain text.
+Just like in the case of UML sequence diagrams, solid arrows indicate message sends (cf. Figure \ref{fig:ApproachBasicBefore}), and dashed arrows indicate message returns (cf. Figure \ref{fig:ApproachBasicAfter}).
+The sender and receiver of a message are distinguishable through the direction of the according arrow.
+In contrast to sequence diagrams, there is no specific chronological ordering.
+Messages that are depicted above a specific message do not necessarily have to occur before it in an execution history.
+\textsc{PathObjects} diagrams reveal the chronological relationships only through the element of interactivity (cf. \ref{ss:ApproachInteractiveNavigation}), and usually display only the full details of one message at once.
 
 \subsection{Role Indicators}
 \label{ss:ApproachNotationRoles}
