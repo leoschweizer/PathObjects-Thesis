@@ -88,6 +88,14 @@ All components are illustrated in Figure \ref{fig:ApproachBasic} with the help o
 
 \subsection{Objects}
 \label{ss:ApproachNotationObjects}
+Similar to UML object and communication diagrams, objects are depicted as boxes and can be placed freely on the canvas.
+The name of an object is used as caption.
+In the case of system-specific singleton objects like classes, no other unique identifier is necessary to make them distinguishable.
+However, this is the case with instances of classes.
+Therefore, a unique integer identifier is included in the name of an object.
+Objects that are somehow involved in the currently displayed message are highlighted through a different background color.
+For instance, the \inlinecode{AnalogClock class} object and the clock timer and analog clock instances are involved in the \inlinecode{attach:} message in Figure \ref{fig:ApproachBasicBefore}, namely as sender, receiver, and argument of the message.
+In contrast, the \inlinecode{DigitalClock class} object and the digital clock instance do not play a role in the current computation.
 
 \subsection{Messages}
 \label{ss:ApproachNotationMessages}
