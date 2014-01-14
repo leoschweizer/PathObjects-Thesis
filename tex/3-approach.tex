@@ -101,6 +101,17 @@ Messages that are depicted above a specific message do not necessarily have to o
 
 \subsection{Role Indicators}
 \label{ss:ApproachNotationRoles}
+Objects that are involved in a message send can play one (or more) of the four roles sender, receiver, argument, or return value.
+The sender and receiver of a message are easily recognizable since they are connected by directed arrows.
+However, with message arguments and return values, the case is not as unambiguous.
+For that reason, \textsc{PathObjects} diagrams feature indicators for the latter two roles.
+For instance, the analog clock instance is an argument of the current message in Figure \ref{fig:ApproachBasicBefore}.
+When looking at the according source code, it can be seen that...\todo{blubb}
+Consequently, this part of the selector and the appropriate temporary variable name are displayed as flag alongside the object.
+In Figure \ref{fig:ApproachBasicAfter}, a further role indicator is displayed.
+Since the diagram now shows a message return, one of the objects has to be the return value, unless the response is a object that has not been covered by the trace.
+
+
 
 \subsection{State Indicators}
 \label{ss:ApproachNotationState}
