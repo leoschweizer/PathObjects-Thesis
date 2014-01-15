@@ -450,7 +450,9 @@ Consequently, the concept of information layers allows to reduce the time spent 
 \end{table}
 
 
-\section{Diagram Layout and Aesthetics}
+\section[Diagram Layout and Aesthetics]{Diagram Layout and Aesthetics%
+\sectionmark{Diagram Aesthetics}}
+\sectionmark{Diagram Aesthetics}
 \label{s:ApproachLayout}
 When considering the intended usage of \textsc{PathObjects} diagrams, it becomes evident that the automatic computation of diagram layouts is an essential feature of potential implementations of the concept.
 The primary purpose is to provide immediate information presentations of selected test cases.
@@ -458,16 +460,14 @@ If developers first would have to arrange elements in those diagrams manually, a
 
 For that reason, it is important do define the aesthetic criteria such automatically generated layouts should adhere to.
 Since \textsc{PathObjects} diagrams display graph structures, the research on graph drawing aesthetics can be incorporated.
-Criteria that originate from this research area are presented in Section \ref{ss:ApproachLayoutUniversal}.
-Furthermore, the characteristics of UML collaboration diagrams have been subject to empirical research.
-Its results also can be incorporated into the layout of \textsc{PathObjects} diagrams, since they are very similar to collaboration diagrams. Section \ref{ss:ApproachLayoutUML} presents the policies that can be derived from this research work.
-
-\subsection{Universal Graph Drawing Aesthetics}
-\label{ss:ApproachLayoutUniversal}
-The object communication diagrams of \textsc{PathObjects} form graph structures, whereby  objects constitute nodes, and the arrows representing messages constitute edges.
 Graph drawing is a research area with a long history of its own, and there is broad consent about the aesthetic properties that should be aimed at in order to maximize perceivability \cite{battista_graph_1998, kaufmann_drawing_2001, diehl_software_2007}.
 Consequently, it stands to reason that these criteria should also be applied to our interactive object communication diagrams.
-The seven most important criteria are presented in the following.
+
+However, most of those drawing optimization criteria are NP-hard computational problems for tree structures \cite{battista_graph_1998}.
+And since the graphs that should be presented through our interactive communication diagrams are call trees, this raises the question if the immediate character of the underlying tracing approach can be maintained.
+For that reason, a runtime performance evaluation of the diagram construction is presented in Section \ref{s:DiscussionPerformance}.
+
+The seven most important criteria are:
 
 \paragraph{Crossing Minimization} User studies suggest that the most important aesthetic criterion is the minimization of edge crossings \cite{purchase_effective_2000, purchase_graph_2004, purchase_graph_2010}.
 The more edges cross each other, the harder it becomes for the human eye to keep track of which nodes are connected by an edge.
@@ -497,14 +497,3 @@ In addition, the edges between members of the same cluster should be shorter tha
 
 \paragraph{Orthogonality} Some authors state that fixing nodes and edges to an orthogonal grid improves the understandability of graph drawings \cite{sugiyama_methods_1981, batini_what_1985}.
 And although Purchase et al. could not find significant evidence for this claim in a user study \cite{purchase_which_1997}, the majority of participants that were confronted with different variations of UML collaboration diagrams in another study nevertheless favored this edge routing strategy over other approaches \cite{purchase_graph_2004}.
-
-Most of those drawing optimization criteria are NP-hard computational problems for tree structures \cite{battista_graph_1998}.
-And since the graphs that should be presented through our interactive communication diagrams are call trees, this raises the question if the immediate character of the underlying tracing approach can be maintained.
-For that reason, a runtime performance evaluation of the diagram construction is presented in Section \ref{s:DiscussionPerformance}.
-
-\subsection{Aesthetics of UML Communication Diagrams}
-\label{ss:ApproachLayoutUML}
-So far, the presented aesthetic criteria are generally valid for all graph drawings regardless of their specific purpose.
-In addition, Purchase et al. analyzed the user preferences and perceivability impacts of different variations of UML communication diagrams \cite{purchase_uml_2002, purchase_graph_2004}.
-Since our interactive diagram notation is very similar to communication diagrams, the results of those studies also were taken into account.
-\todo{blubb}
