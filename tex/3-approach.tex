@@ -86,7 +86,13 @@ Section \ref{ss:ApproachNotationObjects} shows the representation of objects, wh
 Section \ref{ss:ApproachNotationMessages} presents the basic illustration of message exchanges, which borrows elements from sequence diagrams.
 Section \ref{ss:ApproachNotationRoles} describes role indicators, which are used to mark arguments and return values. 
 Finally, Section \ref{ss:ApproachNotationState} presents state indicators, which are comparable to the illustration of object states in UML object diagrams.
+
 All components are illustrated in Figure \ref{fig:ApproachBasic} with the help of the process of registering clock instances (observers) at a clock timer instance (subject).
+The underlying part of the source code that implements this behavior is depicted in Listing \ref{lst:ApproachExample}.
+The analog clock class inherits the \inlinecode{on:} factory method from the observer class.
+This method represents the message context in this scenario.
+The message that is sent is the \inlinecode{attach:} method, which is implemented by the clock timer class.
+The moments before and after the execution of this method serve as examples for the illustration.
 
 \subsection{Objects}
 \label{ss:ApproachNotationObjects}
@@ -134,7 +140,7 @@ After stepping forward through the execution history, the view changes as depict
 Now the diagram shows the state of the object after the execution of the \inlinecode{attach:} message.
 Just as the underlying implementation of this message indicates, the analog clock instance now has been added to the list of observers.
 
-\begin{smalltalk}[caption={Foo}, label=lst:ApproachExample, escapechar=!]
+\begin{smalltalk}[caption={Underlying implementation of the scenario depicted in Figure \ref{fig:ApproachBasic}. The current step of the execution is highlighted.}, label=lst:ApproachExample, escapechar=!]
 Observer >> on: aSubject
 	| observer |
 	observer := self new
