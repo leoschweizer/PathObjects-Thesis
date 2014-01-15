@@ -190,12 +190,21 @@ The factor of processing time is closely related to the size of execution traces
 The larger a trace becomes, the longer it takes to process the amount of data and consequently also to present results to developers.
 Measurements of this overhead rarely can be found in literature.
 However, the fact that Pothier et al. identified the necessity to distribute the analysis of execution traces across multiple machines illustrates the gravity of this issue \cite{pothier_scalable_2007}.
-\todo[inline]{Extend}
+Again, waiting time is introduced through tools that aim at assisting in program comprehension, which is equivalent to a slow-down of this process.
 
-\subsubsection{Cognitive Overload}
-\todo[inline]{Missing}
+\subsubsection{Information Presentation and Cognitive Load}
+When it comes to the presentation of trace information, one can observe a paradox situation.
+On the one hand, developer tools present way too much information at the same time, and often significant amounts of this information are irrelevant in specific scenarios.
+This mass of information leads to cognitive as well as informational overload.
+As a consequence, developers are unable to perceive the entirety of information, and moreover, the wealth of information make it harder to draw conclusions \cite{hiltz_structuring_1985, sheridan_man-machine_1981}.
 
-\subsection{Step-Wise Run-Time Analysis to the Rescue}
+On the other hand, information that might be relevant for developers is missing, because it has not been covered during tracing.
+For instance, the history of object states over the course of time is rarely covered by dynamic analysis tools (cf. Section \ref{s:RelatedTraceVis}).
+This reflects the fact that the amount of information that has to be collected with up-front tracing approaches is too high.
+
+
+
+\subsection{Step-Wise Run-Time Analysis to the Rescue?}
 \label{ss:BackgroundTracing}
 To overcome the technical issues of dynamic analysis, Perscheid et al. propose an approach called \emph{Step-wise Run-time Analysis} \citep{perscheid_immediacy_2010, perscheid_test-driven_2013}.
 The essential idea is to utilize test cases as reproducible entry points into scenarios of expressive program behavior.
