@@ -202,7 +202,9 @@ On the other hand, information that might be relevant for developers is missing,
 For instance, the history of object states over the course of time is rarely covered by dynamic analysis tools (cf. Section \ref{s:RelatedTraceVis}).
 This reflects the fact that the amount of information that has to be collected with up-front tracing approaches is too high.
 
-
+Typically, dynamic analysis tools try to tackle this problem by providing filtering facilities either at tracing or at visualization time.
+Alternative approaches automatically reduce the amount of displayed information through the application of pattern recognition techniques (cf. Section \ref{s:RelatedTraceVis}).
+However, it is questionable if this strategy is sufficient to give an adequate insight into the behavior of object-oriented programs at the abstraction level of objects and their interactions.
 
 \subsection{Step-Wise Run-Time Analysis to the Rescue?}
 \label{ss:BackgroundTracing}
