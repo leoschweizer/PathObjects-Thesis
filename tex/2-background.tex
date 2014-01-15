@@ -389,7 +389,7 @@ Objects that are related through message exchanges are connected with an undirec
 Messages between objects are aligned along those connectors and an orientation indicator shows which object is the sender and respectively the receiver of a message.
 Since the notation does not offer an inherent ordering of messages, the sequence is determined through an explicit consecutive hierarchical numbering.
 
-As with object diagrams (cf. Section \ref{ss:BackgroundModelingObject}), the main advantage of communication diagrams lies in the unrestricted placement of objects on the two-dimensional canvas.
+As with object diagrams, the main advantage of communication diagrams lies in the unrestricted placement of objects on the two-dimensional canvas.
 It is for this reason that they are often used complementary with sequence diagrams, since the latter are not particularly suitable to communicate which objects belong together in consequence of their communication.
 
 \subsection{Challenges}
@@ -410,4 +410,18 @@ Scenarios of this magnitude are already sufficient to cause sequence diagrams to
 But with the growing size of a diagram, it also becomes increasingly difficult to understand its contents and the relationships between specific components.
 In this regard, sequence diagrams do not seem to be the most appropriate choice when it comes down to presenting an execution trace in a manner that is perceivable efficiently.
 
-\todo[inline]{Finish other 2 diagrams}
+Communication diagrams can be used to depict a sequence of message exchanges.
+However, these sequences quickly become hard to follow, since there is no inherent notion of chronology.
+Developers have to search the next message with the matching number manually.
+With dozens of objects and messages potentially being present in a diagram, one can imagine how tedious comprehension can become.
+Furthermore, communication diagrams do not provide any means to model the internal state of objects and the effects that messages have on it.
+
+The latter use case is partially covered by object diagrams.
+However, they can only depict the state of a system at one specific point of time, and
+object state changes cannot be related to message exchanges.
+In fact, messages are not covered at all by this diagram type.
+
+What this all amounts to is that the diagrams defined by the Unified Modeling Language do not suite our requirements.
+An information representation that can assist developers in the comprehension of object-oriented behavior has to feature object relationships and interactions relationships as well as their impact on internal state.
+Furthermore, the depiction of diagrams with the scope of test cases should be adequately economical in terms of screen space consumption.
+None of the presented diagram types can satisfy these requirements.
