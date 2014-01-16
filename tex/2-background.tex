@@ -1,17 +1,18 @@
 \chapter{Program Comprehension}
 \label{c:Background}
-Program comprehension is the activity of gaining knowledge about a software system.
+Program comprehension is the process of gaining knowledge about a software system.
 On the one hand, it is a fundamental element of software engineering.
 For instance, many maintenance tasks such as bug fixing, feature enhancement, refactoring, or documentation cannot be performed without having a sufficient understanding of the system at hand.
 
-On the other hand, program comprehension constitutes a tedious activity with complex cognitive demands, and it reportedly accounts for up to 60\% of the software engineering effort \cite{corbi_program_1989, basili_evolving_1997}.
-This implies that most of the time is spent on building a satisfactory understanding rather than on productive tasks.
+On the other hand, program comprehension is a tedious activity with complex cognitive demands, and it reportedly accounts for up to 60\% of the software engineering effort \cite{corbi_program_1989, basili_evolving_1997}.
+This implies that more time is spent on building a satisfactory understanding rather than on productive tasks.
 Consequently, it comes as no surprise that program comprehension in general and particularly the question how its share of the software engineering effort can be reduced have emerged as interest areas in the software engineering field.
 
 Section \ref{s:BackgroundComprehension} gives an overview of the research on object-oriented program comprehension.
 The reasons that make it such a time-consuming task are depicted and related to the corresponding mental processes.
 Section \ref{s:BackgroundAnalysis} shows why dynamic analysis is an inevitable instrument when it comes to assisting in the comprehension of object-oriented programs.
-Furthermore, it depicts the problems that have hindered its broad application for a long time, and describes how Perscheid et al. propose to solve some of those problems. 
+Furthermore, it depicts the problems that have hindered its broad application for a long time, and describes how Perscheid et al. propose to solve some of those problems.
+Finally, Section \ref{s:BackgroundModeling} presents UML diagram types that are intended for object modeling, and shows why they are insufficient for our objectives. 
 
 \section[Cognitive Aspects of Program Comprehension]{Cognitive Aspects of Program Comprehension%
 \sectionmark{Cognitive Aspects}}
@@ -20,7 +21,7 @@ Furthermore, it depicts the problems that have hindered its broad application fo
 As depicted above, program comprehension is a tedious and time-consuming activity.
 The reasons therefore are depicted in Section \ref{ss:BackgroundComprehensionDifficulties}.
 Section \ref{ss:BackgroundComprehensionMentalModel} summarizes research about the mental aspects of program comprehension.
-Finally, Section \ref{ss:BackgroundComprehensionMentalMap} draws conclusions about the properties that tools that are supposed to assist developers in program comprehension should exhibit. 
+Finally, Section \ref{ss:BackgroundComprehensionMentalMap} draws conclusions about the properties that tools that are supposed to assist developers in object-oriented program comprehension should exhibit. 
 
 \subsection{Why Program Comprehension is Hard}
 \label{ss:BackgroundComprehensionDifficulties}
@@ -29,17 +30,17 @@ Rugaber has identified five gaps that are particularly relevant in this context 
 
 First, there is a gap between the application domain and the domain of programming languages.
 A problem exists in the first domain, but the solution to this problem is implemented with programming languages that usually are not tailored to the application domain.
-Consequently, an important task for programmers during program comprehension is to map the concepts of the application domain to the concepts in the source code.
+Consequently, an important task for programmers during program comprehension is to map the concepts of the application domain to the concepts found in the source code.
 And although this task requires knowledge from both domains, tools that are supposed to assist in program comprehension usually do not address the application domain.
 
-The second gap is identified between the low-level functional principles of physical machines, the abstraction levels of programming languages, and the high-level design descriptions.
+The second gap is identified between the low-level functional principles of physical machines, and the high abstraction levels of programming languages and design descriptions.
 On the physical machine level, computer programs are nothing more than millions of bytes represented by the presence or absence of current.
 As opposed to this, the abstraction level of design descriptions for instance is characterized by the description of objects and their interactions.
-As a result, a further difficult task during program comprehension is the selection of relevant details on the low abstraction levels, and, the building of abstract representations on that basis.
+As a result, a further difficult task during program comprehension is the selection of relevant details on the low abstraction levels, and the building of abstract representations on that basis.
 
 Rugaber describes the third gap as discrepancy between coherent models and incoherent artifacts.
 At the design time of a program and the initial implementation of a design, programs are coherently structured.
-However, by the time program comprehension is required, the high-level design documents might have gotten out of date or might even be lost.
+However, by the time program comprehension is required, the high-level design documents might have gotten out of date or might even have been lost.
 Furthermore, the original structure of the program might be completely altered through maintenance activities like feature enhancement or bug fixing.
 Consequently, developers have to understand the high level architecture of a program whose original purpose may have been shifted massively.
 
@@ -59,7 +60,7 @@ During the process of program comprehension, both of these activities have to be
 
 \subsection{The Mental Model Approach to Program Comprehension}
 \label{ss:BackgroundComprehensionMentalModel}
-Many different models have been proposed that aim at describing the process of program comprehension.
+Many different models have been suggested that aim at describing the process of program comprehension.
 Hierarchical plan models as proposed by Shneiderman \cite{shneiderman_exploratory_1976} or by Soloway and Ehrlich \cite{soloway_empirical_1984}, and programming strategy models as proposed by Davies \cite{davies_role_1991} are popular representatives.
 However, the approach that emerged as the dominant one is the mental model approach.
 Mental models describe the current state of understanding of the system under observation, and are successively updated during the process of comprehension.
@@ -78,7 +79,7 @@ They extended the domain model by what they call static and dynamic aspects.
 Among others, such static aspects are information about objects, about their relationships, and about reified objects that are not part of the problem domain.
 The dynamic aspects of the domain model cover communication at coarse and fine  granularity levels, or respectively communication between objects and variables.
 The former can be interpreted as client-server relationships between objects, whereas the latter rather represent data flow relationships on a procedural level.
-With the help of an empirical evaluation, they verified the validity of their model, and also showed that Pennington's dual model also applies to the comprehension of object-oriented programs.
+With the help of empirical evaluation, they verified the validity of their model, and also showed that Pennington's dual model also applies to the comprehension of object-oriented programs.
 
 \subsection{Towards a Mental Map of Objects}
 \label{ss:BackgroundComprehensionMentalMap}
@@ -88,33 +89,35 @@ This would suggest that tools that aim at assisting in program comprehension act
 Without doubt, it is reasonable to presume that such an information presentation could help to close this gap.
 
 However, the opposite can be observed when looking at established development tools.
-Traditional dynamic debuggers that are included in every modern IDE are exemplary for this phenomenon.
+Traditional dynamic debuggers that are included in every modern IDE stand exemplary for this phenomenon.
 Even when being used for the debugging of object-oriented programs, the information presentation of those debuggers is centered around the call stack.
 This representation shows a sequence of function calls, but objects are no first-class entities.
-Consequently, questions like which objects are actually involved in the current computation and how these objects are related are typically hard to answer.
+Consequently, questions such as which objects are actually involved in the current computation and how these objects are related are typically hard to answer.
 The mere fact that these debuggers could just as well be used for the debugging of procedural programs illustrates how little they are adapted to the domain of object-oriented programming.
 
 Consequently, the information presentations as offered by debuggers and other widely used development tools hardly seem to be suitable to aid in the construction of a mental map of objects.
 This disparity raises the question why tools that offer information at the abstraction level of objects and their interactions have not been established successfully to the present day.
 A major reason might be that the analysis of object interactions necessarily implies the application of dynamic analysis techniques, which struggle from major problems themselves.
-A detailed insight into the necessity of dynamic analysis in this context, its problems, and a possible solution is presented in the following section.
+Therefore, the following Section gives a detailed insight into the necessity of dynamic analysis in this context and its problems, but also shows a potential solution to those problems.
 
-\section{Dynamic Analysis: A Necessary Evil}
+\section[Dynamic Analysis: A Necessary Evil]{Dynamic Analysis: A Necessary Evil%
+\sectionmark{Dynamic Analysis}}
+\sectionmark{Dynamic Analysis}
 \label{s:BackgroundAnalysis}
 When it comes to the analysis of objects and their interactions, the application of dynamic analysis techniques is inevitable.
 The reasons for this necessity are depicted in Section \ref{ss:BackgroundAnalysisNeccessity}.
 However, dynamic analysis suffers from four major problems that have prevented its broad adaption for a long time.
 These problems are illustrated in Section \ref{ss:BackgroundAnalysisProblems}.
-Finally, Section \ref{ss:BackgroundTracing} shows how Perscheid et al. propose to solve some of these major problems.
+Finally, Section \ref{ss:BackgroundTracing} shows how Perscheid et al. propose to solve some of these problems.
 
 \subsection{The Need for Dynamic Analysis}
 \label{ss:BackgroundAnalysisNeccessity}
 Program comprehension usually is facilitated through two different analysis techniques, namely static and dynamic analysis.
 Static analysis is executed solely with the help of source code entities.
-Common examples of information that can be derived via such analyses are inheritance relationships and metrics like cyclomatic complexity or lines of code.
+Common examples of information that can be derived via such analyses are inheritance relationships and metrics such as cyclomatic complexity or lines of code.
 Furthermore, lint-tools and static code verifiers fall within the same category.
 Static program analysis has two advantages.
-First, it is complete in the sense that all of the source code can be considered, and the derived information holds true for all executions of a program.
+First, it is complete in the sense that the source code can be covered in its entirety, and that the derived information holds true for all executions of a program.
 Second, many static analyses can be performed rapidly.
 However, this factor is largely dependent on the deepness of the analysis, and especially in the case of formal verification tools runtime is an issue \cite{wichmann_industrial_1995}.
 
@@ -135,7 +138,8 @@ This procedure is known as dynamic analysis \cite{bell_concept_1999}.
 
 Dynamic analysis has the advantage that it is goal-oriented, meaning that specific scenarios can be executed and analyzed that cover the functionality the developer is interested in.
 Furthermore, it is precise in the sense that polymorphic method calls and late binding can be resolved.
-However, this comes at the cost of completeness, since dynamic analysis never can cover any possible behavior of a software system, but only that displayed during the analyzed execution.
+However, this comes at the cost of completeness.
+Dynamic analysis only can cover the behavior that is displayed during an analyzed execution, but never can cover every possible execution of a software system.
 
 In summary, in can be stated that there is no way around the application of dynamic analysis techniques when it comes to the exploration of objects and their interactions.
 However, dynamic analysis entails severe problems that hindered its broad application for a long time.
