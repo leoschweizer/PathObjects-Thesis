@@ -210,7 +210,7 @@ All three components are described in detail in the following sections.
 		\label{fig:ApproachTimelineMetrics}
 	\end{subfigure}
 	
-	\caption[Variations of the Timeline View]{Three variations of the timeline view that show the exact same execution history; in each case, the current step is highlighted and the according return point is marked in red.
+	\caption[Variations of the Timeline Component]{Three variations of the timeline component that show the exact same execution history; in each case, the current step is highlighted and the according return point is marked in red.
 		a) Default view with mapping of stack depth to item height.
 		b) Search result highlighting.
 		c) Differing metrics applied to item height and item color.
@@ -223,27 +223,27 @@ On the one hand, stepwise forward and backward navigation should be facilitated.
 On the other hand, it also should be possible to jump to specifics points of time in the execution history.
 For these reasons, we propose an interactive diagram element, the so-called timeline.
 
-Figure \ref{fig:ApproachTimeline} shows examples of the timeline view.
+Figure \ref{fig:ApproachTimeline} shows examples of the timeline component.
 Each bar represents a step of the execution history, or respectively either a message send or the return from a message send.
 The alignment along the horizontal axis corresponds to the chronological order of appearances.
 The current step is marked with a blue overlay, and the corresponding send or return step is marked in red.
-Developers can use the timeline to navigate through the execution history by either selection a specific step, by using the keyboard's left and right arrows, or by clicking the arrows that are displayed alongside the timeline.
+For instance, the timeline could be used to allow developers to navigate through the execution history by selecting a specific step or by using the keyboard's left and right arrows.
 
 All three examples in Figure \ref{fig:ApproachTimeline} show the exact same execution history at the exact same point of the execution.
-Figure \ref{fig:ApproachTimelineDefault} represents the default configuration of the timeline view.
+Figure \ref{fig:ApproachTimelineDefault} represents the default configuration of the timeline component.
 In this case, the height of the single timeline items corresponds to the depth of the call stack.
 However, the concept of information layers (cf. Section \ref{ss:ApproachInteractiveLayers}) allows to map arbitrary metrics to this dimension of the diagram.
 
-Figure \ref{fig:ApproachTimelineSearch} shows how search results are highlighted within the timeline.
+Figure \ref{fig:ApproachTimelineSearch} shows how search results can be highlighted within the timeline.
 In the depicted example, the developer performed a search for occurrences of the \inlinecode{attach:} message.
 Two matches are found, whereby each consists of a send and a returns step.
 These occurrences correspond to the registration of the analog and digital clock instances at the clock timer.
 
 Figure \ref{fig:ApproachTimelineMetrics} illustrates the usage of information layers in conjunction with the timeline view.
 The height of the items now no longer represents the stack depth, but the number of variable accesses in each method.
-The color of the items indicates the lines of code of each message.
+The item colors indicate the lines of code of each message.
 One can see that the current step is the one with by far the most variable accesses.
-Furthermore, the visualization indicates that most methods have an acceptable length, with the exception of the method that is the implementation of the selected message.
+Furthermore, the visualization indicates that most methods have an acceptable length, with the exception of the method that is currently selected.
 
 \subsubsection{Spatial Navigation}
 
@@ -280,14 +280,14 @@ All objects that are involved in the current step, either as sender, receiver, o
 Objects that already occurred in the past of the execution history are depicted as black boxes.
 Objects that did not occur up to the current step but will occur in future steps are marked in light gray.
 Figure \ref{fig:ApproachMinimapMetric} represents an example how information layers can be applied to the mini-map.
-In this case, the fan-in metric is mapped to the color of the object's representatives.
-The heated-object scale indicates few received messages with light colors and the percipience of many messages in dark colors.
+In this case, the fan-in metric is mapped to the color of the object representatives.
+The heated-object scale indicates few received messages with light colors and the recipience of many messages in dark colors.
 One can see that one object, namely the clock timer, receives more messages than any other object in this trace.
 
 \subsubsection{Target-Oriented Navigation}
 The spatial and temporal navigation components primarily support explorative approaches.
 As opposed to this, developers also should be allowed to navigate to specific entities of interest provided that these entities are already known.
-To make this possible, the third interactive navigation component of our communication diagrams is a search bar.
+To make this possible, we propose the search bar as third interactive navigation component of our communication diagrams.
 
 The search bar allows developers to find specific entities by reference to their name.
 To simplify the process, entities that match a search term are shown and updated as the developer types.
@@ -311,22 +311,22 @@ Consequently, \textsc{PathObjects} diagrams also keep connections to the source 
 All three components are depicted in the following sections.
 
 \subsubsection{State Exploration}
-To allow developers to understand the reasons for the behavior of a system, it is important to give them an insight into the internal state of the system, or respectively of its objects.
-For that reason, state exploration constitutes an important interactive component of \textsc{PathObjects} diagrams.
+To allow developers to understand the reasons for the behavior of a system, it is important to give them an insight into the internal state of said system, or respectively of its objects.
+For that reason, we propose state exploration as important interactive component of \textsc{PathObjects} diagrams.
 
 State exploration enables developers to monitor the internal state of specific objects over the course of time.
-As long as state exploration is enabled for an object, the state of this object is expanded below the object header.
+As long as state exploration is enabled for an object, a state indicator is expanded below the object header (cf. Section \ref{ss:ApproachNotationState}).
 This means that the values of all instance variables are shown, and complex referenced objects can be explored recursively.
 Through automated executions of refinement runs (cf. Section \ref{ss:BackgroundTracing}), the state can be updated whenever the developer steps to a different point of the execution history.
 
 State exploration is not only available for senders and receivers of messages, but also for all arguments and return values.
 However, objects that occur in the latter two roles only show up on the canvas if they are either a message sender or receiver elsewhere in an execution history. 
-In order to allow for the exploration of the states of those objects, \textsc{PathObjects} diagrams also feature an external state explorer that is not tied to specific objects.
+In order to allow for the state exploration of those objects where this is not the case, \textsc{PathObjects} diagrams also feature an external state indicator that is not tied to specific objects.
 
 \subsubsection{Reference Exploration}
-\textsc{PathObjects} not only allows developers to track object state changes, but also to chase outbound pointers of specific objects.
+As second explorative component, we propose reference exploration, which allows developers to chase outbound pointers of specific objects.
 The mechanism works similar to the state exploration described above.
-Developers can toggle reference exploration through the context menu of an object.
+Developers can toggle reference exploration on a per-object basis.
 When enabling exploration, the developer is prompted to select a color.
 This selection will then be used as background color of all referenced objects.
 The current outbound pointers are collected when stepping through the execution history, and the background colors of referenced objects are updated accordingly.
@@ -334,9 +334,9 @@ This allows developers to get an insight which other objects a specific one refe
 
 \subsubsection{Source Code Exploration}
 The essential goal during program comprehension is to map the behavior of a software system to its source code representation.
-For that reason, \textsc{PathObjects} diagrams stay connected to the underlying source code of the system under observation at all times during the exploration of an execution trace.
+For that reason, we propose source code exploration as third interactive component.
+With the help of this component, \textsc{PathObjects} diagrams stay connected to the underlying source code of the system under observation at all times during the exploration of an execution trace.
 The context in which a method is called - the implementation of the calling method - and the implementation of the called method itself can be explored through a source browser pop-up.
-This pop-up also provides convenient entry points for the Smalltalk System Browser, that subsequently can be used to explore related parts of the system implementation.
 
 \subsection{Focusing}
 \label{ss:ApproachInteractiveFocusing}
