@@ -1,7 +1,7 @@
 \chapter{Revealing Object Interactions with \textsc{PathObjects}}
 \chaptermark{Revealing Object Interactions}
 \label{c:approach}
-This chapter presents \textsc{PathObjects}, an interactive diagramming concept which aims at assisting developers in object-oriented program comprehension.
+This chapter presents \textsc{PathObjects}, an interactive diagraming concept which aims at assisting developers in object-oriented program comprehension.
 Section \ref{s:ApproachConcept} describes how our proposed solution helps to bridge the gap of abstraction levels developers face during software engineering.
 Section \ref{s:ApproachNotation} presents the basic components of the interactive object communication diagrams that serve this purpose.
 With interactivity being an integral part of the concept, \textsc{PathObjects} diagrams also feature a number of interactive components.
@@ -17,39 +17,43 @@ This is one of the reasons why program comprehension is a tedious and time-consu
 
 Second, dynamic analysis is a fundamental requirement for the analysis and thus for the comprehension of object-oriented programs.
 However, traditional approaches suffer from the massive amount of data that arises during program tracing.
-Perscheid et al. have proposed Step-Wise Run-Time Analysis to deal with this problem.
-Nevertheless, this approach also is not capable to cover object interactions in its current form, and he verification of its applicability to the visualization of object interactions is still pending.
+Perscheid et al. have proposed step-wise run-time analysis to deal with this problem.
+Nevertheless, this approach neither is capable to cover object interactions in its current form, and the verification of its applicability to the visualization of object interactions is still pending.
 
 Third, well-known diagram notations that cover objects states and interactions like those included in the Unified Modeling Language are of static nature.
 Mainly for this reason, they seem ill-suited for the use in conjunction with execution traces.
-They grow fast, are not capable of covering the progress of object states over the course of time, and generally do not ease perceivability when being used to visualize scenarios of larger scale, such as those resulting from unit test executions.
+They grow fast, are not capable of covering object state changes over the course of time, and generally do not ease perceivability when being used to visualize scenarios of larger scale, such as those resulting from unit test executions.
 
 As solution to those problems, we propose \textsc{PathObjects}, a concept for the interactive diagraming of object interactions.
 The basic idea is to provide developers with an information presentation of object-oriented program behavior at the abstraction level of objects and their interactions.
 Thus, we aim at closing the gap between the low-level abstractions of the inner workings of computers, and the high-level abstractions of object-oriented programming languages and design documents.
-The fundamental elements of \textsc{PathObjects} diagrams are depicted in Section \ref{s:ApproachNotation}.
+For that reason, we propose a diagram notation that covers objects, messages, object states, and the roles objects play during message exchanges.
+These fundamental diagram elements are described in detail in Section \ref{s:ApproachNotation}.
 
-In order to allow for the immediate provisioning of such interactive object diagrams, we propose to utilize Step-wise run-time Analysis as underlying tracing mechanism.
-The extensions to this approach that were necessary to cover object interactions are depicted in Chapter \ref{c:implementation}.
-
-This choice entails two consequences.
-The first is that developers will be enabled to visualize execution traces of test cases, or any reproducible program execution for that matter.
+In order to avoid the waiting time overhead of traditional dynamic analysis tools, we propose to utilize step-wise run-time analysis as underlying tracing mechanism.
+Thus, the immediate provisioning of interactive object communication diagrams can be made possible.
+However, this choice entails two consequences.
+The first is that execution traces of test cases, or any reproducible program execution for that matter, serve as scenarios for visualization.
 Second, it implies interactivity as fundamental technical requirement of the information presentation.
-Since refinement runs have to be performed to gather information of interest (cf. Section \ref{ss:BackgroundTracing}), the information presentation must provide means that allow developers to specify this information.
-This can only be done in an interactive and iterative process.
+Refinement runs have to be performed to gather information of interest (cf. Section \ref{ss:BackgroundTracing}), and this can only be done in an interactive and iterative process.
+Consequently, the information presentation must provide means that allow developers to steer this process.
 
 But there is a further, non-technical reason why interactivity is important.
-As pointed out in Section \ref{ss:BackgroundAnalysisProblems}, the usefulness of many dynamic analysis tools is on the one hand limited due to the sheer amount of data has to be displayed but on the other hand constrained to the information that has been collected up front.
+As pointed out in Section \ref{ss:BackgroundAnalysisProblems}, the usefulness of many dynamic analysis tools is on the one hand limited by the sheer amount of displayed data  but on the other hand constrained to the information that has been collected up front.
 However, to maintain perceivability, it is essential to limit the amount of information that is displayed to developers.
 An interactive environment is ideal to achieve this purpose.
 Developers can be enabled to hide irrelevant information, but they also can request to display information that has neither been displayed nor collected before.
-Thus, developers can construct diagrams that cover exactly the scenario that is relevant.
-
+Thus, diagrams can be constructed that cover exactly the relevant amount of information.
 Furthermore, execution traces represent data with a chronological ordering.
 Instead of displaying the whole chronology at once, interactivity allows developers to jump to specific points of an execution history, and thus to replay a recorded execution.
 Again, this drastically reduces the amount of data that is presented to developers simultaneously.
-Consequently, the \textsc{PathObjects} concept features a number of interactive components.
-They are described in detail in Section \ref{s:ApproachInteractivity}.
+
+Consequently, we propose a number of interactive components as integral part of \textsc{PathObjects} diagrams.
+First, navigational components facilitate exploratory and target-oriented navigation, which means that developers are enabled to explore the temporal and spatial dimensions of execution traces and to search for specific entities of interest.
+Second, exploratory components allow developers to explore object states, references, and the underlying source code.
+Third, focusing components permit developers to exclude irrelevant objects and messages from the information presentation. 
+Finally, information layers allow developers to augment diagrams with use-case specific information.
+These four component categories are described in detail in Section \ref{s:ApproachInteractivity}.
 
 \section[Fundamental Diagram Notation]{Fundamental Diagram Notation%
 \sectionmark{Diagram Notation}}
