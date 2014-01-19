@@ -340,7 +340,7 @@ The context in which a method is called - the implementation of the calling meth
 
 \subsection{Focusing}
 \label{ss:ApproachInteractiveFocusing}
-In order to allow developers to focus on specific entities of interest, \textsc{PathObjects} diagrams provide interactive components for the filtering of irrelevant objects and messages.
+In order to allow developers to focus on specific entities of interest, we propose interactive components for the filtering of irrelevant objects and messages.
 Both mechanisms are presented in the following.
 
 \subsubsection{Message Filter}
@@ -352,27 +352,25 @@ Both mechanisms are presented in the following.
 	\label{fig:ImplementationFocusingMessages}
 \end{figure}
 
-The message filter functionality makes use of another tool of the \textsc{PathTools} suite, namely \textsc{PathView} \cite{perscheid_test-driven_2013}.
-The primary purpose of this tool is to provide views of the static structure of entities that occur in an execution trace.
-For that purpose, it generates UML class diagrams.
-\textsc{PathObjects} diagrams use \textsc{PathView} as interactive component to allow developers to define the messages that should be displayed.
-The message filter can be invoked at any time during the visualization of an execution trace.
+To allow developers to remove irrelevant messages from the canvas, we propose to create views of the static structure of entities that occur in an execution trace.
+With the aid of this view, messages that should be displayed or removed can be selected or respectively deselected.
+The \textsc{PathTools} suite already provides similar tool, namely \textsc{PathView} \cite{perscheid_test-driven_2013}.
+The primary purpose of this tool is to generate UML class diagrams from execution traces.
 
-An example of the result of such an invocation is depicted in Figure \ref{fig:ImplementationFocusingMessages}.
+Figure \ref{fig:ImplementationFocusingMessages} shows how such a message filter could be realized with the help of \textsc{PathView}.
 It shows all classes that are represented by object instances in the current trace, namely the abstract and concrete \inlinecode{Subject} and \inlinecode{Observer} classes as well as a class from the test environment (\inlinecode{TestDriver}).
-Thereby, classes contain only those methods that occur in a trace.
-Methods that are defined but not used in the current scenario are initially collapsed and can be expanded if the developer wishes to review this information.
+Thereby, only those methods that occur in a trace are displayed.
 With the help of this information presentation, single methods can be selected and deselected.
-Whenever the developer changes a selection, the \textsc{PathObjects} visualization is updated automatically, and messages that represent those methods are removed from or re-added to the visualization.
+Whenever the developer changes a selection, the \textsc{PathObjects} visualization can be updated, and messages that represent those methods can be removed from or re-added to the visualization.
 In the depicted example, all methods are selected, except those implemented by the abstract \inlinecode{Subject} and \inlinecode{Observer} classes.
 
 \subsubsection{Object Filter}
-The primary purpose of the object filter is to allow developers to focus on one or more specific objects of interest.
-For instance, if one chooses to focus on the digital clock instance, the \inlinecode{SAnalogClock} class object and the instance of \inlinecode{SAnalogClock} will be removed from the canvas.
+To allow developers to focus on one or more specific objects of interest, we propose the object filter as second filtering component.
+For instance, if one chooses to focus on the digital clock instance through the object filter, the \inlinecode{SAnalogClock} class object and the instance of \inlinecode{SAnalogClock} will be removed from the canvas.
 In addition, all messages that do not involve the selected object are removed from the timeline.
 All other objects remain on the canvas, since they exchange messages with the selected object at some point of the execution history.
 
-Developers now can broaden the focus area through the selection of further objects of interest.
+Developers then can broaden the focus area through the selection of further objects of interest.
 For example, the clock timer instance can be added to the selection, which will bring back the analog clock components and the according messages to the canvas.
 
 Since the selection of a small set of relevant objects usually reduces the number of displayed objects drastically, objects can be rearranged automatically with every change of the current selection.
@@ -398,23 +396,19 @@ For instance, objects that are somehow involved in the current step of the execu
 However, senders and receivers of messages are also clearly recognizable through  message connectors, and arguments and return values are flagged with role indicators.
 As a consequence, this dimension could also be used to visualize additional information that would otherwise not be present in a diagram.
 
-Apart from this, developers also might not be interested in the information that is encoded by default.
-For instance, there is a visual differentiation between objects that will occur in future parts of the execution trace and those that already occurred in the past.
-Consequently, the color dimension of objects might also be used to encode purpose-specific information that is relevant to the developer in a specific usage scenario.
-
 For these reasons, we propose the concept of information layers, which allow developers to project arbitrary metrics to various dimensions of \textsc{PathObjects} diagrams.
 Thereby, metrics can provide data for messages and objects.
 Table \ref{t:ApproachLayers} lists exemplary metrics that are also provided by our prototypical implementation of \textsc{PathObjects} for Squeak/Smalltalk (cf. Chapter \ref{c:implementation}).
 The dimensions that are supported for the visualization of a metric are dependent on the kind of data it provides.
 Therefore, Table \ref{t:ApproachLayers} relates the metrics to the diagram dimensions they could be mapped to.
 For instance, the information about recent method changes could be projected to the color of timeline items or the width of message connectors.
-Similarly, the \textsc{Fanin} metric which yields data about objects could be mapped to the color of object nodes or their color on the mini-map.
+Similarly, the fan-in metric which yields data about objects could be mapped to the color of object nodes or their color on the mini-map.
 
 Developers can add as many information layers to a \textsc{PathObjects} diagram as they want.
 The number of layer combinations and their expressiveness is only limited by the number of diagram dimensions that are available.
 Thus, developers are enabled to integrate a diversity of information into the scenarios that are used to build an understanding of the system at hand.
 The requirement to collect information from various tools manually can be eliminated for many use-cases.
-Consequently, the concept of information layers allows to reduce the time spent on program comprehension even further.
+Consequently, the concept of information layers has the potential to reduce the time spent on program comprehension even further.
 
 \begin{table}[tb]
 	\centering
