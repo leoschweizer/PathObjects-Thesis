@@ -162,7 +162,9 @@ After stepping forward through the execution history, the view changes as depict
 Now the diagram shows the state of the object after the execution of the \inlinecode{attach:} message.
 Just as the underlying implementation of this message indicates, the analog clock instance now has been added to the list of observers.
 
-\section{Interactive Components}
+\section[Interactive Diagram Components]{Interactive Diagram Components%
+\sectionmark{Interactive Components}}
+\sectionmark{Interactive Components}
 \label{s:ApproachInteractivity}
 As depicted in Section \ref{s:ApproachConcept}, interactivity is an integral part of \textsc{PathObjects} diagrams.
 Consequently, they provide a number of interactive components which are covered in the following sections.
@@ -264,7 +266,7 @@ Furthermore, the visualization indicates that most methods have an acceptable le
 		\label{fig:ApproachMinimapMetric}
 	\end{subfigure}
 	
-	\caption[Variations of the Mini-Map View]{a) Default configuration of the mini-map view; green represents objects that are involved in the current step, black and gray represent objects occurring in the past or future of the current execution history.
+	\caption[Variations of the Mini-Map Component]{a) Default configuration of the mini-map component; green represents objects that are involved in the current step, black and gray represent objects occurring in the past or future of the current execution history.
 	
 	b) \textsc{Fanin} metric applied to the color of objects; black indicates a high number of received messages.}
 	\label{fig:ApproachMinimap}
@@ -348,7 +350,7 @@ Both mechanisms are presented in the following.
 \begin{figure}[tb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{../images/04-ImplMessageFilter}
-	\caption{Focusing on relevant messages with the help of \textsc{PathView}.}
+	\caption[Exemplary Static Structure Visualization]{Exemplary static structure visualization as provided by \textsc{PathView}.}
 	\label{fig:ImplementationFocusingMessages}
 \end{figure}
 
@@ -455,7 +457,7 @@ Consequently, the concept of information layers has the potential to reduce the 
 \label{s:ApproachLayout}
 When considering the intended usage of \textsc{PathObjects} diagrams, it becomes evident that the automatic computation of diagram layouts is an essential feature of potential implementations of the concept.
 The primary purpose is to provide immediate information presentations of selected test cases.
-If developers first would have to arrange elements in those diagrams manually, a time-consuming task would be introduced by a tool that aims at reducing the time share of another activity, namely program comprehension.
+If developers would have to arrange elements in those diagrams manually, a time-consuming task would be introduced by a tool that aims at reducing the time share of another activity, namely program comprehension.
 
 For that reason, it is important do define the aesthetic criteria such automatically generated layouts should adhere to.
 Since \textsc{PathObjects} diagrams display graph structures, the research on graph drawing aesthetics can be incorporated.
@@ -463,13 +465,13 @@ Graph drawing is a research area with a long history of its own, and there is br
 Consequently, it stands to reason that these criteria should also be applied to our interactive object communication diagrams.
 
 However, most of those drawing optimization criteria are NP-hard computational problems for tree structures \cite{battista_graph_1998}.
-And since the graphs that should be presented through our interactive communication diagrams are call trees, this raises the question if the immediate character of the underlying tracing approach can be maintained.
+And since the graphs that should be presented through \textsc{PathObjects} diagrams are call trees, this raises the question if the immediate character of the underlying tracing approach can be maintained.
 For that reason, a runtime performance evaluation of the diagram construction is presented in Section \ref{s:DiscussionPerformance}.
 
-The seven most important criteria are:
+We propose the following seven aesthetic criteria from the domain of graph drawing as requirements for the layout of \textsc{PathObjects} diagrams:
 
 \paragraph{Crossing Minimization} User studies suggest that the most important aesthetic criterion is the minimization of edge crossings \cite{purchase_effective_2000, purchase_graph_2004, purchase_graph_2010}.
-The more edges cross each other, the harder it becomes for the human eye to keep track of which nodes are connected by an edge.
+The more edges cross each other, the harder it becomes for the human eye to keep track of the nodes that are connected by an edge.
 Graph drawings that do not entail edge crossings are called planar, and are regarded as the best-case scenario.
 But although planar graph drawing algorithms are comparatively simple, the excessive optimization of drawings in these premises will most likely interfere with other aesthetic criteria.
 
@@ -480,7 +482,7 @@ However, recent studies suggest that continuity is more important than the numbe
 
 \paragraph{Length Minimization} Similar to crossings and bends, increasing edge lengths make it increasingly difficult for the viewer of a graph drawing to follow their paths.
 Therefore, both the length of the longest edge and the total edge length should be minimized.
-In addition, some authors state that the overall variance of lengths should be minimized in order to provide uniform edge lengths.
+In addition, some authors state that the overall variance of lengths should be minimized in order to provide uniform edge lengths \cite{battista_graph_1998, kaufmann_drawing_2001}.
 
 \paragraph{Area Minimization} The minimization of the area a diagram takes up is especially important when it cannot be scaled down arbitrarily.
 This is the case with \textsc{PathObjects} diagrams, since textual information associated with nodes and edges has to stay above perceptive thresholds and may not overlap.
