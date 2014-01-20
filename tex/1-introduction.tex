@@ -1,20 +1,34 @@
 \chapter{Introduction}
 \label{c:introduction}
-\todo[inline]{Rework}
-
 Program comprehension is an integral part of the software development process.
-During this process, developers construct a mental model that maps the behavior of a software system to its source code representation \cite{latoza_maintaining_2006}.
-But while the programming languages and concepts developers use have evolved notably from eighty-column cards and assembly language to object-oriented programming, the further development of established tools that are supposed to help in the understanding of software systems seemingly was unable to keep pace in two respects.
+For instance, maintenance tasks such as bug fixing, feature enhancement, refactoring, or documentation cannot be performed without having a sufficient understanding of the system at hand.
+However, program comprehension also is a time-consuming activity with complex cognitive demands, and developers reportedly spend up to 60\% of the software engineering effort on it \cite{corbi_program_1989, basili_evolving_1997, ducasse_class_2005, rothlisberger_feature_2007, cornelissen_execution_2008}.
+As a result, software maintainance costs dearly, and is reported to account for 40\%-80\% of the total costs of software development \cite{glass_frequently_2001}.
+Consequently, it stands to reason that reducing the time share of program comprehension would contribute to a significant reduction of the overall costs of software engineering.
+
+This raises the question why program comprehension is such a tedious task.
+During this activity, developers construct a mental model that maps the behavior of a software system to its source code representation \cite{latoza_maintaining_2006}.
+In doing so, numerous gaps between different conceptual areas have to be bridged \cite{kent_program_1996}.
+First, developers have to map the concepts of the application domain to the concepts that are found in the source code.
+Second, models and software artifacts often are not kept in a coherent state, which forces developers to understand a software system whose documentation has gotten out of date.
+Third, there is a gap between the formal world of computer programs and the associative nature of human cognition.
+Fourth, developers have to perform program analysis and model synthesis at the same time, with the former being a bottom-up and the latter being a top-down activity.
+
+But most importantly in the context of this thesis, there is a fifth gap between the low-level functional principals of physical machines, and the high-level abstractions of programming languages and design documents.
+
+Conventional symbolic debuggers that commonly are included in object-oriented development environments stand exemplary for this problem.
+While developers design a system with objects and their interactions in mind, the information presentation of those debuggers is centered around the call stack of the current execution.
+This presentation rather conforms to the processes on machine level than to the object-oriented concepts used during the development of the system.
+Consequently, it is not particularly suited to answer questions about object-oriented programs straightforwardly.
+For instance, the presentation of the call stack does not help to identify which objects are involved in the current computation, at which other parts of the call stack those objects reappear, or which other objects they are communicating with.
+
+%%
 
 Diehl describes the first and prevalent issue as follows: "programmers tend to adapt to the level of representation provided by the computer, instead of adapting the computer's representations to their perceptive abilities" \cite{diehl_software_2007}.
 In other words, the way program behavior is presented to developers is characterized by the low level concepts computers operate on, instead of the high level concepts that are used to design software systems.
 The result of this phenomenon is a huge gap between the metaphors and concepts used during development, and the representation of program behavior tools provide.
 
-Conventional symbolic debuggers that commonly are included in object-oriented development environments constitute an example par excellence.
-While developers design a system with objects and their interactions in mind, the information presentation of those debuggers is centered around the call stack of the current execution.
-This presentation rather conforms to the processes on machine level than to the object-oriented concepts used during the development of the system.
-Consequently, it is not particularly suited to answer questions about object-oriented programs straightforwardly.
-For instance, the presentation of the call stack does not help to identify which objects are involved in the current computation, at which other parts of the call stack those objects reappear, or which other objects they are communicating with.
+%%
 
 The second issue is related to the questions developers frequently ask during development and the information that is required to answer these questions \cite{sillito_asking_2008, latoza_hard--answer_2010, abi-antoun_questions_2010}.
 Aspects covered by such questions range from information that is typically maintained by version control systems, like which recent changes have been made to specific parts of the system, to information that commonly has to be collected with the help of external tools, like profiling information.
@@ -23,14 +37,6 @@ However, there is no established combined view on information from these differe
 This can be a tedious and time consuming task.
 
 \section{Problem}
-Consequently, it is reported that developers spend up to 60\% of the software engineering effort on building a satisfactory understanding of the system at hand \cite{corbi_program_1989, basili_evolving_1997, ducasse_class_2005, rothlisberger_feature_2007, cornelissen_execution_2008}.
-And not only software developers would benefit if the effort that is spent on program comprehension could be reduced significantly.
-Speeding up the activity of understanding a software system enables developers to eliminate defects faster.
-In turn, this would on the one hand reduce the costs of software maintenance - which are reported to account for 40\%-80\% of the total costs \cite{glass_frequently_2001} - and on the other hand increase the overall quality of the system.
-Assisting in the understanding of a program also eases the process of adding new features.
-Again, this activity accounts for a significant share of the costs of software maintenance.
-As a result, even the end-users could benefit from a reduction of the program comprehension effort in the form of high-quality and feature-rich software systems.
-
 The way in which information is presented plays an important role in the process of human reasoning and thus in the construction of a mental map \cite{diehl_software_2007}.
 Hence it seems reasonable that a reduction of the gap between the presentation of information of a program's behavior and the concepts that are used at design time would help to reduce the amount of time developers have to spend on program comprehension.
 If an information presentation at the abstraction level of objects and their interactions could be provided, developers no longer would have to map the low level concepts provided by development tools to the high level concepts used mentally.
