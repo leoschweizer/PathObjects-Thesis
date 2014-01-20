@@ -77,9 +77,13 @@ Since it is only an assumption that such an information presentation would actua
 2) Can such an information presentation actually aid in the process of program comprehension?
 \end{quote}
 
-\todo[inline]{nochmal significance}
+Provided that an information presentation at the abstraction level of objects and their interactions actually can help to bridge the gap of abstraction levels developers face, it could play an important role in the reduction of the time that is spent on program comprehension.
+Furthermore, since program comprehension is an essential element of software maintenance tasks, and since the latter make up for the majority of the total costs of software development,
+such an information presentation could represent a big step towards the reduction of those costs.
 
-\section{Revealing Object Interactions with PathObjects}
+\section[Revealing Object Interactions with PathObjects]{Revealing Object Interactions with PathObjects%
+\sectionmark{Revealing Object Interactions}}
+\sectionmark{Revealing Object Interactions}
 
 Perscheid et al. have conducted research on how to cope with some of the shortcomings of dynamic analysis and have proposed \emph{step-wise run-time analysis} as lightweight alternative to conventional tracing approaches \cite{perscheid_immediacy_2010}.
 The fundamental idea is to use test cases as reproducible entry points into the behavior of specific usage scenarios of a system.
@@ -95,9 +99,9 @@ In this work, we propose to tackle the two related problems identified above: fi
 Second, an information representation of objects and their interactions is hard to provide in a beneficial manner due to the scalability issues of dynamic analysis techniques.
 Therefore, we propose to extend the step-wise run-time analysis tracing technique in a way that preserves its immediate character and low memory footprint while at the same time making it suitable for the reconstruction of object interactions.
 Based on this extension, we further propose \textsc{PathObjects}, an interactive information presentation at the abstraction level of objects that aims at avoiding the cognitive overload caused by existing dynamic analysis tools.
-\textsc{PathObjects} diagrams reuse well known concepts from the Unified Modeling Language and cover objects, message exchanges, object state changes, and the roles objects play during communications.
+\textsc{PathObjects} diagrams reuse well known concepts from the Unified Modeling Language and cover objects, message exchanges, state changes, and the roles objects play in communications.
 
-We further propose a number of interactive diagram components that aim at easing perceivability.
+We further propose a number of interactive diagram components that aim at easing perceivability of trace information.
 The first component group covers navigational aspects.
 To allow developers to navigate through the temporal dimension of execution traces, we propose the \emph{timeline} component.
 Similarly, the intended use-case of the \emph{mini-map} component is the navigation through the spatial domain of execution traces.
