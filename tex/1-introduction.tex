@@ -21,7 +21,7 @@ Object diagrams and communication diagrams could have resulted from the design p
 As a consequence, a further challenge for developers during program comprehension is the selection of relevant details from the low-level representations provided by computers, and the building of adequate abstractions on the basis of these details.
 Surprisingly, wide-spread development tools contribute little to close this gap.
 
-Thereby, one does not even have to consider the lowest abstraction levels like logic gates CPU register values.
+Thereby, one does not necessarily have to consider the lowest abstraction levels like logic gates CPU register values.
 Conventional symbolic debuggers that commonly are included in object-oriented development environments also stand exemplary for this problem.
 While developers design a system with objects and their interactions in mind, the information presentation of those debuggers is centered around the call stack of the current execution.
 This presentation rather conforms to the processes on machine level than to the object-oriented concepts used during the development of the system.
@@ -65,10 +65,7 @@ The fourth and last problem also is a direct result of overly large traces.
 The visualizations of traces themselves grow proportional to the size of the traces.
 This makes it increasingly difficult for the observer to perceive and comprehend the actual information which is encoded in the visualization.
 
-As pointed out, program comprehension and dynamic analysis are both time consuming tasks on their own.
-Beyond that, dynamic analysis does not necessarily ease the process of program understanding due to the sheer amount of data that is presented to the observer.
-This seems to imply that the latter is ill-suited to help in the reduction of the time spent on comprehending the system at hand.
-Hence the main research question that is tackled in this thesis is:
+As pointed out, program comprehension and dynamic analysis are both time consuming tasks on their own. Therefore, the main research question that is tackled in this thesis is:
 
 \begin{quote}
 1) Can the behavior of software systems be presented at the abstraction level of objects while maintaining immediacy and perceivability?
@@ -94,15 +91,36 @@ The primary purpose of \textsc{PathFinder}, the tool that is provided to present
 Therefore, it offers visualizations in the form of call trees.
 Again, this presentation conforms to the technical procedures rather than being guided by the high level concepts of object-orientation.
 
-In this work, we propose to tackle the two main problems identified above: first, traditional development tools tend to adapt the low level concepts of computers instead of adapting the high level concepts used during development.
-However, an information representation of objects and their interactions is hard to provide in a beneficial manner due to the scalability issues of dynamic analysis techniques.
-Therefore, we propose to extend the \emph{Step-wise Run-time Analysis} tracing technique in a way that preserves its immediate character and low memory footprint while at the same time making it suitable for the reconstruction of object interactions.
-Based on this extension, we further propose an interactive information presentation at the abstraction level of objects that aims at avoiding the cognitive overload caused by existing dynamic analysis tools.
-The information requirements developers have during the process of program comprehension constitute the second main problem.
-We show how information from various domains can be integrated into the visualization of object interactions with the help of user defined information layers.
-Thus, the need to manually collect information from a multitude of separate tools can be eliminated.
+In this work, we propose to tackle the two related problems identified above: first, traditional development tools tend to adapt the low level concepts of computers instead of adapting the high level concepts used during development.
+Second, an information representation of objects and their interactions is hard to provide in a beneficial manner due to the scalability issues of dynamic analysis techniques.
+Therefore, we propose to extend the step-wise run-time analysis tracing technique in a way that preserves its immediate character and low memory footprint while at the same time making it suitable for the reconstruction of object interactions.
+Based on this extension, we further propose \textsc{PathObjects}, an interactive information presentation at the abstraction level of objects that aims at avoiding the cognitive overload caused by existing dynamic analysis tools.
+\textsc{PathObjects} diagrams reuse well known concepts from the Unified Modeling Language and cover objects, message exchanges, object state changes, and the roles objects play during communications.
 
-\todo[inline]{introduce contributions}
+We further propose a number of interactive diagram components that aim at easing perceivability.
+The first component group covers navigational aspects.
+To allow developers to navigate through the temporal dimension of execution traces, we propose the \emph{timeline} component.
+Similarly, the intended use-case of the \emph{mini-map} component is the navigation through the spatial domain of execution traces.
+These two components aim at an exploratory usage.
+On top of that, we propose the \emph{search bar} that facilitates target-oriented navigation, meaning that developers are enabled to find specific entities of interest provided that they are already known.
+
+The second component group covers the explorative aspects of trace comprehension.
+We propose three interactive components in this context: \emph{state exploration}, \emph{reference exploration}, and \emph{source code exploration}.
+State exploration enables developers to keep track of object state changes over the course of time.
+Thus, the reasons for program behavior can be revealed.
+Reference exploration can be used to monitor the outbound object pointers of specific objects.
+In this way, it can be revealed how and when objects retain and release references to other objects.
+While these two components cover the exploration of the runtime state of a system, the fundamental goal of program comprehension is to map this behavior to its source code representation.
+Consequently, source code exploration keeps connections to the underlying implementation of a system at all times, and allow developers to explore the context and implementations of specific messages.
+
+The third component group deals with the potential information overload of execution trace visualizations.
+To allow developers to remove irrelevant information from \textsc{PathObjects} diagrams, we propose the \emph{object filter} and \emph{message filter} as interactive components.
+With the aid of these components, developers are enabled to focus on relevant aspects of execution traces, and to construct terse scenarios that cover precisely the relevant amount of information.
+
+Finally, we propose information layers, a concept that allows developers to augment \textsc{PathObjects} diagrams with use-case specific information.
+We show how information from various domains can be integrated into the visualization of object interactions, and how the need to manually collect information from a multitude of separate tools can be eliminated thereby.
+
+In summary, the contributions of this thesis are:
 
 \begin{itemize}
 \renewcommand{\labelitemiv}{$\ast$}
@@ -114,7 +132,7 @@ Thus, the need to manually collect information from a multitude of separate tool
 \item \textbf{A Prototypic Implementation for Squeak/Smalltalk} We validate the applicability of our approach with the help of an implementation for the Squeak development environment.
 \end{itemize}
 
-Furthermore, we use this prototype to verify that our proposed solution actually can help developers in the process of program comprehension with the help of a user evaluation. \todo{summarize results}
+Furthermore, we use this prototype to verify that our proposed solution actually can help developers in the process of program comprehension with the help of a user study. \todo{summarize results}
 
 \section{Thesis Structure}
 The remainder of this thesis is structured as follows:
