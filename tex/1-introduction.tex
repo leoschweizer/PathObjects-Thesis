@@ -3,7 +3,7 @@
 Program comprehension is an integral part of the software development process.
 For instance, maintenance tasks such as bug fixing, feature enhancement, refactoring, or documentation cannot be performed without having a sufficient understanding of the system at hand.
 However, program comprehension also is a time-consuming activity with complex cognitive demands, and developers reportedly spend up to 60\% of the software engineering effort on it \cite{corbi_program_1989, basili_evolving_1997, ducasse_class_2005, rothlisberger_feature_2007, cornelissen_execution_2008}.
-As a result, software maintainance costs dearly, and is reported to account for 40\%-80\% of the total costs of software development \cite{glass_frequently_2001}.
+As a result, software maintainance is expensive, and is reported to account for 40\%-80\% of the total costs of software development \cite{glass_frequently_2001}.
 Consequently, it stands to reason that reducing the time share of program comprehension could contribute to a significant reduction of the overall costs of software engineering.
 
 This raises the question why program comprehension is such a tedious task.
@@ -23,8 +23,7 @@ Surprisingly, wide-spread development tools contribute little to close this gap.
 Conventional symbolic debuggers that commonly are included in object-oriented development environments stand exemplary for this phenomenon.
 The information presentation of those debuggers is centered around the call stack of the current execution.
 This presentation rather conforms to the processes on machine level than to the object-oriented concepts used during the development of the system.
-Consequently, it is not particularly suited to answer questions about object-oriented programs straightforwardly.
-For instance, the presentation of the call stack does not help to identify which objects are involved in the current computation, and which other objects they are communicating with.
+Consequently, it is not particularly suited to answer questions about object-oriented programs such as which objects are involved in the current computation, and which other objects they are communicating with.
 The mere fact that these debuggers could just as well be used for the debugging of procedural programs illustrates how little they are adapted to the domain of object-orientation.
 
 \section[Challenges in Object-Oriented Program Comprehension]{Challenges in Object-Oriented Program Comprehension%
@@ -90,24 +89,25 @@ Provided that an information presentation at the abstraction level of objects an
 Furthermore, since program comprehension is an essential element of software maintenance tasks, and since the latter make up for the majority of the total costs of software development,
 such an information presentation could represent a step towards the reduction of those costs.
 
+
 \section[Revealing Object Interactions with PathObjects]{Revealing Object Interactions with PathObjects%
 \sectionmark{Revealing Object Interactions}}
 \sectionmark{Revealing Object Interactions}
 In this work, we propose to tackle the two related problems identified above: first, traditional development tools tend to adapt the low level concepts of computers instead of adapting the high level concepts used during development.
 Second, an information representation of objects and their interactions is hard to provide in a beneficial manner due to the scalability issues of dynamic analysis techniques.
-Therefore, we propose to extend the step-wise run-time analysis tracing technique in a way that preserves its immediate character and low memory footprint while at the same time making it suitable for the reconstruction of object interactions.
-Based on this extension, we further propose \textsc{PathObjects}, an interactive information presentation at the abstraction level of objects that aims at avoiding the information overload caused by existing dynamic analysis tools.
-\textsc{PathObjects} diagrams reuse well known concepts from the Unified Modeling Language and cover objects, message exchanges, state changes, and the roles objects play in communications.
+Therefore, we extend the step-wise run-time analysis tracing technique in a way that preserves its immediate character and low memory footprint while at the same time making it suitable for the reconstruction of object interactions.
+Based on this extension, we implement \textsc{PathObjects}, an interactive information presentation at the abstraction level of objects that aims at avoiding the information overload caused by existing dynamic analysis tools.
+\textsc{PathObjects} diagrams reuse well-known concepts from the Unified Modeling Language and cover objects, message exchanges, state changes, and the roles objects play in communications.
+On top of that, the \textsc{PathObjects} concept includes three groups of interactive diagram components that aim at easing perceivability of trace information, namely \emph{navigation}, \emph{exploration}, and \emph{focusing}.
 
-We further propose a number of interactive diagram components that aim at easing perceivability of trace information.
 The first component group covers navigational aspects.
-To allow developers to navigate through the temporal dimension of execution traces, we propose the \emph{timeline} component.
+To allow developers to navigate through the temporal dimension of execution traces, we provide the \emph{timeline} component.
 Similarly, the intended use-case of the \emph{mini-map} component is the navigation through the spatial domain of execution traces.
 These two components aim at an exploratory usage.
-On top of that, we propose the \emph{search bar} that facilitates target-oriented navigation, meaning that developers are enabled to find specific entities of interest provided that they are already known.
+On top of that, we suggest the \emph{search bar} that facilitates target-oriented navigation, meaning that developers are enabled to find specific entities of interest provided that they are already known.
 
 The second component group covers the explorative aspects of trace comprehension.
-We propose three interactive components in this context: \emph{state exploration}, \emph{reference exploration}, and \emph{source code exploration}.
+We present three interactive components in this context: \emph{state exploration}, \emph{reference exploration}, and \emph{source code exploration}.
 State exploration enables developers to keep track of object state changes over the course of time.
 Thus, the reasons for program behavior can be revealed.
 Reference exploration can be used to monitor the outbound object pointers of specific objects.
@@ -116,10 +116,10 @@ While these two components cover the exploration of the runtime state of a syste
 Consequently, source code exploration keeps connections to the underlying implementation of a system at all times, and allow developers to explore the context and the implementations of specific messages.
 
 The third component group deals with the potential information overload of execution trace visualizations.
-To allow developers to remove irrelevant information from \textsc{PathObjects} diagrams, we propose the \emph{object filter} and \emph{message filter} as interactive components.
+To allow developers to remove irrelevant information from \textsc{PathObjects} diagrams, we provide the \emph{object filter} and \emph{message filter} as interactive components.
 With the aid of these components, developers are enabled to focus on relevant aspects of execution traces, and to construct terse scenarios that cover precisely the relevant amount of information.
 
-Finally, we propose information layers, a concept that allows developers to augment \textsc{PathObjects} diagrams with use-case specific information.
+Finally, we present information layers, a concept that allows developers to augment \textsc{PathObjects} diagrams with use-case specific information.
 We show how information from various domains can be integrated into the visualization of object interactions, and how the need to manually collect information from a multitude of separate tools can be eliminated thereby.
 
 In summary, the contributions of this thesis are:
@@ -127,7 +127,7 @@ In summary, the contributions of this thesis are:
 \begin{itemize}
 \renewcommand{\labelitemiv}{$\ast$}
 
-\item \textbf{An Interactive Diagram Notation for Object Interactions} We propose an interactive way of diagramming object states and interactions that allows users to navigate through program executions, to explore object states and relationships, to focus on specific parts of interest, and to augment the displayed information through user-defined information layers.
+\item \textbf{An Interactive Diagram Notation for Object Interactions} We present an interactive way of diagramming object states and interactions that allows users to navigate through program executions, to explore object states and relationships, to focus on specific parts of interest, and to augment the displayed information through user-defined information layers.
 
 \item \textbf{A Lightweight Approach for Tracing Object Interactions} We present an extension of the step-wise run-time analysis approach that allows to reconstruct object interactions from traces while maintaining immediacy and a low memory footprint.
 
@@ -138,12 +138,11 @@ Furthermore, we use this prototype to verify that our proposed solution actually
 
 \section{Thesis Structure}
 The remainder of this thesis is structured as follows:
-Chapter \ref{c:Background} looks into the background of program comprehension and into techniques that are typically used to collect the runtime information required for the analysis of object interactions.
-Furthermore, established diagram notations that cover the state of objects and their interactions are presented.
-Thereby, the presented techniques and their inadequacy for our objectives are discussed.
-Chapter \ref{c:approach} describes \textsc{PathObjects}, which represents our proposed solution to those problems.
-Chapter \ref{c:implementation} presents a prototypical implementation of \textsc{PathObjects} for the Squeak/Smalltalk environment and describes the required extensions of the \textsc{PathTools} framework.
-Chapter \ref{c:discussion} evaluates our approach with the help of a performance analysis and a user evaluation. 
+Chapter \ref{c:Background} looks into the background of program comprehension, shows why dynamic analysis is an inevitable tool for the comprehension of object-oriented programs, and presents established diagram notations that cover the state of objects and their interactions.
+Thereby, the techniques and their inadequacy for our objectives are discussed.
+Chapter \ref{c:approach} presents \textsc{PathObjects} diagrams as proposed solution to those problems, and describes the interactive components that facilitate trace navigation, exploration, focusing, and the augmentation with use-case specific information.
+Chapter \ref{c:implementation} presents an implementation of \textsc{PathObjects} for the Squeak/Smalltalk environment and describes the required extensions of the step-wise run-time analysis tracing framework.
+Chapter \ref{c:discussion} evaluates our approach with the help of a performance analysis and a user study. 
 The chapter concludes with a discussion of the limitations of our approach and its applicability to other programming languages and environments.
 Chapter \ref{c:relatedwork} shows related work in the areas of trace visualization, debugging, and education.
 Chapter \ref{c:conclusions} concludes this work and presents reasonable directions for future research.
