@@ -9,30 +9,29 @@ Consequently, it stands to reason that reducing the time share of program compre
 This raises the question why program comprehension is such a tedious task.
 During this activity, developers construct a mental model that maps the behavior of a software system to its source code representation \cite{latoza_maintaining_2006}.
 In doing so, numerous gaps between different conceptual areas have to be bridged \cite{kent_program_1996}.
-First, developers have to map the concepts of the application domain to the concepts that are found in the source code.
-Second, models and software artifacts often are not kept in a coherent state, which forces developers to understand a software system whose documentation has gotten out of date.
+First, developers have to map the concepts of the application domain to the abstract concepts that are found in the source code.
+Second, models and software artifacts often are not kept in a coherent state, which forces developers to understand a software system whose documentation can be out of date.
 Third, there is a gap between the formal world of computer programs and the associative nature of human cognition.
-Fourth, developers have to perform program analysis and model synthesis at the same time, with the former being a bottom-up and the latter being a top-down activity.
+Fourth, developers have to synchronize bottom-up and top-down activities, namely program analysis and model synthesis.
 
-But most importantly in the context of this thesis, there is a fifth gap between the low-level functional principals of physical machines, and the high-level abstractions of programming languages and design documents.
-On the one hand, a program is nothing more than a huge number of bits when executed by a computer.
+But most importantly in the context of this thesis, there is a fifth gap between the low-level functional principals of physical machines and the high-level abstractions of programming languages and design documents.
+On the one hand, a program is nothing more than a number of CPU register values when executed by a computer.
 On the other hand, the same program may have been designed with high-level abstractions like object-orientation in mind.
-Object diagrams and communication diagrams could have resulted from the design phase, and said program might have been implemented with the help of an object-oriented programming language.
 As a consequence, a further challenge for developers during program comprehension is the selection of relevant details from the low-level representations provided by computers, and the building of adequate abstractions on the basis of these details.
-Surprisingly, wide-spread development tools contribute little to close this gap.
 
-Thereby, one does not necessarily have to consider the lowest abstraction levels like logic gates or CPU register values.
-Conventional symbolic debuggers that commonly are included in object-oriented development environments also stand exemplary for this phenomenon.
-While developers design a system with objects and their interactions in mind, the information presentation of those debuggers is centered around the call stack of the current execution.
+Surprisingly, wide-spread development tools contribute little to close this gap.
+Conventional symbolic debuggers that commonly are included in object-oriented development environments stand exemplary for this phenomenon.
+The information presentation of those debuggers is centered around the call stack of the current execution.
 This presentation rather conforms to the processes on machine level than to the object-oriented concepts used during the development of the system.
 Consequently, it is not particularly suited to answer questions about object-oriented programs straightforwardly.
 For instance, the presentation of the call stack does not help to identify which objects are involved in the current computation, and which other objects they are communicating with.
-The mere fact that these debuggers could as well be used for the debugging of procedural programs illustrates how little they are adapted to the domain of object-orientation.
+The mere fact that these debuggers could just as well be used for the debugging of procedural programs illustrates how little they are adapted to the domain of object-orientation.
 
-In other words, the way program behavior is presented to developers is characterized by the low level concepts computers operate on, instead of the high level concepts that are used to design software systems.
+\section[Challenges in Object-Oriented Program Comprehension]{Challenges in Object-Oriented Program Comprehension%
+\sectionmark{Challenges}}
+\sectionmark{Challenges}
+The way program behavior is presented to developers is characterized by the low level concepts computers operate on, instead of the high level concepts that are used to design software systems.
 The result of this phenomenon is a huge gap between the metaphors and concepts used during development, and the representation of program behavior tools provide.
-
-\section{Problem}\todo{Section Title}
 Unsurprisingly, research results in the domain of object-oriented program comprehension suggest that objects and their interactions are an essential part of mental models that are built during this activity \cite{burkhardt_mental_1997}.
 At the same time, the way in which information is presented plays an important role in the process of human reasoning and thus in the construction of mental models \cite{diehl_software_2007}.
 Consequently, it seems reasonable that a reduction of the gap between the information presentation of a program's behavior and the concepts that are used at design time would help to reduce the amount of time developers have to spend on program comprehension.
@@ -44,8 +43,8 @@ This means that information about the behavior of a program has to be collected 
 The latter models the structure of a system in terms of classes and their relationships rather than its actual behavior.
 But due to object-oriented concepts like polymorphism and late binding, the objects that are actually participating in a computation and the messages that are exchanged between them are only known at runtime.
 
-However, dynamic analysis has four closely related problems that hinder its broad application down to the present day.
-First, to collect runtime information, the execution of a program has to be manipulated in a way that traces of the execution can be generated.
+However, dynamic analysis has four closely related problems that constrain many of its application areas.
+First, to collect runtime information, the execution of a program has to be recorded.
 Typically, this is done by instrumentation at the source code or byte code level or through the utilization of debug interfaces.
 The side effect of such manipulations is that they often decelerate the execution speed of a program excessively.
 The runtime costs of instrumentation are reported to range from around 10-15 times the costs of standalone executions up to 115 times in worst case scenarios \cite{pothier_scalable_2007, karran_synctrace:_2013}.
@@ -63,9 +62,19 @@ Again, time that developers have to wait for results is time that slows down the
 
 The fourth and last problem also is a direct result of overly large traces.
 The visualizations of traces themselves grow proportional to the size of the traces.
-This makes it increasingly difficult for the observer to perceive and comprehend the actual information which is encoded in the visualization.
+This makes it increasingly difficult for developers to perceive and comprehend the actual information which is encoded in the visualization.
 
-As pointed out, program comprehension and dynamic analysis are both time consuming tasks on their own. Therefore, the main research question that is tackled in this thesis is:
+\emph{Step-wise run-time analysis} has been proposed as lightweight alternative to conventional tracing approaches to cope with some of the shortcomings of dynamic analysis  \cite{perscheid_immediacy_2010}.
+The fundamental idea is to use test cases as reproducible entry points into the behavior of specific usage scenarios of a system.
+Instead of collecting potentially useful information in its entirety up front, a shallow analysis is performed during the first tracing run that only yields the bare minimum of data required for the reconstruction of test executions.
+During the inspection of such a shallow trace, developers can perform refinement runs to collect further information of interest, such as the internal state of objects or the specific values that are used as arguments.
+As a result, the approach enables immediacy and displays only that information to  developers that is actually relevant.
+
+However, this solution still lacks an appropriate information representation at the abstraction level of objects.
+The primary purpose of the tool that implements step-wise run-time analysis is back-in-time debugging.
+Therefore, it presents execution traces in the form of call trees.
+Again, this presentation conforms to the technical procedures rather than being guided by the high-level concepts of object-orientation.
+Therefore, the main research question that is tackled in this thesis is:
 
 \begin{quote}
 1) Can the behavior of software systems be presented at the abstraction level of objects while maintaining immediacy and perceivability?
@@ -79,22 +88,11 @@ Since it is only an assumption that such an information presentation would actua
 
 Provided that an information presentation at the abstraction level of objects and their interactions actually can help to bridge the gap of abstraction levels developers face, it could play an important role in the reduction of the time that is spent on program comprehension.
 Furthermore, since program comprehension is an essential element of software maintenance tasks, and since the latter make up for the majority of the total costs of software development,
-such an information presentation could represent a big step towards the reduction of those costs.
+such an information presentation could represent a step towards the reduction of those costs.
 
 \section[Revealing Object Interactions with PathObjects]{Revealing Object Interactions with PathObjects%
 \sectionmark{Revealing Object Interactions}}
 \sectionmark{Revealing Object Interactions}
-
-Perscheid et al. have conducted research on how to cope with some of the shortcomings of dynamic analysis and have proposed \emph{step-wise run-time analysis} as lightweight alternative to conventional tracing approaches \cite{perscheid_immediacy_2010}.
-The fundamental idea is to use test cases as reproducible entry points into the behavior of specific usage scenarios of a system.
-Instead of collecting potentially useful information in its entirety up front, a shallow analysis is performed during the first tracing run that only yields the bare minimum of data required for the reconstruction of test executions.
-During the inspection of such a shallow trace, developers can perform refinement runs to collect further information of interest, such as the internal state of objects or the specific values that are used as arguments.
-As a result, the approach enables immediacy and displays only that information to  developers that is actually relevant.
-However, this solution still lacks an appropriate information representation at the abstraction level of objects.
-The primary purpose of \textsc{PathFinder}, the tool that is provided to present execution traces to the developer, is back-in-time debugging.
-Therefore, it offers visualizations in the form of call trees.
-Again, this presentation conforms to the technical procedures rather than being guided by the high level concepts of object-orientation.
-
 In this work, we propose to tackle the two related problems identified above: first, traditional development tools tend to adapt the low level concepts of computers instead of adapting the high level concepts used during development.
 Second, an information representation of objects and their interactions is hard to provide in a beneficial manner due to the scalability issues of dynamic analysis techniques.
 Therefore, we propose to extend the step-wise run-time analysis tracing technique in a way that preserves its immediate character and low memory footprint while at the same time making it suitable for the reconstruction of object interactions.
