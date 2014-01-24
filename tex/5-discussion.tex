@@ -13,7 +13,7 @@ In addition, the limitations of our approach are explained in Section \ref{s:Dis
 
 \section{Performance Evaluation}
 \label{s:DiscussionPerformance}
-Perscheid et al. already have shown that the step-wise run-time analysis approach that serves as a basis of \textsc{PathObjects} enables the immediate exploration of a programs run-time while maintaining a low memory footprint  \cite{perscheid_immediacy_2010}.
+Research results already have shown that the step-wise run-time analysis approach that serves as a basis of \textsc{PathObjects} enables the immediate exploration of a programs run-time while maintaining a low memory footprint \cite{perscheid_immediacy_2010}.
 To ensure that the computational extra work required for visualizing recorded object interactions preserves the immediate character of this approach, an evaluation of the runtime performance of our implementation is given in Section \ref{ss:DiscussionPerformance}.
 Since \textsc{PathObjects} also introduces additional tracing effort, an analysis of its memory requirements is presented in Section \ref{ss:DiscussionSpace}.
 The projects that have been used to conduct those evaluations are presented in Section \ref{ss:DiscussionProjects}.
@@ -136,9 +136,9 @@ Even if garbage collection would account for a significant share of the runtime,
 \subsection{Space Consumption}
 \label{ss:DiscussionSpace}
 As pointed out in Section \ref{s:BackgroundAnalysis}, one major problem of dynamic analysis techniques is the huge amount of data arising during tracing runs.
-Perscheid et al. have proposed the \emph{Step-wise Run-time Analysis} approach \cite{perscheid_immediacy_2010} as tracing technique with considerably lowered space requirements. 
+For that reason, the step-wise run-time analysis approach has been proposed as tracing technique with considerably lowered space requirements \cite{perscheid_immediacy_2010}. 
 This approach also serves as a basis of \textsc{PathObjects}, but additional tracing effort had to be introduced to allow for the reconstruction of object interaction diagrams from those traces.
-For that reason, an estimation of the additional space consumption \textsc{PathObjects} adds on top of the underlying tracing framework is presented in this section.
+Therefore, an estimation of the additional space consumption \textsc{PathObjects} adds on top of the underlying tracing framework is presented in this section.
 
 \subsubsection{Evaluation Procedure}
 The main memory consumption of a specific part of the system is hard to measure exactly in a garbage collected environment like the Squeak virtual machine.
@@ -217,7 +217,7 @@ More than 97.5\% of all evaluated test cases require less than 200kB in addition
 The worst case occurs in a unit test of the Squeak System Browser.
 In this case, the additional space requirements add up to around 900kB.
 
-Perscheid et al. already have shown that \emph{step-wise run-time analysis} maintains a low memory footprint during tracing \cite{perscheid_immediacy_2010}.
+A performance analysis of step-wise run-time analysis already has shown that it maintains a low memory footprint during tracing \cite{perscheid_immediacy_2010}.
 With the worst case introducing less than 1MB of additional tracing data, it can be concluded that the space consumption overhead that is required for the reconstruction of object interactions is negligible.
 
 \begin{figure}[tb!]

@@ -11,7 +11,7 @@ Consequently, it comes as no surprise that program comprehension in general and 
 Section \ref{s:BackgroundComprehension} gives an overview of the research on object-oriented program comprehension.
 The reasons that make it such a time-consuming task are depicted and related to the corresponding mental processes.
 Section \ref{s:BackgroundAnalysis} shows why dynamic analysis is an inevitable instrument when it comes to assisting in the comprehension of object-oriented programs.
-Furthermore, it depicts the problems that have hindered its broad application for a long time, and describes how Perscheid et al. propose to solve some of those problems.
+Furthermore, it depicts the problems that have constrained many of its application areas for a long time, and describes recent research results that claim to solve some of those problems.
 Finally, Section \ref{s:BackgroundModeling} presents UML diagram types that are intended for object modeling, and shows why they are insufficient for our objectives. 
 
 \section[Cognitive Aspects of Program Comprehension]{Cognitive Aspects of Program Comprehension%
@@ -108,7 +108,7 @@ When it comes to the analysis of objects and their interactions, the application
 The reasons for this necessity are depicted in Section \ref{ss:BackgroundAnalysisNeccessity}.
 However, dynamic analysis suffers from four major problems that have prevented its broad adaption for a long time.
 These problems are illustrated in Section \ref{ss:BackgroundAnalysisProblems}.
-Finally, Section \ref{ss:BackgroundTracing} shows how Perscheid et al. propose to solve some of these problems.
+Finally, Section \ref{ss:BackgroundTracing} shows recent research results that solve some of these problems.
 
 \subsection{The Need for Dynamic Analysis}
 \label{ss:BackgroundAnalysisNeccessity}
@@ -214,7 +214,7 @@ However, it is questionable if this strategy is sufficient to give an adequate i
 
 \subsection{Step-Wise Run-Time Analysis to the Rescue?}
 \label{ss:BackgroundTracing}
-To overcome the technical issues of dynamic analysis, Perscheid et al. propose an approach called \emph{step-wise run-time analysis} \citep{perscheid_immediacy_2010, perscheid_test-driven_2013}.
+To overcome the technical issues of dynamic analysis, an approach called \emph{step-wise run-time analysis} has been presented \citep{perscheid_immediacy_2010, perscheid_test-driven_2013}.
 The essential idea is to utilize test cases as reproducible entry points into scenarios of expressive program behavior.
 Instead of collecting huge amounts of data up front, the required information is collected successively in an iterative and interactive process that is steered by the developer.
 
