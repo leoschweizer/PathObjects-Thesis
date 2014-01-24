@@ -11,7 +11,7 @@ During this activity, developers construct a mental model that maps the behavior
 In doing so, numerous gaps between different conceptual areas have to be bridged \cite{kent_program_1996}.
 First, developers have to map the concepts of the application domain to the abstract concepts that are found in the source code.
 Second, models and software artifacts often are not kept in a coherent state, which forces developers to understand a software system whose documentation can be out of date.
-Third, there is a gap between the formal world of computer programs and the associative nature of human cognition.
+Third, there is a gap between the formal world of computer programs with strict syntactic and semantic rules, and the nature of human cognition which has to identify patterns in the source code and build correct relations between them associatively.
 Fourth, developers have to synchronize bottom-up and top-down activities, namely program analysis and model synthesis.
 
 But most importantly in the context of this thesis, there is a fifth gap between the low-level functional principals of physical machines and the high-level abstractions of programming languages and design documents.
@@ -47,8 +47,7 @@ First, to collect runtime information, the execution of a program has to be reco
 Typically, this is done by instrumentation at the source code or byte code level or through the utilization of debug interfaces.
 The side effect of such manipulations is that they often decelerate the execution speed of a program excessively.
 The runtime costs of instrumentation are reported to range from around 10-15 times the costs of standalone executions up to 115 times in worst case scenarios \cite{pothier_scalable_2007, karran_synctrace:_2013}.
-Consequently, developers have to wait a significant amount of time for tracing runs to finish.
-As a result, developers have to wait until they can start analyzing traces, thereby increasing the amount of time required for program comprehension.
+Consequently, developers have to wait a significant amount of time for tracing runs to finish, thereby increasing the amount of time required for program comprehension.
 
 The second problem is the huge amount of data that arises even during short executions of software systems.
 For instance, Karran et al. report that the start-up of the Firefox browser alone yields 1GB of trace data \cite{karran_extraction_2013}.
@@ -93,7 +92,7 @@ such an information presentation could represent a step towards the reduction of
 \section[Revealing Object Interactions with PathObjects]{Revealing Object Interactions with PathObjects%
 \sectionmark{Revealing Object Interactions}}
 \sectionmark{Revealing Object Interactions}
-In this work, we propose to tackle the two related problems identified above: first, traditional development tools tend to adapt the low level concepts of computers instead of adapting the high level concepts used during development.
+In this work, we tackle the two related problems implied by our first research question: first, traditional development tools tend to adapt the low level concepts of computers instead of adapting the high level concepts used during development.
 Second, an information representation of objects and their interactions is hard to provide in a beneficial manner due to the scalability issues of dynamic analysis techniques.
 Therefore, we extend the step-wise run-time analysis tracing technique in a way that preserves its immediate character and low memory footprint while at the same time making it suitable for the reconstruction of object interactions.
 Based on this extension, we implement \textsc{PathObjects}, an interactive information presentation at the abstraction level of objects that aims at avoiding the information overload caused by existing dynamic analysis tools.
@@ -109,7 +108,7 @@ On top of that, we suggest the \emph{search bar} that facilitates target-oriente
 The second component group covers the explorative aspects of trace comprehension.
 We present three interactive components in this context: \emph{state exploration}, \emph{reference exploration}, and \emph{source code exploration}.
 State exploration enables developers to keep track of object state changes over the course of time.
-Thus, the reasons for program behavior can be revealed.
+Among other things, the reasons for program behavior thus can be revealed.
 Reference exploration can be used to monitor the outbound object pointers of specific objects.
 In this way, it can be revealed how and when objects retain and release references to other objects.
 While these two components cover the exploration of the runtime state of a system, the fundamental goal of program comprehension is to map this behavior to its source code representation.
