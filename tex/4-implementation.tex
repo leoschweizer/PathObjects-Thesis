@@ -31,6 +31,8 @@ The argument of the \inlinecode{attach:} message is an instance the \inlinecode{
 This is illustrated through the yellow flag that is attached to the object.
 To clarify the role of an object in the current step even further, this indicator also shows the name the underlying method defines for this argument, namely \inlinecode{anObserver}.
 
+\subsection{Interactive Components}
+
 Developers can explore the implementations of the current message and of the context in which this message is sent through clicking on the icon to the left of the message name.
 The icon to the right of the message name allows to directly explore the state of the argument.
 The icons that are shown above the clock timer instance are a context sensitive menu that is displayed when the developer hovers an object.
@@ -67,6 +69,31 @@ The latter turns out to be the clock timer instance, and this fact is also clari
 But the most important change is visible in the state explorer.
 It can be seen that the collection of observers now has one entry, and this entry is the instance of \inlinecode{SAnalogClock} that has been passed as argument.
 
+\subsection{Information Layers}
+
+\begin{figure}[tb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{../images/04-ImplOverlays}
+	\caption{Configuration Dialog for Information Layers.}
+	\label{fig:ImplementationLayers}
+\end{figure}
+
+The dialog that allows to add and remove information layers is shown in figure \ref{fig:ImplementationLayers}.
+New layers can be configured with the help of three selection boxes.
+First, developers select a metric they wish to visualize. 
+The metrics that are currently supported are listed in Table \ref{t:ApproachLayers}  and related to applicable diagram dimensions.
+The second box is then populated with all diagram dimensions the selected metric can be mapped to.
+If the selected dimension requires the definition of a color scale, this scale can be selected from the third list, which can be ignored otherwise.
+In the depicted example, the developer chooses to display which methods have been changed last, and wishes to visualize this information with the help of the width of the edges that represent message sends.
+
+Layers that are currently active are shown in the list filling the center of the dialog.
+For instance, one user-defined layer maps the \textsc{Fanin}-metric to the color of objects on the mini-map.
+Another layer maps the \textsc{Fanout}-metric to the background color of objects, and uses a different color scale for this purpose.
+Examples how such layers affect the visualization of various diagram dimensions already have been given in the previous Chapter (cf. Figures \ref{fig:ApproachTimelineMetrics}, \ref{fig:ApproachMinimapMetric}).
+
+When a developer chooses to visualize a metric through colors, the scale can be either threshold-based or linear.
+In the first case, a traditional traffic light rating system is used ranging from red (metric indicates room for improvement) to green (metric indicates satisfactory conditions).
+In the second case, the developer can choose from a range of linear and perceptually linearized color scales as proposed by Levkowitz et al. \cite{levkowitz_color_1992, levkowitz_color_1997}.
 
 \section{Data Acquisition}
 \label{s:ImplementationTracing}
@@ -278,41 +305,3 @@ E_i(n_1, n_2, m_i) = m_i \bmod C_E(n_1, n_2)
 \end{equation}
 This ensures that one message will always be mapped to the same edge when a user navigates to a specific point of the execution history repeatedly.
 Furthermore, as pointed out above, it is guaranteed that enough edge definitions exists to depict any given point of the execution history.
-
-\section{Information Layers}
-\label{s:ImplementationLayers}
-
-\begin{figure}[tb]
-	\centering
-	\includegraphics[width=0.7\textwidth]{../images/04-ImplOverlays}
-	\caption{Configuration Dialog for Information Layers.}
-	\label{fig:ImplementationLayers}
-\end{figure}
-
-The dialog that allows to add and remove information layers is shown in figure \ref{fig:ImplementationLayers}.
-New layers can be configured with the help of three selection boxes.
-First, developers select a metric they wish to visualize.
-The second box is then populated with all diagram dimensions the selected metric can be mapped to.
-If the selected dimension requires the definition of a color scale, this scale can be selected from the third list, which can be ignored otherwise.
-In the depicted example, the developer chooses to display which methods have been changed last, and wishes to visualize this information with the help of the width of the edges that represent message sends.
-
-Layers that are currently active are shown in the list filling the center of the dialog.
-For instance, one user-defined layer maps the \textsc{Fanin}-metric to the color of objects on the mini-map.
-Another layer maps the \textsc{Fanout}-metric to the background color of objects, and uses a different color scale for this purpose.
-Examples how such layers affect the visualization of various diagram dimensions already have been given in the previous sections (cf. Figures \ref{fig:ImplementationTimelineMetrics}, \ref{fig:ImplementationMinimapMetric}).
-
-Table \ref{t:ImplementationLayers} lists the metrics that are currently supported and relates them to applicable diagram dimensions.
-However, the supported metrics as well as the dimensions these metrics can be mapped to constitute an extension point of \textsc{PathObjects}.
-The implementation of metrics follow a strategy pattern \cite{gamma_design_1995}.
-For instance, if a new metric should be added that measures the main memory consumption of single objects, one would have to implement a subclass that lazily executes the test case under observation, performs the required measurements, and returns the measured values for specific objects on demand.
-This new metric then could automatically be mapped to any dimension that is suitable to visualize object metrics.
-
-The supported diagram dimensions are represented by a visitor pattern \cite{gamma_design_1995}.
-For example, adding support for the border color of objects would require implementing a new visitor.
-This visitor has to accept objects and change their border color corresponding to the values retrieved from an object metric.
-Again, this new dimension would automatically be available to all metrics that cover objects.
-
-When a developer chooses to visualize a metric through colors, the scale can be either threshold-based or linear.
-In the first case, a traditional traffic light rating system is used ranging from red (metric indicates room for improvement) to green (metric indicates satisfactory conditions).
-In the second case, the developer can select from a range of linear and perceptually linearized color scales as proposed by Levkowitz et al. \cite{levkowitz_color_1992, levkowitz_color_1997}.
-The currently supported scales are grayscale, rainbow scale, heated-object scale, magenta scale, linearized optimal color Scale (all perceptually linearized), as well as blue-to-cyan scale, blue-to-yellow scale, and optimal color scale.
