@@ -21,27 +21,18 @@ Finally, Section \ref{s:ImplementationLayouting} illustrates how \textsc{PathObj
 	\label{fig:ImplementationMainWindow}
 \end{figure}
 
-\begin{figure}[tb]
-	\centering
-	\includegraphics[width=0.9\textwidth]{../images/04-ImplExploration1}
-	\caption[Basic Representation of Object Interactions]{Basic representation of object interactions; \inlinecode{SAnalogClockClass} sends the \inlinecode{attach:} message to a clock timer instance, with an analog clock instance being the argument of the message.}
-	\label{fig:ImplementationExplorationBasic}
-\end{figure}
-
 Figure \ref{fig:ImplementationMainWindow} shows our implementation of \textsc{PathObjects} for the Squeak/Smalltalk environment.
+The diagram depicts the same scenario that is covered in Figure \ref{fig:ApproachBasic}:
+the analog clock class registers one of its instances as observer of the clock timer instance.\todo{update fig.}
 
-
-
-Figure \ref{fig:ImplementationExplorationBasic} shows the basic visualization of object interactions that allows developers to explore the behavior of a system.
-Objects that are involved in the current step of the execution are emphasized through green background color (in the given example, all shown objects are involved).
-The current message send is indicated through a black arrow, and the previous three steps are drawn in lighter colors.
 The example shows that the class \inlinecode{SAnalogClock} sends the \inlinecode{attach:} message to an instance of \inlinecode{ClockTimer}.
-The argument of the \inlinecode{attach:} message is an instance of \inlinecode{SAnalogClock}.
+Thereby, the green background color indicates objects that are participating in the current step of the execution history.
+The argument of the \inlinecode{attach:} message is an instance the \inlinecode{SAnalogClock}.
 This is illustrated through the yellow flag that is attached to the object.
 To clarify the role of an object in the current step even further, this indicator also shows the name the underlying method defines for this argument, namely \inlinecode{anObserver}.
 
-The developer can explore the implementations of the current message and of the context in which this message is sent through clicking on the icon left of the message name.
-The icon on the right of the message name allows to directly explore the state of the argument.
+Developers can explore the implementations of the current message and of the context in which this message is sent through clicking on the icon to the left of the message name.
+The icon to the right of the message name allows to directly explore the state of the argument.
 The icons that are shown above the clock timer instance are a context sensitive menu that is displayed when the developer hovers an object.
 It allows to take further actions regarding the respective object.
 From left to right, these are toggling state tracking, toggling outbound reference tracking, setting of a quick filter, and execution of a quick search.
@@ -53,25 +44,24 @@ From left to right, these are toggling state tracking, toggling outbound referen
 		\centering
 		\includegraphics[width=\textwidth]{../images/04-ImplExplorationState1}
 		\caption[Object State Before Message Execution]{}
-		\label{fig:ApproachExplorationState1}
+		\label{fig:ImplementationExplorationStateBefore}
 	\end{subfigure}
 	\quad
 	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../images/04-ImplExplorationState2}
 		\caption[Object State After Message Execution]{}
-		\label{fig:ApproachExplorationState2}
+		\label{fig:ImplementationExplorationStateAfter}
 	\end{subfigure}
 	
-	\caption[Exploration of Object State Changes]{Exploration of object state changes. a) State of the clock timer instance before the execution of \inlinecode{attach:}. b) State of the same instance after the execution of said message.}
-	\label{fig:ApproachExplorationState}
+	\caption[Exploration of Object State Changes]{Exploration of object state changes. a) State of the clock timer instance before the execution of the \inlinecode{attach:} message. b) State of the same instance after the execution of said message.}
+	\label{fig:ImplementationExplorationState}
 \end{figure}
 
-Figure \ref{fig:ImplementationExplorationState} gives an example with the aid of the process of adding observers to a subject.
-In Figure \ref{fig:ImplementationExplorationState1}, the state of the system is shown before the \inlinecode{attach:} message has been processed.
-\inlinecode{SAnalogClock class} is the sender of this message, and an instance of \inlinecode{SAnalogClock} is the argument of this message (but not shown in the figure).
+Figure \ref{fig:ImplementationExplorationState} shows how enabling state exploration affects the information presentation.
+In Figure \ref{fig:ImplementationExplorationStateBefore}, the state of the system is shown before the \inlinecode{attach:} message has been processed.
 State tracking is enabled for the clock timer instance, and the state explorer shows that no observers are currently registered and that the hour, minute, and second attributes are equal to \inlinecode{0}.
-Figure \ref{fig:ImplementationExplorationState2} depicts the state of the system after the \inlinecode{attach:} message has been processed, or respectively after the developer took a step forward in the execution history.
+Figure \ref{fig:ImplementationExplorationStateAfter} depicts the state of the system after the \inlinecode{attach:} message has been processed, or respectively after the developer took a step forward in the execution history.
 The message label now has an additional field to explore the return value.
 The latter turns out to be the clock timer instance, and this fact is also clarified through the role indicator that is attached to the object.
 But the most important change is visible in the state explorer.
