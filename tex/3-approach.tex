@@ -6,10 +6,13 @@ Section \ref{s:ApproachConcept} describes how our proposed solution helps to bri
 Section \ref{s:ApproachNotation} presents the basic components of the interactive object communication diagrams that serve this purpose.
 With interactivity being an integral part of the concept, \textsc{PathObjects} diagrams also feature a number of interactive components.
 They are depicted in Section \ref{s:ApproachInteractivity}.
+Information layers are a further important concept of \textsc{PathObjects} diagrams and allow developers to augment the information presentation of execution traces with use-case specific information.
+They are presented in Section \ref{s:ApproachLayers}.
 Finally, Section \ref{s:ApproachLayout} defines aesthetic requirements which should be met by implementations of \textsc{PathObjects}.
 
 \section{Concept}
 \label{s:ApproachConcept}
+\todo{Section title}
 As depicted in Chapter \ref{c:Background}, there are three related problem areas which are tackled in this thesis.
 First, there is a huge gap between the abstraction level of the inner workings of computers and the abstraction level of object-oriented source code and design documents.
 Moreover, widespread development tools such as symbolic debuggers contribute little to the bridging of this gap.
@@ -171,8 +174,6 @@ Consequently, they provide a number of interactive components which are covered 
 The components that allow developers to navigate through the temporal and spatial dimensions of diagrams are presented in Section \ref{ss:ApproachInteractiveNavigation}.
 The explorative features that can be used to gain insight into the runtime state and the state of the according source code representations are depicted in Section \ref{ss:ApproachInteractiveExploration}.
 In order to allow developers to focus on specific entities of interest, \textsc{PathObjects} diagrams feature object and message filters, which are presented in Section \ref{ss:ApproachInteractiveFocusing}.
-Finally, information layers can be used to enrich diagrams with use-case specific information, like source code metrics or profiling data.
-They are presented in Section \ref{ss:ApproachInteractiveLayers}.
 
 \subsection{Navigation}
 \label{ss:ApproachInteractiveNavigation}
@@ -378,8 +379,8 @@ For example, the clock timer instance can be added to the selection, which will 
 Since the selection of a small set of relevant objects usually reduces the number of displayed objects drastically, objects can be rearranged automatically with every change of the current selection.
 Thus, the information presentation can be compacted for perceivability purposes.
 
-\subsection{Information Layers}
-\label{ss:ApproachInteractiveLayers}
+\section{Information Layers}
+\label{s:ApproachLayers}
 Program comprehension usually does not end in itself but rather serves a specific purpose.
 Consequently, the situations in which developers try to build an understanding of a software system are manifold.
 Furthermore, different purposes require different additional information that can assist developers in specific situations.
