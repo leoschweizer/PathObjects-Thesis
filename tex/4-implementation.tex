@@ -96,16 +96,16 @@ In the second case, the developer can choose from a range of linear and perceptu
 
 \section{Data Acquisition}
 \label{s:ImplementationTracing}
-This section describes how the data required for the reconstruction of object interactions is gathered.
-The basic prerequisite is that objects can be distinguished and identified.
-Since the Squeak image does not offer an adequate functionality, the strategy that was applied to solve this issue is depicted in Section \ref{ss:ImplementationTracingIdentification}.
-Section \ref{ss:ImplementationTracingApproach} describes how the tracing approach works.
+In order to allow for the reconstruction of object interactions from execution traces, it has to be ensured that the latter cover the required information.
+The basic prerequisite is that objects can be distinguished and identified during tracing runs.
+Since the Squeak environment does not offer an adequate functionality, the strategy that was applied to solve this issue is depicted in Section \ref{ss:ImplementationTracingIdentification}.
+Since the tracing approach that served as basis of our \textsc{PathObjects} implementation does not cover object interactions, the extensions that are required therefore are described in Section \ref{ss:ImplementationTracing}.
 Finally, Section \ref{ss:ImplementationTracingReferences} shows how the tracking and mapping of outbound object pointers are implemented.
 
 \subsection{Identification of Objects}
 \label{ss:ImplementationTracingIdentification}
 The fundamental requirement for the reconstruction of object interactions from traces is that object instances can be identified unambiguously.
-Unfortunately, the Squeak image does not provide such a functionality out of the box.
+Unfortunately, the Squeak environment does not provide such a functionality out of the box.
 Though objects do have an \inlinecode{identityHash} attribute, the value of this attribute is neither unique nor stable \cite{goldberg_smalltalk-80:_1983}.
 In the virtual machine we used, it is derived from the least significant bits of the object pointer which is managed by the virtual machine and represents the object's address in main memory.
 Hence, the value of the object pointer and thus the value of the \inlinecode{identityHash} are subject to change during garbage collection, which may cause objects to be moved in main memory.
