@@ -1,13 +1,11 @@
 \chapter{PathObjects for Squeak/Smalltalk}
 \label{c:implementation}
-\todo[inline]{Update Intro}
 To validate the applicability of the \textsc{PathObjects} concept, we put it into practice in the form of a prototype for the Squeak/Smalltalk environment.
 This chapter describes the implementation of this prototype, which also served as a basis for the performance analysis and user evaluation (cf. Chapter \ref{c:discussion}).
-Section \ref{s:ImplementationPrototype} shows how the single concepts - namely navigation, exploration, focusing, and information layers - are realized.
-The subsequent sections present technical implementation details.
-Section \ref{s:ImplementationTracing} describes how the lightweight tracing approach works.
-Furthermore, it explains the necessary extensions of the \textsc{PathTools} framework that allow us to reconstruct object interactions and referential relationships.
-Finally, Section \ref{s:ImplementationLayouting} illustrates how \textsc{PathObjects} traces can be mapped to graphs, and how this circumstance is exploited to arrange objects and to route messages with the help of \textsc{Graphviz}.
+In the previous chapter, we presented the fundamental components of \textsc{PathObjects} diagrams.
+Section \ref{s:ImplementationPrototype} illustrates the realization of these components.
+Section \ref{s:ImplementationTracing} describes the necessary extensions of the step-wise run-time analysis approach that allow us to reconstruct object interactions and referential relationships.
+Finally, Section \ref{s:ImplementationLayouting} illustrates how \textsc{PathObjects} traces can be mapped to graphs, and how this circumstance is exploited to place objects and to route messages.
 
 \section[Prototypic Implementation]{Prototypic Implementation%
 \sectionmark{Prototype}}
