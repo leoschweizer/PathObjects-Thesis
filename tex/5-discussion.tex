@@ -122,7 +122,7 @@ These projects are real-world software systems rather than synthetic benchmarks.
 Hence, it can be concluded that even though our approach entails operations with high computational complexity, it still is suitable to achieve considerably better performance compared to traditional dynamic analysis tools.
 
 \subsubsection{Threats to Validity}
-The runtime measurements have been performed with the help of the \inlinecode{BlockClosure>>timeToRunWithoutGC} method, which has two implications.
+The runtime measurements have been performed with the help of the \inlinecode{timeToRunWithoutGC} method provided by \inlinecode{BlockClosure}, which has two implications.
 First, the precision of the measurement is limited by the precision of the millisecond clock of the Squeak image.
 Another side effect of measuring clock time instead of CPU time is that other running operating system processes can have an effect on the results.
 But as millisecond precision is not important for our evaluation, both limitations are acceptable.
@@ -307,7 +307,7 @@ However, the concept of \textsc{PathObjects} is not limited to test cases.
 The underlying tracing approach works with any reproducible entry point into program behavior.
 Consequently, the restriction to test cases is a limitation of the prototypical implementation rather than of the concept itself.
 
-\subsection{Reliance on Test Quality} \todo{missing refs}
+\subsection{Reliance on Test Quality}
 \label{ss:DiscussionLimitationsTestQuality}
 The best practices for unit testing and the characteristics unit tests should display enjoy broad consent throughout the agile software development community.
 To name a few, they are supposed to be isolated, to be free of side-effects, to run fast, and to be reproducible, automated and unique \cite{meszaros_xunit_2006, beck_test_2002}.
@@ -316,7 +316,7 @@ However, when tests are being used as entry points for \textsc{PathObjects}, two
 Fast execution times are a key requirement for the applicability of our approach.
 If, for instance, a test would take minutes to execute, the user would have to wait that long every time a refinement run has to be performed to collect previously unknown information.
 This would possibly be still acceptable if such runs were executed only occasionally, but \textsc{PathObjects} encourages the continuous use of those features.
-For example, as depicted in Section \ref{missing}, refinement runs are performed automatically as long as an object state inspector is expanded.
+For example, as depicted in Section \ref{ss:ApproachInteractiveExploration}, refinement runs are performed automatically as long as an object state inspector is expanded.
 That means that with every step to a previously unvisited point of the execution trace, the underlying test case gets executed automatically, which in turn induces waiting time for the user in the case of long running tests. The good news is that in practice, tests usually run fast enough to make immediate feedback possible \cite{perscheid_immediacy_2010}.
 
 The second attribute our approach presupposes is strict determinism.
