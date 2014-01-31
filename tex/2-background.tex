@@ -2,11 +2,9 @@
 \label{c:Background}
 Program comprehension is the process of gaining knowledge about a software system.
 On the one hand, it is a fundamental element of software engineering.
-For instance, many maintenance tasks such as bug fixing, feature enhancement, refactoring, or documentation cannot be performed without having a sufficient understanding of the system at hand.
-
-On the other hand, program comprehension is a tedious activity with complex cognitive demands, and it reportedly accounts for up to 60\% of the software engineering effort \cite{corbi_program_1989, basili_evolving_1997}.
-This implies that more time is spent on building a satisfactory understanding rather than on productive tasks.
-Consequently, it comes as no surprise that program comprehension in general and particularly the question how its share of the software engineering effort can be reduced have emerged as interest areas in the software engineering field.
+For instance, many maintenance tasks such as bug fixing, feature enhancement, refactoring, or documentation cannot be performed without having a sufficient understanding of the system at hand. On the other hand, program comprehension is a tedious activity with complex cognitive demands, and it reportedly accounts for up to 60\% of the software engineering effort \cite{corbi_program_1989, basili_evolving_1997}.
+This implies that more time is spent on building a satisfactory understanding rather than on the tasks themselves.
+Consequently, it comes as no surprise that program comprehension in general - and particularly the question how its share of the software engineering effort can be reduced - have emerged as interest areas in the software engineering field.
 
 Section \ref{s:BackgroundComprehension} gives an overview of the research on object-oriented program comprehension.
 The reasons that make it such a time-consuming task are depicted and related to the corresponding mental processes.
@@ -23,7 +21,7 @@ The reasons therefore are depicted in Section \ref{ss:BackgroundComprehensionDif
 Section \ref{ss:BackgroundComprehensionMentalModel} summarizes research about the mental aspects of program comprehension.
 Finally, Section \ref{ss:BackgroundComprehensionMentalMap} draws conclusions about the properties that tools that are supposed to assist developers in object-oriented program comprehension should exhibit. 
 
-\subsection{Why Program Comprehension is Hard}
+\subsection{Why Program Comprehension is Difficult}
 \label{ss:BackgroundComprehensionDifficulties}
 Generally speaking, program comprehension requires to bridge the gaps between different conceptual areas.
 Rugaber has identified five gaps that are particularly relevant in this context \cite{kent_program_1996}.
@@ -58,11 +56,11 @@ As opposed to this, model synthesis is a top-down activity.
 Developers have an overall idea of the purpose of a program, and this idea is refined successively through the consideration of lower-level details.
 During the process of program comprehension, both of these activities have to be accomplished at the same time.
 
-\subsection{The Mental Model Approach to Program Comprehension}
+\subsection{The Mental Model Approach}
 \label{ss:BackgroundComprehensionMentalModel}
 Many different models have been suggested that aim at describing the process of program comprehension.
 Hierarchical plan models as proposed by Shneiderman \cite{shneiderman_exploratory_1976} or by Soloway and Ehrlich \cite{soloway_empirical_1984}, and programming strategy models as proposed by Davies \cite{davies_role_1991} are popular representatives.
-However, the approach that emerged as the dominant one is the mental model approach.
+However, recent research is rather focused on the mental model approach, which therefore is adopted in this thesis.
 Mental models describe the current state of understanding of the system under observation, and are successively updated during the process of comprehension.
 They are not to be confused with cognitive models, which describe how information is processed and how this contributes to the construction of a mental model.
 
@@ -144,7 +142,7 @@ Dynamic analysis only can cover the behavior that is displayed during an analyze
 In summary, in can be stated that there is no way around the application of dynamic analysis techniques when it comes to the exploration of objects and their interactions.
 However, dynamic analysis entails severe problems that hindered its broad application for a long time.
 
-\subsection{The Four Problems of Dynamic Analysis}
+\subsection{The Four Challenges of Dynamic Analysis}
 \label{ss:BackgroundAnalysisProblems}
 As a matter of fact, dynamic analysis is supposed to assist developers in program comprehension and can potentially reduce the required time for this activity.
 However, conventional dynamic analysis approaches suffer from four closely related problems.
@@ -203,7 +201,6 @@ When it comes to the presentation of trace information, one can observe a parado
 On the one hand, developer tools present way too much information at the same time, and often significant amounts of this information are irrelevant in specific scenarios.
 This mass of information leads to cognitive as well as informational overload.
 As a consequence, developers are unable to perceive the entirety of information, and moreover, the wealth of information makes it harder to draw conclusions \cite{hiltz_structuring_1985, sheridan_man-machine_1981}.
-
 On the other hand, information that might be relevant for developers is missing, because it has not been covered during tracing.
 For instance, the history of object states over the course of time is rarely covered by dynamic analysis tools (cf. Section \ref{s:RelatedTraceVis}).
 This reflects the fact that the amount of information that has to be collected with up-front tracing approaches is too high.
@@ -249,7 +246,7 @@ Afterwards, the tracer object executes the specified test case.
 Since all methods of interest are instrumented at this stage, they automatically report their execution to the tracer object.
 As method entry and exit events are recorded, a call tree of the selected test case can be constructed.
 
-Once the execution of the test case finishes, the tracer object triggers the de-instrumentation phase.
+Once the execution of the test case finishes, the tracer object triggers the reversion of the instrumentation.
 The previously created method wrappers are removed from the method dictionaries and the wrapped compiled methods are put back into their original places.
 Afterwards, the gathered information can be presented to users.
 
@@ -294,7 +291,7 @@ For instance, a simple question like how many objects are present in an executio
 
 What this all amounts to is that \emph{step-wise run-time analysis} constitutes a practicable solution for three of the four major problems of dynamic analysis, namely for computation time, trace size, and processing time.
 However, the presented information representation still does not play a part in closing the gap of abstraction levels.
-\textsc{PathFinder} displays execution traces of object-oriented programs, but objects and their interactions are no first-class entity.
+\textsc{PathFinder} displays execution traces of object-oriented programs, but objects and their interactions are no first-class entities.
 Consequently, developers still are not assisted in the creation of a mental map of objects.
 
 \section[Modeling of Objects, States, and Interactions]{Modeling of Objects, States, and Interactions%
@@ -409,7 +406,7 @@ Since the notation does not offer an inherent ordering of messages, the sequence
 As with object diagrams, the main advantage of communication diagrams lies in the unrestricted placement of objects on the two-dimensional canvas.
 It is for this reason that they are often used complementary with sequence diagrams, since the latter are not particularly suitable to communicate which objects belong together in consequence of their communication.
 
-\subsection{Why UML is not Sufficient}
+\subsection{Why UML Is not Sufficient}
 \label{ss:BackgroundModelingChallenges}
 Due to the fact that the Unified Modeling Language makes a strict distinction between structural and behavioral diagrams, none of them offers a combined view on object interactions and the internal state of objects.
 However, to understand the behavior of object-oriented systems, it is important to get an insight into both.
