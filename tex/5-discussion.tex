@@ -271,7 +271,7 @@ Section \ref{ss:DiscussionEvaluationResults} depicts the results of the evaluati
 \clearpage
 \section{Discussion}
 \label{s:DiscussionLimitations}
-The operation of our prototype and the underlying tracing mechanism take some preconditions for granted whose non-compliance could potentially render them non-functional.
+The operation of our implementation and the underlying tracing mechanism take some preconditions for granted whose non-compliance could potentially render them non-functional.
 First, some restrictions apply when dealing with systems that use the metaprogramming and reflection capabilities of the Squeak environment.
 These restrictions are discussed in Section \ref{ss:DiscussionLimitationsMeta}.
 Second, the importance of test coverage is debated in Section \ref{ss:DiscussionLimitationsCoverage}.
@@ -283,7 +283,7 @@ Finally, the applicability of our approach to other programming languages and en
 The utilization of metaprogramming and reflection capabilities within the system under observation does not necessarily pose a problem, neither on the conceptual nor on the technical level.
 However, the underlying tracing approach based on method wrappers is not very resistant to structural changes that can be caused by the usage of those capabilities.
 
-For instance, our prototypical implementation collects values of the program counter during tracing in order to permit the highlighting of the current message send within the corresponding method.
+For instance, our implementation collects values of the program counter during tracing in order to permit the highlighting of the current message send within the corresponding method.
 For that purpose, it browses the call stack, and expects a specific structure while doing so.
 All method calls that originate from the tracing framework have to be skipped in order to find the actual call context and thus the appropriate program counter value.
 If a program under observation manipulates the call stack, for instance by using method wrappers itself, the assumptions made about the sequence of tracing framework calls no longer hold true.
@@ -305,7 +305,7 @@ In such cases, one might not be able to construct a working scenario.
 
 However, the concept of \textsc{PathObjects} is not limited to test cases.
 The underlying tracing approach works with any reproducible entry point into program behavior.
-Consequently, the restriction to test cases is a limitation of the prototypical implementation rather than of the concept itself.
+Consequently, the restriction to test cases is a limitation of the implementation rather than of the concept itself.
 
 \subsection{Reliance on Test Quality}
 \label{ss:DiscussionLimitationsTestQuality}
@@ -327,7 +327,7 @@ However, the \emph{record and replay} technique has been proposed to tackle this
 
 \subsection{Applicability to other Programming Languages}
 \label{ss:DiscussionApplicability}
-The fact that the prototypical implementation of our approach targets an environment that leads a niche existence raises the question to which extent the approach is transferable to other programming languages and environments.
+The fact that the implementation of our approach targets an environment that leads a niche existence raises the question to which extent the approach is transferable to other programming languages and environments.
 To answer this question, one can consider the requirements \textsc{PathObjects} is based on.
 
 First and foremost, the approach is specifically tailored to object-oriented systems.

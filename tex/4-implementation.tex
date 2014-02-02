@@ -1,17 +1,15 @@
 \chapter{PathObjects for Squeak/Smalltalk}
 \label{c:implementation}
-To validate the applicability of the \textsc{PathObjects} concept, we put it into practice in the form of a prototype for the Squeak/Smalltalk environment.
-This chapter describes the implementation of this prototype, which also served as a basis for the performance analysis and user evaluation (cf. Chapter \ref{c:discussion}).
-In the previous chapter, we presented the fundamental components of \textsc{PathObjects} diagrams.
-Section \ref{s:ImplementationPrototype} illustrates the realization of these components.
-Section \ref{s:ImplementationTracing} describes the necessary extensions of the step-wise run-time analysis approach that allow us to reconstruct object interactions and referential relationships.
+To validate the applicability of the \textsc{PathObjects} concept, we put it into practice with an implementation for the Squeak/Smalltalk environment.
+This chapter gives an insight into implementation details and the peculiarities of the target environment that had to be considered.
+Section \ref{s:ImplementationPrototype} illustrates the realization of the fundamental diagram components that are presented in the previous chapter.
+Section \ref{s:ImplementationTracing} describes the necessary extensions of the step-wise run-time analysis approach that allow to reconstruct object interactions and referential relationships.
 Finally, Section \ref{s:ImplementationLayouting} illustrates how \textsc{PathObjects} traces can be mapped to graphs, and how this circumstance is exploited to place objects and to route messages.
 
-\section[Prototypic Implementation]{Prototypic Implementation%
-\sectionmark{Prototype}}
-\sectionmark{Prototype}
+\section[Implementation of the Fundamental Diagram Components]{Implementation of the Fundamental Diagram Components%
+\sectionmark{Implementation}}
+\sectionmark{Implementation}
 \label{s:ImplementationPrototype}
-\todo{section title}
 
 \begin{figure}
 	\centering
@@ -55,7 +53,7 @@ From left to right, these are toggling state tracking, toggling outbound referen
 		\label{fig:ImplementationExplorationStateAfter}
 	\end{subfigure}
 	
-	\caption[Exploration of Object State Changes]{Exploration of object state changes. a) State of the clock timer instance before the execution of the \inlinecode{attach:} message. b) State of the same instance after the execution of said message.}
+	\caption[Exploration of Object State Changes]{Exploration of object state changes. a) State of the clock timer instance before the execution of the \inlinecode{attach:} message. b) State of the same instance after the execution. The \inlinecode{observers} collection now includes the attached clock instance.}
 	\label{fig:ImplementationExplorationState}
 \end{figure}
 
@@ -116,8 +114,8 @@ There are workarounds that would allow to determine its value, but since this va
 This could have undesired side effects, like excessive memory consumption or slow execution speeds due to increased memory allocation effort.
 
 For these reasons, we chose a different approach that allows us to generate unique, stable identifiers for objects.
-It exploits the fact that that a comparison for referential equality provided by the \inlinecode{==} method will always yield the correct result.
-It returns true if the two objects have the same object pointer, and false otherwise.
+It exploits the fact that a comparison for referential equality provided by the \inlinecode{==} method will always yield the correct result.
+It returns true if two objects have the same object pointer, and false otherwise.
 Squeak provides a \inlinecode{WeakKeyIdentityDictionary} that has two beneficial properties for our use case.
 First, it uses \inlinecode{==} comparison to test dictionary keys for equality.
 That means that when using the objects that occur during tracing runs as keys, it is guaranteed that no two referentially distinct objects will be identified as the same key, and an object will always be mapped to the same key once it is present in the dictionary.
@@ -132,11 +130,6 @@ Since we presuppose that test cases are strictly deterministic (cf. Section \ref
 Namely, objects will always be assigned the same identifier in different tracing runs, since the identifier is only dependent on the chronological order in which objects occur in a trace.
 In other words, to stick to the observer example, the instance of \inlinecode{DigitalClock} will always be assigned with the identifier \inlinecode{27} no matter how often the test is executed, since it is the 27th object that occurs in the trace.
 This is an important property and prerequisite for the tracing and mapping of outbound object pointers (cf. Section \ref{ss:ImplementationTracingReferences}).
-
-The current implementation constructs a new dictionary of identifiers for each test execution.
-But it would also be possible to share identifiers of long living objects like classes across all tracing runs, if a global dictionary were used.
-However, we are unaware of a use case that could exploit this possibility, and additional measures would be required to ensure the property described in the previous paragraph.
-For these reasons, we favored trace-local over global identity generation.
 
 \subsection{Extensions of the Tracing Framework}
 \label{ss:ImplementationTracing}
@@ -154,6 +147,12 @@ Furthermore, it provides entry points for the exploration of outbound object ref
 
 \subsection{Reference Tracing}
 \label{ss:ImplementationTracingReferences}
+The exploration of object references is one of the interactive components of \textsc{PathObjects} diagrams.
+However, similar to the exploration of object states, the up-front collection of this information would potentially invalidate the benefits of the step-wise run-time analysis approach.
+First, the determination of the outbound object pointers of an object is time consuming and thus could slow down the tracing process significantly.
+Second, the amount of collected data could grow rapidly if all outbound pointers of all involved objects were collected up-front.
+For these reasons, we decided to implement the tracking of object references with the help of refinement runs.
+
 Outbound object pointers - or in other words the set of objects a specific object references - can be determined with the help of  \inlinecode{Object>>outboundPointers}.
 However, this method returns only the set of directly referenced objects.
 For example, if an instance of \inlinecode{Subject} administers a collection of observers, it would return only the collection object itself, but not the observer objects contained in this collection.
@@ -162,13 +161,6 @@ But for our purposes it seems more suitable to return those indirectly reference
 More often than not, this is the actually relevant information for a developer.
 Therefore, we decided to flatten the objects returned by \inlinecode{outboundPointers}, and generate identifiers as depicted in Section \ref{ss:ImplementationTracingIdentification} for the resulting objects.
 Thus, objects that are wrapped in collections are included when a developer queries the outbound references of a specific object.
-
-Unfortunately, the collection of object references is an expensive operation in two respects.
-First, a call of \inlinecode{outboundPointers} is time consuming and thus could slow down the tracing process significantly.
-Second, the amount of collected data could grow rapidly if all outbound pointers of all involved objects were collected up-front.
-For these reasons, we decided to implement the tracking of object references with the help of refinement runs.
-As soon as the user selects an object for reference tracing, the outbound pointers of this object are collected whenever the user steps to another part of of the execution history.
-The respective referenced objects are highlighted with a user-defined background color.
 
 As pointed out in Section \ref{ss:ImplementationTracingIdentification}, objects will always be associated with the same identifier in repeated test executions.
 This fact is exploited to map the references that are returned from refinement runs to the objects of the current trace.
