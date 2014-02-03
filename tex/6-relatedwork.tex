@@ -34,7 +34,7 @@ Therefore, each object has to be allowed to appear multiple times in a diagram, 
 The interactive implementation allows to expand and collapse sub-trees, illustrates the objects' classes through different colors, and labels objects with an integer identifier.
 Through the automatic aggregation of execution patterns, the approach increases readability while at the same time reducing the  space required to depict object interactions.
 The authors favor their concept over directed graphs, since the latter do not inherently offer a notation of time and sequence.
-\textsc{PahtObjects} solves this problem through interactivity.
+\textsc{PathObjects} solves this problem through interactivity.
 
 \begin{figure}[tb]
 	\centering
@@ -120,7 +120,7 @@ Similar to our approach, Cornelissen et al. propose the automated reconstruction
 In order to keep the generated diagrams at a manageable size, the authors suggest and partially implement a number of abstraction and filtering techniques, many of which are also supported by \textsc{PathObjects}.
 Among others, these are the definition of minimum and maximum stack depths (and the omission of method calls below and above those thresholds), filtering of constructors and calls of getters and setters, pattern recognition or object clustering.
 However, the presented prototype is not interactive in the effect that users could step through the trace or collapse or expand nodes.
-Object state exploration mechanisms are also unprovided for.
+Object state exploration mechanisms are also not provided.
 The authors subsequently evolved their approach into massive sequence and circular bundle views that are supposed to visualize much larger execution traces than those resulting from test cases \cite{cornelissen_understanding_2007, cornelissen_execution_2008}.
 
 Several other approaches exist that illustrate object interactions with the help of notations similar to sequence diagrams but do not add much value compared to the already presented proposals.
@@ -141,11 +141,11 @@ In a first step, the static architecture of a system is derived from the directo
 Since users typically have exceeding architectural knowledge, the proposed architecture can be manually refined subsequently.
 The user then executes the features he wants to investigate and a runtime call log of the program execution is generated with the help of Callgrind\footnote{http://valgrind.org/info/tools.html\#callgrind, last checked \today}.
 The function calls are mapped to the static structure and displayed as 2.5D diagram (cf. Figure \ref{fig:3DBohnet}).
-Thereby, the static aspects are layed out in a plane, the currently focused function call is displayed as a disk, and preceding and succeeding function calls are represented by arrow tops and bottoms.
+Thereby, the static aspects are laid out in a plane, the currently focused function call is displayed as a disk, and preceding and succeeding function calls are represented by arrow tops and bottoms.
 The prototype also provides a number of tools to reduce the search space to the feature-relevant aspects.
 Among others, these are various interaction mechanisms like zooming, tilting, or moving the visual focus.
 Furthermore, similarly to our approach, a search functionality is provided which can be used to define regular expressions for function names.
-In contrast to \textsc{PathObjects}, object state exploration is not supported and means to filter the execution trace are unprovided for.
+In contrast to \textsc{PathObjects}, object state exploration is not supported and means to filter execution traces are not provided.
 
 \begin{figure}[tb]
 	\centering
@@ -290,7 +290,7 @@ The same applies to the unrestricted navigation to specific points of the execut
 \textsc{Blue} \cite{kolling_object-oriented_1996, kolling_blue_1996} and its adaption for Java called \textsc{BlueJ} \cite{kolling_bluej_2003} follow an alternative approach to the teaching of the concepts of object-orientation.
 Instead of focusing on code, users first define the abstract structure of their system with the help of UML class diagrams.
 Instances of these classes then can be created and manipulated through  context menus, which also allow to send messages to objects.
-Methods can be defined with the aid of the \textsc{Blue} language or with Java in the case of \textsc{BlueJ}.
+Methods can be defined with the aid of the \textsc{Blue} language or with Java in case of \textsc{BlueJ}.
 Although the user interface provides a dedicated area to display those instances (see Figure \ref{fig:BlueJ}), it does not actually visualize when two objects are interacting.
 The focus is rather on pointing out the differences  between objects and classes, than on the relationships between specific objects.
 Theoretically, it would have been conceivable to build on this approach for our purposes by constructing such scenarios from existing source code, but the visualization does not seem to be suitable to present more sophisticated computations.
@@ -298,5 +298,5 @@ Theoretically, it would have been conceivable to build on this approach for our 
 Moreno et al. present \textsc{Jeliot 3} which aims at teaching object-oriented concepts to novice programmers with an interactive Java development environment \cite{moreno_visualizing_2004, bednarik_jeliot_2005}.
 The user interface (cf. Figure \ref{fig:Jeliot3}) consists of two main elements: a code editor in which users are allowed to write own programs and a visualization area that depicts what happens when executing and stepping through the provided code snippet.
 The visualization consists of four separate areas which show methods, constants, the evaluation of the current expression and existing object instances and their internal state.
-In a user study, the authors worked out that despite the transfer of knowledge from the tool to the user does not work as anticipated, the animation helped all participants in debugging and understanding their programs \cite{moreno_jeliot_2007}.
+In a user study, the authors worked out that even though the transfer of knowledge from the tool to the user does not work as anticipated, the animation helped all participants in debugging and understanding their programs \cite{moreno_jeliot_2007}.
 However, compared to \textsc{PathObjects}, this approach is only appropriate for much smaller programs, and unsuitable to communicate an overall picture over existing objects and their interactions.
