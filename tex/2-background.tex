@@ -117,7 +117,7 @@ Furthermore, lint-tools and static code verifiers fall within the same category.
 Static program analysis has two advantages.
 First, it is complete in the sense that the source code can be covered in its entirety, and that the derived information holds true for all executions of a program.
 Second, many static analyses can be performed rapidly.
-However, this factor is largely dependent on the deepness of the analysis, and especially in the case of formal verification tools runtime is an issue \cite{wichmann_industrial_1995}.
+However, this factor is largely dependent on the depth of the analysis, and especially in the case of formal verification tools runtime is an issue \cite{wichmann_industrial_1995}.
 
 However, when it comes to the analysis of objects and their interactions, information is required that no longer can be derived from the source code alone.
 Due to object oriented concepts like polymorphism and late binding, the concrete manifestation of static source code entities is only known at runtime.
@@ -137,7 +137,7 @@ This procedure is known as dynamic analysis \cite{bell_concept_1999}.
 Dynamic analysis has the advantage that it is goal-oriented, meaning that specific scenarios can be executed and analyzed that cover the functionality the developer is interested in.
 Furthermore, it is precise in the sense that polymorphic method calls and late binding can be resolved.
 However, this comes at the cost of completeness.
-Dynamic analysis only can cover the behavior that is displayed during an analyzed execution, but never can cover every possible execution of a software system.
+Dynamic analysis only can cover the behavior that is displayed during an analyzed execution, but can never cover every possible execution of a software system.
 
 In summary, in can be stated that there is no way around the application of dynamic analysis techniques when it comes to the exploration of objects and their interactions.
 However, dynamic analysis entails severe problems that hindered its broad application for a long time.
@@ -169,7 +169,7 @@ Instrumented program executions are reported to be 15 up to over 100 times slowe
 For instance, Karran reports that the instrumented execution of the Firefox browser and the subsequent loading of a Google search result page take up to two minutes \cite{karran_extraction_2013}.
 
 As a consequence, developers have to wait a long time for the generation of an execution trace.
-In other words, developers already have to wait before they even can start with the analysis of the behavior of a program.
+In other words, developers already have to wait before they can even start with the behavioral analysis of a program.
 Provided that dynamic analysis tools are actually used by developers, this idle time then directly plays a part in contributing to the amount of time that is spent on program comprehension.
 
 \subsubsection{Trace Size}
@@ -236,7 +236,7 @@ For instance, this selection can be done through a list of test coverage informa
 A \inlinecode{Tracer} object is generated which subsequently initiates the instrumentation phase.
 Each method that lies within the user-defined tracing scope is replaced by a \inlinecode{MethodWrapper} that contains the fundamental tracing functionalities.
 
-Method wrappers \cite{brant_wrappers_1998} offer a convenient way to intercept the execution of specific methods.
+Method wrappers \cite{brant_wrappers_1998} offer a convenient way to intercept the execution of specific methods in Smalltalk environments.
 As the name suggests, they wrap instances of \inlinecode{CompiledMethod} and take their place in the method dictionary of the corresponding class.
 They can be utilized to execute code before and after the invocation of the wrapped method.
 Furthermore, they allow the inspection and manipulation of arguments as well as of the return value of a message send.
@@ -336,7 +336,7 @@ Consequently, all observers have to pull required information from the subject w
 Without doubt, the Unified Modeling Language is the de-facto standard in the field of software engineering.
 It is safe to assume that the majority of software developers with modeling experience at least have basic knowledge about it.
 Consequently, it is reasonable to consider the re-use of modeling concepts, inasmuch as they are applicable to the modeling of object interactions.
-Unsurprisingly, the Unified Modeling Language does indeed include diagrams that model objects and their interactions, namely object diagrams, sequence diagrams, and communication diagrams.
+Unsurprisingly, the Unified Modeling Language does indeed include diagrams that model objects and their interactions, namely sequence diagrams, object diagrams, and communication diagrams.
 All three are presented in the following.
 
 \subsubsection{Sequence Diagrams}
@@ -358,7 +358,7 @@ Messages between two objects are represented by arrows.
 They are aligned along the vertical axis according to their chronological appearance.
 Each message is complemented by a return message which indicates the end of a method invocation and which is depicted as dashed arrow.
 Apart from those basic components, sequence diagrams also can be used to model duration constraints, state invariants and asynchronous behavior.
-However, those advanced notation elements are not relevant in our context.
+However, those advanced notation elements are not relevant in the context of this thesis.
 
 Sequence diagrams have two major advantages.
 First, they feature an inherent chronological ordering, which makes following the communication thread easier for the observer.
@@ -411,7 +411,7 @@ It is for this reason that they are often used complementary with sequence diagr
 Due to the fact that the Unified Modeling Language makes a strict distinction between structural and behavioral diagrams, none of them offers a combined view on object interactions and the internal state of objects.
 However, to understand the behavior of object-oriented systems, it is important to get an insight into both.
 Interactions have to be depicted in order to make the behavior of a system perceivable to observers.
-To understand why a systems behaves the way it does, the internal state of objects has to be unveiled.
+To understand why a system behaves the way it does, the internal state of objects has to be unveiled.
 
 Apart from this fundamental problem, the diagrams all have drawbacks of their own that make them inadequate for our objectives.
 
