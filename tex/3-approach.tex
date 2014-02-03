@@ -15,7 +15,7 @@ Finally, Section \ref{s:ApproachLayout} defines aesthetic requirements which sho
 \todo{Section title}
 As depicted in Chapter \ref{c:Background}, there are three related problem areas which are tackled in this thesis.
 First, there is a huge gap between the abstraction level of the inner workings of computers and the abstraction level of object-oriented source code and design documents.
-Moreover, widespread development tools such as symbolic debuggers contribute little to the bridging of this gap.
+Moreover, widespread development tools such as symbolic debuggers contribute little to bridge this gap.
 This is one of the reasons why program comprehension is a tedious and time-consuming task.
 
 Second, dynamic analysis is a fundamental requirement for the analysis and thus for the comprehension of object-oriented programs.
@@ -110,7 +110,7 @@ However, this is the case with instances of classes.
 Therefore, their name includes a unique integer identifier.
 Objects that are somehow involved in the currently displayed message are highlighted through a different background color.
 For example, the instances of \inlinecode{ClockTimer} and \inlinecode{AnalogClock} and the analog clock class are involved in the current message in Figure \ref{fig:ApproachBasicBefore}.
-Namely, they act as sender, receiver, and argument of the the \inlinecode{attach:}message.
+Namely, they act as sender, receiver, and argument of the \inlinecode{attach:} message.
 In contrast, the \inlinecode{DigitalClock class} object and the digital clock instance do not play a role in the current computation.
 
 \subsection{Messages}
@@ -223,7 +223,7 @@ All three components are described in detail in the following sections.
 
 Developers have to be enabled to navigate through the temporal dimension of execution traces.
 On the one hand, stepwise forward and backward navigation should be facilitated.
-On the other hand, it also should be possible to jump to specifics points of time in the execution history.
+On the other hand, it should also be possible to jump to specifics points of time in the execution history.
 For these reasons, we propose an interactive diagram element, the so-called timeline.
 
 Figure \ref{fig:ApproachTimeline} shows examples of the timeline component.
@@ -324,7 +324,7 @@ Through automated executions of refinement runs (cf. Section \ref{ss:BackgroundT
 
 State exploration is not only available for senders and receivers of messages, but also for all arguments and return values.
 However, objects that occur in the latter two roles only show up on the canvas if they are either a message sender or receiver elsewhere in an execution history. 
-In order to allow for the state exploration of those objects where this is not the case, \textsc{PathObjects} diagrams also feature an external state indicator that is not tied to specific objects.
+In order to allow for the state exploration of those objects where this is not the case, \textsc{PathObjects} diagrams also feature an external state indicator that is identical to the internal indicators, but not tied to specific objects.
 
 \subsubsection{Reference Exploration}
 As second explorative component, we propose reference exploration, which allows developers to chase outbound pointers of specific objects.
@@ -357,7 +357,7 @@ Both mechanisms are presented in the following.
 
 To allow developers to remove irrelevant messages from the canvas, we propose to create views of the static structure of entities that occur in an execution trace.
 With the aid of this view, messages that should be displayed or removed can be selected or respectively deselected.
-The \textsc{PathTools} suite already provides similar tool, namely \textsc{PathView} \cite{perscheid_test-driven_2013}.
+The \textsc{PathTools} suite already provides a similar tool, namely \textsc{PathView} \cite{perscheid_test-driven_2013}.
 The primary purpose of this tool is to generate UML class diagrams from execution traces.
 
 Figure \ref{fig:ImplementationFocusingMessages} shows how such a message filter could be realized with the help of \textsc{PathView}.
