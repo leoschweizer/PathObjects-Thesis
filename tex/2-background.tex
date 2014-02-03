@@ -3,7 +3,7 @@
 Program comprehension is the process of gaining knowledge about a software system.
 On the one hand, it is a fundamental element of software engineering.
 For instance, many maintenance tasks such as bug fixing, feature enhancement, refactoring, or documentation cannot be performed without having a sufficient understanding of the system at hand. On the other hand, program comprehension is a tedious activity with complex cognitive demands, and it reportedly accounts for up to 60\% of the software engineering effort \cite{corbi_program_1989, basili_evolving_1997}.
-This implies that more time is spent on building a satisfactory understanding rather than on the tasks themselves.
+This implies that more time is spent on building a satisfactory understanding rather than on actual tasks themselves.
 Consequently, it comes as no surprise that program comprehension in general - and particularly the question how its share of the software engineering effort can be reduced - have emerged as interest areas in the software engineering field.
 
 Section \ref{s:BackgroundComprehension} gives an overview of the research on object-oriented program comprehension.
@@ -17,9 +17,11 @@ Finally, Section \ref{s:BackgroundModeling} presents UML diagram types that are 
 \sectionmark{Cognitive Aspects}
 \label{s:BackgroundComprehension}
 As depicted above, program comprehension is a tedious and time-consuming activity.
-The reasons therefore are depicted in Section \ref{ss:BackgroundComprehensionDifficulties}.
-Section \ref{ss:BackgroundComprehensionMentalModel} summarizes research about the mental aspects of program comprehension.
-Finally, Section \ref{ss:BackgroundComprehensionMentalMap} draws conclusions about the properties that tools that are supposed to assist developers in object-oriented program comprehension should exhibit. 
+The existence of five conceptual gaps developers have to bridge is one reason for this circumstance.
+The gap between the low abstraction level of the inner workings of computers and the high abstraction level of programming concepts and design documents is of particular importance in the context of this thesis.
+Besides, research results suggest that objects and their interactions play an important role in the mental models that are built during the comprehension of object-oriented programs.
+Based on this rationale, conclusions about the properties which tools that are supposed to assist developers in object-oriented program comprehension should exhibit can be derived.
+Briefly speaking, one can argue that an information presentation at the abstraction level of objects could help to close one of the five presented gaps, and thus could contribute to a reduction of the time share of program comprehension activities.
 
 \subsection{Why Program Comprehension is Difficult}
 \label{ss:BackgroundComprehensionDifficulties}
@@ -103,10 +105,11 @@ Therefore, the following Section gives a detailed insight into the necessity of 
 \sectionmark{Dynamic Analysis}
 \label{s:BackgroundAnalysis}
 When it comes to the analysis of objects and their interactions, the application of dynamic analysis techniques is inevitable.
-The reasons for this necessity are depicted in Section \ref{ss:BackgroundAnalysisNeccessity}.
-However, dynamic analysis suffers from four major problems that have prevented its broad adaption for a long time.
-These problems are illustrated in Section \ref{ss:BackgroundAnalysisProblems}.
-Finally, Section \ref{ss:BackgroundTracing} shows recent research results that solve some of these problems.
+The main reason for this circumstance is that the concrete manifestation of object-oriented concepts like polymorphism and late binding is only known at runtime.
+However, dynamic analysis suffers from four major problems that have constrained many of its application areas for a long time.
+Namely, execution times are decelerated through tracing mechanisms, arising data amounts grow fast, analyses of traces are time-consuming, and information presentations suffer from cognitive and informational overload.
+To tackle three of these issues, step-wise run-time analysis has been introduced as lightweight alternative to conventional dynamic analysis approaches \cite{perscheid_immediacy_2010}.
+However, this solution still lacks an information presentation at the abstraction level of objects that can help to close this conceptual gap of object-oriented program comprehension.
 
 \subsection{The Need for Dynamic Analysis}
 \label{ss:BackgroundAnalysisNeccessity}
@@ -298,14 +301,12 @@ Consequently, developers still are not assisted in the creation of a mental map 
 \sectionmark{Modeling}}
 \sectionmark{Modeling}
 \label{s:BackgroundModeling}
-The manner in which information is presented to observers plays an important role in human reasoning.
+The manner in which information is presented to observers plays an important role in human reasoning \cite{diehl_software_2007}.
 Accordingly, it seems obvious that the reuse of already known modeling concepts in a tool that aims at aiding in the comprehension of object-oriented programs would turn out beneficial.
 This raises the question which metaphors and notations already have been established in this area.
-
 Unsurprisingly, the Unified Modeling Language, which can be regarded as the de-facto modeling standard in the field of software engineering, includes notations for object relationships and interactions.
-These notations are illustrated in Section \ref{ss:BackgroundModelingUML} with the aid of the example scenario that is presented in Section \ref{ss:BackgroundModelingExample}.
-Finally, Section \ref{ss:BackgroundModelingChallenges} discusses these diagram notations and shows why they are not sufficient four our area of application.
-
+Namely these are sequence diagrams, object diagrams, and communication diagrams.
+However, mostly due to their static nature, none of these diagrams suites the requirements of an object-oriented information presentation at the scale of execution traces.
 
 \subsection{Motivating Example}
 \label{ss:BackgroundModelingExample}
