@@ -94,11 +94,13 @@ In the second case, the developer can choose from a range of linear and perceptu
 
 \section{Data Acquisition}
 \label{s:ImplementationTracing}
-In order to allow for the reconstruction of object interactions from execution traces, it has to be ensured that the latter cover the required information.
-The basic prerequisite is that objects can be distinguished and identified during tracing runs.
-Since the Squeak environment does not offer an adequate functionality, the strategy that was applied to solve this issue is depicted in Section \ref{ss:ImplementationTracingIdentification}.
-Since the tracing approach that served as basis of our \textsc{PathObjects} implementation does not cover object interactions, the extensions that are required therefore are described in Section \ref{ss:ImplementationTracing}.
-Finally, Section \ref{ss:ImplementationTracingReferences} shows how the tracking and mapping of outbound object pointers are implemented.
+When it comes to the acquisition of the required information about object-oriented program behavior, two challenges have to be tackled with our implementation of \textsc{PathObjects}.
+First, the Squeak environment does not offer an adequate functionality to distinguish and identify objects during tracing runs.
+Without such a functionality, it would be impossible to reconstruct object interactions from execution traces.
+Consequently, a custom object identification strategy has to be implemented as extension of the underlying step-wise run-time analysis approach.
+Second, the tracking and mapping of object references are required for the interactive reference exploration component.
+However, the up-front collection of outbound object pointers would yield excessive data amounts.
+Thus, this feature has to be implemented with the help of a refinement run strategy.
 
 \subsection{Identification of Objects}
 \label{ss:ImplementationTracingIdentification}
@@ -174,13 +176,16 @@ Therefore, the refinement runs for object reference tracing mostly correspond to
 \sectionmark{Graph Drawing}}
 \sectionmark{Graph Drawing}
 \label{s:ImplementationLayouting}
-\todo[inline]{Update Roassal}
+Object-oriented execution traces can be mapped to directed multigraphs.
+Our implementation of \textsc{PathObjects} exploits this circumstance by using the state of the art in graph drawing to lay out objects and to route messages.
+Thereby, two graph drawing frameworks are supported, namely \textsc{Roassal}\footnote{http://objectprofile.com/\#/pages/products/roassal/overview.html, last checked \today} and \textsc{Graphviz}\footnote{http://www.graphviz.org/, last checked \today}.
+\textsc{Roassal} provides a Squeak-native implementation without external dependencies.
+However, its results are deficient in terms of the aesthetic criteria we defined in Section \ref{s:ApproachLayout}.
+For that reason, it only serves as a fallback solution.
+The primary choice is \textsc{Graphviz}, which is integrated into \textsc{PathObjects} through the Squeak Foreign Function Interface.
+The selection of the appropriate graph drawing framework is transparent to the user, and  \textsc{Graphviz} is selected automatically, provided that it is available on the host system.
 
-This Section describes how \textsc{PathObjects} traces can be mapped to directed multigraphs and describes how we used the state of the art in graph drawing to place objects and messages in our interactive diagrams.
-Furthermore, the interoperability of \textsc{Graphviz} and the Squeak environment is depicted.
-
-\subsection{Preliminary Considerations}
-\todo{section title}
+\subsection{Mapping of Execution Traces to Graphs}
 The structure of a \textsc{PathObjects} trace can be interpreted as directed multigraph $G$, meaning that the edges constitute a multiset rather than a set (cf. Definition \ref{eq:ImplementationGraph}).
 
 \begin{equation}
@@ -217,7 +222,7 @@ Consequently, the number of edges $C_E$ that are required between two specific v
 C_E(n_1, n_2) = min(C_M(n_1, n_2),\phantom{i} M_{max})
 \end{equation}
 
-\subsection{Graphviz Integration}
+\subsection{Graphviz Interoperability}
 
 The graph drawing process consists of three phases.
 First, a so-called dot-file is generated that contains a description of the graph in the format \textsc{Graphviz} expects.
