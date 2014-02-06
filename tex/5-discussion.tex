@@ -286,9 +286,15 @@ Participants were asked to find out how many parser instances are used to check 
 The problem with this scenario is that the source code alone strongly suggests that only one parser instance is used.
 However, the implementation creates one to three further instances for each found word, depending on .
 Thereby, the call chain to the responsible parts of the source code consists of four method.
-Participants could score a maximum of five points: one for the correct number, two for the locations were instances get created, and two for the reasons that lead to the creation of further instances.
+Participants could score a maximum of five points: one for the correct number, two for the locations where instances get created, and two for the reasons that lead to the creation of further instances.
 
-\paragraph{Task 5}
+\paragraph{Task 5} In this task, the participants were challenged to find the last changes of the spell checking process, which already served as object of investigation in Task 4.
+For instance, such information can be relevant when features break after merging new commits.
+To solve the task, the three methods with the most recent alteration dates had to be named.
+Consequently, the maximum possible score for this tasks were three points.
+There are two different problems with this task.
+First, one has to identify the methods that are involved in the spell checking process, or, in other words, those that are called transitively starting from the \inlinecode{checkSpellingOf:} method.
+Second, the identified methods have to be compared with regards to their alteration dates.
 
 
 \subsection{Execution}
