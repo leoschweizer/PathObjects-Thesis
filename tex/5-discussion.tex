@@ -257,8 +257,34 @@ Section \ref{ss:DiscussionEvaluationResults} depicts the results of the evaluati
 \subsection{Probands}
 \label{ss:DiscussionEvaluationParticipants}
 
-\subsection{Questions}
-\label{ss:DiscussionEvaluationQuestions}
+\subsection{Tasks}
+\label{ss:DiscussionEvaluationTasks}
+The questions developers ask during software development activities are a research area of its own.
+Among others, Sillito et al. and LaToza et al. have published results from user evaluations on this topic.
+From the questions that were determined by these studies, five were selected and adapted to comprehension tasks regarding the \textsc{DicThesaurusRex} project.
+
+\paragraph{Task 1} The project contains a parser class that is used to extract single words from designators which are named in camel case style, namely \inlinecode{DTRCamelCaseParser}.
+Participants were asked to describe how this parser works, and could score a maximum of eight points that cover the cornerstones of this algorithm.
+The test case \inlinecode{testWholeWordParsing} that covers a suitable scenario was provided as entry point.
+The difficulties of this task are the high number of execution branches that have to be followed, and the handling of edge cases like acronyms or special characters.
+
+\paragraph{Task 2} The thesaurus implementation creates instances of \inlinecode{DTRThesaurusEntry} that map words to their synonyms.
+They have an instance variable named \inlinecode{pos} which is used to mark the word class.
+Participants were asked to determine the purpose of this variable.
+The answer had to be selected from a given list of possible values, with \inlinecode{noun} being the only correct entry.
+
+\paragraph{Task 3}
+
+\paragraph{Task 4} The spell checking module provides a method to test strings for spelling errors, namely \inlinecode{checkSpellingOf:}.
+This method uses the camel case parser to split the input string into single words.
+Participants were asked to find out how many parser instances are used to check the spelling of a given input string, and to state reasons for their answer.
+The problem with this scenario is that the source code alone strongly suggests that only one parser instance is used.
+However, the implementation creates one to three further instances for each found word, depending on .
+Thereby, the call chain to the responsible parts of the source code consists of four method.
+Participants could score a maximum of five points: one for the correct number, two for the locations were instances get created, and two for the reasons that lead to the creation of further instances.
+
+\paragraph{Task 5}
+
 
 \subsection{Execution}
 \label{ss:DiscussionEvaluationExecution}
