@@ -13,10 +13,11 @@ In addition, the limitations of our approach and its applicability to other prog
 
 \section{Performance Evaluation}
 \label{s:DiscussionPerformance}
-Research results already have shown that the step-wise run-time analysis approach that serves as a basis of \textsc{PathObjects} enables the immediate exploration of a programs run-time while maintaining a low memory footprint \cite{perscheid_immediacy_2010}.
-To ensure that the computational extra work required for visualizing recorded object interactions preserves the immediate character of this approach, an evaluation of the runtime performance of our implementation is given in Section \ref{ss:DiscussionPerformance}.
-Since \textsc{PathObjects} also introduces additional tracing effort, an analysis of its memory requirements is presented in Section \ref{ss:DiscussionSpace}.
-The projects that have been used to conduct those evaluations are presented in Section \ref{ss:DiscussionProjects}.
+Research results already have shown that the step-wise run-time analysis approach that serves as a basis of \textsc{PathObjects} enables the immediate exploration of a programs runtime while maintaining a low memory footprint \cite{perscheid_immediacy_2010}.
+To ensure that the computational extra work required for visualizing recorded object interactions preserves the immediate character of this approach, we evaluated the runtime performance of our implementation.
+The results show that more than 75\% of the examined unit tests can be presented to developers in less than two seconds, and more than 95\% take no more than ten seconds.
+Since \textsc{PathObjects} also introduces additional tracing effort, we also analyzed its memory requirements.
+This evaluation shows that the additional memory consumption is lower than 1MB even in worst-case scenarios.
 
 \subsection{Evaluated Projects}
 \label{ss:DiscussionProjects}
@@ -273,10 +274,13 @@ Section \ref{ss:DiscussionEvaluationResults} depicts the results of the evaluati
 \label{s:DiscussionLimitations}
 The operation of our implementation and the underlying tracing mechanism take some preconditions for granted whose non-compliance could potentially render them non-functional.
 First, some restrictions apply when dealing with systems that use the metaprogramming and reflection capabilities of the Squeak environment.
-These restrictions are discussed in Section \ref{ss:DiscussionLimitationsMeta}.
-Second, the importance of test coverage is debated in Section \ref{ss:DiscussionLimitationsCoverage}.
-Third, the implications of the reliance on test quality are depicted in Section \ref{ss:DiscussionLimitationsTestQuality}.
-Finally, the applicability of our approach to other programming languages and environments is discussed in Section \ref{ss:DiscussionApplicability}.
+However, they can be accounted to the implementation of the tracing framework, and do not invalidate the \textsc{PathObjects} concept itself.
+Second, test coverage is an important factor for the usefulness of our current implementation, since only test cases are supported as entry points. 
+Third, our concept relies on some test quality criteria, namely fast execution times and strict determinism.
+Tests that do not comply to these properties are not suited for the use with \textsc{PathObjects}.
+
+Apart from that, the fact that our implementation targets a niche environment raises the question to which extent the concept is applicable to other programming languages and environments.
+However, there are no assumptions or preconditions in our concept that are specific to  Squeak/Smalltalk and thus would limit the applicability to this environment.
 
 \subsection{Metaprogramming and Reflection}
 \label{ss:DiscussionLimitationsMeta}
