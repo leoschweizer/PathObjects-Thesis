@@ -71,23 +71,23 @@ f <- function(x) {
 }
 
 genframe <- function(tasknum) {
-	comprehension <- read.table("05-UserComprehension.data", col.names=c("group","t1", "t2", "t3", "t4", "t5"))
-	time <- read.table("05-UserTime.data", col.names=c("group", "t1", "t2", "t3", "t4", "t5"))
+	comprehension <- read.table("05-UserComprehension.data", col.names=c("group","t1", "t2", "t3", "t4", "t5", "ti"))
+	time <- read.table("05-UserTime.data", col.names=c("group", "t1", "t2", "t3", "t4", "t5", "ti"))
 	d1 <- data.frame(x = comprehension$group, y = comprehension[,c(tasknum)])
 	d2 <- data.frame(x = time$group, y = (time[,c(tasknum)] / 60))
 	
-	d1$panel <- "LoC [%]"
+	d1$panel <- "CL [%]"
 	d2$panel <- "Time [m]"
 	
 	d <- rbind(d1, d2)
 	list(d, d1, d2)
 }
 
-genplot <- function(tasknum, title, plotLoC = TRUE) {
+genplot <- function(tasknum, title, plotCl = TRUE) {
 	
 	list[d, d1, d2] <- genframe(tasknum)
 	ds <- d2
-	if (plotLoC) {
+	if (plotCl) {
 		ds <- d
 	}
 	
@@ -101,20 +101,18 @@ genplot <- function(tasknum, title, plotLoC = TRUE) {
 		axis.title.x = element_blank(),
 		axis.ticks.x = element_blank(),
 		panel.grid.minor = element_blank(),
-		axis.title.x = element_blank(),
 		axis.title.y = element_blank(),
-		axis.text.y  = element_text(size=6),
-		#axis.text.x = element_blank(),
+		axis.text.y  = element_text(size=7),
 		axis.text.x  = element_text(face="bold"),
-		strip.text.y = element_text(size=8, colour="white"),
+		strip.text.y = element_text(size=8, colour="white", face="bold"),
 		strip.background = element_rect(colour="black", fill="black"),
-		plot.margin = unit(c(0.1,0.1,0,0), "cm")
-	#	plot.title = element_text(size=12, angle=270, face="bold", hjust=0.5, vjust=1)
+		plot.margin = unit(c(0.1,0.1,0,0), "cm"),
+		plot.title = element_text(size=10, face="bold")
 	) +
 	guides(fill=FALSE)
 
 	p <- p + facet_grid(panel ~ ., scale = "free")
-	if (plotLoC) {
+	if (plotCl) {
 		p <- p + layer(data = d1, stat="identity", geom="blank")
 	}
 	p <- p + layer(data = d2, stat="identity", geom="blank")
@@ -122,13 +120,14 @@ genplot <- function(tasknum, title, plotLoC = TRUE) {
 	
 }
 
+pi <- genplot("ti", "Intro Task", plotCl = FALSE)
 p1 <- genplot("t1", "Task 1")
-p2 <- genplot("t2", "Task 2", plotLoC = FALSE)
+p2 <- genplot("t2", "Task 2", plotCl = FALSE)
 p3 <- genplot("t3", "Task 3")
 p4 <- genplot("t4", "Task 4")
 p5 <- genplot("t5", "Task 5")
 
-multiplot(p1, p2, p3, p4, p5, cols=2)
+multiplot(pi, p1, p2, p3, p4, p5, cols=2)
 
 @
 
