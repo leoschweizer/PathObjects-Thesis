@@ -83,12 +83,16 @@ genframe <- function(tasknum) {
 	list(d, d1, d2)
 }
 
-genplot <- function(tasknum) {
+genplot <- function(tasknum, title, plotLoC = TRUE) {
 	
 	list[d, d1, d2] <- genframe(tasknum)
+	ds <- d2
+	if (plotLoC) {
+		ds <- d
+	}
 	
-	p <- ggplot(d, mapping = aes(x, y)) + 
-	ggtitle("Task X") +
+	p <- ggplot(ds, mapping = aes(x, y)) + 
+	ggtitle(title) +
 	stat_summary(fun.data = f, geom="errorbar", aes(width=0.2)) +
 	stat_summary(fun.data = f, geom="boxplot", aes(width=0.4)) +
 	theme_bw() +
@@ -110,17 +114,19 @@ genplot <- function(tasknum) {
 	guides(fill=FALSE)
 
 	p <- p + facet_grid(panel ~ ., scale = "free")
-	p <- p + layer(data = d1, stat="identity", geom="blank")
+	if (plotLoC) {
+		p <- p + layer(data = d1, stat="identity", geom="blank")
+	}
 	p <- p + layer(data = d2, stat="identity", geom="blank")
 	p
 	
 }
 
-p1 <- genplot("t1")
-p2 <- genplot("t2")
-p3 <- genplot("t3")
-p4 <- genplot("t4")
-p5 <- genplot("t5")
+p1 <- genplot("t1", "Task 1")
+p2 <- genplot("t2", "Task 2", plotLoC = FALSE)
+p3 <- genplot("t3", "Task 3")
+p4 <- genplot("t4", "Task 4")
+p5 <- genplot("t5", "Task 5")
 
 multiplot(p1, p2, p3, p4, p5, cols=2)
 
