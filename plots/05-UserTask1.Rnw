@@ -2,9 +2,67 @@
 
 \begin{document}
 
-<<fig=TRUE,echo=FALSE,width=6,height=2>>=
+<<fig=TRUE,echo=FALSE,width=6,height=8>>=
 library(ggplot2)
 library("grid")
+
+# Multiple plot function
+#
+# ggplot objects can be passed in ..., or to plotlist (as a list of ggplot objects)
+# - cols:   Number of columns in layout
+# - layout: A matrix specifying the layout. If present, 'cols' is ignored.
+#
+# If the layout is something like matrix(c(1,2,3,3), nrow=2, byrow=TRUE),
+# then plot 1 will go in the upper left, 2 will go in the upper right, and
+# 3 will go all the way across the bottom.
+#
+multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+  require(grid)
+
+  # Make a list from the ... arguments and plotlist
+  plots <- c(list(...), plotlist)
+
+  numPlots = length(plots)
+
+  # If layout is NULL, then use 'cols' to determine layout
+  if (is.null(layout)) {
+    # Make the panel
+    # ncol: Number of columns of plots
+    # nrow: Number of rows needed, calculated from # of cols
+    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                    ncol = cols, nrow = ceiling(numPlots/cols))
+  }
+
+ if (numPlots==1) {
+    print(plots[[1]])
+
+  } else {
+    # Set up the page
+    grid.newpage()
+    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+
+    # Make each plot, in the correct location
+    for (i in 1:numPlots) {
+      # Get the i,j matrix positions of the regions that contain this subplot
+      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
+
+      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                      layout.pos.col = matchidx$col))
+    }
+  }
+}
+
+list <- structure(NA,class="result")
+"[<-.result" <- function(x,...,value) {
+   args <- as.list(match.call())
+   args <- args[-c(1:2,length(args))]
+   length(value) <- length(args)
+   for(i in seq(along=args)) {
+     a <- args[[i]]
+     if(!missing(a)) eval.parent(substitute(a <- v,list(a=a,v=value[[i]])))
+   }
+   x
+}
 
 f <- function(x) {
 	r <- quantile(x, probs = c(0.0, 0.25, 0.5, 0.75, 1.0))
@@ -12,19 +70,27 @@ f <- function(x) {
 	r
 }
 
-comprehension <- read.table("05-UserComprehension.data", col.names=c("group","t1", "t2", "t3", "t4", "t5"))
-time <- read.table("05-UserTime.data", col.names=c("group", "t1", "t2", "t3", "t4", "t5"))
-d1 <- data.frame(x = comprehension$group, y = comprehension$t1)
-d2 <- data.frame(x = time$group, y = (time$t1 / 60))
+genframe <- function(tasknum) {
+	comprehension <- read.table("05-UserComprehension.data", col.names=c("group","t1", "t2", "t3", "t4", "t5"))
+	time <- read.table("05-UserTime.data", col.names=c("group", "t1", "t2", "t3", "t4", "t5"))
+	d1 <- data.frame(x = comprehension$group, y = comprehension[,c(tasknum)])
+	d2 <- data.frame(x = time$group, y = (time[,c(tasknum)] / 60))
+	
+	d1$panel <- "LoC [%]"
+	d2$panel <- "Time [m]"
+	
+	d <- rbind(d1, d2)
+	list(d, d1, d2)
+}
 
-d1$panel <- "LoC [%]"
-d2$panel <- "Time [m]"
-
-d <- rbind(d1, d2)
-
-p <- ggplot(d, mapping = aes(x, y)) + 
-	stat_summary(fun.data = f, geom="errorbar", aes(width=0.1)) +
-	stat_summary(fun.data = f, geom="boxplot", aes(width=0.2)) +
+genplot <- function(tasknum) {
+	
+	list[d, d1, d2] <- genframe(tasknum)
+	
+	p <- ggplot(d, mapping = aes(x, y)) + 
+	ggtitle("Task X") +
+	stat_summary(fun.data = f, geom="errorbar", aes(width=0.2)) +
+	stat_summary(fun.data = f, geom="boxplot", aes(width=0.4)) +
 	theme_bw() +
 	theme(
 		panel.grid.major.x = element_blank(),
@@ -34,17 +100,29 @@ p <- ggplot(d, mapping = aes(x, y)) +
 		axis.title.x = element_blank(),
 		axis.title.y = element_blank(),
 		axis.text.y  = element_text(size=6),
+		#axis.text.x = element_blank(),
 		axis.text.x  = element_text(face="bold"),
 		strip.text.y = element_text(size=8, colour="white"),
 		strip.background = element_rect(colour="black", fill="black"),
-		plot.margin = unit(c(0.1,0.2,0,0), "cm")
+		plot.margin = unit(c(0.1,0.1,0,0), "cm")
+	#	plot.title = element_text(size=12, angle=270, face="bold", hjust=0.5, vjust=1)
 	) +
 	guides(fill=FALSE)
 
-p <- p + facet_grid(panel ~ ., scale = "free")
-p <- p + layer(data = d1, stat="identity", geom="blank")
-p <- p + layer(data = d2, stat="identity", geom="blank")
-p
+	p <- p + facet_grid(panel ~ ., scale = "free")
+	p <- p + layer(data = d1, stat="identity", geom="blank")
+	p <- p + layer(data = d2, stat="identity", geom="blank")
+	p
+	
+}
+
+p1 <- genplot("t1")
+p2 <- genplot("t2")
+p3 <- genplot("t3")
+p4 <- genplot("t4")
+p5 <- genplot("t5")
+
+multiplot(p1, p2, p3, p4, p5, cols=2)
 
 @
 
