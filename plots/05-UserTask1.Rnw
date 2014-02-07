@@ -1,0 +1,51 @@
+\documentclass{standalone}
+
+\begin{document}
+
+<<fig=TRUE,echo=FALSE,width=6,height=2>>=
+library(ggplot2)
+library("grid")
+
+f <- function(x) {
+	r <- quantile(x, probs = c(0.0, 0.25, 0.5, 0.75, 1.0))
+	names(r) <- c("ymin", "lower", "middle", "upper", "ymax")
+	r
+}
+
+comprehension <- read.table("05-UserComprehension.data", col.names=c("group","t1", "t2", "t3", "t4", "t5"))
+time <- read.table("05-UserTime.data", col.names=c("group", "t1", "t2", "t3", "t4", "t5"))
+d1 <- data.frame(x = comprehension$group, y = comprehension$t1)
+d2 <- data.frame(x = time$group, y = (time$t1 / 60))
+
+d1$panel <- "LoC [%]"
+d2$panel <- "Time [m]"
+
+d <- rbind(d1, d2)
+
+p <- ggplot(d, mapping = aes(x, y)) + 
+	stat_summary(fun.data = f, geom="errorbar", aes(width=0.1)) +
+	stat_summary(fun.data = f, geom="boxplot", aes(width=0.2)) +
+	theme_bw() +
+	theme(
+		panel.grid.major.x = element_blank(),
+		axis.title.x = element_blank(),
+		axis.ticks.x = element_blank(),
+		panel.grid.minor = element_blank(),
+		axis.title.x = element_blank(),
+		axis.title.y = element_blank(),
+		axis.text.y  = element_text(size=6),
+		axis.text.x  = element_text(face="bold"),
+		strip.text.y = element_text(size=8, colour="white"),
+		strip.background = element_rect(colour="black", fill="black"),
+		plot.margin = unit(c(0.1,0.2,0,0), "cm")
+	) +
+	guides(fill=FALSE)
+
+p <- p + facet_grid(panel ~ ., scale = "free")
+p <- p + layer(data = d1, stat="identity", geom="blank")
+p <- p + layer(data = d2, stat="identity", geom="blank")
+p
+
+@
+
+\end{document}
