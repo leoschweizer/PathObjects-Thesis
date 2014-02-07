@@ -2,7 +2,7 @@
 
 \begin{document}
 
-<<fig=TRUE,echo=FALSE,width=6,height=8>>=
+<<fig=TRUE,echo=FALSE,width=8.27,height=11.69>>=
 library(ggplot2)
 library("grid")
 
