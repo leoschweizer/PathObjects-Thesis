@@ -111,11 +111,14 @@ genplot <- function(tasknum, title, plotCl = TRUE) {
 	) +
 	guides(fill=FALSE)
 
-	p <- p + facet_grid(panel ~ ., scale = "free")
+	p <- p + facet_grid(panel ~ ., scale = "free_y")
 	if (plotCl) {
-		p <- p + layer(data = d1, stat="identity", geom="blank")
+		# Workaround to force ymin=0 for the percentage scales exclusively
+		helperPoints <- data.frame(x = d1$x, y = 0)
+		helperPoints$panel <- "CL [%]"
+		p <- p + layer(data = d1, geom="blank") + layer(data = helperPoints, geom="blank")
 	}
-	p <- p + layer(data = d2, stat="identity", geom="blank")
+	p <- p + layer(data = d2, geom="blank")
 	p
 	
 }
@@ -127,7 +130,7 @@ p3 <- genplot("t3", "Task 3")
 p4 <- genplot("t4", "Task 4")
 p5 <- genplot("t5", "Task 5")
 
-layout <- matrix(c(1,2,3,4, 5, 6), nrow=3, byrow=TRUE)
+layout <- matrix(c(1, 2, 3, 4, 5, 6), nrow=3, byrow=TRUE)
 multiplot(pi, p1, p2, p3, p4, p5, layout = layout)
 
 @
