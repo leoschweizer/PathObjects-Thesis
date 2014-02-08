@@ -248,14 +248,7 @@ In order to verify that our proposed solution can help developers to comprehend 
 Study participants were challenged to answer questions which reportedly arise often during software development about a system previously unknown to them.
 The study compares how fast and how correct the participants could answer the questions  when using either the tools provided by the standard Squeak environment alone, or the other tools of the \textsc{PathTools} suite in addition, or when using \textsc{PathObjects} in addition.
 
-The chapter is structured as follows:
-Section \ref{ss:DiscussionEvaluationParticipants} outlines the selection of the study participants and their professional background.
-Section \ref{ss:DiscussionEvaluationQuestions} gives an overview over the questions that were asked and the reasons for their selection.
-Section \ref{ss:DiscussionEvaluationExecution} describes under which circumstances the study was conducted.
-Section \ref{ss:DiscussionEvaluationResults} depicts the results of the evaluation and finally Section \ref{ss:DiscussionEvaluationThreats} covers potential threats to the validity of our results.
-
-\subsection{Participants}
-\label{ss:DiscussionEvaluationParticipants}
+\subsection{Participant Profile}
 Twelve undergraduate and graduate students with exhaustive experience in object-oriented programming in general and Squeak/Smalltalk in particular were invited to take part in the user study.
 All participants had between four and ten years of experience in ...
 The participants were randomly divided into three groups, and each group was allowed to use different tools to solve a number of program comprehension tasks.
@@ -263,50 +256,55 @@ The participants were randomly divided into three groups, and each group was all
 None of the participants in groups B and C had any considerable prior experience with \textsc{PathFinder} or \textsc{PathObjects}.
 
 \subsection{Tasks}
-\label{ss:DiscussionEvaluationTasks}
 The questions developers ask during software development activities are a research area of its own.
-Among others, Sillito et al. and LaToza et al. have published results from user evaluations on this topic.
-From the questions that were determined by these studies, five were selected and adapted to comprehension tasks regarding the \textsc{DicThesaurusRex} project.
+Among others, Sillito et al. and LaToza et al. have published results from user studies on this topic \cite{sillito_asking_2008, latoza_hard--answer_2010}.
+From the questions that were determined by these studies, five were selected and adapted to comprehension tasks regarding \textsc{DicThesaurusRex}.
+This project provides spell checking and thesaurus functionalities for various standard tools of the Squeak environment.
+It is the result of an undergraduate student project and features a sufficient unit test suite.
+
+However, the range of subjects in these user studies is not limited to object-oriented programming.
+For instance, generic questions such as which design would be the best choice to implement a functionality also are part of the outcome of these studies.
+Consequently, we only used those questions as a basis which appeared to be answerable with our implementation of \textsc{PathObjects}.
 
 \paragraph{Task 1} The project contains a parser class that is used to extract single words from designators which are named in camel case style, namely \inlinecode{DTRCamelCaseParser}.
 Participants were asked to describe how this parser works, and could score a maximum of eight points that cover the cornerstones of this algorithm.
 The test case \inlinecode{testWholeWordParsing} that covers a suitable scenario was provided as entry point.
-The difficulties of this task are the high number of execution branches that have to be followed, and the handling of edge cases like acronyms or special characters.
+The difficulties of this task were the high number of execution branches that have to be followed, and the handling of edge cases like acronyms or special characters.
 
 \paragraph{Task 2} The thesaurus implementation creates instances of \inlinecode{DTRThesaurusEntry} that map words to their synonyms.
 They have an instance variable named \inlinecode{pos} which is used to mark the word class.
 Participants were asked to determine the purpose of this variable.
+However, since this variable is neither documented nor actually used at all, their is no straightforward solution strategy.
 The answer had to be selected from a given list of possible values, with \inlinecode{noun} being the only correct entry.
-Consequently, participants could score one point at the maximum on this task.
+Consequently, participants could score one point on this task.
 
 \paragraph{Task 3} The search for synonyms exhibits differing time complexities depending on whether the search term is present in the thesaurus or not.
 Since the implementation is based on a \inlinecode{Dictionary}, a failing lookup of a search term is performed in constant time, while the lookup of actual synonyms is dependent on the number of found thesaurus entries.
-Participants were asked to give duration estimations for searches that do and do not return results, whereby they also were allowed to make us eof profiling utilities.
-The answers had to be selected from a given list of time values, and consequently the maximum possible score for this task were two points.
+Participants were asked to give duration estimations for searches that do and do not return results, whereby they also were allowed to make use of profiling utilities.
+The answers had to be selected from a given list of time values, and consequently the maximum possible score for this task was one point per case, or respectively two points in total.
 Two test cases were provided as entry points, namely \inlinecode{testSynonymsOf} and \inlinecode{testEmptySynonymsOf}.
 
 \paragraph{Task 4} The spell checking module provides a method to test strings for spelling errors, namely \inlinecode{checkSpellingOf:}.
 This method uses the camel case parser to split the input string into single words.
 Participants were asked to find out how many parser instances are used to check the spelling of a given input string, and to state reasons for their answer.
-The problem with this scenario is that the source code alone strongly suggests that only one parser instance is used.
-However, the implementation creates one to three further instances for each found word, depending on .
-Thereby, the call chain to the responsible parts of the source code consists of four method.
-Participants could score a maximum of five points: one for the correct number, two for the locations where instances get created, and two for the reasons that lead to the creation of further instances.
+The problem with this scenario was that the source code strongly suggests that only one parser instance is used.
+However, the implementation creates one to three further instances for each found word, depending on whether spelling errors are found or not.
+Participants could score a maximum of five points: one for the correct number of instances, two for the locations where they get created, and two for the reasons that lead to the creation of those additional instances.
+The unit test \inlinecode{testCheckSpellingOf} was provided as entry point.
 
-\paragraph{Task 5} In this task, the participants were challenged to find the last changes of the spell checking process, which already served as object of investigation in Task 4.
+\paragraph{Task 5} In this task, the participants were challenged to find the most recent changes of the spell checking process, which already served as object of investigation in Task 4.
 For instance, such information can be relevant when features break after merging new commits.
 To solve the task, the three methods with the most recent alteration dates had to be named.
-Consequently, the maximum possible score for this tasks were three points.
-There are two different problems with this task.
-First, one has to identify the methods that are involved in the spell checking process, or, in other words, those that are called transitively starting from the \inlinecode{checkSpellingOf:} method.
-Second, the identified methods have to be compared with regards to their alteration dates.
+Consequently, the maximum possible score for this tasks was three points.
+There were two different problems with this task.
+First, participants had to identify the methods that are involved in the spell checking process, or, in other words, those that are called transitively starting from the \inlinecode{checkSpellingOf:} method.
+Second, the identified methods had to be compared with regards to their alteration dates.
+Again, the \inlinecode{testCheckSpellingOf} was provided as entry point.
 
 
-\subsection{Execution}
-\label{ss:DiscussionEvaluationExecution}
+\subsection{Experimental Setup}
 
 \subsection{Results and Evaluation}
-\label{ss:DiscussionEvaluationResults}
 
 \begin{figure}[tb]
 	\centering
@@ -318,7 +316,6 @@ Second, the identified methods have to be compared with regards to their alterat
 \end{figure}
 
 \subsection{Threats to Validity}
-\label{ss:DiscussionEvaluationThreats}
 
 \clearpage
 \section{Discussion}
