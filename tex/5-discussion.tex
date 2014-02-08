@@ -242,7 +242,7 @@ Even when assuming huge deviations that lead to a tenfold memory consumption com
 Nowadays, this is a scale that can be demanded from hardware with clear conscience.
 
 \clearpage
-\section{User Evaluation}
+\section{User Study}
 \label{s:DiscussionEvaluation}
 In order to verify that our proposed solution can help developers to comprehend software systems and their behavior faster and more comprehensive than with the help of traditional tools alone, a user evaluation has been performed.
 Study participants were challenged to answer questions which reportedly arise often during software development about a system previously unknown to them.
@@ -277,8 +277,13 @@ The difficulties of this task are the high number of execution branches that hav
 They have an instance variable named \inlinecode{pos} which is used to mark the word class.
 Participants were asked to determine the purpose of this variable.
 The answer had to be selected from a given list of possible values, with \inlinecode{noun} being the only correct entry.
+Consequently, participants could score one point at the maximum on this task.
 
-\paragraph{Task 3}
+\paragraph{Task 3} The search for synonyms exhibits differing time complexities depending on whether the search term is present in the thesaurus or not.
+Since the implementation is based on a \inlinecode{Dictionary}, a failing lookup of a search term is performed in constant time, while the lookup of actual synonyms is dependent on the number of found thesaurus entries.
+Participants were asked to give duration estimations for searches that do and do not return results, whereby they also were allowed to make us eof profiling utilities.
+The answers had to be selected from a given list of time values, and consequently the maximum possible score for this task were two points.
+Two test cases were provided as entry points, namely \inlinecode{testSynonymsOf} and \inlinecode{testEmptySynonymsOf}.
 
 \paragraph{Task 4} The spell checking module provides a method to test strings for spelling errors, namely \inlinecode{checkSpellingOf:}.
 This method uses the camel case parser to split the input string into single words.
@@ -300,7 +305,7 @@ Second, the identified methods have to be compared with regards to their alterat
 \subsection{Execution}
 \label{ss:DiscussionEvaluationExecution}
 
-\subsection{Results}
+\subsection{Results and Evaluation}
 \label{ss:DiscussionEvaluationResults}
 
 \begin{figure}[tb]
