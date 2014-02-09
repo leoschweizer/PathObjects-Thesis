@@ -348,6 +348,7 @@ However, the mean degree of comprehension also is 0,31 points higher.
 \paragraph{Task 2} Since all groups reached a degree of comprehension of 1.0 on this task, it is not depicted in the figure.
 However, the participants in group C were noticeably faster than the other two groups. 
 One reason for this phenomenon is that while the developers in group A had to browse senders manually for a meaningful occurrence, the participants in group C simply used the search function of \textsc{PathObjects}, and explored the argument of a call of the \inlinecode{pos:} method.
+Even though \textsc{PathFinder} also provides a search functionality, participants expanded the complete call tree and looked for occurrences of this setter method manually.
 
 \paragraph{Task 3} The first thing to be noticed is that groups B and C managed to reach the maximum degree of comprehension, while two participants in group A failed to do so.
 The reason for this shortage lies in the different solution strategies that were applied by participants in group A.
@@ -359,6 +360,17 @@ The other participants in group A did time measurements with the help of \inline
 What also attracts attention is that participants in group B were faster then those in group C.
 This can be accounted to the fact that \textsc{PathFinder} includes a full-fledged profiling functionality that displays the actual measurement values to developers.
 In contrast, the information layers of \textsc{PathObjects} do not display absolute values in the current implementation, and participants had to look up colors in a color scale manually in order to get an estimation.
+
+\paragraph{Task 4} As depicted in the task description, the source code alone misleadingly suggests that only one instance of the camel case parser is used.
+And as a matter of fact, all participants in group A only found this single instance.
+In contrast, only one participant in group C failed to name all instances, but at least understood that the number of instances is dependent on the number of input words and spelling errors.
+Although \textsc{PathFinder} also offers a view that distinguishes object identities, two participants nevertheless failed to identify more than the obvious occurrence.
+They did not expand the call tree far enough to stumble across the other instances, and were under the impression that only one instance was used throughout the call tree.
+As opposed to this, \textsc{PathObjects} presents a map of objects, and participants had an immediate overview of this scenario.
+The reason that participants in group A were noticeably faster than the other two groups is that they only found the obvious instance, and did not spend any time to comprehend the reasons for the creation of the other instances, since they were not even aware of their existence.
+In other words, the participants in group C spent more time on this task, but did not draw wrong conclusions about the behavior of the system.
+
+\paragraph{Task 5} ...
 
 \begin{figure}[tb]
 	\centering
