@@ -244,16 +244,22 @@ Nowadays, this is a scale that can be demanded from hardware with clear conscien
 \clearpage
 \section{User Study}
 \label{s:DiscussionEvaluation}
-In order to verify that our proposed solution can help developers to comprehend software systems and their behavior faster and more comprehensive than with the help of traditional tools alone, a user evaluation has been performed.
-Study participants were challenged to answer questions which reportedly arise often during software development about a system previously unknown to them.
-The study compares how fast and how correct the participants could answer the questions  when using either the tools provided by the standard Squeak environment alone, or the other tools of the \textsc{PathTools} suite in addition, or when using \textsc{PathObjects} in addition.
+In order to validate that \textsc{PathObjects} can help developers to build a understanding of software systems and their behavior better than with the help of traditional tools alone, a user study has been conducted.
+For that purpose, five tasks concerning the \textsc{DicThesaurusRex} project were derived from questions that reportedly arise often during software development.
+Study participants were challenged to solve these tasks, whereby the target software system was previously unknown to them.
+The results of the study show that participants which were allowed to use \textsc{PathObjects} showed a higher degree of comprehension for each task in comparison to those who used the Squeak standard tools or \textsc{PathFinder}.
 
 \subsection{Participant Profile}
-Twelve undergraduate and graduate students with exhaustive experience in object-oriented programming in general and Squeak/Smalltalk in particular were invited to take part in the user study.
-All participants had between four and ten years of experience in ...
-The participants were randomly divided into three groups, and each group was allowed to use different tools to solve a number of program comprehension tasks.
-...
-None of the participants in groups B and C had any considerable prior experience with \textsc{PathFinder} or \textsc{PathObjects}.
+Twelve undergraduate and graduate students with a professional background in object-oriented programming in general and Squeak/Smalltalk in particular were invited to take part in the user study.
+All participants had between four and ten years of experience with object-oriented programming languages and two to six years of experience with Squeak/Smalltalk.
+None of the participants had any considerable prior experience with \textsc{PathFinder} or \textsc{PathObjects}.
+
+The twelve participants were randomly divided into three groups, whereby each group was allowed to use a different set of tools to solve the appointed tasks.
+The participants in group A were asked to use only the standard tools of the Squeak environment, including, but not limited to the source browser, test runner, debugger, and workspace.
+The participants in group B were prompted to use \textsc{PathFinder}, the back-in-time debugger that implements step-wise run-time analysis (cf. Section \ref{ss:BackgroundTracing}).
+Similarly, the participants in group C were challenged to solve the tasks with the help of our implementation of \textsc{PathObjects}.
+Theoretically, the probands in groups B and C were also allowed to use the Squeak standard tools.
+However, the only tool that was used sporadically in addition to the primary tool of the respective group was the source browser.
 
 \subsection{Tasks}
 The questions developers ask during software development activities are a research area of its own.
@@ -303,13 +309,6 @@ Again, the \inlinecode{testCheckSpellingOf} was provided as entry point.
 
 
 \subsection{Experimental Setup}
-The twelve participants were randomly divided into three groups, whereby each group was allowed to use a different set of tools to solve the five tasks.
-The participants in group A were asked to use only the standard tools of the Squeak environment, including, but not limited to the source browser, test runner, debugger, and workspace.
-The participants in group B were prompted to use \textsc{PathFinder}, the back-in-time debugger that implements step-wise run-time analysis (cf. Section \ref{ss:BackgroundTracing}).
-Similarly, the participants in group C were challenged to solve the tasks with the help of our implementation of \textsc{PathObjects}.
-Theoretically, the probands in groups B and C were also allowed to use the Squeak standard tools.
-However, the only tool that was used sporadically in addition to the primary tool of the respective group was the source browser.
-
 Each participant was challenged separately in dedicated sessions.
 Thereby, the workplace, hardware, and Squeak image were identical for each participant.
 Consequently, it can be ruled out that factors like screen real estate or processing speed have an influence on the performance of the participants.
