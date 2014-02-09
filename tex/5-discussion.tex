@@ -310,13 +310,38 @@ Similarly, the participants in group C were challenged to solve the tasks with t
 Theoretically, the probands in groups B and C were also allowed to use the Squeak standard tools.
 However, the only tool that was used sporadically in addition to the primary tool of the respective group was the source browser.
 
+Each participant was challenged separately in dedicated sessions.
+Thereby, the workplace, hardware, and Squeak image were identical for each participant.
+Consequently, it can be ruled out that factors like screen real estate or processing speed have an influence on the performance of the participants.
+
+During the whole time of an experiment session, the study investigator was present.
+In the case of groups B an C, each session started with a 15-minute introduction of the respective tools, since none of the participants had any prior experience with them.
+All features that could help to solve the tasks were explained, and participants were prompted to familiarize themselves with these features. 
+This step could be skipped in the case of group A, since all participants were sufficiently familiar with the Squeak environment.
+Afterwards, a brief introduction into the \textsc{DicThesaurusRex} project was given.
+The spell checking and synonym search functionalities were demonstrated, but no parts of the source code or other implementation details were revealed.
+
+Subsequently, the tasks were handed to participants on by one in written form.
+All task descriptions were kept undisclosed, with the exception of the current one.
+In other words, participants were only allowed to read the next task after finishing the previous one.
+The tasks were handed out in the exact same order in each experiment.
+Participants were allowed to spend as much time as desired on each task, and a task was regarded as finished as soon as participants were confident in terms of the comprehensiveness of their answer.
+
+For each task, two measures were utilized to grade the performance of participants, namely the processing time and the degree of comprehension.
+The measurement of the processing time started with the handover of a task, and ended when participants declared their answer as finished.
+The degree of comprehension is measured with the aid of a scoring system, and expresses the percentage of points a user $u$ scored on a task $t$ (cf. Definition \ref{eq:UserEvaluationDc}).
+
+\begin{equation}
+dc(u, t) = \frac{score(u, t)}{maximumScore(t)}\label{eq:UserEvaluationDc}
+\end{equation}
+
 \subsection{Results and Evaluation}
 
 \begin{figure}[tb]
 	\centering
 
 	\includegraphics[width=1.0\textwidth]{../plots/05-UserTask1}
-	\caption[]{}
+	\caption[Results of the User Study]{Performance of the participant groups per task, measured by processing time (lower is better) and degree of comprehension (DC, higher is better); whiskers indicate the lowest and highest occurrences.}
 	\label{fig:ADiscussionStudyResultsTask1}
 	
 \end{figure}
