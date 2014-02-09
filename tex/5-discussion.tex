@@ -335,13 +335,37 @@ dc(u, t) = \frac{score(u, t)}{maximumScore(t)}\label{eq:UserEvaluationDc}
 \end{equation}
 
 \subsection{Results and Evaluation}
+The results of the user study are depicted in Figure \ref{fig:DiscussionStudyResults}.
+For each task, the required processing time is broken down by the three participant groups, and related to the determined degree of comprehension where applicable.
+
+\paragraph{Task 1} Strikingly, the mean time the participants in group B spent on this task is 6:30m higher than that of group A.
+The reason for this phenomenon is that participants in group A had to follow a lot of branches and transitive calls manually, and simply discontinued to do so when the further investigation seemed to cumbersome.
+In contrast, \textsc{PathFinder} displays the whole scenario at once, and participants had an intuitive understanding whether they gathered all relevant details.
+Surprisingly, this did not lead to a noticeable increase in the degree of comprehension.
+The participants in group C also were slower in comparison to group A.
+However, the mean degree of comprehension also is 0,31 points higher.
+
+\paragraph{Task 2} Since all groups reached a degree of comprehension of 1.0 on this task, it is not depicted in the figure.
+However, the participants in group C were noticeably faster than the other two groups. 
+One reason for this phenomenon is that while the developers in group A had to browse senders manually for a meaningful occurrence, the participants in group C simply used the search function of \textsc{PathObjects}, and explored the argument of a call of the \inlinecode{pos:} method.
+
+\paragraph{Task 3} The first thing to be noticed is that groups B and C managed to reach the maximum degree of comprehension, while two participants in group A failed to do so.
+The reason for this shortage lies in the different solution strategies that were applied by participants in group A.
+One participant used the profiling functionality of the test runner, which itself uses the \inlinecode{MessageTally} profiler.
+The other participant used this profiler directly.
+However, \inlinecode{MessageTally} is a sampling profiler, and the measurement of the execution of an unsuccessful search for synonyms was too fast to be captured by a sample.
+Consequently, both participants guessed a value based on their measurement of a successful search, but were at fault in doing so.
+The other participants in group A did time measurements with the help of \inlinecode{millisecondsToRun:} manually, and got correct results in this way.
+What also attracts attention is that participants in group B were faster then those in group C.
+This can be accounted to the fact that \textsc{PathFinder} includes a full-fledged profiling functionality that displays the actual measurement values to developers.
+In contrast, the information layers of \textsc{PathObjects} do not display absolute values in the current implementation, and participants had to look up colors in a color scale manually in order to get an estimation.
 
 \begin{figure}[tb]
 	\centering
 
 	\includegraphics[width=1.0\textwidth]{../plots/05-UserTask1}
 	\caption[Results of the User Study]{Performance of the participant groups per task, measured by processing time (lower is better) and degree of comprehension (DC, higher is better); whiskers indicate the lowest and highest occurrences.}
-	\label{fig:ADiscussionStudyResultsTask1}
+	\label{fig:DiscussionStudyResults}
 	
 \end{figure}
 
