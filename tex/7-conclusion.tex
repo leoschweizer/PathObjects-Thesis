@@ -49,6 +49,12 @@ While software systems are designed on high abstraction levels and implemented w
 One of the reasons why information about program behavior is not presented at the abstraction level of its implementation and the corresponding design documents is that dynamic analysis is inevitable to gather the required information.
 However, dynamic analysis suffers from four closely related scalability issues that have constrained many of its application areas for a long time.
 Step-wise run-time analysis has been proposed as lightweight alternative to conventional dynamic analysis approaches and promises to solve most of these scalability issues.
+It features a low memory footprint and makes immediate information presentations of program behavior possible.
 Nevertheless, the back-in-time debugger called \textsc{PathFinder} that implements this approach still does not contribute to bridge the gap of abstraction levels, since the information presentation is centered around a call tree visualization.
 Again, this presentation rather conforms to the technical procedures of the execution of a program than to the abstractions of object-orientation.
+
+Consequently, the primary research question we drive is: \textit{Can the behavior of software systems be presented at the abstraction level of objects while maintaining immediacy and perceivability?}.
+Since it is only an assumption that the bridging of the gap of abstraction levels through such an information presentation would actually assist developers to understand the software system at hand better, the second research question that is tackled in this thesis is:
+\textit{Can such an information presentation actually aid in the process of program comprehension}?
+
 \todo[inline]{tbc}
