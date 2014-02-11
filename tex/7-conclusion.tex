@@ -1,46 +1,8 @@
 \chapter{Conclusions}
 \label{c:conclusions}
-This thesis evaluated the \textsc{PathObjects} approach of interactively diagramming object interactions.
-With the help of an implementation for the Squeak/Smalltalk environment, its applicability was validated.
-Furthermore, a user study showed that \textsc{PathObjects} actually can assist developers in the comprehension of object-oriented programs.
-However, the research on \textsc{PathObjects} raised new questions, which are presented in Section \ref{s:ConclusionsFuture}.
-Finally, Section \ref{s:ConclusionsSummary} summarizes the problem domain, our proposed solution, and the results of its evaluation.
-
-\section{Future Work}
-\label{s:ConclusionsFuture}
-The evaluation of \textsc{PathObjects} has led to new questions whose research could contribute to the further development of the concept.
-First, the application of pattern recognition techniques could help to improve the perceivability of diagrams.
-Second, advanced querying could allow developers to formulate very specific queries for entities of interest.
-Third, it might be beneficial to support developers in finding and selecting suitable entry points.
-All these ideas are described in detail in the following.
-
-\paragraph{Pattern Recognition} Many trace visualization approaches that cover complete program executions employ pattern recognition techniques to reduce the traces to a manageable size (cf. Chapter \ref{c:relatedwork}).
-Our approach of using test cases as representative program executions in conjunction with Step-wise Run-time Analysis mostly solves the trace size scalability issue in terms of processing time and memory consumption.
-Nevertheless, some test cases are still too large to serve as foundations of comprehensible scenarios.
-However, our observations are that the traces of large test cases are often repetitive in nature. Commonly, the same set of operations is performed in the same order on different objects.
-Recurring instances of such execution patterns could be omitted, presenting only relevant instances to the user, and thus avoiding cognitive overload.
-In this regard, the execution structure of such test cases might be particularly advantageous for the application of pattern detection techniques.
-The suitability of such an approach could be the subject of further research.
-
-\paragraph{Advanced Querying} The keyword-based search engine in it's current form allows to answer questions like "when is an object used (next)?", "where is a specific method called?" or "where are instances of a specific class used?".
-A more sophisticated search functionality with a dedicated query language - be it textual or graphical - would be desirable.
-Three categories of questions such a query language could tackle are apparent.
-The first category are queries over the message graph or call tree respectively.
-For instance, those could include "when is a specific message sent to a specific object" or "which messages are follow-up messages of a specific one".
-The second category consists of questions about the object or reference graph.
-One could ask questions like "at which point in time does a specific object obtain or release a reference to another object?" or "which objects retain references on a specific object at a given point of time?".
-The third and last category are questions about object state and state changes.
-Ko and Myers have shown with \textsc{Whyline} that this area can very well be covered by a graphical query "editor" \cite{ko_debugging_2008}.
-Such an approach could also be integrated into \textsc{PathObjects}.
-
-\paragraph{Entry Point Suggestion} The detection of suitable entry points is still largely a matter of trial and error.
-With the current implementation, developers can browse the source code, and test cases that cover a method are displayed alongside.
-But the sole indication whether a unit test actually includes the scenario the developer wishes to analyze is its name.
-In other words, the selection of suitable test cases either requires expertise or is a game of chance.
-Consequently, assisting developers in finding proper entry points could be a beneficial task.
-For instance, developers could be allowed to search for test cases with simple criteria, like definitions of objects or message sequences that have to occur in a unit test.
-On a more abstract level, one could provide tools that allow to formulate requirements, such as "list test cases where an instance of the analog clock class acts as observer of a clock timer".
-Accordingly, further research could tackle the questions are if entry point selection actually is a significant issue in practice, how such abstract semantic definitions can be matched to static source code, and to which extent this could help developers.
+This chapter summarizes our work and shows potential areas for future research.
+First, Section \ref{s:ConclusionsSummary} recapitulates the contributions of this thesis, and shows how they answer our research questions.
+Second, Section \ref{s:ConclusionsFuture} concludes this thesis by presenting topic areas whose research could help to improve the concept of \textsc{PathObjects} even further. 
 
 \section{Summary}
 \label{s:ConclusionsSummary}
@@ -70,4 +32,42 @@ This implementation uses an extended form of the step-wise run-time analysis app
 With the help of this implementation, we show that the majority of test cases of real-world software projects can presented to developers immediately.
 Furthermore, we show that the additional tracing effort which is necessary for the reconstruction of object interactions does not invalidate the low memory footprint of the underlying tracing approach.
 
-\todo[inline]{tbc}
+With regard to the second research question, we also used this implementation of \textsc{PathObjects} to conduct a user study.
+This evaluation shows \todo{summarize results}
+Consequently, we come to the conclusion that \textsc{PathObjects} actually can assist developers in object-oriented program comprehension, and thus can contribute to reduce the time that is spent on this activity.
+Furthermore, since program comprehension is an essential requirement of software maintenance tasks which are accountable for the majority of the total costs of software development, we conclude that \textsc{PathObjects} constitutes a step towards the reduction of those costs.
+
+\section{Outlook}
+\label{s:ConclusionsFuture}
+The evaluation of \textsc{PathObjects} led to new questions whose research could contribute to the further development of the concept.
+First, the application of pattern recognition techniques could help to improve the perceivability of diagrams.
+Second, advanced querying could allow developers to formulate very specific queries for entities of interest.
+Third, it might be beneficial to support developers in finding and selecting suitable entry points.
+
+\paragraph{Pattern Recognition} Many trace visualization approaches that cover complete program executions employ pattern recognition techniques to reduce the traces to a manageable size (cf. Chapter \ref{c:relatedwork}).
+Our approach of using test cases as representative program executions in conjunction with Step-wise Run-time Analysis mostly solves the trace size scalability issue in terms of processing time and memory consumption.
+Nevertheless, some test cases are still too large to serve as foundations of comprehensible scenarios.
+However, our observations are that the traces of large test cases are often repetitive in nature. Commonly, the same set of operations is performed in the same order on different objects.
+Recurring instances of such execution patterns could be omitted, presenting only relevant instances to the user, and thus avoiding cognitive overload.
+In this regard, the execution structure of such test cases might be particularly advantageous for the application of pattern detection techniques.
+The suitability of such an approach could be the subject of further research.
+
+\paragraph{Advanced Querying} The keyword-based search engine in it's current form allows to answer questions like "when is an object used (next)?", "where is a specific method called?" or "where are instances of a specific class used?".
+A more sophisticated search functionality with a dedicated query language - be it textual or graphical - would be desirable.
+Three categories of questions such a query language could tackle are apparent.
+The first category are queries over the message graph or call tree respectively.
+For instance, those could include "when is a specific message sent to a specific object" or "which messages are follow-up messages of a specific one".
+The second category consists of questions about the object or reference graph.
+One could ask questions like "at which point in time does a specific object obtain or release a reference to another object?" or "which objects retain references on a specific object at a given point of time?".
+The third and last category are questions about object state and state changes.
+Ko and Myers have shown with \textsc{Whyline} that this area can very well be covered by a graphical query "editor" \cite{ko_debugging_2008}.
+Such an approach could also be integrated into \textsc{PathObjects}.
+
+\paragraph{Entry Point Suggestion} The detection of suitable entry points is still largely a matter of trial and error.
+With the current implementation, developers can browse the source code, and test cases that cover a method are displayed alongside.
+But the sole indication whether a unit test actually includes the scenario the developer wishes to analyze is its name.
+In other words, the selection of suitable test cases either requires expertise or is a game of chance.
+Consequently, assisting developers in finding proper entry points could be a beneficial task.
+For instance, developers could be allowed to search for test cases with simple criteria, like definitions of objects or message sequences that have to occur in a unit test.
+On a more abstract level, one could provide tools that allow to formulate requirements, such as "list test cases where an instance of the analog clock class acts as observer of a clock timer".
+Accordingly, further research could tackle the questions are if entry point selection actually is a significant issue in practice, how such abstract semantic definitions can be matched to static source code, and to which extent this could help developers.
