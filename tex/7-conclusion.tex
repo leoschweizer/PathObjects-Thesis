@@ -57,4 +57,17 @@ Consequently, the primary research question we drive is: \textit{Can the behavio
 Since it is only an assumption that the bridging of the gap of abstraction levels through such an information presentation would actually assist developers to understand the software system at hand better, the second research question that is tackled in this thesis is:
 \textit{Can such an information presentation actually aid in the process of program comprehension}?
 
+As solution, we present \textsc{PathObjects}, an interactive diagraming concept for the presentation of object-oriented program behavior.
+In contrast to widespread development tools, it focuses on an information presentation at the abstraction level of objects, and introduces a number of additional components that assist developers in the comprehension of execution traces.
+First, \textit{navigational} components allow developers to browse the temporal and spatial domains of execution traces exploratory and to search for entities of interest in a target-oriented manner.
+Second, \textit{explorative} components enable developers to explore the internal states of objects and their development over the course of time, to track references to other objects, and to explore the source code of the underlying implementation.
+Third, \textit{focusing} components facilitate the creation of custom-tailored information presentations by permitting developers to define objects and messages of interest.
+Beyond that, we present \textit{information layers} which allow developers to augment \textsc{PathObjects} diagrams with additional use-case specific information from various sources.
+Thus, the diverse information requirements of different comprehension tasks can be met.
+
+To validate the applicability of the concept, we put it into practice in the form of an implementation for the Squeak/Smalltalk environment.
+This implementation uses an extended form of the step-wise run-time analysis approach as source of tracing information.
+With the help of this implementation, we show that the majority of test cases of real-world software projects can presented to developers immediately.
+Furthermore, we show that the additional tracing effort which is necessary for the reconstruction of object interactions does not invalidate the low memory footprint of the underlying tracing approach.
+
 \todo[inline]{tbc}
