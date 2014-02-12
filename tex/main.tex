@@ -17,15 +17,6 @@
 \tableofcontents
 \cleardoublepage
 
-\listoffigures
-\cleardoublepage
-
-%\lstlistoflistings
-%\cleardoublepage
-
-%\listoftables
-%\cleardoublepage
-
 %--------------------------------------------------------------
 \mainmatter
 \glsresetall
@@ -63,6 +54,14 @@
 \raggedright
 \sloppy
 \printglossaries
+\cleardoublepage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\protect\numberline{}List of Figures}
+\pagestyle{plain}
+\raggedright
+\sloppy
+\listoffigures
 \cleardoublepage
 
 \phantomsection
