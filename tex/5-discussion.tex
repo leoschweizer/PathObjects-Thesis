@@ -338,14 +338,16 @@ Comprehension(user, task) = \frac{score(user, task)}{maximumScore(task)}\label{e
 The results of the user study are depicted in Figure \ref{fig:DiscussionStudyResults}.
 For each task, the required processing time is broken down by the three participant groups, and related to the determined degree of comprehension where applicable.
 
-\paragraph{Task 1} Strikingly, the mean time the participants in group B spent on this task is 6:30m higher than that of group A.
+\paragraph{Task 1} Strikingly, the mean time the participants in group B spent on this task is almost six minutes higher than that of group A.
 The reason for this phenomenon is that participants in group A had to follow a lot of branches and transitive calls manually, and simply discontinued to do so when the further investigation seemed to cumbersome.
 In contrast, \textsc{PathFinder} displays the whole scenario at once, and participants had an intuitive understanding whether they gathered all relevant details.
 Surprisingly, this did not lead to a noticeable increase in the degree of comprehension.
 The participants in group C also were slower in comparison to group A.
 However, the mean degree of comprehension also is 0,31 points higher.
+This can be explained by the fact that many implementation details of the algorithm under investigation could be revealed by simply expanding the object state indicator of the covered camel case parser instance, and by stepping through the execution trace.
+This approach is not supported by \textsc{PathFinder}, and impossible with the standard development tools alone.
 
-\paragraph{Task 2} Since all groups reached a degree of comprehension of 1.0 on this task, it is not depicted in the figure.
+\paragraph{Task 2} All groups reached the maximum degree of comprehension of 1.0 on this task.
 However, the participants in group C were noticeably faster than the other two groups. 
 One reason for this phenomenon is that while the developers in group A had to browse senders manually for a meaningful occurrence, the participants in group C simply used the search function of \textsc{PathObjects}, and explored the argument of a call of the \inlinecode{pos:} method.
 Even though \textsc{PathFinder} also provides a search functionality, participants expanded the complete call tree and looked for occurrences of this setter method manually.
