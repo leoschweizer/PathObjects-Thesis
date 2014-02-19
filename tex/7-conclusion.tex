@@ -15,20 +15,20 @@ It features a low memory footprint and makes immediate information presentations
 Nevertheless, the back-in-time debugger called \textsc{PathFinder} that implements this approach still does not contribute to bridge the gap of abstraction levels, since the information presentation is centered around a call tree visualization.
 Again, this presentation rather conforms to the technical procedures of the execution of a program than to the abstractions of object-orientation.
 
-Consequently, the primary research question we drive is: \textit{Can the behavior of software systems be presented at the abstraction level of objects while maintaining immediacy and perceivability?}.
-Since it is only an assumption that the bridging of the gap of abstraction levels through such an information presentation would actually assist developers to understand the software system at hand better, the second research question that is tackled in this thesis is:
+Consequently, the primary research question we drive is: \textit{Can the behavior of software systems be presented at the abstraction level of objects while maintaining immediacy and perceivability?}
+Since it is only an assumption that the bridging of the gap of abstraction levels through such an information presentation would actually assist developers to understand software systems  better, the second research question we tackle in this thesis is:
 \textit{Can such an information presentation actually aid in the process of program comprehension}?
 
 As solution, we present \textsc{PathObjects}, an interactive diagraming concept for the presentation of object-oriented program behavior.
 In contrast to widespread development tools, it focuses on an information presentation at the abstraction level of objects, and introduces a number of additional components that assist developers in the comprehension of execution traces.
-First, \textit{navigational} components allow developers to browse the temporal and spatial domains of execution traces exploratory and to search for entities of interest in a target-oriented manner.
+First, \textit{navigational} components allow developers to browse the temporal and spatial domains of execution traces and to search for entities of interest in a target-oriented manner.
 Second, \textit{explorative} components enable developers to explore the internal states of objects and their development over the course of time, to track references to other objects, and to explore the source code of the underlying implementation.
 Third, \textit{focusing} components facilitate the creation of custom-tailored information presentations by permitting developers to define objects and messages of interest.
 Beyond that, we present \textit{information layers} which allow developers to augment \textsc{PathObjects} diagrams with additional use-case specific information from various sources.
-Thus, the diverse information requirements of different comprehension tasks can be met.
+Thus, the diverse information requirements of different maintenance tasks can be met.
 
 To validate the applicability of the concept, we put it into practice in the form of an implementation for the Squeak/Smalltalk environment.
-This implementation uses an extended form of the step-wise run-time analysis approach as source of tracing information.
+This implementation uses an extended form of the step-wise run-time analysis approach as data source.
 With the help of this implementation, we show that the majority of test cases of real-world software projects can presented to developers immediately.
 Furthermore, we show that the additional tracing effort which is necessary for the reconstruction of object interactions does not invalidate the low memory footprint of the underlying tracing approach.
 
@@ -46,23 +46,23 @@ Second, advanced querying could allow developers to formulate very specific quer
 Third, it might be beneficial to support developers in finding and selecting suitable entry points.
 
 \paragraph{Pattern Recognition} Many trace visualization approaches that cover complete program executions employ pattern recognition techniques to reduce the traces to a manageable size (cf. Chapter \ref{c:relatedwork}).
-Our approach of using test cases as representative program executions in conjunction with Step-wise Run-time Analysis mostly solves the trace size scalability issue in terms of processing time and memory consumption.
+Our approach of using test cases as representative program executions in conjunction with step-wise run-time analysis mostly solves the trace size scalability issue in terms of processing time and memory consumption.
 Nevertheless, some test cases are still too large to serve as foundations of comprehensible scenarios.
 However, our observations are that the traces of large test cases are often repetitive in nature. Commonly, the same set of operations is performed in the same order on different objects.
 Recurring instances of such execution patterns could be omitted, presenting only relevant instances to the user, and thus avoiding cognitive overload.
-In this regard, the execution structure of such test cases might be particularly advantageous for the application of pattern detection techniques.
+In this regard, the execution structure of such test cases might be particularly advantageous for the application of pattern recognition techniques.
 The suitability of such an approach could be the subject of further research.
 
-\paragraph{Advanced Querying} The keyword-based search engine in it's current form allows to answer questions like "when is an object used (next)?", "where is a specific method called?" or "where are instances of a specific class used?".
+\paragraph{Advanced Querying} The keyword-based search engine in it's current form allows to answer questions like \textit{when is an object used (next)}, \textit{where is a specific method called} or \textit{where are instances of a specific class used}.
 A more sophisticated search functionality with a dedicated query language - be it textual or graphical - would be desirable.
 Three categories of questions such a query language could tackle are apparent.
-The first category are queries over the message graph or call tree respectively.
-For instance, those could include "when is a specific message sent to a specific object" or "which messages are follow-up messages of a specific one".
+The first category are queries over the message graph or respectively the call tree.
+For instance, those could include \textit{when is a specific message sent to a specific object} or \textit{which messages are follow-up messages of a specific one}.
 The second category consists of questions about the object or reference graph.
-One could ask questions like "at which point in time does a specific object obtain or release a reference to another object?" or "which objects retain references on a specific object at a given point of time?".
+One could ask questions such as \textit{at which point in time does a specific object obtain or release a reference to another object} or \textit{which objects retain references on a specific object at a given point of time}.
 The third and last category are questions about object state and state changes.
 Ko and Myers have shown with \textsc{Whyline} that this area can very well be covered by a graphical query "editor" \cite{ko_debugging_2008}.
-Such an approach could also be integrated into \textsc{PathObjects}.
+Such an approach also could be integrated into \textsc{PathObjects}.
 
 \paragraph{Entry Point Suggestion} The detection of suitable entry points is still largely a matter of trial and error.
 With the current implementation, developers can browse the source code, and test cases that cover a method are displayed alongside.
@@ -70,5 +70,5 @@ But the sole indication whether a unit test actually includes the scenario the d
 In other words, the selection of suitable test cases either requires expertise or is a game of chance.
 Consequently, assisting developers in finding proper entry points could be a beneficial task.
 For instance, developers could be allowed to search for test cases with simple criteria, like definitions of objects or message sequences that have to occur in a unit test.
-On a more abstract level, one could provide tools that allow to formulate requirements, such as "list test cases where an instance of the analog clock class acts as observer of a clock timer".
-Accordingly, further research could tackle the questions are if entry point selection actually is a significant issue in practice, how such abstract semantic definitions can be matched to static source code, and to which extent this could help developers.
+On a more abstract level, one could provide tools that allow to formulate requirements, such as \textit{list test cases where an instance of the analog clock class acts as observer of a clock timer}.
+Accordingly, further research could tackle the questions are if entry point selection actually is a significant issue in practice, how such abstract semantic definitions can be matched to static source code, and to which extent this can help developers.
