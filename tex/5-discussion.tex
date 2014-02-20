@@ -1,13 +1,13 @@
 \chapter{Evaluation}
 \label{c:discussion}
-The research question that is tackled in this thesis has two primary objectives.
+The research questions that are tackled in this thesis cover two primary objectives.
 The first goal is to provide a visualization of program behavior at the abstraction level of objects that preservers the immediate character and low memory footprint of the underlying tracing framework.
-The second goal is to provide a visualization that imparts the underlying information in a perceivable manner and supports the developer in the understanding of the software system at hand.
+The second goal is to provide a visualization that imparts this information in a perceivable manner and supports the developer in the understanding of the software system at hand.
 
-Section \ref{s:DiscussionPerformance} gives an insight to which extent the first goal could be reached with the prototypic implementation of our approach.
-To validate that the extensions that had to be made to the tracing framework and the computational complexity introduced through the visualization do not jeopardize immediacy, an evaluation of the runtime performance of our approach is given in Section \ref{ss:DiscussionPerformance}.
+Section \ref{s:DiscussionPerformance} gives an insight to which extent the first goal could be reached with the Squeak/Smalltalk implementation of our approach.
+To validate that the extensions that had to be made to the tracing framework and the computational complexity introduced through the visualization do not jeopardize immediacy, an evaluation of the runtime performance is given in Section \ref{ss:DiscussionPerformance}.
 An evaluation of the additional memory consumption that our specialized variant of  step-wise run-time analysis brings along is presented in Section \ref{ss:DiscussionSpace}. 
-The achievement of the second goal is examined with the help of a user evaluation which is presented in Section \ref{s:DiscussionEvaluation}.
+The achievement of the second goal is examined with the help of a user study which is presented in Section \ref{s:DiscussionEvaluation}.
 
 In addition, the limitations of our approach and its applicability to other programming languages and environments are discussed in Section \ref{s:DiscussionLimitations}.
 
@@ -52,13 +52,13 @@ Most traditional dynamic analysis tools refrain from information presentations t
 Instead, they rely on sequence diagrams or similar visualizations that can be generated trivially.
 In contrast, the major bottleneck of our approach can be accounted to the hierarchical graph drawing that is performed in order to render object interactions.
 
-The applied algorithm has been designed with its interactive application in mind and generally performs fast enough therefor \cite{gansner_technique_1993}.
+The algorithm implemented by \textsc{Graphviz} has been designed with its interactive application in mind and generally performs fast enough therefor \cite{gansner_technique_1993}.
 Nevertheless, its runtime is heavily dependent on the specific structure of the graph at hand.
 Precisely, the edge crossing minimization problem is NP-hard and the applied heuristic requires quadratic time in the number of nodes in the worst case \cite{tamassia_handbook_2013}.
 This case eventuates when edges span the maximum possible number of ranks.
 An example graph with $n$ ranks that shows this characteristic is depicted in Figure \ref{fig:graph-worst-case}.
 
-Since it is practically impossible to predict to which degree call trees of test cases conform to this structure, the four real-world projects depicted in Section \ref{ss:DiscussionProjects} have been used to carry out an empirical evaluation of the runtime behavior of our approach.
+Since it is practically impossible to predict to which degree call trees of test cases conform to this structure, the four real-world projects depicted in Section \ref{ss:DiscussionProjects} have been used to carry out an evaluation of the runtime behavior of our approach.
 
 \begin{figure}[b]
 	\centering	
@@ -91,10 +91,10 @@ For each test case of the evaluated software systems, a time measurement was tak
 The selection of a test case constitutes the start of a measurement, and the completion of the start-up of \textsc{PathObjects} its end.
 In other words, the measurements include all operations that have to be performed before the developer can start analyzing a test case through \textsc{PathObjects}.
 Namely these are the execution of a shallow analysis, the initialization of all user interface elements, the computation of a graph layout, and its application to the generated diagram.
-Between each measurement, garbage collection has been triggered multiple times in order to prevent unintended side effects through growing memory consumption.
+Between each measurement, garbage collection was triggered multiple times in order to prevent unintended side effects through growing memory consumption.
 
-All measurements have been performed on an Intel\copyright{} Core\texttrademark{}  i7-2620M CPU @ 2.70GHz.
-The Squeak image version 4.4-12327 has been executed on a Windows 7 x64 host operating system with the Croquet Closure Stack VM, version StackInterpreter VMMaker-oscog-EstebanLorenzano.237\footnote{http://source.squeak.org/VMMaker/VMMaker-oscog-EstebanLorenzano.237.mcz, last checked \today}. 
+All measurements were performed on an Intel\copyright{} Core\texttrademark{}  i7-2620M CPU @ 2.70GHz.
+The Squeak image version 4.4-12327 was executed on a Windows 7 x64 host operating system with the Croquet Closure Stack VM, version StackInterpreter VMMaker-oscog-EstebanLorenzano.237\footnote{http://source.squeak.org/VMMaker/VMMaker-oscog-EstebanLorenzano.237.mcz, last checked \today}. 
 This combination of CPU and VM performs at 528.1 million bytecodes/sec and 27.3 million sends/sec in the Squeak Tiny Benchmarks. \textsc{Graphviz} served as graph drawing engine and was present in version 2.34.
 
 \subsubsection{Results}
@@ -132,7 +132,7 @@ The second implication is that in practice, the start-up time of \textsc{PathObj
 However, garbage collection should not be of major importance during the start-up phase.
 Objects are not created and destroyed excessively through the tracing framework, so the main parts that are qualified for garbage collection are the ones of the system under investigation.
 Furthermore, the start-ups are short running tasks.
-Even if garbage collection would account for a significant share of the runtime, the overall start-up time would still be feast enough in most cases.
+Even if garbage collection would account for a significant share of the runtime, the overall start-up time would still be fast enough in the majority of cases.
 
 \subsection{Space Consumption}
 \label{ss:DiscussionSpace}
@@ -164,7 +164,7 @@ Since a word consumes four bytes in the virtual machine we used, the total space
 \begin{equation}
 s_{kB}(o,m) = \frac{4 * s(o,m)}{1000}\label{eq:SpaceConsumptionBytes}
 \end{equation}
-To get a reasonable estimation of the three variable parts $o$, $m$, and $a(M_n)$, their actual numbers in the case of the four evaluation projects have been measured.
+To get a reasonable estimation of the three variable parts $o$, $m$, and $a(M_n)$, their actual numbers in the case of the four evaluation projects have were determined.
 
 \usetikzlibrary{positioning,shapes,shadows,arrows}
 \tikzstyle{class}=[
@@ -211,7 +211,7 @@ To get a reasonable estimation of the three variable parts $o$, $m$, and $a(M_n)
 \subsubsection{Results}
 The results of the evaluation are depicted in Figure \ref{fig:DiscussionSpace}.
 It shows the space consumption that is introduced through \textsc{PathObjects} in addition to the data that is collected through the underlying tracing framework.
-All results have been calculated by applying formula \ref{eq:SpaceConsumptionBytes} to the specific values of $o$, $m$, and $a(M_n)$ that have been measured per test case.
+All results were calculated by applying formula \ref{eq:SpaceConsumptionBytes} to the specific values of $o$, $m$, and $a(M_n)$ which were determined per test case.
 
 In each of the evaluated projects, over 50\% of the test cases imply less than 10kB of additionally collected data.
 More than 97.5\% of all evaluated test cases require less than 200kB in addition.
@@ -274,8 +274,8 @@ Consequently, we only used those questions as a basis which appeared to be answe
 
 \paragraph{Task 1} The project contains a parser class that is used to extract single words from designators which are named in camel case style, namely \inlinecode{DTRCamelCaseParser}.
 Participants were asked to describe how this parser works, and could score a maximum of eight points that cover the cornerstones of this algorithm.
-The test case \inlinecode{testWholeWordParsing} that covers a suitable scenario was provided as entry point.
-The difficulties of this task were the high number of execution branches that have to be followed, and the handling of edge cases like acronyms or special characters.
+The test case \inlinecode{testWholeWordParsing} that spans a suitable scenario was provided as entry point.
+The difficulties of this task are the high number of execution branches that have to be followed, and the handling of edge cases like acronyms or special characters.
 
 \paragraph{Task 2} The thesaurus implementation creates instances of \inlinecode{DTRThesaurusEntry} that map words to their synonyms.
 They have an instance variable named \inlinecode{pos} which is used to mark the word class.
@@ -285,7 +285,8 @@ The answer had to be selected from a given list of possible values, with \inline
 Consequently, participants could score one point on this task.
 
 \paragraph{Task 3} The search for synonyms exhibits differing time complexities depending on whether the search term is present in the thesaurus or not.
-Since the implementation is based on a \inlinecode{Dictionary}, a failing lookup of a search term is performed in constant time, while the lookup of actual synonyms is dependent on the number of found thesaurus entries.
+Since the implementation is based on a \inlinecode{Dictionary}, a failing lookup of a search term is performed in constant time.
+In contrast, the lookup of actual synonyms is dependent on the number of found thesaurus entries due to the post-processing that is performed for each match.
 Participants were asked to give duration estimations for searches that do and do not return results, whereby they also were allowed to make use of profiling utilities.
 The answers had to be selected from a given list of time values, and consequently the maximum possible score for this task was one point per case, or respectively two points in total.
 Two test cases were provided as entry points, namely \inlinecode{testSynonymsOf} and \inlinecode{testEmptySynonymsOf}.
@@ -293,7 +294,7 @@ Two test cases were provided as entry points, namely \inlinecode{testSynonymsOf}
 \paragraph{Task 4} The spell checking module provides a method to test strings for spelling errors, namely \inlinecode{checkSpellingOf:}.
 This method uses the camel case parser to split the input string into single words.
 Participants were asked to find out how many parser instances are used to check the spelling of a given input string, and to state reasons for their answer.
-The problem with this scenario was that the source code strongly suggests that only one parser instance is used.
+The problem with this scenario is that the source code strongly suggests that only one parser instance is used.
 However, the implementation creates one to three further instances for each found word, depending on whether spelling errors are found or not.
 Participants could score a maximum of five points: one for the correct number of instances, two for the locations where they get created, and two for the reasons that lead to the creation of those additional instances.
 The unit test \inlinecode{testCheckSpellingOf} was provided as entry point.
@@ -302,22 +303,22 @@ The unit test \inlinecode{testCheckSpellingOf} was provided as entry point.
 For instance, such information can be relevant when features break after merging new commits.
 To solve the task, the three methods with the most recent alteration dates had to be named.
 Consequently, the maximum possible score for this tasks was three points.
-There were two different problems with this task.
-First, participants had to identify the methods that are involved in the spell checking process, or, in other words, those that are called transitively starting from the \inlinecode{checkSpellingOf:} method.
-Second, the identified methods had to be compared with regards to their alteration dates.
+There are two different problems with this task.
+First, participants have to identify the methods that are involved in the spell checking process, or in other words, those that are called transitively starting from the \inlinecode{checkSpellingOf:} method.
+Second, the identified methods have to be compared with regards to their alteration dates.
 Again, the \inlinecode{testCheckSpellingOf} was provided as entry point.
 
 
 \subsection{Experimental Setup}
 Participant were challenged separately in dedicated sessions.
 Thereby, the workplace, hardware, and Squeak image were identical for each participant.
-Consequently, it can be ruled out that factors like screen real estate or processing speed have an influence on the performance of the participants. 
+Consequently, it can be ruled out that factors like screen real estate or processing speed had an influence on the performance of the participants. 
 During the whole time of an experiment session, the study investigator was present.
 Foregoing the actual user study, all participants were asked to solve an introductory task, which involved the implementation of a single linked list and some simple operations.
 The task was finished as soon as all provided unit tests were satisfied.
 The purpose of this task was to harmonize the proficiency of the participants in dealing with the provided Squeak environment, and to revive their knowledge about Squeak/Smalltalk.
 
-In the case of groups B an C, each user study then started with a 15-minute introduction of the respective tools, since none of the participants had any prior experience with them.
+In the case of groups B an C, each experiment then started with a 15-minute introduction of the respective tools, since none of the participants had any prior experience with them.
 All features that could help to solve the tasks were explained, and participants were prompted to familiarize themselves with these features. 
 This step could be skipped in the case of group A, since all participants were sufficiently familiar with the Squeak environment.
 Afterwards, a brief introduction into the \textsc{DicThesaurusRex} project was given.
@@ -331,7 +332,7 @@ Participants were allowed to spend as much time as desired on each task, and a t
 
 For each task, two measures were utilized to grade the performance of participants, namely the processing time and the degree of comprehension.
 The measurement of the processing time started with the handover of a task, and ended when participants declared their answer as finished.
-The degree of comprehension is measured with the aid of a score-based grading of the answers participants gave, and expresses the percentage of points that were scored on a task (cf. Definition \ref{eq:UserEvaluationDc}).
+The degree of comprehension was measured with the aid of a score-based grading of the answers participants gave, and expresses the percentage of points that were scored on a task (cf. Definition \ref{eq:UserEvaluationDc}).
 
 \begin{equation}
 Comprehension(user, task) = \frac{score(user, task)}{maximumScore(task)}\label{eq:UserEvaluationDc}
@@ -339,27 +340,27 @@ Comprehension(user, task) = \frac{score(user, task)}{maximumScore(task)}\label{e
 
 \subsection{Results and Interpretation}
 The results of the user study are depicted in Figure \ref{fig:DiscussionStudyResults}.
-For each task, the required processing time is broken down by the three participant groups, and related to the determined degree of comprehension where applicable.
+For each task, the required processing time is broken down by the three participant groups, and related to the determined degree of comprehension.
 
 \paragraph{Task 1} Strikingly, the mean time the participants in group B spent on this task is almost six minutes higher than that of group A.
 The reason for this phenomenon is that participants in group A had to follow a lot of branches and transitive calls manually, and simply discontinued to do so when the further investigation seemed to cumbersome.
 In contrast, \textsc{PathFinder} displays the whole scenario at once, and participants had an intuitive understanding whether they gathered all relevant details.
 Surprisingly, this did not lead to a noticeable increase in the degree of comprehension.
 The participants in group C also were slower in comparison to group A.
-However, the mean degree of comprehension also is 0,31 points higher.
-This can be explained by the fact that many implementation details of the algorithm under investigation could be revealed by simply expanding the object state indicator of the covered camel case parser instance, and by stepping through the execution trace.
+But in return, the mean degree of comprehension of this group is 0,31 points higher.
+This can be explained by the fact that many implementation details of the algorithm under investigation can be revealed by simply expanding the object state indicator of the covered camel case parser instance, and by stepping through the execution trace.
 This approach is not supported by \textsc{PathFinder}, and impossible with the standard development tools alone.
 
 \paragraph{Task 2} All groups reached the maximum degree of comprehension of 1.0 on this task.
 However, the participants in group C were noticeably faster than the other two groups. 
 One reason for this phenomenon is that while the developers in group A had to browse senders manually for a meaningful occurrence, the participants in group C simply used the search function of \textsc{PathObjects}, and explored the argument of a call of the \inlinecode{pos:} method.
-Even though \textsc{PathFinder} also provides a search functionality, participants expanded the complete call tree and looked for occurrences of this setter method manually.
+Even though \textsc{PathFinder} also provides a search functionality, the participants of the respective group instead expanded the complete call tree and looked for occurrences of this setter method manually.
 
 \paragraph{Task 3} The first thing to be noticed is that groups B and C managed to reach the maximum degree of comprehension, while two participants in group A failed to do so.
 The reason for this shortage lies in the different solution strategies that were applied by participants in group A.
 One participant used the profiling functionality of the test runner, which itself uses the \inlinecode{MessageTally} profiler.
 The other participant used this profiler directly.
-However, \inlinecode{MessageTally} is a sampling profiler, and the measurement of the execution of an unsuccessful search for synonyms was too fast to be captured by a sample.
+However, \inlinecode{MessageTally} is a sampling profiler, and the measurement of the execution of an unsuccessful search for synonyms is too fast to be captured by a sample.
 Consequently, both participants guessed a value based on their measurement of a successful search, but were at fault in doing so.
 The other participants in group A did time measurements with the help of \inlinecode{millisecondsToRun:} manually, and got correct results in this way.
 What also attracts attention is that participants in group B were faster then those in group C.
@@ -372,7 +373,7 @@ In contrast, only one participant in group C failed to name all instances, but a
 Although \textsc{PathFinder} also offers a view that distinguishes object identities, two participants nevertheless failed to identify more than the obvious occurrence.
 They did not expand the call tree far enough to stumble across the other instances, and were under the impression that only one instance was used throughout the call tree.
 As opposed to this, \textsc{PathObjects} presents a map of objects, and participants had an immediate overview of this scenario.
-The reason that participants in group A were noticeably faster than the other two groups is that they only found the obvious instance, and did not spend any time to comprehend the reasons for the creation of the other instances, since they were not even aware of their existence.
+The reason that participants in group A were noticeably faster than the other two groups is that they did not spend any time to comprehend the reasons for the creation of the other instances, since they were not even aware of their existence.
 In other words, the participants in group C spent more time on this task, but did not draw wrong conclusions about the behavior of the system.
 
 \paragraph{Task 5} As it was expected, the participants in group A needed significantly more time to solve this task in comparison to the other two groups.
@@ -380,14 +381,14 @@ The reason is that they had to follow the transitive method calls of the spell c
 The participants in group C in turn were noticeably faster than group B since the participants of the latter group had to look up all alteration dates manually.
 In contrast, different solution strategies involving information layers were used by the participants of group C which directly showed the most recently changed methods.
 What also strikes the eye is that participants in group A were rather unsuccessful in their search, while groups B and C show a comparable degree of comprehension.
-However, as stated before,  the participants in group C required only around half of the mean time in comparison to group B.
+However, the participants in group C required only around half of the mean time in comparison to group B.
 
 \paragraph{Summary}
 In comparison to the participants of group A, those that were allowed to use our implementation of \textsc{PathObjects} show a higher degree of comprehension of each evaluated task.
 The sole exception is Task 2, were all participants of the three groups reach the maximum score.
-Furthermore, the participants in group C require less time to gain this degree of comprehension in three out of five tasks.
-The mean processing time of group A is lower in the case of tasks one and four, but this advantage comes at the cost of a distinctly reduced degree of comprehension.
-The participants that were allowed to use \textsc{PathFinder} outperform group C only in the case of task three.
+Furthermore, the participants in group C required less time to gain this degree of comprehension in three out of five tasks.
+The mean processing time of group A is lower in the case of Task 1 and Task 4, but this advantage comes at the cost of a distinctly reduced degree of comprehension.
+The participants that were allowed to use \textsc{PathFinder} outperform group C only in the case of Task 3.
 This result can be explained by the fact that \textsc{PathFinder} includes a full-fledged profiling functionality, which does not apply to \textsc{PathObjects}.
 Furthermore, profiling is an activity that is not bound to the concepts of object-orientation.
 In summary, it can be said that \textsc{PathObjects} successfully assisted participants in the evaluated tasks.
@@ -397,7 +398,7 @@ Since these tasks were derived from frequent developer questions, it can be conc
 	\centering
 
 	\includegraphics[width=1.0\textwidth]{../plots/05-UserEvaluation}
-	\caption[Results of the User Study]{Performance of the participant groups (A: Squeak standard tools, B: \textsc{PathFinder}, C: \textsc{PathObjects}) per task, measured by processing time (lower is better) and degree of comprehension (higher is better); whiskers indicate the lowest and highest occurrences.}
+	\caption[Results of the User Study]{Performance of the participant groups (A: Squeak standard tools, B: \textsc{PathFinder}, C: \textsc{PathObjects}) per task, measured by degree of comprehension (higher is better) and processing time (lower is better); whiskers indicate the lowest and highest occurrences.}
 	\label{fig:DiscussionStudyResults}
 	
 \end{figure}
@@ -410,9 +411,9 @@ Generally speaking, the scale of the chosen subject project and the Smalltalk co
 However, \textsc{DicThesaurusRex} is a real-world software project, and has not been developed for the purpose of our user study.
 And although this fact alone is not sufficient to guarantee the usefulness of our concept with arbitrarily scaled software systems and different programming languages, the results still indicate worthwhile directions for further research on its general applicability.
 Apart from that, our experimental setup can not guarantee the elimination of selection and experimenter bias.
-Even though participants were selected on the basis of their relevant experiences and assigned to the different groups randomly, we cannot foreclose that differences in the mental abilities had an impact on the mean performance of the compared groups.
+Even though participants were selected on the basis of their relevant experiences and assigned to the different groups randomly, we cannot foreclose that differences in their mental abilities had an impact on the mean performance of the compared groups.
 To rule out this factor, the user study would have to be conducted with a larger number of participants, which was not possible within the scope of this thesis.
-Since the user study was supervised by the implementer of \textsc{PathObjects} and was not conducted double blinded, we also cannot foreclose that experimenter bias had an influence on the performance characteristics of the participants.
+Since the user study was supervised by the implementer of \textsc{PathObjects} and was not conducted in a double blinded manner, it also cannot be foreclosed that experimenter bias had an influence on the performance characteristics of participants.
 
 \paragraph{External Validity}
 Although we tried to equalize the situational specifics for all participants, it still cannot be ruled out that they limit the generalizability of our findings.
