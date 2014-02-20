@@ -14,7 +14,7 @@ Finally, Section \ref{s:ImplementationLayouting} illustrates how \textsc{PathObj
 \begin{figure}[tb]
 	\centering
 	\includegraphics[width=1\textwidth]{../images/04-ImplMainWindow}
-	\caption[PathObjects for Squeak/Smalltalk]{Prototypic implementation of \textsc{PathObjects} for Squeak/Smalltalk. 1) Diagram Area 2) Timeline 3) Mini-Map 4) Search Bar.}
+	\caption[PathObjects for Squeak/Smalltalk]{Implementation of \textsc{PathObjects} for Squeak/Smalltalk. 1) Diagram Area 2) Timeline 3) Mini-Map 4) Search Bar.}
 	\label{fig:ImplementationMainWindow}
 \end{figure}
 
@@ -22,9 +22,9 @@ Figure \ref{fig:ImplementationMainWindow} shows our implementation of \textsc{Pa
 The diagram depicts the same scenario which is covered in Figure \ref{fig:ApproachBasic}:
 the analog clock class registers one of its instances as observer of the clock timer instance.
 
-The example shows that the class \inlinecode{SAnalogClock} sends the \inlinecode{attach:} message to an instance of \inlinecode{ClockTimer}.
+The example shows that the class \inlinecode{AnalogClock} sends the \inlinecode{attach:} message to an instance of \inlinecode{ClockTimer}.
 Thereby, the green background color indicates objects that are participating in the current step of the execution history.
-The argument of the \inlinecode{attach:} message is an instance of \inlinecode{SAnalogClock}.
+The argument of the \inlinecode{attach:} message is an instance of \inlinecode{AnalogClock}.
 This circumstance is illustrated through the yellow role indicator which is attached to the object.
 To clarify the role of an object in the current step even further, this indicator also shows the name the underlying method defines for this argument, namely \inlinecode{anObserver}.
 
@@ -69,7 +69,7 @@ Figure \ref{fig:ImplementationExplorationStateAfter} depicts the state of the sy
 The message label now has an additional field to explore the return value.
 The latter turns out to be the clock timer instance, and this fact is also clarified through the role indicator that is attached to the object.
 But the most important change is visible in the state explorer.
-It can be seen that the collection of observers now has one entry, and this entry is the instance of \inlinecode{SAnalogClock} that has been passed as argument.
+It can be seen that the collection of observers now has one entry, and this entry is the instance of \inlinecode{AnalogClock} which has been passed as argument.
 
 \subsection{Information Layers}
 
@@ -282,7 +282,7 @@ To convert those values to pixel values, they have to be multiplied with the res
 \begin{graphviz}[caption={Output in plain-ext format as produced by \textsc{Graphviz} for the input from Listing \ref{lst:ImplementationGraphDot}}, label=lst:ImplementationGraphPlainExt]
 graph 1 14.306 4.5451
 node 1002 9.9444 3.1528 1.5417 0.375 "a ClockTimer" ...
-node 1027 13.042 2.0139 1.6111 0.375 "a SDigitalClock" ...
+node 1027 13.042 2.0139 1.6111 0.375 "a DigitalClock" ...
 ...
 edge 1002 1002 16 9.1735 3.255 8.6827 3.255 8.1389 3.255 ...
 edge 1002 1027 7 9.8472 2.9659 9.8472 2.6371 9.8472 1.9896 ...
