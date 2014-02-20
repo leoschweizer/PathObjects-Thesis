@@ -29,12 +29,17 @@ This is illustrated through the yellow flag that is attached to the object.
 To clarify the role of an object in the current step even further, this indicator also shows the name the underlying method defines for this argument, namely \inlinecode{anObserver}.
 
 \subsection{Interactive Components}
-\todo{missing components}
-Developers can explore the implementations of the current message and of the context in which this message is sent through clicking on the icon to the left of the message name.
-The icon to the right of the message name allows to directly explore the state of the argument.
-The icons that are shown above the clock timer instance are a context sensitive menu that is displayed when the developer hovers an object.
-It allows to take further actions regarding the respective object.
-From left to right, these are toggling state tracking, toggling outbound reference tracking, setting of a quick filter, and execution of a quick search.
+Developers can navigate the temporal dimension of execution traces through the timeline (Component 2).
+The spatial domain is navigable through the mini-map (Component 3) or through drag interactions with the diagram area.
+The search bar (Component 4) enables target-oriented navigation and offers auto-completion for all object and message names of the current trace.
+
+The icon to the left of the message name provides entry points for the exploration of the underlying source code.
+The implementations of the current message and of the context in which this message is sent are displayed in a source browser pop-up.
+The icon to the right of the message name allows to explore the state of the argument.
+
+Each object features a context sensitive menu which allows to take further actions regarding the respective object.
+Such a menu, which is displayed when developers hover over an object is visible above the clock timer instance.
+From left to right, it provides actions for toggling state tracking, toggling outbound reference tracking, setting of a quick filter, and execution of a quick search.
 
 \begin{figure}[b]
 	\centering
