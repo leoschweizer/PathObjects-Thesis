@@ -11,7 +11,7 @@ Finally, Section \ref{s:ImplementationLayouting} illustrates how \textsc{PathObj
 \sectionmark{Implementation}
 \label{s:ImplementationPrototype}
 
-\begin{figure}
+\begin{figure}[tb]
 	\centering
 	\includegraphics[width=1\textwidth]{../images/04-ImplMainWindow}
 	\caption[PathObjects for Squeak/Smalltalk]{Prototypic implementation of \textsc{PathObjects} for Squeak/Smalltalk. 1) Diagram Area 2) Timeline 3) Mini-Map 4) Search Bar.}
@@ -19,26 +19,26 @@ Finally, Section \ref{s:ImplementationLayouting} illustrates how \textsc{PathObj
 \end{figure}
 
 Figure \ref{fig:ImplementationMainWindow} shows our implementation of \textsc{PathObjects} for the Squeak/Smalltalk environment.
-The diagram depicts the same scenario that is covered in Figure \ref{fig:ApproachBasic}:
-the analog clock class registers one of its instances as observer of the clock timer instance.\todo{update fig.}
+The diagram depicts the same scenario which is covered in Figure \ref{fig:ApproachBasic}:
+the analog clock class registers one of its instances as observer of the clock timer instance.
 
 The example shows that the class \inlinecode{SAnalogClock} sends the \inlinecode{attach:} message to an instance of \inlinecode{ClockTimer}.
 Thereby, the green background color indicates objects that are participating in the current step of the execution history.
-The argument of the \inlinecode{attach:} message is an instance the \inlinecode{SAnalogClock}.
-This is illustrated through the yellow flag that is attached to the object.
+The argument of the \inlinecode{attach:} message is an instance of \inlinecode{SAnalogClock}.
+This circumstance is illustrated through the yellow role indicator which is attached to the object.
 To clarify the role of an object in the current step even further, this indicator also shows the name the underlying method defines for this argument, namely \inlinecode{anObserver}.
 
 \subsection{Interactive Components}
-Developers can navigate the temporal dimension of execution traces through the timeline (Component 2).
+Developers can navigate the temporal dimension of execution traces through the timeline (cf. Figure \ref{fig:ImplementationMainWindow}, Component 2).
 The spatial domain is navigable through the mini-map (Component 3) or through drag interactions with the diagram area.
 The search bar (Component 4) enables target-oriented navigation and offers auto-completion for all object and message names of the current trace.
 
-The icon to the left of the message name provides entry points for the exploration of the underlying source code.
+The icon to the left of message names provides entry points for the exploration of the underlying source code.
 The implementations of the current message and of the context in which this message is sent are displayed in a source browser pop-up.
-The icon to the right of the message name allows to explore the state of the argument.
+The icon to the right of message names allows to explore the state of the according arguments.
 
 Each object features a context sensitive menu which allows to take further actions regarding the respective object.
-Such a menu, which is displayed when developers hover over an object is visible above the clock timer instance.
+Such a menu, which is displayed when developers hover over an object, is visible above the clock timer instance.
 From left to right, it provides actions for toggling state tracking, toggling outbound reference tracking, setting of a quick filter, and execution of a quick search.
 
 \begin{figure}[b]
