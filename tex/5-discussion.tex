@@ -134,6 +134,9 @@ Objects are not created and destroyed excessively through the tracing framework,
 Furthermore, the start-ups are short running tasks.
 Even if garbage collection would account for a significant share of the runtime, the overall start-up time would still be fast enough in the majority of cases.
 
+Apart from that, a total of eight test cases originating from all four systems had to be excluded from the measurement, since they showed non-deterministic or non-terminating behavior.
+However, these exceptions only amount to 1.0\% of the total number of test cases and thus can hardly invalidate the overall result of the runtime evaluation.
+
 \subsection{Space Consumption}
 \label{ss:DiscussionSpace}
 As pointed out in Section \ref{s:BackgroundAnalysis}, one major problem of dynamic analysis techniques is the huge amount of data arising during tracing runs.
