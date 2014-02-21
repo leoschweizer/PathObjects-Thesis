@@ -255,6 +255,7 @@ The results of the study show that participants which were allowed to use \texts
 \subsection{Participant Profile}
 Twelve undergraduate and graduate students with a professional background in object-oriented programming in general and Squeak/Smalltalk in particular were invited to take part in the user study.
 All participants had between four and ten years of experience with object-oriented programming languages and two to six years of experience with Squeak/Smalltalk.
+Furthermore, all participants reached good or very good grades in a mandatory software engineering lecture, which included a Smalltalk programming project as major component of the overall grade (six participants were graded A, four participants were graded A-, and two participants were graded B+).
 None of the participants had any considerable prior experience with \textsc{PathFinder} or \textsc{PathObjects}.
 
 The twelve participants were randomly divided into three groups, whereby each group was allowed to use a different set of tools to solve the appointed tasks.
@@ -311,7 +312,6 @@ First, participants have to identify the methods that are involved in the spell 
 Second, the identified methods have to be compared with regards to their alteration dates.
 Again, the \inlinecode{testCheckSpellingOf} was provided as entry point.
 
-
 \subsection{Experimental Setup}
 Participant were challenged separately in dedicated sessions.
 Thereby, the workplace, hardware, and Squeak image were identical for each participant.
@@ -342,6 +342,16 @@ Comprehension(user, task) = \frac{score(user, task)}{maximumScore(task)}\label{e
 \end{equation}
 
 \subsection{Results and Interpretation}
+
+\begin{figure}[tb!]
+	\centering
+
+	\includegraphics[width=1.0\textwidth]{../plots/05-UserEvaluation}
+	\caption[Results of the User Study]{Performance of the participant groups (A: Squeak standard tools, B: \textsc{PathFinder}, C: \textsc{PathObjects}) per task, measured by degree of comprehension (higher is better) and processing time (lower is better); whiskers indicate the lowest and highest occurrences.}
+	\label{fig:DiscussionStudyResults}
+	
+\end{figure}
+
 The results of the user study are depicted in Figure \ref{fig:DiscussionStudyResults}.
 For each task, the required processing time is broken down by the three participant groups, and related to the determined degree of comprehension.
 
@@ -397,31 +407,20 @@ Furthermore, profiling is an activity that is not bound to the concepts of objec
 In summary, it can be said that \textsc{PathObjects} successfully assisted participants in the evaluated tasks.
 Since these tasks were derived from frequent developer questions, it can be concluded that our proposed information presentation actually can help in the comprehension of object-oriented behavior in general.
 
-\begin{figure}[tb]
-	\centering
-
-	\includegraphics[width=1.0\textwidth]{../plots/05-UserEvaluation}
-	\caption[Results of the User Study]{Performance of the participant groups (A: Squeak standard tools, B: \textsc{PathFinder}, C: \textsc{PathObjects}) per task, measured by degree of comprehension (higher is better) and processing time (lower is better); whiskers indicate the lowest and highest occurrences.}
-	\label{fig:DiscussionStudyResults}
-	
-\end{figure}
-
 \subsection{Threats to Validity}
-Our experimental setup exhibits characteristics that could limit the validity of its outcomes:
-
 \paragraph{Internal Validity}
 Generally speaking, the scale of the chosen subject project and the Smalltalk context could limit the overall applicability of our findings.
 However, \textsc{DicThesaurusRex} is a real-world software project, and has not been developed for the purpose of our user study.
 And although this fact alone is not sufficient to guarantee the usefulness of our concept with arbitrarily scaled software systems and different programming languages, the results still indicate worthwhile directions for further research on its general applicability.
 Apart from that, our experimental setup can not guarantee the elimination of selection and experimenter bias.
 Even though participants were selected on the basis of their relevant experiences and assigned to the different groups randomly, we cannot foreclose that differences in their mental abilities had an impact on the mean performance of the compared groups.
-To rule out this factor, the user study would have to be conducted with a larger number of participants, which was not possible within the scope of this thesis.
+To rule out this factor, the user study would have to be conducted with a larger number of participants.
 Since the user study was supervised by the implementer of \textsc{PathObjects} and was not conducted in a double blinded manner, it also cannot be foreclosed that experimenter bias had an influence on the performance characteristics of participants.
 
 \paragraph{External Validity}
 Although we tried to equalize the situational specifics for all participants, it still cannot be ruled out that they limit the generalizability of our findings.
 All participants dealt with the tasks at the same workplace with the same technical equipment.
-However, factors like ambient sounds, form on the day, fitness depending on the time of the day, the general wellbeing of participants, and others were beyond our control.
+However, factors like ambient sounds, fitness depending on the time of the day, the general wellbeing of participants, and others were beyond our control.
 Furthermore, not all participants were accustomed to the specifics attributable to the Windows operating system, such as the keyboard layout or shortcuts.
 And although the introductory task was meant to harmonize the proficiency in dealing with the target system, some participants still might have benefited from previous knowledge.
 
