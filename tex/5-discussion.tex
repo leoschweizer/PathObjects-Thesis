@@ -23,10 +23,10 @@ This evaluation shows that the additional memory consumption is lower than 1MB e
 \label{ss:DiscussionProjects}
 In order to get a meaningful performance estimation, four real-world software projects with different backgrounds were chosen as a basis for the measurements.
 The extent of those projects (cf. Table \ref{t:EvaluationProjects}) ranges from roughly 210 methods in 16 classes to almost 1900 methods in over 210 classes.
-\textsc{Seaside}\footnote{http://seaside.st, last checked \today} is a full-fledged, industry grade web application framework.
-\textsc{DicThesauruasRex}\footnote{https://www.hpi.uni-potsdam.de/hirschfeld/trac/SqueakCommunityProjects/wiki/dicThesaurusRex. last checked \today} is the result of an undergraduate student project which adds spelling correction and synonym search facilities to the Squeak development environment.
-\textsc{SUnit}\footnote{http://sunit.sourceforge.net/, last checked \today} is the de-facto standard for unit testing frameworks in Smalltalk environments and constitutes a landmark of test-driven development.
-The \textsc{System Browser}\footnote{http://wiki.squeak.org/squeak/673, last checked \today} is the fundamental development tool in Squeak images that allows to browse and edit the source codes of the image.
+\textsc{Seaside}\footnote{\url{http://seaside.st}, last checked \today} is a full-fledged, industry grade web application framework.
+\textsc{DicThesauruasRex}\footnote{\url{https://www.hpi.uni-potsdam.de/hirschfeld/trac/SqueakCommunityProjects/wiki/dicThesaurusRex}, last checked \today} is the result of an undergraduate student project which adds spelling correction and synonym search facilities to the Squeak development environment.
+\textsc{SUnit}\footnote{\url{http://sunit.sourceforge.net/}, last checked \today} is the de-facto standard for unit testing frameworks in Smalltalk environments and constitutes a landmark of test-driven development.
+The \textsc{System Browser}\footnote{\url{http://wiki.squeak.org/squeak/673}, last checked \today} is the fundamental development tool in Squeak images that allows to browse and edit the source codes of the image.
 
 \begin{table}
 \centering
@@ -94,7 +94,7 @@ Namely these are the execution of a shallow analysis, the initialization of all 
 Between each measurement, garbage collection was triggered multiple times in order to prevent unintended side effects through growing memory consumption.
 
 All measurements were performed on an Intel\copyright{} Core\texttrademark{}  i7-2620M CPU @ 2.70GHz.
-The Squeak image version 4.4-12327 was executed on a Windows 7 x64 host operating system with the Croquet Closure Stack VM, version StackInterpreter VMMaker-oscog-EstebanLorenzano.237\footnote{http://source.squeak.org/VMMaker/VMMaker-oscog-EstebanLorenzano.237.mcz, last checked \today}. 
+The Squeak image version 4.4-12327 was executed on a Windows 7 x64 host operating system with the Croquet Closure Stack VM, version StackInterpreter VMMaker-oscog-EstebanLorenzano.237\footnote{\url{http://source.squeak.org/VMMaker/VMMaker-oscog-EstebanLorenzano.237.mcz}, last checked \today}. 
 This combination of CPU and VM performs at 528.1 million bytecodes/sec and 27.3 million sends/sec in the Squeak Tiny Benchmarks. \textsc{Graphviz} served as graph drawing engine and was present in version 2.34.
 
 \subsubsection{Results}
@@ -314,7 +314,7 @@ Again, the \inlinecode{testCheckSpellingOf} was provided as entry point.
 
 \subsection{Experimental Setup}
 Participant were challenged separately in dedicated sessions.
-Thereby, the workplace, hardware, and Squeak image were identical for each participant.
+Thereby, the workplace, hardware, and Squeak image\footnote{This image provided Squeak 4.4, \textsc{PathObjects} 0.2 (available online at \url{https://github.com/leoschweizer/PathObjects/releases/tag/v0.2-Milestone}, last checked \today), and \textsc{PathTools} 1.7} were identical for each participant.
 Consequently, it can be ruled out that factors like screen real estate or processing speed had an influence on the performance of the participants. 
 During the whole time of an experiment session, the study investigator was present.
 Foregoing the actual user study, all participants were asked to solve an introductory task, which involved the implementation of a single linked list and some simple operations.
@@ -338,7 +338,7 @@ The measurement of the processing time started with the handover of a task, and 
 The degree of comprehension was measured with the aid of a score-based grading of the answers participants gave, and expresses the percentage of points that were scored on a task (cf. Definition \ref{eq:UserEvaluationDc}).
 
 \begin{equation}
-Comprehension(user, task) = \frac{score(user, task)}{maximumScore(task)}\label{eq:UserEvaluationDc}
+Comprehension(user, task) = \frac{Score(user, task)}{MaximumScore(task)}\label{eq:UserEvaluationDc}
 \end{equation}
 
 \subsection{Results and Interpretation}
@@ -355,7 +355,7 @@ Comprehension(user, task) = \frac{score(user, task)}{maximumScore(task)}\label{e
 The results of the user study are depicted in Figure \ref{fig:DiscussionStudyResults}.
 For each task, the required processing time is broken down by the three participant groups, and related to the determined degree of comprehension.
 
-\paragraph{Task 1} Strikingly, the mean time the participants in group B spent on this task is almost six minutes higher than that of group A.
+\paragraph{Task 1} Strikingly, the mean time participants in group B spent on this task is almost six minutes higher than that of group A.
 The reason for this phenomenon is that participants in group A had to follow a lot of branches and transitive calls manually, and simply discontinued to do so when the further investigation seemed to cumbersome.
 In contrast, \textsc{PathFinder} displays the whole scenario at once, and participants had an intuitive understanding whether they gathered all relevant details.
 Surprisingly, this did not lead to a noticeable increase in the degree of comprehension.
@@ -405,7 +405,6 @@ The participants that were allowed to use \textsc{PathFinder} outperform group C
 This result can be explained by the fact that \textsc{PathFinder} includes a full-fledged profiling functionality, which does not apply to \textsc{PathObjects}.
 Furthermore, profiling is an activity that is not bound to the concepts of object-orientation.
 In summary, it can be said that \textsc{PathObjects} successfully assisted participants in the evaluated tasks.
-Since these tasks were derived from frequent developer questions, it can be concluded that our proposed information presentation actually can help in the comprehension of object-oriented behavior in general.
 
 \subsection{Threats to Validity}
 \paragraph{Internal Validity}
