@@ -18,13 +18,15 @@ o <- function(x) {
   subset(x, x > quantile(x, c(.99)))
 }
 
+ticks <- data.frame(b = c(1, 10, 40), l = c(1, 10, 40))
+
 runtimes <- read.table("05-Runtimes.data", col.names=c("project","runtime"))
 ggplot(runtimes, aes(project, runtime / 1000)) +
   stat_summary(fun.data = f, geom="errorbar", aes(width=0.2)) +
   stat_summary(fun.data = f, geom="boxplot", fill="#31A354", aes(width=0.4)) +
   stat_summary(fun.y = o, geom="point") +
   ylab("Runtime [s]") +
-  scale_y_log10() +
+  scale_y_log10(breaks=c(1,10,40), labels=c(1,10,40)) +
   annotation_logticks(sides = "lr") +
   theme_bw() +
   theme(
@@ -33,7 +35,7 @@ ggplot(runtimes, aes(project, runtime / 1000)) +
     axis.title.x = element_blank(),
     axis.ticks.x = element_blank(),
     panel.grid.minor = element_blank(),
-    plot.margin = unit(c(0,0,0,0), "cm")
+    plot.margin = unit(c(0.1,0,0,0), "cm")
   ) +
   guides(fill=FALSE)
 @

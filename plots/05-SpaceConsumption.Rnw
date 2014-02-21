@@ -25,7 +25,7 @@ ggplot(runtimes, aes(project, (((4 * objects + 9 * messages + pointers) * 4) / 1
   stat_summary(fun.data = f, geom="boxplot", fill="#3182BD", aes(width=0.4)) +
   stat_summary(fun.y = o, geom="point") +
   ylab("Space Consumption [kB]") +
-  scale_y_log10() +
+  scale_y_log10(breaks=c(1,100,1000), labels=c(1,100,1000)) +
   annotation_logticks(sides = "lr") +
   theme_bw() +
   theme(
