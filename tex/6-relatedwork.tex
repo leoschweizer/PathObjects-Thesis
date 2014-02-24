@@ -136,7 +136,7 @@ However, additional features like state exploration or reference tracking are no
 Bohnet and Döllner propose a 2.5D visualization of execution traces that takes advantage of linking static and dynamic aspects of the system under observation \cite{bohnet_visual_2006}.
 In a first step, the static architecture of a system is derived from the directory structure and naming conventions.
 Since users typically have exceeding architectural knowledge, the proposed architecture can be manually refined subsequently.
-The user then executes the features he wants to investigate and a runtime call log of the program execution is generated with the help of Callgrind\footnote{http://valgrind.org/info/tools.html\#callgrind, last checked \today}.
+The user then executes the features he wants to investigate and a runtime call log of the program execution is generated with the help of Callgrind\footnote{\url{http://valgrind.org/info/tools.html\#callgrind}, last checked \today}.
 The function calls are mapped to the static structure and displayed as 2.5D diagram (cf. Figure \ref{fig:3DBohnet}).
 Thereby, the static aspects are laid out in a plane, the currently focused function call is displayed as a disk, and preceding and succeeding function calls are represented by arrow tops and bottoms.
 The prototype also provides a number of tools to reduce the search space to the feature-relevant aspects.

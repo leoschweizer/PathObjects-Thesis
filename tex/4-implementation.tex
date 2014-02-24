@@ -120,7 +120,7 @@ The Squeak image does not offer a convenient way to access the object pointer, w
 There are workarounds that would allow to determine its value, but since this value still is subject to change during a tracing run due to the reasons pointed out above, it would require to disable garbage collection during this time span.
 This could have undesired side effects, like excessive memory consumption or slow execution speeds due to increased memory allocation effort.
 
-For these reasons, we chose a different approach that allows us to generate unique, stable identifiers for objects.
+For these reasons, we chose a different approach that allows to generate unique, stable identifiers for objects.
 It exploits the fact that a comparison for referential equality provided by the \inlinecode{==} method will always yield the correct result.
 It returns true if two objects have the same object pointer, and false otherwise.
 Squeak provides a \inlinecode{WeakKeyIdentityDictionary} that has two beneficial properties for our use case.
@@ -128,7 +128,7 @@ First, it uses \inlinecode{==} comparison to test dictionary keys for equality.
 That means that when using the objects that occur during tracing runs as keys, it is guaranteed that no two referentially distinct objects will be identified as the same key, and an object will always be mapped to the same key once it is present in the dictionary.
 The second property is that it uses weak references to manage keys, which implicates that garbage collection of an object is not suspended by the fact that it is used as key in such a dictionary.
 
-Consequently, this allows us to use objects occurring during tracing runs as keys, without interfering with the test execution.
+Consequently, this allows to use objects occurring during tracing runs as keys, without interfering with the test execution.
 Identifiers can be assigned to objects as values of the dictionary.
 Thus, it is guaranteed that one object will always be mapped to the same identifier.
 To ensure that no identifier is assigned to two referentially different objects, it is sufficient to use a continuously incrementing integer counter when assigning new identities, or respectively when adding new entries to the dictionary.
@@ -183,7 +183,7 @@ Therefore, the refinement runs for object reference tracing mostly correspond to
 \label{s:ImplementationLayouting}
 Object-oriented execution traces can be mapped to directed multigraphs.
 Our implementation of \textsc{PathObjects} exploits this circumstance by using the state of the art in graph drawing to lay out objects and to route messages.
-Thereby, two graph drawing frameworks are supported, namely \textsc{Roassal}\footnote{http://objectprofile.com/\#/pages/products/roassal/overview.html, last checked \today} and \textsc{Graphviz}\footnote{http://www.graphviz.org/, last checked \today}.
+Thereby, two graph drawing frameworks are supported, namely \textsc{Roassal}\footnote{\url{http://objectprofile.com/\#/pages/products/roassal/overview.html}, last checked \today} and \textsc{Graphviz}\footnote{\url{http://www.graphviz.org}, last checked \today}.
 \textsc{Roassal} provides a Squeak-native implementation without external dependencies.
 However, its results are deficient in terms of the aesthetic criteria we defined in Section \ref{s:ApproachLayout}.
 For that reason, it only serves as a fallback solution.
