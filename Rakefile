@@ -4,7 +4,7 @@ require 'open-uri'
 MAIN_INPUT		= "main"
 MAIN_INPUT_TEX	= "#{MAIN_INPUT}.tex"
 OUTPUT_NAME		= "Thesis.pdf"
-PDFBOX_VERSION 	= "1.8.2"
+PDFBOX_VERSION 	= "1.8.4"
 
 task :default => [:clean, :build, :show]
 
