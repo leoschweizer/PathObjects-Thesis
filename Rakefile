@@ -43,7 +43,7 @@ task :build => [:make_build_directory, :diagrams] do
 	Dir.chdir('tex') do
 		`pdflatex -shell-escape -output-directory=../build #{MAIN_INPUT_TEX}`
 		`biber --output_directory ../build #{MAIN_INPUT}`
-		`makeglossaries -d build #{MAIN_INPUT}`
+		`makeglossaries -d ../build #{MAIN_INPUT}`
 		`pdflatex -shell-escape -output-directory=../build #{MAIN_INPUT_TEX}`
 		`pdflatex -shell-escape -output-directory=../build #{MAIN_INPUT_TEX}`
 	end
