@@ -102,7 +102,7 @@ Building
   * Install latest `caption` package ([trunk](http://sourceforge.net/p/latex-caption/code/HEAD/tree/trunk/tex/))
   * [R](http://www.r-project.org) 3.0 or newer
   * [Graphviz](http://graphviz.org) 2.34 or newer
-  * [ImageMagick]()http://www.imagemagick.org in case you want to use the `thumbs` task
+  * [ImageMagick](http://www.imagemagick.org) in case you want to use the `thumbs` task
   
 **Build**
 
