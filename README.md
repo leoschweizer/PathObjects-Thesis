@@ -36,29 +36,73 @@ PathObjects-Thesis
 ![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page33.png)
 ![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page34.png)
 ![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page35.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page36.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page37.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page38.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page39.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page40.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page41.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page42.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page43.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page44.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page45.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page46.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page47.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page48.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page49.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page50.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page51.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page52.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page53.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page54.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page55.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page56.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page57.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page58.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page59.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page60.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page61.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page62.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page63.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page64.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page65.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page66.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page67.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page68.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page69.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page70.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page71.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page72.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page73.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page74.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page75.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page76.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page77.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page78.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page79.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page80.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page81.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page82.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page83.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page84.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page85.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page86.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page87.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page88.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page89.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page90.png)
+![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page91.png)
 
-Status
-------
-
-| Chapter        | Status        | Target  |
-| -------------- | ------------- | ------- |
-| Introduction   | 5             | 4       |
-| Background     | 10            | 12      |
-| Concept        | 10            | 12      |
-| Implementation | 10            | 9       |
-| Discussion     | 11            | 12      |
-| Related Work   | 9             | 8       |
-| Conclusion     | 2             | 3       |
-| **Overall**    | **57**        | **60**  |
 
 Building
 --------
 
 **Requirements**
+  * [MiKTeX](http://miktex.org)
   * Install latest `caption` package ([trunk](http://sourceforge.net/p/latex-caption/code/HEAD/tree/trunk/tex/))
-  * R 3.0 or newer
-  * Graphviz 2.34 or newer
-  * ImageMagick in case you want to use the `thumbs` task
+  * [R](http://www.r-project.org) 3.0 or newer
+  * [Graphviz](http://graphviz.org) 2.34 or newer
+  * [ImageMagick]()http://www.imagemagick.org in case you want to use the `thumbs` task
   
 **Build**
 
