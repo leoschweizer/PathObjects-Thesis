@@ -64,11 +64,11 @@ From left to right, it provides actions for toggling state tracking, toggling ou
 
 Figure \ref{fig:ImplementationExplorationState} shows how enabling state exploration affects the information presentation.
 In Figure \ref{fig:ImplementationExplorationStateBefore}, the state of the system is shown before the \inlinecode{attach:} message has been processed.
-State tracking is enabled for the clock timer instance, and the state explorer shows that no observers are currently registered and that the hour, minute, and second attributes are equal to \inlinecode{0}.
+State tracking is enabled for the clock timer instance, and the state indicator shows that no observers are currently registered and that the hour, minute, and second attributes are equal to \inlinecode{0}.
 Figure \ref{fig:ImplementationExplorationStateAfter} depicts the state of the system after the \inlinecode{attach:} message has been processed, or respectively after the developer took a step forward in the execution history.
 The message label now has an additional field to explore the return value.
 The latter turns out to be the clock timer instance, and this fact is also clarified through the role indicator that is attached to the object.
-But the most important change is visible in the state explorer.
+But the most important change is visible in the state indicator.
 It can be seen that the collection of observers now has one entry, and this entry is the instance of \inlinecode{AnalogClock} which has been passed as argument.
 
 \subsection{Information Layers}
@@ -279,7 +279,7 @@ Each line represents either a graph definition, a node definition, an edge defin
 Analogous to the input values, the measurement unit for widths, heights, and coordinates is inches.
 To convert those values to pixel values, they have to be multiplied with the resolution argument passed to the \inlinecode{dot} executable.
 
-\begin{graphviz}[caption={Output in plain-ext format as produced by \textsc{Graphviz} for the input from Listing \ref{lst:ImplementationGraphDot}.}, label=lst:ImplementationGraphPlainExt]
+\begin{graphviz}[caption={Output in \inlinecode{plain-ext} format as produced by \textsc{Graphviz} for the input from Listing \ref{lst:ImplementationGraphDot}.}, label=lst:ImplementationGraphPlainExt]
 graph 1 14.306 4.5451
 node 1002 9.9444 3.1528 1.5417 0.375 "a ClockTimer" ...
 node 1027 13.042 2.0139 1.6111 0.375 "a DigitalClock" ...
