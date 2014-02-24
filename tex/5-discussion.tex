@@ -13,7 +13,7 @@ In addition, the limitations of our approach and its applicability to other prog
 
 \section{Performance Evaluation}
 \label{s:DiscussionPerformance}
-Research results already have shown that the step-wise run-time analysis approach that serves as a basis of \textsc{PathObjects} enables the immediate exploration of a programs runtime while maintaining a low memory footprint \cite{perscheid_immediacy_2010}.
+Research results already have shown that the step-wise run-time analysis approach that serves as a basis of \textsc{PathObjects} enables the immediate exploration of a program's runtime while maintaining a low memory footprint \cite{perscheid_immediacy_2010}.
 To ensure that the computational extra work required for visualizing recorded object interactions preserves the immediate character of this approach, we evaluated the runtime performance of our implementation.
 The results show that more than 75\% of the examined unit tests can be presented to developers in less than two seconds, and more than 95\% take no more than ten seconds.
 Since \textsc{PathObjects} also introduces additional tracing effort, we also analyzed its memory requirements.
@@ -207,7 +207,7 @@ To get a reasonable estimation of the three variable parts $o$, $m$, and $a(M_n)
     		(Message.east) ++(0,0.2) -| ([yshift=1.5cm]Collection.west); 
 			
 	\end{tikzpicture}
-	\caption[Memory Consuming Components of \textsc{PathObjects} Traces]{Memory consuming components of \textsc{PathObjects} traces.}
+	\caption[Memory Consuming Components of \textsc{PathObjects} Traces]{Memory Consuming Components of \textsc{PathObjects} Traces.}
 	\label{fig:DiscussionStructure}
 \end{figure}
 
@@ -233,7 +233,7 @@ With the worst case introducing less than 1MB of additional tracing data, it can
 
 \subsubsection{Threats to Validity}
 The calculated memory consumption should be interpreted as lower limit of the values that are reached in practice.
-Although the overhead implicated by object instances themself in the Squeak virtual machine is taken into consideration, the memory consumption will effectively be higher than determined by our calculations.
+Although the overhead implicated by object instances themselves in the Squeak virtual machine is taken into consideration, the memory consumption will effectively be higher than determined by our calculations.
 First, the memory overhead the virtual machine itself introduces to manage objects can not be considered with the chosen approach.
 Second, memory allocation is rather performed in blocks than with byte precision.
 Consequently, the actual memory consumption depends on the number of blocks that have to be allocated to satisfy the requirements.
