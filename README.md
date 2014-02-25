@@ -1,5 +1,44 @@
-PathObjects-Thesis
-==================
+### PathObjects - Revealing Object Interactions to Assist Developers in Program Comprehension
+
+#### Abstract
+
+Program comprehension is a tedious necessity during software development with complex cognitive demands.
+Reportedly, it amounts to up to 60% of the software engineering time and labor.
+One reason that makes program comprehension such a time-consuming activity is that it requires developers to bridge a gap of abstraction levels.
+Namely, the low-level abstractions of the inner workings of computers and the high-level abstractions of object-oriented programming languages and design documents diverge. 
+Unfortunately, widespread development tools contribute little to bridge this gap, and present information about program behavior with technical views instead of adapting to the abstractions of object-orientation.
+However, to close this gap, an information presentation at the abstraction level of objects and their interactions would be desirable, which in turn could contribute to reduce the time required for program comprehension.
+
+Therefore, this thesis presents PathObjects, an interactive way of diagraming program behavior at the abstraction level of object interactions. 
+It allows developers to navigate and explore execution traces through an immediate information presentation while maintaining a low memory footprint.
+We put this concept into practice with an implementation for the Squeak/Smalltalk environment. 
+With the aid of a user study, we show that PathObjects can help developers to comprehend an unknown software system faster and to a higher degree compared to the standard development tools.
+We conclude that our concept can assist developers in object-oriented program comprehension by closing the gap of abstraction levels, and thus represents a step towards the reduction of the required time of this laborious activity.
+
+#### Download Thesis
+
+The LaTeX sources and a precompiled PDF version are available [here](https://github.com/leoschweizer/PathObjects-Thesis/releases/tag/v1.0).
+
+***
+
+### Building
+
+**Requirements**
+  * [MiKTeX](http://miktex.org)
+  * Install latest `caption` package ([trunk](http://sourceforge.net/p/latex-caption/code/HEAD/tree/trunk/tex/))
+  * [R](http://www.r-project.org) 3.0 or newer
+  * [Graphviz](http://graphviz.org) 2.34 or newer
+  * [ImageMagick](http://www.imagemagick.org) in case you want to use the `thumbs` task
+  
+**Build**
+
+    $ git clone git@github.com:leoschweizer/PathObjects-Thesis.git
+    $ cd PathObjects-Thesis
+    $ rake
+    
+***
+
+### Sneak Peek
 
 ![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page1.png)
 ![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page2.png)
@@ -92,20 +131,3 @@ PathObjects-Thesis
 ![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page89.png)
 ![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page90.png)
 ![](http://leoschweizer.github.io/PathObjects-Thesis/thumbs/page91.png)
-
-
-Building
---------
-
-**Requirements**
-  * [MiKTeX](http://miktex.org)
-  * Install latest `caption` package ([trunk](http://sourceforge.net/p/latex-caption/code/HEAD/tree/trunk/tex/))
-  * [R](http://www.r-project.org) 3.0 or newer
-  * [Graphviz](http://graphviz.org) 2.34 or newer
-  * [ImageMagick](http://www.imagemagick.org) in case you want to use the `thumbs` task
-  
-**Build**
-
-    $ git clone git@github.com:leoschweizer/PathObjects-Thesis.git
-    $ cd PathObjects-Thesis
-    $ rake
